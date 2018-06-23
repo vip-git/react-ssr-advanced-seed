@@ -1,4 +1,4 @@
-# Node Typescript Advanced API
+# React SSR Advanced Seed (nestJS + React SSR + Docker)
 [![Build Status](https://travis-ci.org/vip-git/node-advanced-api.svg?branch=master)](https://travis-ci.org/vip-git/node-advanced-api) [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm) [![dependencies](https://david-dm.org/vip-git/node-advanced-api.svg)](https://david-dm.org/vip-git/node-advanced-api) [![dev-dependencies](https://david-dm.org/vip-git/node-advanced-api/dev-status.svg)](https://david-dm.org/vip-git/node-advanced-api)
 
 ## DOCS
