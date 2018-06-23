@@ -1,0 +1,48 @@
+@import './variables.css';
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700|Titillium+Web:400,700');
+@import-normalize;
+
+:global(body) {
+    font-size: var(--font-size-base);
+    font-family: 'Titillium Web', Arial, Sans-Serif;
+}
+
+.wrapper {
+    margin: auto;
+    max-width: 100%;
+    width: 768px;
+
+    h1 {
+        font-size: var(--font-size-h1);
+    }
+
+    ul {
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        padding: 4px 0;
+
+        &:before {
+            content: '✅';
+            display: inline-block;
+            min-width: 28px;
+            text-align: center;
+        }
+
+        &.hot:before {
+            content: '🔥';
+        }
+
+        &.react:before {
+            content: '⚛';
+        }
+    }
+}
+
+.reactLogo {
+    vertical-align: middle;
+    height: 48px;
+    width: 48px;
+}
