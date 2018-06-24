@@ -1,0 +1,13 @@
+language: node_js
+
+# test on node.js version 8
+node_js:
+  - 8
+install:
+  - npm install -g codecov
+  - npm install
+build:
+  - npm run build
+test:
+  - npm test
+  - codecov  
