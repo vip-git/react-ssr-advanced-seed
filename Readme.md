@@ -23,6 +23,7 @@ npm run build
 ### Docker Build
 ```
 cd docker
+
 docker build -t node-nginx-react .
 
 docker run -d node-nginx-react
