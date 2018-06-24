@@ -1,7 +1,7 @@
 #!/bin/bash -e
 chmod 700 /root/.ssh/id_rsa
 touch /root/.ssh/known_hosts
-ssh-keyscan gitlab.com >> /root/.ssh/known_hosts
+ssh-keyscan ${GIT_PROVIDER} >> /root/.ssh/known_hosts
 
 if [ -d "/opt/node-advanced-app" ]; then
     cd /opt/node-advanced-app
