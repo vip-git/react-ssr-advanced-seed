@@ -1,11 +1,10 @@
-# React SSR Advanced Seed (nestJS + React SSR + Docker)
+# React SSR Advanced Seed (nestJS + React SSR + Docker) (Work In Progress)
 [![Build Status](https://travis-ci.org/vip-git/node-advanced-api.svg?branch=master)](https://travis-ci.org/vip-git/node-advanced-api) [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm) [![dependencies](https://david-dm.org/vip-git/node-advanced-api.svg)](https://david-dm.org/vip-git/node-advanced-api) [![dev-dependencies](https://david-dm.org/vip-git/node-advanced-api/dev-status.svg)](https://david-dm.org/vip-git/node-advanced-api)
 
 ## DOCS
 - https://vip-git.github.io/node-advanced-api/index.html
 
 ### Prerequisites
-- [MongoDB](https://www.mongodb.org/downloads)
 - [Node.js 8.0+](http://nodejs.org)
 
 
@@ -13,11 +12,25 @@
 ```
 npm install
 
-npm start (Please make sure mongoDB is running in background on port 27017)
+npm start (This will start both frontend and backend servers for you)
+```
 
+### Production Build (Client and Server)
+```
+npm run build
+```
 
-Navigate: (Requires you to set headers: `Authorization Bearer AbCdEf123456`)
-- http://localhost:3000/api/show (API)
-- http://localhost:3000/proxy/show (PROXY - NO headers required for now)
-- http://localhost:3000/api-docs/ (Swagger UI)
+### Docker Build
+```
+cd docker
+docker build -t node-nginx-react .
+
+docker run -d node-nginx-react
+```
+
+### DockerHub Image
+```
+- https://hub.docker.com/r/vipgit/nginx-node-git/
+
+docker run -d -v /root/.ssh/ -v /opt/node-advanced-app vipgit/nginx-node-git:latest
 ```
