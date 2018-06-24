@@ -16,7 +16,7 @@ ENV API_DB_USERNAME "skmsmrzz"
 ENV API_DB_PASSWORD "Hsm9XMc1Jlp-_jflt9whZ-1PYdeETNQC"
 ENV API_DB_NAME "skmsmrzz"
 ENV GIT_PROVIDER github.com
-ENV GIT_BRANCH react-integration
+ENV GIT_BRANCH master
 ENV GIT_REPO git@github.com:vip-git/react-ssr-advanced-seed.git
 
 RUN addgroup -g 1000 node \
