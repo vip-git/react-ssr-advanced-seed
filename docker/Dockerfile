@@ -71,6 +71,9 @@ RUN apk update && apk upgrade && \
       chromium@edge \
       nss@edge
 
+# INSTALL GIT
+RUN apk add --no-cache bash git openssh 
+
 # We're not using it's command.
 # CMD [ "node" ]
 
