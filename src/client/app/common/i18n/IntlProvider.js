@@ -4,7 +4,7 @@ import i18next from 'i18next';
 import { withRouter } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import { connect } from 'react-redux';
-import { getLocale } from '../store/app/selectors';
+import { getLocale } from '../redux/app/selectors';
 
 import deDE from './locales/de-DE.json';
 import enUS from './locales/en-US.json';

@@ -36,6 +36,8 @@
     "node_modules"
   ],
   "dependencies": {
+    "@material-ui/core": "^1.4.0",
+    "@material-ui/icons": "^1.1.0",
     "@nestjs/common": "^5.0.0",
     "@nestjs/core": "^5.0.0",
     "@nestjs/graphql": "^3.0.0",
@@ -48,6 +50,8 @@
     "apollo-server-express": "^1.2.0",
     "class-transformer": "^0.1.7",
     "class-validator": "^0.7.2",
+    "classnames": "^2.2.6",
+    "date-fns": "^1.29.0",
     "express-http-proxy": "^1.2.0",
     "flow-bin": "^0.72.0",
     "graphql": "^0.11.7",

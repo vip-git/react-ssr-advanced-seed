@@ -5,7 +5,7 @@ import path from 'path';
 import chalk from 'chalk';
 import manifestHelpers from 'express-manifest-helpers-audit-fix';
 import bodyParser from 'body-parser';
-import { configureStore } from './app/store';
+import { configureStore } from './app/common/redux';
 import serverRender from './ssr/render';
 import paths from '../../scripts/config/paths';
 
