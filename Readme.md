@@ -32,7 +32,7 @@ docker run -d node-nginx-react
 
 ### DockerHub Image
 ```
-- https://hub.docker.com/r/vipgit/nginx-node-git/
+- https://hub.docker.com/r/vipgit/react-ssr-nginx/
 
-docker run -d -v /root/.ssh/ -v /opt/node-advanced-app vipgit/nginx-node-git:latest
+docker run -d -v /root/.ssh/ -v /opt/node-advanced-app vipgit/react-ssr-nginx:latest
 ```

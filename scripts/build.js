@@ -18,8 +18,10 @@ const generateStaticHTML = async () => {
     });
 
     script.on('start', async () => {
+        // Only needed inside docker
+        // {executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox', '--headless', '--disable-gpu']}
         setTimeout(async function() {
-            const browser = await puppeteer.launch({executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox', '--headless', '--disable-gpu']});
+            const browser = await puppeteer.launch();
             const page = await browser.newPage();
             await page.goto(`http://localhost:${process.env.PORT}`);
             const pageContent = await page.content();
