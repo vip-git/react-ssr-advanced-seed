@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/vip-git/react-ssr-advanced-seed.svg?branch=master)](https://travis-ci.org/vip-git/react-ssr-advanced-seed) [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm) [![dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed.svg)](https://david-dm.org/vip-git/node-advanced-api) [![dev-dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed/dev-status.svg)](https://david-dm.org/vip-git/react-ssr-advanced-seed)
 
 ## DOCS
-- https://vip-git.github.io/node-advanced-api/index.html
+- https://vip-git.github.io/react-ssr-advanced-seed/index.html
 
 ### Prerequisites
 - [Node.js 8.0+](http://nodejs.org)
