@@ -5,8 +5,8 @@ const appDirectory = fs.realpathSync(process.cwd());
 const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 const paths = {
-    clientBuild: resolveApp('build/client'),
-    serverBuild: resolveApp('build/server'),
+    clientBuild: resolveApp('docker/prod/build/client'),
+    serverBuild: resolveApp('docker/prod/build/server'),
     dotenv: resolveApp('.env'),
     src: resolveApp('src'),
     srcClient: resolveApp('src/client'),

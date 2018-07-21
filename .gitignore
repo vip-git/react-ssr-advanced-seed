@@ -19,5 +19,5 @@ npm-debug.log
 
 # dist
 dist/
-/build
+docker/prod/build
 package-lock.json
