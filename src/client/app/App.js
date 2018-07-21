@@ -1,6 +1,7 @@
 // @flow
 // Library
 import * as React from 'react';
+import FadeIn from 'react-fade-in';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
@@ -44,7 +45,9 @@ class App extends React.PureComponent<PropsT> {
             //         </button>
             //     </p>
             // </div>
-            <Chat />
+            <FadeIn>
+                <Chat />
+            </FadeIn>
         );
     }
 }
