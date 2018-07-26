@@ -5,7 +5,9 @@ const dockerImage = 'vipgit/react-ssr-nginx:'+ process.env.npm_package_version;
 shell.cd('./docker/prod');
 
 function getDockerContainerId(callback) {
-    shell.exec('docker run -d -p 8080:80 --name='+ dockerName +' '+ dockerImage, callback)
+    shell.exec('docker rm '+ dockerName +' --force', function(code, stdout, stderr) {
+        shell.exec('docker run -d -p 8080:80 --name='+ dockerName +' '+ dockerImage, callback);
+    });
 }
 
 function publishToDockerHub(commitHash, repository, callback) {
@@ -14,7 +16,7 @@ function publishToDockerHub(commitHash, repository, callback) {
     })
 }
 
-if (process.argv.slice(2).length && process.argv.slice(2)[0] === '--first') 
+if (process.argv.slice(2).length && process.argv.slice(2)[0] === '--publish') 
 {
     shell.exec('docker build -t '+ dockerImage +' .', function() {
         getDockerContainerId(function(code, stdout, stderr) {
@@ -24,11 +26,9 @@ if (process.argv.slice(2).length && process.argv.slice(2)[0] === '--first')
         });
     });
 } else {
-    shell.exec('docker build -t '+ dockerImage +' . && docker rm '+ dockerName +' --force', function(code, stdout, stderr) {
+    shell.exec('docker build -t '+ dockerImage +' .', function(code, stdout, stderr) {
         getDockerContainerId(function(code, stdout, stderr) {
-            publishToDockerHub(stdout, dockerImage, function() {
-                console.log('Docker Build Successful - version deployed : '+ dockerImage);
-            });
+            console.log('Docker Build Successful - version running : '+ dockerImage, stdout);
         });
     });
 }
