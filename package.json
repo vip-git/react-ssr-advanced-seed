@@ -7,8 +7,7 @@
   "scripts": {
     "precommit": "lint-staged",
     "build": "npm run build:frontend && npm run build:backend && npm run docker:prod",
-    "build:first": "npm run build:frontend && npm run build:backend && npm run docker:prod:first && npm run git:tag",
-    "git:tag": "git tag -a v1.0.0 -m 'version 1.0.0'",
+    "build:first": "npm run build:frontend && npm run build:backend && npx release-it -n --no-npm.publish && npm run docker:prod:first",
     "build:frontend": "cross-env NODE_ENV=production node scripts/build.js",
     "build:backend": "webpack  --env.NODE_ENV=production --env.watchFiles=false --config scripts/api-webpack.config.js",
     "start:frontend": "cross-env NODE_ENV=development node scripts/start.js",
