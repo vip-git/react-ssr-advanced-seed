@@ -1,14 +1,34 @@
 const shell = require('shelljs');
+const dockerName = 'react-ssr-docker';
+const dockerImage = 'vipgit/react-ssr-nginx:'+ process.env.npm_package_version;
 
 shell.cd('./docker/prod');
 
+function getDockerContainerId(callback) {
+    shell.exec('docker run -d -p 8080:80 --name='+ dockerName +' '+ dockerImage, callback)
+}
+
+function publishToDockerHub(commitHash, repository, callback) {
+    shell.exec('docker commit '+ commitHash + ' ' + repository, function(code, stdout, stderr){
+        shell.exec('docker push '+ repository, callback);
+    })
+}
+
 if (process.argv.slice(2).length && process.argv.slice(2)[0] === '--first') 
 {
-    shell.exec('docker build -t vipgit/react-ssr-nginx:'+ process.env.npm_package_version +' . && docker run -d -p 8080:80 --name=react-ssr-docker vipgit/react-ssr-nginx:'+ process.env.npm_package_version, function(code, stdout, stderr) {
-        console.log('Docker Build Successful - version deployed : vipgit/react-ssr-nginx:'+ process.env.npm_package_version);
+    shell.exec('docker build -t '+ dockerImage +' .', function() {
+        getDockerContainerId(function(code, stdout, stderr) {
+            publishToDockerHub(stdout, dockerImage, function() {
+                console.log('Docker Build Successful - version deployed : '+ dockerImage);
+            });
+        });
     });
 } else {
-    shell.exec('docker build -t vipgit/react-ssr-nginx:'+ process.env.npm_package_version +' . && docker rm react-ssr-docker --force && docker run -d -p 8080:80 --name=react-ssr-docker vipgit/react-ssr-nginx:'+ process.env.npm_package_version, function(code, stdout, stderr) {
-        console.log('Docker Build Successful - version deployed : vipgit/react-ssr-nginx:'+ process.env.npm_package_version);
+    shell.exec('docker build -t '+ dockerImage +' . && docker rm '+ dockerName +' --force', function(code, stdout, stderr) {
+        getDockerContainerId(function(code, stdout, stderr) {
+            publishToDockerHub(stdout, dockerImage, function() {
+                console.log('Docker Build Successful - version deployed : '+ dockerImage);
+            });
+        });
     });
 }
