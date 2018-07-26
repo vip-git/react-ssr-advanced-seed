@@ -1,6 +1,6 @@
 const shell = require('shelljs');
 
-shell.cd('../docker/prod');
+shell.cd('./docker/prod');
 
 if (process.argv.slice(2).length && process.argv.slice(2)[0] === '--first') 
 {
