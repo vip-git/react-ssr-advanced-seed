@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 import { setLocale } from './common/redux/app/actions';
 
-import css from './App.css';
+import css from './App.scss';
 
 // components
 import Chat from './common/components/chat';

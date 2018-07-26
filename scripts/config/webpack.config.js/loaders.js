@@ -7,7 +7,7 @@ const babelLoader = {
 };
 
 const cssLoaderClient = {
-    test: /\.css$/,
+    test: /\.(css|scss)$/,
     exclude: /node_modules/,
     use: [
         'css-hot-loader',

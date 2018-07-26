@@ -131,6 +131,7 @@
     "postcss-nested": "^3.0.0",
     "postcss-normalize": "^4.0.0",
     "puppeteer": "0.13.0",
+    "release-it": "^7.4.8",
     "reselect": "^3.0.1",
     "serve-static": "^1.13.2",
     "supertest": "^3.0.0",

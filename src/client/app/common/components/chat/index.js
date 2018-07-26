@@ -50,7 +50,7 @@ class Chat extends Component {
     );
     return (
       <Wrapper padding={false}>
-        <AppBar position="assets">       
+        <AppBar position="static">       
           <Toolbar>
             <Typography variant="title" color="inherit" style={{margin: '0 auto'}}>
                 Admin Chat Interface
