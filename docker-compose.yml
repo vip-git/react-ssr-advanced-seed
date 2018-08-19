@@ -7,3 +7,17 @@ services:
       - MONGODB_DATABASE="test"
     ports:
       - 27017:27017
+  
+  frontend:
+    hostname: frontend
+    build: ./frontend/docker/prod
+    environment:
+      - API_URL="http://localhost:1234"
+    ports: 
+      - 8080:80
+networks:
+  chainnet:
+    driver: bridge
+    ipam:
+      config:
+      - subnet: 172.25.0.0/24      
