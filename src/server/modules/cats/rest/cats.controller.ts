@@ -9,7 +9,7 @@ import {
 } from '@nestjs/swagger';
 
 // Internal
-import { CatModel, CatsService } from '@server/cats';
+import { CatModel, CatsService } from '../';
 
 @UseGuards(AuthGuard('jwt'))
 @ApiBearerAuth()

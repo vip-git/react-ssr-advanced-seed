@@ -1,5 +1,5 @@
 // Library
-import { Injectable } from '@nestjs/common';
+import { Injectable, BadRequestException, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -14,6 +14,16 @@ export class CatsService {
     @InjectRepository(CatModel)
     private readonly catRepository: Repository<CatModel>,
   ) {}
+
+  protected getId(paramId: any): number {
+    const id = parseInt(paramId, 10);
+
+    if (isNaN(id) || typeof id !== 'number') {
+      throw new BadRequestException();
+    }
+
+    return id;
+  }
 
   async create(catPayload: CatModel): Promise<CatModel>  {
     const cat = new CatModel();
@@ -34,5 +44,21 @@ export class CatsService {
 
   async findOneById(id: number): Promise<CatModel> {
     return await this.catRepository.findOne(id, {cache: true});
+  }
+
+  async update(paramId: any, entity: CatModel): Promise<CatModel> {
+    const exists = await this.findOneById(paramId);
+
+    return await this.catRepository.save(entity);
+  }
+
+  async delete(paramId: any): Promise<void> {
+    const id = this.getId(paramId);
+
+    try {
+      await this.catRepository.delete(id);
+    } catch (err) {
+      throw new NotFoundException();
+    }
   }
 }
