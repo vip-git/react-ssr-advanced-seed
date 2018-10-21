@@ -1,5 +1,6 @@
 language: node_js
-
+env:
+  - CI=true
 # test on node.js version 8
 node_js:
   - 8
