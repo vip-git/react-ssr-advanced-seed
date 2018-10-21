@@ -26,6 +26,11 @@ npm run build
 npm run docker:prod
 ```
 
+### Kubernetes Deployment
+```
+kubectl create -f deployment.yml
+```
+
 ### DockerHub Image
 ```
 - https://hub.docker.com/r/vipgit/react-ssr-nginx/
