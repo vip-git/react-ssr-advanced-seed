@@ -2,18 +2,18 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: exampleservice
+  name: react-ssr-nginx-service
 spec:
   selector:
-    app: myapp
+    app: react-ssr-nginx
   ports:
     - protocol: "TCP"
       # Port accessible inside cluster
-      port: 8081
+      port: 8080
       # Port to forward to inside the pod
-      targetPort: 8080
+      targetPort: 80
       # Port accessible outside cluster
-      nodePort: 30002
+      nodePort: 30005
   type: LoadBalancer
 
 
@@ -34,4 +34,4 @@ spec:
         - name: react-ssr-nginx
           image: vipgit/react-ssr-nginx:1.0.5
           ports:
-            - containerPort: 8080
+            - containerPort: 80
