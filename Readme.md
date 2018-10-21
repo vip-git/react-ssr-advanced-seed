@@ -1,6 +1,6 @@
 ## React SSR Advanced Seed (nestJS + React SSR + Nginx + Docker) 
 ## (Work In Progress)
-[![Build Status](https://travis-ci.org/vip-git/react-ssr-advanced-seed.svg?branch=master)](https://travis-ci.org/vip-git/react-ssr-advanced-seed) [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm) [![dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed.svg)](https://david-dm.org/vip-git/node-advanced-api) [![dev-dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed/dev-status.svg)](https://david-dm.org/vip-git/react-ssr-advanced-seed)
+[![CircleCI](https://circleci.com/gh/vip-git/react-ssr-advanced-seed.svg?style=svg)](https://circleci.com/gh/vip-git/react-ssr-advanced-seed) [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm) [![dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed.svg)](https://david-dm.org/vip-git/node-advanced-api) [![dev-dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed/dev-status.svg)](https://david-dm.org/vip-git/react-ssr-advanced-seed)
 
 ## DOCS
 - https://vip-git.github.io/react-ssr-advanced-seed
