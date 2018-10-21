@@ -1,23 +1,34 @@
 version: "3"
 
 services:
-  mongodb:
-    image: mongo:latest
+  postgres:
+    image: postgres
     environment:
-      - MONGODB_DATABASE="test"
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=postgres
     ports:
-      - 27017:27017
+      - 5432:5432
   
   frontend:
     hostname: frontend
-    build: ./frontend/docker/prod
+    depends_on:
+      - postgres
+    build: ./docker/prod
     environment:
       - API_URL="http://localhost:1234"
+      - API_DB_HOST=postgres
+      - API_DB_PORT=5432
+      - API_DB_USERNAME=postgres
+      - API_DB_PASSWORD=password
+      - API_DB_NAME=postgres
     ports: 
       - 8080:80
+      
 networks:
   chainnet:
     driver: bridge
     ipam:
       config:
-      - subnet: 172.25.0.0/24      
+      - subnet: 172.25.0.0/24   
+    
