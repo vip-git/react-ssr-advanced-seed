@@ -15,7 +15,7 @@ module.exports = {
         '<rootDir>/src/server/modules/**/?(*.)(spec|test).{ts,tsx,mjs}',
     ],
     testEnvironment: 'node',
-    testURL: 'http://localhost/',
+    testURL: 'http://localhost',
     transform: {
         "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js",
         '^.+\\.css$': '<rootDir>/scripts/config/jest/cssTransform.js',

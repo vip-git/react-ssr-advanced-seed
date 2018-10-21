@@ -14,7 +14,6 @@ module.exports = function () {
             runner: 'node'
         },
         testFramework: 'jest',
-        
         debug: true
     };
 };

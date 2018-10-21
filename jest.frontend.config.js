@@ -13,7 +13,7 @@ module.exports = {
         '<rootDir>/src/client/**/?(*.)(spec|test).{js,jsx,mjs}',
     ],
     testEnvironment: 'node',
-    testURL: 'http://localhost/',
+    testURL: 'http://localhost',
     transform: {
         '^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
         '^.+\\.css$': '<rootDir>/scripts/config/jest/cssTransform.js',
