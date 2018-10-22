@@ -6,4 +6,9 @@ module.exports = {
     '<rootDir>/src/client/**/__tests__/**/*.e2e-test.{js,jsx,mjs}',
     '<rootDir>/src/client/**/?(*.)(e2e-test).{js,jsx,mjs}',
   ],
+  transform: {
+    '^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
+    '^.+\\.css$': '<rootDir>/scripts/config/jest/cssTransform.js',
+    '^(?!.*\\.(js|jsx|mjs|css|json)$)': '<rootDir>/scripts/config/jest/fileTransform.js',
+  },
 };
