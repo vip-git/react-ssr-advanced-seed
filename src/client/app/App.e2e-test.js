@@ -9,8 +9,8 @@ const person = {
   message: faker.random.words(),
 };
 
-describe('H1 Text', () => {
-  test('h1 loads correctly', async () => {
+describe('H2 Text', () => {
+  test('h2 loads correctly', async () => {
     const browser = await puppeteer.launch({
 	  headless: false,
     });
@@ -24,11 +24,11 @@ describe('H1 Text', () => {
 	  userAgent: '',
     });
 
-    await page.goto('http://localhost:3002/');
-    await page.waitForSelector('.App-title');
+    await page.goto('http://localhost:8500/');
+    await page.waitForSelector('h2');
 
-    const html = await page.$eval('.App-title', e => e.innerHTML);
-    expect(html).toBe('Welcome to React');
+    const html = await page.$eval('h2', e => e.innerText);
+    expect(html).toBe('Admin Chat Interface');
 
     browser.close();
   }, 16000);
