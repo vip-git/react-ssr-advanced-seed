@@ -26,7 +26,9 @@
     "generate:docs": "npx typedoc --out docs/ src/ --mode file --module commonjs --target es6",
     "generate:defintions": "npx dts-generator --name node-advanced-api --project ./ --out node-advanced-api.d.ts",
     "generate-all": "npm run generate:defintions && npm run generate:docs",
-    "webpack": "webpack --env.NODE_ENV=development --env.watchFiles=true --config scripts/api-webpack.config.js"
+    "webpack": "webpack --env.NODE_ENV=development --env.watchFiles=true --config scripts/api-webpack.config.js",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "lint-staged": {
     "*.{js,css}": [
@@ -54,6 +56,10 @@
     "@nestjs/testing": "^5.0.0",
     "@nestjs/typeorm": "^5.0.0",
     "@nestjs/websockets": "^5.0.0",
+    "@storybook/addon-actions": "^4.0.0-rc.1",
+    "@storybook/addon-links": "^4.0.0-rc.1",
+    "@storybook/addons": "^4.0.0-alpha.16",
+    "@storybook/react": "^4.0.0-rc.1",
     "apollo-server-express": "^1.2.0",
     "class-transformer": "^0.1.7",
     "class-validator": "^0.7.2",
@@ -109,11 +115,13 @@
     "@types/prop-types": "15.5.2",
     "@types/react": "15.0.30",
     "@types/react-transition-group": "2.0.4",
+    "@storybook/cli": "4.0.0-alpha.16",
     "autoprefixer": "^8.5.0",
     "babel-core": "^7.0.0-bridge.0",
     "babel-eslint": "^8.2.3",
     "babel-jest": "23.6.0",
     "babel-loader": "^8.0.0-beta.3",
+    "babel-runtime": "^6.26.0",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.1",
     "cross-env": "^5.2.0",

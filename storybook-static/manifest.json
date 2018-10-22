@@ -1,0 +1,14 @@
+{
+  "iframe.js": "static/iframe.43ac97597512316545f1.bundle.js",
+  "iframe.js.map": "static/iframe.43ac97597512316545f1.bundle.js.map",
+  "manager.js": "static/manager.0125a2db1c17702493c9.bundle.js",
+  "manager.js.map": "static/manager.0125a2db1c17702493c9.bundle.js.map",
+  "vendors~iframe.js": "static/vendors~iframe.66832825732677094c1b.bundle.js",
+  "vendors~iframe.js.map": "static/vendors~iframe.66832825732677094c1b.bundle.js.map",
+  "runtime~iframe.js": "static/runtime~iframe.5df7dd86d0d1d5a7ca7c.bundle.js",
+  "runtime~iframe.js.map": "static/runtime~iframe.5df7dd86d0d1d5a7ca7c.bundle.js.map",
+  "runtime~manager.js": "static/runtime~manager.3449a11e33d8b6b9f637.bundle.js",
+  "runtime~manager.js.map": "static/runtime~manager.3449a11e33d8b6b9f637.bundle.js.map",
+  "iframe.html": "iframe.html",
+  "index.html": "index.html"
+}

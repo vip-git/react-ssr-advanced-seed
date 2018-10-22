@@ -1,0 +1,1 @@
+module.exports = require('../scripts/config/webpack.config.js/storybook');
