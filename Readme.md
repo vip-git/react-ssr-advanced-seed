@@ -37,3 +37,11 @@ kubectl create -f deployment.yml
 
 docker run -d -v /root/.ssh/ -v /opt/node-advanced-app vipgit/react-ssr-nginx:latest
 ```
+
+### Testing (Unit and End to End Testing)
+```
+npm run test (Runs Backend Unit Tests)
+npm run test:frontend (Runs Frontend Unit Tests)
+npm run test:e2e (Runs Frontend End to End Tests)
+```
+
