@@ -1,9 +1,9 @@
 // Service
-import { ChatService } from '../../common/services/chat.service';
-import { UserService } from '../../common/services/user.service';
+import { ChatServiceEngine } from '../../common/services/chat.service';
+import { UserServiceEngine } from '../../common/services/user.service';
 
 // Redux
-import { ChatActions, ActionTypes } from './redux/chat.actions';
+import { ChatActionsEngine, ChatActionTypes } from './redux/chat.actions';
 import { getChatState } from './redux/chat.selectors';
 import { ChatRulesEngine } from './redux/chat.rules';
 
@@ -26,27 +26,18 @@ export const ChatModel = ({
   i18nKeys: {
 
   },
-  actionTypes: { ...ActionTypes },
+  actionTypes: {
+    ...ChatActionTypes,
+  },
   actions: {
-    readAllUsersAndChats: payload => ChatActions.readAllUsersAndChats(payload),
-    readAllChats: payload => ChatActions.readAllChats(payload),
-    processAllChats: payload => ChatActions.processAllChats(payload),
-    readAllUsers: payload => ChatActions.readAllUsers(payload),
-    processAllUsers: payload => ChatActions.processAllUsers(payload),
-    createChat: payload => ChatActions.createChat(payload),
-    addChat: payload => ChatActions.addChat(payload),
-    removeChat: payload => ChatActions.removeChat(payload),
-    editChat: payload => ChatActions.editChat(payload),
+    ...ChatActionsEngine,
   },
   rules: {
     ...ChatRulesEngine,
   },
   services: {
-    requestAllChats: () => ChatService.getAllChats(),
-    requestCreateChat: chatId => ChatService.createChat(chatId),
-    requestRemoveChat: chatId => ChatService.removeChat(chatId),
-    requestEditChat: chatId => ChatService.editChat(chatId),
-    requestAllUsers: () => UserService.getAllUsers(),
+    ...ChatServiceEngine,
+    ...UserServiceEngine,
   },
   reduxActions: dispatch => ({
     dispatchReadAllUsersAndChats: payload => dispatch(ChatModel.actions.readAllUsersAndChats(payload)),

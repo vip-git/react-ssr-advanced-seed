@@ -1,4 +1,4 @@
-export const ActionTypes = {
+export const ChatActionTypes = {
   READ_ALL_USERS_AND_CHATS: 'chat/read-all-users-and-chats',
   
   READ_ALL_CHATS: 'chat/read-all-chats',
@@ -16,54 +16,66 @@ export const ActionTypes = {
   UPDATE_CHAT: 'chat/update-chat',
 };
 
-export class ChatActions { 
+class ChatActions { 
   static readAllChats = payload => ({
-    type: ActionTypes.READ_ALL_CHATS,
+    type: ChatActionTypes.READ_ALL_CHATS,
     payload,
   });
     
   static processAllChats = payload => ({
-    type: ActionTypes.PROCESS_ALL_CHATS,
+    type: ChatActionTypes.PROCESS_ALL_CHATS,
     payload,
   });
 
   static readAllUsers = payload => ({
-    type: ActionTypes.READ_ALL_USERS,
+    type: ChatActionTypes.READ_ALL_USERS,
     payload,
   });
   
   static readAllUsersAndChats = payload => ({
-    type: ActionTypes.READ_ALL_USERS_AND_CHATS,
+    type: ChatActionTypes.READ_ALL_USERS_AND_CHATS,
     payload,
   });
     
   static processAllUsers = payload => ({
-    type: ActionTypes.PROCESS_ALL_USERS,
+    type: ChatActionTypes.PROCESS_ALL_USERS,
     payload,
   });
 
   static createChat = payload => ({
-    type: ActionTypes.CREATE_CHAT,
+    type: ChatActionTypes.CREATE_CHAT,
     payload,
   });
     
   static addChat = payload => ({
-    type: ActionTypes.PROCESS_NEW_CHAT,
+    type: ChatActionTypes.PROCESS_NEW_CHAT,
     payload,
   });
     
   static deleteChat = payload => ({
-    type: ActionTypes.DELETE_CHAT,
+    type: ChatActionTypes.DELETE_CHAT,
     payload,
   });
     
   static removeChat = payload => ({
-    type: ActionTypes.PROCESS_DELETED_CHAT,
+    type: ChatActionTypes.PROCESS_DELETED_CHAT,
     payload,
   });
     
   static editChat = payload => ({
-    type: ActionTypes.UPDATE_CHAT,
+    type: ChatActionTypes.UPDATE_CHAT,
     payload,
   });
 }
+
+export const ChatActionsEngine = {
+  readAllUsersAndChats: payload => ChatActions.readAllUsersAndChats(payload),
+  readAllChats: payload => ChatActions.readAllChats(payload),
+  processAllChats: payload => ChatActions.processAllChats(payload),
+  readAllUsers: payload => ChatActions.readAllUsers(payload),
+  processAllUsers: payload => ChatActions.processAllUsers(payload),
+  createChat: payload => ChatActions.createChat(payload),
+  addChat: payload => ChatActions.addChat(payload),
+  removeChat: payload => ChatActions.removeChat(payload),
+  editChat: payload => ChatActions.editChat(payload),
+};

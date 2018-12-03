@@ -1,5 +1,3 @@
-import { throwError } from 'rxjs';
-
 class ChatRules {
   static validateChat(action) {
     console.log('i was called to validate chat', action);

@@ -1,6 +1,6 @@
 const allChats = require('../mocks/chats');
 
-export class ChatService {
+class ChatService {
   static getAllChats() {
     return allChats.default;
   }
@@ -14,3 +14,9 @@ export class ChatService {
   }
 }
   
+export const ChatServiceEngine = 
+{
+  requestAllChats: () => ChatService.getAllChats(),  
+  requestRemoveChat: chatId => ChatService.removeChat(chatId),
+  requestEditChat: chatId => ChatService.editChat(chatId),
+};
