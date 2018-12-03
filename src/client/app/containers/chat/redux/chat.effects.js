@@ -1,9 +1,10 @@
+// Library
+import { Observable, of, concat, from } from 'rxjs';
+import { map, switchMap, mergeMap, mergeAll, catchError, concatMap } from 'rxjs/operators';
+
 // Model and Actions
 import { ChatModel } from '../chat.model';
-
-// Library
-const { Observable, of, concat } = require('rxjs');
-const { map, switchMap, mergeMap, catchError } = require('rxjs/operators');
+import { RulesEngine } from '../../../common/utils/rules.engine';
 
 class ChatEffect {
     /**
@@ -12,10 +13,14 @@ class ChatEffect {
      * @returns {any|*|Observable}
      */
     static readAllChats = action$ =>
-      action$.ofType(ChatModel.actionTypes.READ_ALL_CHATS)
-        .pipe(
-          map(action => ChatModel.services.requestAllChats(action.payload)),
-          map(data => ChatModel.actions.processAllChats(data)),
+      RulesEngine
+        .applyRule(action$, 
+          ChatModel.actionTypes.READ_ALL_CHATS,
+          action => [ChatModel.rules.validateChat(action), ChatModel.rules.validateChatAgain(action)],
+          () => ([
+            map(action => ChatModel.services.requestAllChats(action.payload)),
+            map(data => ChatModel.actions.processAllChats(data)),
+          ]),
         );
 
     /**

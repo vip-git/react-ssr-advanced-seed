@@ -5,7 +5,7 @@ import { UserService } from '../../common/services/user.service';
 // Redux
 import { ChatActions, ActionTypes } from './redux/chat.actions';
 import { getChatState } from './redux/chat.selectors';
-import { ChatRules } from './redux/chat.rules';
+import { ChatRulesEngine } from './redux/chat.rules';
 
 export const ChatModel = ({
   attributes: {
@@ -39,7 +39,7 @@ export const ChatModel = ({
     editChat: payload => ChatActions.editChat(payload),
   },
   rules: {
-    validateChat: () => ChatRules.validateChat(),
+    ...ChatRulesEngine,
   },
   services: {
     requestAllChats: () => ChatService.getAllChats(),
