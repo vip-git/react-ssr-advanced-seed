@@ -1,4 +1,4 @@
-import { drawerWidth } from '../../styles/variables';
+import { drawerWidth } from '../../../../common/styles/variables';
 
 const ChatStyles = theme => ({
   root: {

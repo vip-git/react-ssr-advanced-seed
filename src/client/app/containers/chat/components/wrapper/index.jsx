@@ -11,16 +11,16 @@ const Wrapper = (props) => {
       { children }
     </div>
   );
-}
+};
 
 Wrapper.prototypes = {
   classes: PropTypes.object.isRequired,
   children: PropTypes.node.isRequired,
-  padding: PropTypes.bool
+  padding: PropTypes.bool,
 };
 
 Wrapper.defaultProps = {
-  padding: true
+  padding: true,
 };
 
 export default withStyles(WrapperStyles)(Wrapper);

@@ -9,8 +9,8 @@ import { setLocale } from './common/redux/app/actions';
 
 import css from './App.scss';
 
-// components
-import Chat from './common/components/chat';
+// containers
+import Chat from './containers/chat';
 
 type PropsT = {
     setLocale: (string) => {},
@@ -19,13 +19,13 @@ type PropsT = {
 
 class App extends React.PureComponent<PropsT> {
     setLanguage = (e) => {
-        this.props.setLocale(e.target.value);
+      this.props.setLocale(e.target.value);
     };
 
     render() {
-        const { t } = this.props;
+      const { t } = this.props;
 
-        return (
+      return (
             // <div className={css.wrapper}>
             //     <Helmet defaultTitle="React SSR Starter" titleTemplate="%s – React SSR Starter" />
             //     <h1>
@@ -48,12 +48,12 @@ class App extends React.PureComponent<PropsT> {
             <FadeIn>
                 <Chat />
             </FadeIn>
-        );
+      );
     }
 }
 
 const mapDispatchToProps = {
-    setLocale,
+  setLocale,
 };
 
 export default connect(null, mapDispatchToProps)(translate()(App));

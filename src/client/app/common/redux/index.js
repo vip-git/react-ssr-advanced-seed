@@ -1,30 +1,53 @@
-import thunk from 'redux-thunk';
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-undef */
+// Library
+import { createMemoryHistory } from 'history';
 import { createStore, applyMiddleware, compose } from 'redux';
-import rootReducer from './rootReducer';
+import { connectRouter, routerMiddleware } from 'connected-react-router';
+import { createEpicMiddleware } from 'redux-observable';
+import { createLogger } from 'redux-logger';
+
+// Global Redux
+import rootReducer from './root.reducer';
+import { rootEffect } from './root.effects';
+
+const history = createMemoryHistory();
+const epicMiddleware = createEpicMiddleware();
+const middlewares = [routerMiddleware(history)];
 
 export const configureStore = ({ initialState, middleware = [] } = {}) => {
-    const devtools =
+  const devtools =
         typeof window !== 'undefined' &&
         typeof window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ === 'function' &&
         window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({ actionsBlacklist: [] });
 
-    const composeEnhancers = devtools || compose;
+  const composeEnhancers = devtools || compose;
 
-    const store = createStore(
-        rootReducer,
-        initialState,
-        composeEnhancers(applyMiddleware(...[thunk].concat(...middleware)))
-    );
+  if (process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line global-require
+    const { logger } = require('redux-logger');
+      
+    middlewares.push(logger);
+  }
+    
+  const store = createStore(
+    connectRouter(history)(rootReducer),
+    initialState,
+    composeEnhancers(applyMiddleware(...[...middlewares, epicMiddleware])),
+  );
 
-    if (process.env.NODE_ENV !== 'production') {
-        if (module.hot) {
-            module.hot.accept('./rootReducer', () =>
-                store.replaceReducer(require('./rootReducer').default)
-            );
-        }
+  if (process.env.NODE_ENV !== 'production') {
+    if (module.hot) {
+      module.hot.accept('./root.reducer', () =>
+        // eslint-disable-next-line global-require
+        store.replaceReducer(require('./root.reducer').default),
+      );
     }
+  }
 
-    return store;
+  epicMiddleware.run(rootEffect);
+    
+  return store;
 };
 
 export default configureStore;
