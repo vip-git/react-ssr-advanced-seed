@@ -1,6 +1,19 @@
+// ParentModel
+import { AppModel } from '../../App.model';
+const {
+  libraries: {
+      React,
+      Component,
+      connect
+  }
+} = AppModel;
+
 // Service
 import { ChatServiceEngine } from '../../common/services/chat.service';
 import { UserServiceEngine } from '../../common/services/user.service';
+
+// Components
+import { ChatComponentsEngine } from './components';
 
 // Redux
 import { ChatActionsEngine, ChatActionTypes } from './redux/chat.actions';
@@ -25,6 +38,14 @@ export const ChatModel = ({
   },
   i18nKeys: {
 
+  },
+  libraries: {
+    React,
+    Component,
+    connect,
+  },
+  components: {
+    ...ChatComponentsEngine
   },
   actionTypes: {
     ...ChatActionTypes,

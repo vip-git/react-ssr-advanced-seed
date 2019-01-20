@@ -1,10 +1,6 @@
-// Library
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-
 // Internal
-import { ChatComponent } from './components';
 import { ChatModel } from './chat.model';
+const { React, Component, connect } = ChatModel.libraries;
 
 class ChatContainer extends Component {
   componentDidMount() {
@@ -12,6 +8,7 @@ class ChatContainer extends Component {
   }
 
   render() {
+    const { ChatComponent } = ChatModel.components;
     const { defaultChats, defaultUsers } = this.props.chats;
     return <ChatComponent defaultChats={defaultChats} defaultUsers={defaultUsers} />;
   }
