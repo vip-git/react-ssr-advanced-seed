@@ -10,7 +10,7 @@ class ChatContainer extends Component {
   render() {
     const { ChatComponent } = ChatModel.components;
     const { defaultChats, defaultUsers } = this.props.chats;
-    return <ChatComponent defaultChats={defaultChats} defaultUsers={defaultUsers} />;
+    return <ChatComponent title={this.props.title} defaultChats={defaultChats} defaultUsers={defaultUsers} />;
   }
 }
 

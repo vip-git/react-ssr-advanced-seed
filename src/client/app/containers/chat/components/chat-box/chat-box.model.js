@@ -1,5 +1,5 @@
 // AppModel
-import { AppModel } from '../../../../App.model';
+import { RootModel } from '../../../../common/model/root.model';
 const {
     uiFrameworkComponents: {
         withStyles,
@@ -30,7 +30,7 @@ const {
         classNames,
         distanceInWordsToNow
     }
-} = AppModel;
+} = RootModel;
 // Component
 import Wrapper from '../wrapper';
 import ChatStyles from './styles';

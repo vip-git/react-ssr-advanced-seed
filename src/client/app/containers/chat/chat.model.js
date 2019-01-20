@@ -1,12 +1,12 @@
 // ParentModel
-import { AppModel } from '../../App.model';
+import { RootModel } from '../../common/model/root.model';
 const {
   libraries: {
       React,
       Component,
       connect
   }
-} = AppModel;
+} = RootModel;
 
 // Service
 import { ChatServiceEngine } from '../../common/services/chat.service';

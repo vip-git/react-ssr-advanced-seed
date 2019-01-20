@@ -54,7 +54,7 @@ class Chat extends Component {
         <AppBar position='static'>       
           <Toolbar>
             <Typography variant='title' color='inherit' style={{ margin: '0 auto' }}>
-                Admin Chat Interface
+                { this.props.title }
             </Typography>
           </Toolbar> 
           <Toolbar />
