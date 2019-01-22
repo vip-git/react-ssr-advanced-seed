@@ -11,7 +11,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import { setLocale } from './common/redux/app/actions'; 
 
 // Doc Generator
-import { DocGen } from './common/components/doc-gen';
+import DocGen from './common/components/doc-gen';
 import { DocGenEngine } from './common/utils/doc-gen.engine';
 
 import css from './App.scss';
