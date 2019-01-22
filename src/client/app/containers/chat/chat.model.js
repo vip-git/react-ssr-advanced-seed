@@ -21,6 +21,7 @@ import { getChatState } from './redux/chat.selectors';
 import { ChatRulesEngine } from './redux/chat.rules';
 
 export const ChatModel = ({
+  container: true,
   attributes: {
     currentUsers: {
       id: '',

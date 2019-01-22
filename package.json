@@ -68,6 +68,7 @@
     "date-fns": "^1.29.0",
     "express-http-proxy": "^1.2.0",
     "flow-bin": "^0.72.0",
+    "gojs": "^2.0.0",
     "graphql": "^0.11.7",
     "graphql-subscriptions": "^0.5.6",
     "graphql-tools": "^2.11.0",
