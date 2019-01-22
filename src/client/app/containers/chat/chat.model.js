@@ -16,6 +16,7 @@ import { UserServiceEngine } from '../../common/services/user.service';
 import { ChatComponentsEngine } from './components';
 
 // Redux
+import { ChatEffectsEngine } from './redux/chat.effects';
 import { ChatActionsEngine, ChatActionTypes } from './redux/chat.actions';
 import { getChatState } from './redux/chat.selectors';
 import { ChatRulesEngine } from './redux/chat.rules';
@@ -53,6 +54,9 @@ export const ChatModel = ({
   },
   actions: {
     ...ChatActionsEngine,
+  },
+  effects: {
+    ...ChatEffectsEngine,
   },
   rules: {
     ...ChatRulesEngine,

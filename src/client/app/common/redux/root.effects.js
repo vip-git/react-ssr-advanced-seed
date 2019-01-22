@@ -1,9 +1,10 @@
 // Library
+import _ from 'lodash';
 import { combineEpics } from 'redux-observable';
 
 // Epics
-import { ChatEffects } from '../../containers/chat/redux/chat.effects';
+import { ChatModel } from '../../containers/chat/chat.model';
 
 export const rootEffect = combineEpics(
-  ...ChatEffects,
+  ..._.values(ChatModel.effects),
 );

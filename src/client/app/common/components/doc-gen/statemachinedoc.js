@@ -185,8 +185,9 @@ export class StateMachineDoc extends React.Component {
             new go.Binding("text").makeTwoWay())
         )
       );
-
-    myDiagram.model = go.Model.fromJson(require('./redux-diagram.json'));
+    const reduxDiagramJson = require('./redux-diagram.json');
+    console.log('redux diagram json', reduxDiagramJson);
+    myDiagram.model = go.Model.fromJson(reduxDiagramJson);
     var pos = myDiagram.model.modelData.position;
     if (pos) myDiagram.initialPosition = go.Point.parse(pos);
 

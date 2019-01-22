@@ -116,12 +116,12 @@ class ChatEffect {
     };
 }
 
-export const ChatEffects = 
-[
-  ChatEffect.readAllChats,
-  ChatEffect.readAllUsers,
-  ChatEffect.readAllUsersAndChats,
-  ChatEffect.createChat,
-  ChatEffect.deleteChat,
-  ChatEffect.editChat,
-];
+export const ChatEffectsEngine = 
+{
+  $readAllChats: ChatEffect.readAllChats,
+  $readAllUsers: ChatEffect.readAllUsers,
+  $readAllUsersAndChats: ChatEffect.readAllUsersAndChats,
+  $createChat: ChatEffect.createChat,
+  $deleteChat: ChatEffect.deleteChat,
+  $editChat: ChatEffect.editChat,
+};
