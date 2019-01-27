@@ -19,7 +19,7 @@ class ChatEffect {
           action => [ChatModel.rules.validateChat(action), ChatModel.rules.validateChatAgain(action)],
           () => ([
             map(action => ChatModel.services.requestAllChats(action.payload)),
-            map(data => ChatModel.actions.processAllChats(data)),
+            map(data => ChatModel.actions.reducer.processAllChats(data)),
           ]),
         );
 
@@ -32,7 +32,7 @@ class ChatEffect {
       action$.ofType(ChatModel.actionTypes.READ_ALL_USERS)
         .pipe(
           map(action => ChatModel.services.requestAllUsers(action.payload)),
-          map(data => ChatModel.actions.processAllUsers(data)),
+          map(data => ChatModel.actions.reducer.processAllUsers(data)),
         );
 
     /**
@@ -45,8 +45,8 @@ class ChatEffect {
         .pipe(
           mergeMap(action => 
             concat(
-              of(ChatModel.actions.readAllUsers(action)),
-              of(ChatModel.actions.readAllChats(action)),
+              of(ChatModel.actions.effects.readAllUsers(action)),
+              of(ChatModel.actions.effects.readAllChats(action)),
             ),
           ),
         );
@@ -67,8 +67,8 @@ class ChatEffect {
           getPayload.token = action.payload.token;
           return ChatModel.services.requestCreateChat(action.payload);
         }),
-        mergeMap(data => concat(of(ChatModel.actions.addChat(data)), 
-          of(ChatModel.actions.getAllChats(getPayload)))),
+        mergeMap(data => concat(of(ChatModel.actions.reducer.processCreateChat(data)), 
+          of(ChatModel.actions.effects.readAllChats(getPayload)))),
       );
     };
 
@@ -90,8 +90,8 @@ class ChatEffect {
           commentSn = action.payload.productCommentSn;
           return ChatModel.services.deleteComment(action.payload);
         }),
-        mergeMap(() => concat(of(ChatModel.actions.removeChat(commentSn)), 
-          of(ChatModel.actions.getAllChats(getPayload)))),
+        mergeMap(() => concat(of(ChatModel.actions.reducer.processRemoveChat(commentSn)), 
+          of(ChatModel.actions.effects.readAllChats(getPayload)))),
       );
     };
 
@@ -111,7 +111,7 @@ class ChatEffect {
           getPayload.token = action.payload.token;
           return ChatModel.services.editComment(action.payload);
         }),
-        map(() => ChatModel.actions.getAllChats(getPayload)),
+        map(() => ChatModel.actions.effects.readAllChats(getPayload)),
       );
     };
 }

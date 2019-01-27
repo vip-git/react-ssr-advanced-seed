@@ -65,11 +65,25 @@ export const ChatModel = ({
     ...ChatServiceEngine,
     ...UserServiceEngine,
   },
+  docs: {
+    dispatchReadAllUsersAndChats: {
+      template: 'two-effects-diagram'
+    },
+    dispatchCreateChat: {
+      template: 'normal-diagram'
+    },
+    dispatchDeleteChat: {
+      template: 'normal-diagram'
+    },
+    dispatchEditChat: {
+      template: 'normal-diagram'
+    },
+  },
   reduxActions: dispatch => ({
-    dispatchReadAllUsersAndChats: payload => dispatch(ChatModel.actions.readAllUsersAndChats(payload)),
-    dispatchCreateChat: payload => dispatch(ChatModel.actions.createChat(payload)),
-    dispatchDeleteChat: payload => dispatch(ChatModel.actions.deleteChat(payload)),
-    dispatchEditChat: payload => dispatch(ChatModel.actions.editChat(payload)),
+    dispatchReadAllUsersAndChats: payload => dispatch(ChatModel.actions.effects.readAllUsersAndChats(payload)),
+    dispatchCreateChat: payload => dispatch(ChatModel.actions.effects.createChat(payload)),
+    dispatchDeleteChat: payload => dispatch(ChatModel.actions.effects.deleteChat(payload)),
+    dispatchEditChat: payload => dispatch(ChatModel.actions.effects.editChat(payload)),
   }),
   reduxState: state => ({
     chats: getChatState(state),

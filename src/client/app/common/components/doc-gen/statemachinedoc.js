@@ -3,8 +3,44 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import go from 'gojs';
 
+// Material UI
+import AppBar from '@material-ui/core/AppBar';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+import Typography from '@material-ui/core/Typography';
+
+function TabContainer(props) {
+  return (
+    <Typography component="div" style={{ backgroundColor: '#dae4e4', border: '1px solid #b9b9b9;', padding: 8 * 3 }}>
+      {props.children}
+    </Typography>
+  );
+}
+
+TabContainer.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
 export class StateMachineDoc extends React.Component {
-  componentDidMount() {
+  state = {
+    value: 0,
+    subValue: 0,
+    loadingState: false,
+  };
+  
+  handleChange = (event, value) => {
+    this.setState({ value });
+  };
+
+  handleSubChange = (event, subValue) => {
+    this.setState({loadingState: true}, () => {
+      this.setState({ subValue, loadingState: false }, () =>{
+        this.renderDiagram();
+      });
+    })
+  };
+
+  renderDiagram() {
     var $ = go.GraphObject.make;
     var myDiagram = {};
     var myPalette = {};
@@ -185,7 +221,30 @@ export class StateMachineDoc extends React.Component {
             new go.Binding("text").makeTwoWay())
         )
       );
-    const reduxDiagramJson = require('./redux-diagram.json');
+    const { containers } =  this.props.docs;  
+    const { value, subValue } = this.state;
+    const docName = (subValue === 0) ? _.keys(containers[value].reduxActions())[0] : subValue;
+    const diagramName = containers[value].docs[docName].template;
+    const reduxDiagramJson = require(`./redux-templates/${diagramName}.json`);
+    // let foundAction= 0, foundEffect= 0, foundReducer = 0, foundService = 0;
+    // _.map(reduxDiagramJson.nodeDataArray, (val) => {
+    //   if (val.text === 'Actions') {
+    //     val.text = _.keys(this.props.docs.containers[0].actions.effects)[foundAction];
+    //     foundAction++;
+    //   }
+    //   if (val.text === 'Effects') {
+    //     val.text = _.keys(this.props.docs.containers[0].effects)[foundEffect];
+    //     foundEffect++;
+    //   }
+    //   if (val.text === 'Reducer') {
+    //     val.text = _.keys(this.props.docs.containers[0].actions.reducer)[foundReducer];
+    //     foundReducer++;
+    //   }
+    //   if (val.text === 'API') {
+    //     val.text = _.keys(this.props.docs.containers[0].services)[foundService];
+    //     foundService++;
+    //   }
+    // });
     console.log('redux diagram json', reduxDiagramJson);
     myDiagram.model = go.Model.fromJson(reduxDiagramJson);
     var pos = myDiagram.model.modelData.position;
@@ -360,19 +419,65 @@ export class StateMachineDoc extends React.Component {
     //   });
   };
 
+  componentDidMount() {
+    this.renderDiagram();
+  }
+
+  renderReduxContainer = () => {
+    const { containers } = this.props.docs;
+    const { subValue, value, loadingState } = this.state;
+    return (loadingState) ? [] : (
+        <React.Fragment>
+              <Tabs
+                  value={(subValue === 0) ? _.keys(containers[value].reduxActions())[0] : subValue}
+                  onChange={this.handleSubChange}
+                  variant="fullWidth"
+                  scrollButtons="on"
+                  indicatorColor="primary"
+                  textColor="primary"
+                  centered
+                >
+                { 
+                  _.keys(containers[value].reduxActions()).map((val) => {
+                    return (<Tab label={val.replace('dispatch', 'Action: ')} value={val} />)
+                  })
+                }
+              </Tabs>
+                <div id="myPaletteDiv" style={{
+                  display: 'none'
+                }}></div>
+                <div id="myStateMachineDiagramDiv"
+                      style={{
+                          width: '100%', 
+                          height: 850, 
+                          backgroundColor: '#DAE4E4'
+                      }}>
+                </div>
+      </React.Fragment>
+    )
+  };
+
   render () {
+      const { containers } = this.props.docs;
+      const { value } = this.state;
       return (
         <React.Fragment>
-           <div id="myPaletteDiv" style={{
-             display: 'none'
-           }}></div>
-            <div id="myStateMachineDiagramDiv"
-                style={{
-                    width: '100%', 
-                    height: 850, 
-                    backgroundColor: '#DAE4E4'
-                }}>
-            </div>
+          <Tabs
+              value={value}
+              onChange={this.handleChange}
+              variant="fullWidth"
+              scrollButtons="on"
+              indicatorColor="primary"
+              textColor="primary"
+              centered
+            >
+            { 
+              containers.map((val) => {
+                return (<Tab label={`${val.modelName.replace('Model', '')} Container`} />)
+              })
+            }
+          </Tabs>
+          {<TabContainer> { this.renderReduxContainer() } </TabContainer>}
          </React.Fragment>
       );
   }

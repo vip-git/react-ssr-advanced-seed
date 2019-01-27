@@ -47,8 +47,8 @@ class ChatActions {
     payload,
   });
     
-  static addChat = payload => ({
-    type: ChatActionTypes.PROCESS_NEW_CHAT,
+  static processCreateChat = payload => ({
+    type: ChatActionTypes.PROCESS_CREATE_CHAT,
     payload,
   });
     
@@ -57,7 +57,7 @@ class ChatActions {
     payload,
   });
     
-  static removeChat = payload => ({
+  static processRemoveChat = payload => ({
     type: ChatActionTypes.PROCESS_DELETED_CHAT,
     payload,
   });
@@ -69,13 +69,17 @@ class ChatActions {
 }
 
 export const ChatActionsEngine = {
-  readAllUsersAndChats: payload => ChatActions.readAllUsersAndChats(payload),
-  readAllChats: payload => ChatActions.readAllChats(payload),
-  processAllChats: payload => ChatActions.processAllChats(payload),
-  readAllUsers: payload => ChatActions.readAllUsers(payload),
-  processAllUsers: payload => ChatActions.processAllUsers(payload),
-  createChat: payload => ChatActions.createChat(payload),
-  addChat: payload => ChatActions.addChat(payload),
-  removeChat: payload => ChatActions.removeChat(payload),
-  editChat: payload => ChatActions.editChat(payload),
+  effects: {
+    readAllUsersAndChats: payload => ChatActions.readAllUsersAndChats(payload),
+    readAllChats: payload => ChatActions.readAllChats(payload),
+    readAllUsers: payload => ChatActions.readAllUsers(payload),
+    createChat: payload => ChatActions.createChat(payload),
+    editChat: payload => ChatActions.editChat(payload),
+  },
+  reducer: {
+    processAllChats: payload => ChatActions.processAllChats(payload),
+    processAllUsers: payload => ChatActions.processAllUsers(payload),
+    processCreateChat: payload => ChatActions.processCreateChat(payload),
+    processRemoveChat: payload => ChatActions.processRemoveChat(payload),
+  }
 };
