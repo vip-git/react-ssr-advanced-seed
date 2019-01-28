@@ -1,6 +1,8 @@
 const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
 
 const env = require('../env')();
 
@@ -12,6 +14,10 @@ const client = [
     __SERVER__: 'false',
     __CLIENT__: 'true',
   }),
+  new CopyWebpackPlugin([{
+    from: path.resolve(__dirname, '../../../src/client/app/assets/redux-templates'),
+    to: path.resolve(__dirname, '../../../docker/prod/build/client/static/assets/redux-templates')
+  }]),
   new MiniCssExtractPlugin({
     filename:
             process.env.NODE_ENV === 'development' ? '[name].css' : '[name].[contenthash].css',

@@ -6,19 +6,19 @@
   "nodeDataArray": [ 
 {"text":"Rule 2", "key":-1, "loc":"-560 -1060"},
 {"text":"Rule 1", "key":-2, "loc":"-560 -1200"},
-{"text":"API", "key":-3, "loc":"-900 -1350", "size":"200 41"},
-{"text":"State", "figure":"Database", "fill":"lightgray", "key":-4, "loc":"-830 -970", "size":"57 79"},
-{"text":"Reducer", "figure":"Circle", "fill":"#CE0620", "key":-5, "loc":"-660 -970", "size":"133 128"},
+{"text":"API 1", "key":-3, "loc":"-900 -1350", "size":"200 41"},
+{"text":"State 2", "figure":"Database", "fill":"lightgray", "key":-4, "loc":"-830 -970", "size":"57 79"},
+{"text":"Reducer 2", "figure":"Circle", "fill":"#CE0620", "key":-5, "loc":"-660 -970", "size":"133 128"},
 {"text":"View", "figure":"RoundedRectangle", "fill":"lightyellow", "key":-6, "loc":"-1091 -975.5", "size":"182.6724446662767 94"},
 {"text":"Actions", "figure":"Diamond", "fill":"lightskyblue", "key":-7, "loc":"-1270 -1240", "size":"262 195.7508972167969"},
 {"text":"Effect 2", "figure":"Circle", "fill":"#00AD5F", "key":-8, "loc":"-560 -1350", "size":"201 181"},
 {"text":"Effect 1", "figure":"Circle", "fill":"#00AD5F", "key":-9, "loc":"-830 -1650", "size":"154 167"},
-{"text":"State", "figure":"Database", "fill":"lightgray", "key":-10, "loc":"-830 -870", "size":"57 79"},
-{"text":"API", "key":-11, "loc":"-140.5 -1418", "size":"201 51"},
+{"text":"State 3", "figure":"Database", "fill":"lightgray", "key":-10, "loc":"-830 -870", "size":"57 79"},
+{"text":"API 2", "key":-11, "loc":"-140.5 -1418", "size":"201 51"},
 {"text":"Rule 1", "key":-12, "loc":"-350 -1170"},
 {"text":"Rule 2", "key":-13, "loc":"-350 -1070"},
 {"text":"Effect 3", "figure":"Circle", "fill":"#00AD5F", "key":-14, "loc":"-350 -1350", "size":"201 181"},
-{"text":"Reducer", "figure":"Circle", "fill":"#CE0620", "key":-15, "loc":"-460 -940", "size":"133 128"}
+{"text":"Reducer 3", "figure":"Circle", "fill":"#CE0620", "key":-15, "loc":"-460 -940", "size":"133 128"}
  ],
   "linkDataArray": [ 
 {"from":-1, "to":-5, "fromPort":"B", "toPort":"", "points":[-560,-1043.0622756958007,-560,-1033.0622756958007,-560,-970,-574.25,-970,-588.5,-970,-598.5,-970]},

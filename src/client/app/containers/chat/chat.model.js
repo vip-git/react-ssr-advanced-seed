@@ -67,7 +67,26 @@ export const ChatModel = ({
   },
   docs: {
     dispatchReadAllUsersAndChats: {
-      template: 'two-effects-diagram'
+      template: 'two-effects-diagram',
+      vars: {
+        '1': {
+          effect: ''
+        },
+        '2': {
+          effect: '',
+          rules: [],
+          api: '',
+          reducer: '',
+          state: ''
+        },
+        '3': {
+          effect: '',
+          rules: [],
+          api: '',
+          reducer: '',
+          state: ''
+        }
+      }
     },
     dispatchCreateChat: {
       template: 'normal-diagram'

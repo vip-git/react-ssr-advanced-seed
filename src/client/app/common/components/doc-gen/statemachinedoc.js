@@ -223,28 +223,33 @@ export class StateMachineDoc extends React.Component {
       );
     const { containers } =  this.props.docs;  
     const { value, subValue } = this.state;
+    console.log('subvalueis', subValue);
     const docName = (subValue === 0) ? _.keys(containers[value].reduxActions())[0] : subValue;
     const diagramName = containers[value].docs[docName].template;
-    const reduxDiagramJson = require(`./redux-templates/${diagramName}.json`);
-    // let foundAction= 0, foundEffect= 0, foundReducer = 0, foundService = 0;
-    // _.map(reduxDiagramJson.nodeDataArray, (val) => {
-    //   if (val.text === 'Actions') {
-    //     val.text = _.keys(this.props.docs.containers[0].actions.effects)[foundAction];
-    //     foundAction++;
-    //   }
-    //   if (val.text === 'Effects') {
-    //     val.text = _.keys(this.props.docs.containers[0].effects)[foundEffect];
-    //     foundEffect++;
-    //   }
-    //   if (val.text === 'Reducer') {
-    //     val.text = _.keys(this.props.docs.containers[0].actions.reducer)[foundReducer];
-    //     foundReducer++;
-    //   }
-    //   if (val.text === 'API') {
-    //     val.text = _.keys(this.props.docs.containers[0].services)[foundService];
-    //     foundService++;
-    //   }
-    // });
+    fetch(`/static/assets/redux-templates/${diagramName}.json`)
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(reduxDiagramJson) {
+      console.log('diagram is', reduxDiagramJson);
+      // let foundAction= 0, foundEffect= 0, foundReducer = 0, foundService = 0;
+    _.map(reduxDiagramJson.nodeDataArray, (val) => {
+      if (val.text === 'Actions') {
+        val.text = docName.replace('dispatch', 'dispatch ');
+      }
+      // if (val.text === 'Effects') {
+      //   val.text = _.keys(this.props.docs.containers[0].effects)[foundEffect];
+      //   foundEffect++;
+      // }
+      // if (val.text === 'Reducer') {
+      //   val.text = _.keys(this.props.docs.containers[0].actions.reducer)[foundReducer];
+      //   foundReducer++;
+      // }
+      // if (val.text === 'API') {
+      //   val.text = _.keys(this.props.docs.containers[0].services)[foundService];
+      //   foundService++;
+      // }
+    });
     console.log('redux diagram json', reduxDiagramJson);
     myDiagram.model = go.Model.fromJson(reduxDiagramJson);
     var pos = myDiagram.model.modelData.position;
@@ -417,6 +422,7 @@ export class StateMachineDoc extends React.Component {
     //     nodeDataArray: nodedata,
     //     linkDataArray: linkdata
     //   });
+    });
   };
 
   componentDidMount() {
