@@ -6,12 +6,12 @@
   "nodeDataArray": [ 
 {"text":"Rule 2", "key":-1, "loc":"-560 -1040"},
 {"text":"Rule 1", "key":-2, "loc":"-560 -1090"},
-{"text":"API", "key":-3, "loc":"-830 -1350", "size":"200 41"},
-{"text":"State", "figure":"Database", "fill":"lightgray", "key":-4, "loc":"-830 -970", "size":"57 79"},
-{"text":"Reducer", "figure":"Circle", "fill":"#CE0620", "key":-5, "loc":"-660 -970", "size":"133 128"},
+{"text":"API 1", "key":-3, "loc":"-830 -1350", "size":"200 41"},
+{"text":"State 1", "figure":"Database", "fill":"lightgray", "key":-4, "loc":"-830 -970", "size":"57 79"},
+{"text":"Reducer 1", "figure":"Circle", "fill":"#CE0620", "key":-5, "loc":"-660 -970", "size":"133 128"},
 {"text":"View", "figure":"RoundedRectangle", "fill":"lightyellow", "key":-6, "loc":"-990 -970", "size":"100.6724446662767 53"},
-{"text":"Actions", "figure":"Diamond", "fill":"lightskyblue", "key":-7, "loc":"-1100 -1230", "size":"262 195.7508972167969"},
-{"text":"Effects", "figure":"Circle", "fill":"#00AD5F", "key":-8, "loc":"-560 -1350", "size":"227 220"}
+{"text":"Action 1", "figure":"Diamond", "fill":"lightskyblue", "key":-7, "loc":"-1100 -1230", "size":"262 195.7508972167969"},
+{"text":"Effect 1", "figure":"Circle", "fill":"#00AD5F", "key":-8, "loc":"-560 -1350", "size":"227 220"}
  ],
   "linkDataArray": [ 
 {"from":-1, "to":-5, "fromPort":"B", "toPort":"", "points":[-560,-1023.0622756958007,-560,-1013.0622756958007,-560,-1012,-560,-1012,-560,-970,-588.5,-970,-598.5,-970]},

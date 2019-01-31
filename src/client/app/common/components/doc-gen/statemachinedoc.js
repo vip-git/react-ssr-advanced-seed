@@ -156,11 +156,11 @@ export class StateMachineDoc extends React.Component {
             new go.Binding("fill")),
           $(go.TextBlock,
             {
-              font: "bold 11pt Helvetica, Arial, sans-serif",
+              font: "bold 10pt Helvetica, Arial, sans-serif",
               margin: 8,
               maxSize: new go.Size(160, NaN),
               wrap: go.TextBlock.WrapFit,
-              editable: true
+              editable: false
             },
             new go.Binding("text").makeTwoWay())
         ),
@@ -172,7 +172,7 @@ export class StateMachineDoc extends React.Component {
         { // handle mouse enter/leave events to show/hide the ports
           mouseEnter: function(e, node) { showSmallPorts(node, true); },
           mouseLeave: function(e, node) { showSmallPorts(node, false); }
-        }
+        },
       );
 
     function showSmallPorts(node, show) {
@@ -223,32 +223,45 @@ export class StateMachineDoc extends React.Component {
       );
     const { containers } =  this.props.docs;  
     const { value, subValue } = this.state;
-    console.log('subvalueis', subValue);
     const docName = (subValue === 0) ? _.keys(containers[value].reduxActions())[0] : subValue;
     const diagramName = containers[value].docs[docName].template;
+    const docVariables = containers[value].docs[docName].vars;
     fetch(`/static/assets/redux-templates/${diagramName}.json`)
-    .then(function(response) {
+    .then((response) => {
       return response.json();
     })
-    .then(function(reduxDiagramJson) {
-      console.log('diagram is', reduxDiagramJson);
-      // let foundAction= 0, foundEffect= 0, foundReducer = 0, foundService = 0;
+    .then((reduxDiagramJson) => {
+      // console.log('diagram is', reduxDiagramJson);
+      // console.log('doc engine response', this.props.docs);
+      let ruleCounter = 0;
+      let valText = '';
     _.map(reduxDiagramJson.nodeDataArray, (val) => {
       if (val.text === 'Actions') {
         val.text = docName.replace('dispatch', 'dispatch ');
       }
-      // if (val.text === 'Effects') {
-      //   val.text = _.keys(this.props.docs.containers[0].effects)[foundEffect];
-      //   foundEffect++;
-      // }
-      // if (val.text === 'Reducer') {
-      //   val.text = _.keys(this.props.docs.containers[0].actions.reducer)[foundReducer];
-      //   foundReducer++;
-      // }
-      // if (val.text === 'API') {
-      //   val.text = _.keys(this.props.docs.containers[0].services)[foundService];
-      //   foundService++;
-      // }
+      _.map(docVariables, (docVal, key) => {
+        if (val.text === 'Effect '+ key) {
+          val.text = docVal.effect;
+        }
+        if (val.text === 'Reducer '+ key) {
+          val.text = docVal.reducer;
+        }
+        if (val.text === 'API '+ key) {
+          val.text = docVal.api;
+        }
+        if (val.text === 'State '+ key) {
+          val.text = docVal.state;
+        }
+        if (val.text === 'Rule '+ key) {
+          if (valText !== 'Rule '+ key) {
+            ruleCounter = 0;
+          }
+          val.text = docVal.rules[ruleCounter];
+          valText = 'Rule '+ key;
+          ruleCounter++;
+        }
+      })
+      console.log('docVariables', docVariables);
     });
     console.log('redux diagram json', reduxDiagramJson);
     myDiagram.model = go.Model.fromJson(reduxDiagramJson);
@@ -299,129 +312,6 @@ export class StateMachineDoc extends React.Component {
             { points: new go.List(/*go.Point*/).addAll([new go.Point(0, 0), new go.Point(30, 0), new go.Point(30, 40), new go.Point(60, 40)]) }
           ])
         });
-
-    console.log('doc engine response', this.props.docs);
-    
-    // setup a few example class nodes and relationships
-    // var nodedata = [
-    //   {
-    //     key: 1,
-    //     name: this.props.docs.rootModel.modelName,
-    //     libraries: [],
-    //     components: []
-    //   }
-    // ];
-    
-    // var linkdata = [];
-
-    // _.each(this.props.docs.rootModel.libraries, (val, key) => {
-    //     nodedata[0].libraries.push({
-    //         name: key, 
-    //         type: 'Function', 
-    //         visibility: "public"
-    //     });
-    // });
-
-    // _.each(this.props.docs.rootModel.uiFrameworkComponents, (val, key) => {
-    //     nodedata[0].components.push({
-    //         name: key, 
-    //         type: (key === 'withStyles') ? 'HOC' : 'Component', 
-    //         visibility: "public"
-    //     });
-    // });
-
-    // _.each(this.props.docs.containers, (val, key) => {
-    //   nodedata.push({
-    //       key: key + 2,
-    //       name: val.modelName,
-    //       libraries: [],
-    //       components: [],
-    //       services: [],
-    //       rules: [],
-    //       i18nkeys: [],
-    //       actions: [],
-    //       effects: [],
-    //       reducer: [],
-    //       attributes: []
-    //   });
-    //   const newKey = key + 1;
-    //   _.keys(val.attributes).forEach((value) => {
-    //     nodedata[newKey].attributes.push({
-    //       name: value, 
-    //       type: val.attributes[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.libraries).forEach((value) => {
-    //     nodedata[newKey].libraries.push({
-    //       name: value, 
-    //       type: val.libraries[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.components).forEach((value) => {
-    //     nodedata[newKey].components.push({
-    //       name: value, 
-    //       type: val.components[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.services).forEach((value) => {
-    //     nodedata[newKey].services.push({
-    //       name: value, 
-    //       type: val.services[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.rules).forEach((value) => {
-    //     nodedata[newKey].rules.push({
-    //       name: value, 
-    //       type: val.rules[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.i18nkeys).forEach((value) => {
-    //     nodedata[newKey].i18nkeys.push({
-    //       name: value, 
-    //       type: val.i18nkeys[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.actions).forEach((value) => {
-    //     nodedata[newKey].actions.push({
-    //       name: value, 
-    //       type: val.actions[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.effects).forEach((value) => {
-    //     nodedata[newKey].effects.push({
-    //       name: value, 
-    //       type: val.effects[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   _.keys(val.reducer).forEach((value) => {
-    //     nodedata[newKey].reducer.push({
-    //       name: value, 
-    //       type: val.reducer[value].type, 
-    //       visibility: "public"
-    //     });
-    //   });
-    //   linkdata.push({
-    //     from: key + 2, 
-    //     to: 1, 
-    //     relationship: "generalization" 
-    //   })
-    // });
-
-    // myDiagram.model = $(go.GraphLinksModel,
-    //   {
-    //     copiesArrays: true,
-    //     copiesArrayObjects: true,
-    //     nodeDataArray: nodedata,
-    //     linkDataArray: linkdata
-    //   });
     });
   };
 
