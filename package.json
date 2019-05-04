@@ -114,6 +114,7 @@
     "@babel/preset-env": "^7.0.0-beta.47",
     "@babel/preset-flow": "^7.0.0-beta.47",
     "@babel/preset-react": "^7.0.0-beta.47",
+    "@babel/preset-typescript": "^7.3.3",
     "@babel/register": "^7.0.0-beta.47",
     "@types/graphql": "^14.0.3",
     "@types/jest": "^23.3.5",

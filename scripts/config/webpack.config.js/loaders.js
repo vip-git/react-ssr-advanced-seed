@@ -2,7 +2,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const path = require('path');
 
 const babelLoader = {
-  test: /\.(js|jsx)$/,
+  test: /\.(ts|js|jsx|tsx)$/,
   exclude: /node_modules/,
   loader: 'babel-loader',
 };
