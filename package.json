@@ -120,7 +120,7 @@
     "@types/jest": "23.3.14",
     "@types/node": "7.10.6",
     "@types/prop-types": "15.5.2",
-    "@types/react": "15.0.30",
+    "@types/react": "15.6.24",
     "@types/react-transition-group": "2.0.4",
     "autoprefixer": "8.6.5",
     "babel-core": "7.0.0-bridge.0",
