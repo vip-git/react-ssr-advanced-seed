@@ -7,7 +7,7 @@ const logMessage = (message, level = 'info') => {
 
 const compilerPromise = (compiler) => {
     return new Promise((resolve, reject) => {
-        compiler.plugin('done', (stats) => {
+        compiler.hooks.done.tap('done', (stats) => {
             if (!stats.hasErrors()) {
                 return resolve();
             }
