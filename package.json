@@ -119,7 +119,7 @@
     "@types/graphql": "14.2.0",
     "@types/jest": "23.3.14",
     "@types/node": "7.10.6",
-    "@types/prop-types": "15.5.2",
+    "@types/prop-types": "15.7.1",
     "@types/react": "15.6.24",
     "@types/react-transition-group": "2.0.4",
     "autoprefixer": "8.6.5",
