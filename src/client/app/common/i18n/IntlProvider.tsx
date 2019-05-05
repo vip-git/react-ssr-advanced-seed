@@ -1,4 +1,4 @@
-// @flow
+
 import React from 'react';
 import i18next from 'i18next';
 import { withRouter } from 'react-router-dom';
@@ -25,7 +25,7 @@ i18next.init({
 });
 
 type PropsT = {
-    children: *,
+    children: any,
     locale: 'en-US' | 'de-DE',
 };
 

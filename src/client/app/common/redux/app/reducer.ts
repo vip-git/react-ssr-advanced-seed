@@ -1,12 +1,10 @@
-// @flow
-import type { ActionT, AppT } from './types';
 import { ActionTypes } from './actions';
 
-export const initialState: AppT = Object.freeze({
+export const initialState: any = Object.freeze({
     locale: 'en-US',
 });
 
-export default (state: AppT = initialState, action: ActionT): AppT => {
+export default (state: any = initialState, action: any): any => {
     const { type, payload = {} } = action;
 
     switch (type) {

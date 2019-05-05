@@ -2,7 +2,7 @@ const paths = require('../paths');
 const path = require('path');
 
 module.exports = {
-  extensions: ['.js', '.mjs', '.json', '.jsx', '.css', '.ts'],
+  extensions: ['.js', '.mjs', '.json', '.jsx', '.css', '.ts', '.tsx'],
   modules: paths.resolveModules,
   alias: {
       "@services": path.resolve(__dirname, '../../../src/client/app/common/services'),

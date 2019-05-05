@@ -1,4 +1,4 @@
-// @flow
+
 import { ChatModel } from '../chat.model';
 
 export const initialState = Object.freeze({

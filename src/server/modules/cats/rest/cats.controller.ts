@@ -1,6 +1,6 @@
 // Library
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
+import { JwtAuthGuard } from '../../auth/auth.guard';
 import {
   ApiUseTags,
   ApiBearerAuth,
@@ -11,7 +11,7 @@ import {
 // Internal
 import { CatModel, CatsService } from '../';
 
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
 @ApiUseTags('cats')
 @Controller('cats')

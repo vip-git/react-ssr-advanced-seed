@@ -106,7 +106,7 @@ const urlLoaderServer = {
 };
 
 const fileLoaderClient = {
-  exclude: [/\.(js|css|mjs|html|json|ejs)$/],
+  exclude: [/\.(js|css|mjs|html|json|ejs|ts|tsx)$/],
   use: [
     {
       loader: 'file-loader',

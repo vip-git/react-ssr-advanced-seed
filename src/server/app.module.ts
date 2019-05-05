@@ -18,14 +18,14 @@ import { TvMazeService } from './services/tvmaze.service';
 
 @Module({
   imports: [TypeOrmModule.forRoot({
-    "type": "postgres",
-    "host": process.env.API_DB_HOST,
-    "port": parseInt(process.env.API_DB_PORT),
-    "username": process.env.API_DB_USERNAME || 'postgres',
-    "password": process.env.API_DB_PASSWORD,
-    "database": process.env.API_DB_NAME || 'postgres',
-    "entities": [CatModel],
-    "synchronize": true
+    type: 'postgres',
+    host: process.env.API_DB_HOST,
+    port: parseInt(process.env.API_DB_PORT, 4),
+    username: process.env.API_DB_USERNAME || 'postgres',
+    password: process.env.API_DB_PASSWORD,
+    database: process.env.API_DB_NAME || 'postgres',
+    entities: [CatModel],
+    synchronize: true,
   }), AuthModule, CatsModule, GraphQLModule.forRoot({
     typePaths: ['./**/*.graphql'],
     installSubscriptionHandlers: true,
@@ -37,16 +37,16 @@ export class ApplicationModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
       .apply(proxy('api.tvmaze.com', {
-        proxyReqPathResolver: function(req) {
+        proxyReqPathResolver(req) {
             return (req.url === '/' || !req.url || req.url === '')
                     ? require('url').parse(req.url).path + 'welcome-page'
                     : require('url').parse(req.url).path;
         },
-        userResDecorator: function(proxyRes, proxyResData, userReq, userRes) {
+        userResDecorator(proxyRes, proxyResData, userReq, userRes) {
             return (proxyRes.req.path === '/welcome-page') ? {
-                'data' : 'TvMaze API proxy service'
+                data : 'TvMaze API proxy service',
             } : TvMazeService.transformProxyData(proxyResData);
-        }
+        },
       }))
       .forRoutes('/proxy');
   }

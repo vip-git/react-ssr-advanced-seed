@@ -25,8 +25,11 @@ describe('Cats e2e test', () => {
   it(`/GET cats`, () => {
     return request(app.getHttpServer())
             .get('/cats')
-            .expect(200)
-            .expect(catsService.findAll());
+            .expect(401)
+            .expect({
+              statusCode: 401,
+              error: 'Unauthorized',
+            });
   });
 
   afterAll(async () => {
