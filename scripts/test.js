@@ -28,5 +28,6 @@ if (process.env.CI) {
 }
 
 argv.push('--detectOpenHandles');
+argv.push('--forceExit');
 
 jest.run(argv);
