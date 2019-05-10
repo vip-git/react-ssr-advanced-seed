@@ -155,7 +155,7 @@
     "file-loader": "1.1.11",
     "i18next": "15.1.0",
     "jest": "24.7.1",
-    "jest-puppeteer": "3.9.1",
+    "jest-puppeteer": "4.1.1",
     "mini-css-extract-plugin": "0.6.0",
     "nodemon": "1.19.0",
     "plop": "2.3.0",
