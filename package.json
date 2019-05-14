@@ -167,7 +167,7 @@
     "postcss-loader": "2.1.6",
     "postcss-nested": "3.0.0",
     "postcss-normalize": "4.0.0",
-    "puppeteer": "1.15.0",
+    "puppeteer": "1.16.0",
     "release-it": "7.6.3",
     "reselect": "3.0.1",
     "serve-static": "1.14.0",
