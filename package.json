@@ -170,7 +170,7 @@
     "puppeteer": "1.15.0",
     "release-it": "7.6.3",
     "reselect": "3.0.1",
-    "serve-static": "1.14.0",
+    "serve-static": "1.14.1",
     "shelljs": "0.8.3",
     "supertest": "3.4.2",
     "swagger-ui-express": "4.0.2",
