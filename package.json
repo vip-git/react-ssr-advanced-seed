@@ -164,7 +164,7 @@
     "postcss-custom-properties": "8.0.10",
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-import": "11.1.0",
-    "postcss-loader": "2.1.6",
+    "postcss-loader": "3.0.0",
     "postcss-nested": "3.0.0",
     "postcss-normalize": "4.0.0",
     "puppeteer": "1.16.0",
