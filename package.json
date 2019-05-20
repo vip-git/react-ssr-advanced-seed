@@ -165,7 +165,7 @@
     "postcss-flexbugs-fixes": "4.1.0",
     "postcss-import": "11.1.0",
     "postcss-loader": "3.0.0",
-    "postcss-nested": "3.0.0",
+    "postcss-nested": "4.1.2",
     "postcss-normalize": "7.0.1",
     "puppeteer": "1.16.0",
     "release-it": "7.6.3",
