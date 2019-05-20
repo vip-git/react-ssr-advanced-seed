@@ -163,7 +163,7 @@
     "postcss-assets": "5.0.0",
     "postcss-custom-properties": "8.0.10",
     "postcss-flexbugs-fixes": "4.1.0",
-    "postcss-import": "11.1.0",
+    "postcss-import": "12.0.1",
     "postcss-loader": "3.0.0",
     "postcss-nested": "3.0.0",
     "postcss-normalize": "7.0.1",
