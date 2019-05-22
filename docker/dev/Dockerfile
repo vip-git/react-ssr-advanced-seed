@@ -1,7 +1,7 @@
 # since nginx image is bigger (143 lines), we're starting with it and adding node to it.
 # Use an official nginx image
 #  from https://github.com/nginxinc/docker-nginx/blob/1d2e2ccae2f6e478f628f4091d8a5c36a122a157/mainline/alpine/Dockerfile
-FROM nginx:1.13-alpine
+FROM nginx:1.16-alpine
 
 
 # "FROM node:9.3-alpine"
