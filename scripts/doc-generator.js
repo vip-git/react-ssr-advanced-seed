@@ -1,9 +1,9 @@
 const shell = require('shelljs');
 
 const Models = {
-    ...require('../src/client/app/common/model/root.model'),
-    ...require('../src/client/app/containers/chat/chat.model'),
-    ...require('../src/client/app/containers/chat/components/chat-box/chat-box.model')
+    ...require('../src/client/web/app/common/model/root.model'),
+    ...require('../src/client/web/app/containers/chat/chat.model'),
+    ...require('../src/client/web/app/containers/chat/components/chat-box/chat-box.model')
 };
 
 shell.exec('ls', function(code, stdout, stderr) {

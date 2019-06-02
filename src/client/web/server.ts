@@ -7,7 +7,7 @@ import manifestHelpers from 'express-manifest-helpers-audit-fix';
 import bodyParser from 'body-parser';
 import { configureStore } from './app/common/redux';
 import serverRender from './ssr/render';
-import paths from '../../scripts/config/paths';
+import paths from '../../../scripts/config/paths';
 
 require('dotenv').config();
 

@@ -15,7 +15,7 @@ const client = [
     __CLIENT__: 'true',
   }),
   new CopyWebpackPlugin([{
-    from: path.resolve(__dirname, '../../../src/client/app/assets/redux-templates'),
+    from: path.resolve(__dirname, '../../../src/client/web/app/assets/redux-templates'),
     to: path.resolve(__dirname, '../../../docker/prod/build/client/static/assets/redux-templates')
   }]),
   new MiniCssExtractPlugin({

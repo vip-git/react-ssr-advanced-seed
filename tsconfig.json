@@ -6,14 +6,14 @@
     "paths": {
       "*": ["types/*"],
       "@server/*" : ["src/server/modules/*"],
-      "@services/*": ["src/client/app/common/services/*"],
-      "@components/*": ["src/client/app/common/components/*"],
-      "@model/*": ["src/client/app/common/model/*"],
-      "@config/*": ["src/client/app/common/config/*"],
-      "@utils/*": ["src/client/app/common/utils/*"],
-      "@containers/*": ["src/client/app/containers/*"],
-      "@mocks/*": ["src/client/app/common/mocks/*"],
-      "@styles/*": ["src/client/app/common/styles/*"]
+      "@services/*": ["src/client/web/app/common/services/*"],
+      "@components/*": ["src/client/web/app/common/components/*"],
+      "@model/*": ["src/client/web/app/common/model/*"],
+      "@config/*": ["src/client/web/app/common/config/*"],
+      "@utils/*": ["src/client/web/app/common/utils/*"],
+      "@containers/*": ["src/client/web/app/containers/*"],
+      "@mocks/*": ["src/client/web/app/common/mocks/*"],
+      "@styles/*": ["src/client/web/app/common/styles/*"]
     },
     "declaration": false,
     "noImplicitAny": false,

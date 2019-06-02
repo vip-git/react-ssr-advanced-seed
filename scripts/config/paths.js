@@ -9,9 +9,9 @@ const paths = {
     serverBuild: resolveApp('docker/prod/build/server'),
     dotenv: resolveApp('.env'),
     src: resolveApp('src'),
-    srcClient: resolveApp('src/client'),
-    srcServer: resolveApp('src/client/ssr'),
-    srcShared: resolveApp('src/client/app'),
+    srcClient: resolveApp('src/client/web'),
+    srcServer: resolveApp('src/client/web/ssr'),
+    srcShared: resolveApp('src/client/web/app'),
     publicPath: '/static/',
 };
 

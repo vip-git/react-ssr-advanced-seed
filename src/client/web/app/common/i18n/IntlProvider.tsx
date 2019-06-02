@@ -6,8 +6,8 @@ import { I18nextProvider } from 'react-i18next';
 import { connect } from 'react-redux';
 import { getLocale } from '../redux/app/selectors';
 
-import deDE from './locales/de-DE.json';
-import enUS from './locales/en-US.json';
+import deDE from './locales/de-DE.json.js';
+import enUS from './locales/en-US.json.js';
 
 i18next.init({
     fallbackLng: 'en-US',
@@ -34,7 +34,7 @@ class I18N extends React.PureComponent<PropsT> {
         i18next.changeLanguage(this.props.locale);
     }
 
-    componentDidUpdate(prevProps) {
+    componentDidUpdate(prevProps: { locale: any; }) {
         const { locale: newLocale } = this.props;
         const { locale: oldLocale } = prevProps;
 
@@ -48,7 +48,7 @@ class I18N extends React.PureComponent<PropsT> {
     }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: { app: any; }) => ({
     locale: getLocale(state),
 });
 

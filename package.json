@@ -157,6 +157,7 @@
     "i18next": "17.0.3",
     "jest": "24.7.1",
     "jest-puppeteer": "4.2.0",
+    "lerna": "^3.14.1",
     "mini-css-extract-plugin": "0.7.0",
     "nodemon": "1.19.1",
     "plop": "2.3.0",
