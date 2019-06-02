@@ -181,7 +181,7 @@
     "tsconfig-paths": "3.8.0",
     "tsconfig-paths-webpack-plugin": "3.2.0",
     "tslint": "5.17.0",
-    "typedoc": "0.14.2",
+    "typedoc-ssr": "0.14.3",
     "url-loader": "1.1.2",
     "webpack": "4.32.2",
     "webpack-cli": "3.3.2",
