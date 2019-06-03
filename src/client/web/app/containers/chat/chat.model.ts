@@ -2,17 +2,17 @@
 import { RootModel } from '../../common/model/root.model';
 
 // Service
-import { ChatServiceEngine } from '../../common/services/chat.service';
-import { UserServiceEngine } from '../../common/services/user.service';
+import { ChatServiceEngine } from '../../../../shared/common/services/chat.service';
+import { UserServiceEngine } from '../../../../shared/common/services/user.service';
 
 // Components
 import { ChatComponentsEngine } from './components';
 
 // Redux
-import { ChatEffectsEngine } from './redux/chat.effects';
-import { ChatActionsEngine, ChatActionTypes } from './redux/chat.actions';
-import { getChatState } from './redux/chat.selectors';
-import { ChatRulesEngine } from './redux/chat.rules';
+import { ChatEffectsEngine } from '../../../../shared/chat/redux/chat.effects';
+import { ChatActionsEngine, ChatActionTypes } from '../../../../shared/chat/redux/chat.actions';
+import { getChatState } from '../../../../shared/chat/redux/chat.selectors';
+import { ChatRulesEngine } from '../../../../shared/chat/redux/chat.rules';
 
 const {
   libraries: {

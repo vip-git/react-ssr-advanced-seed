@@ -1,4 +1,4 @@
-import allUsers from '../mocks/contacts';
+import allUsers from '../../../web/app/common/mocks/contacts';
 
 class UserService {
   static getAllUsers() {

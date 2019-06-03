@@ -1,4 +1,4 @@
-import allChats from '../mocks/chats';
+import allChats from '../../../web/app/common/mocks/chats';
 
 class ChatService {
   static getAllChats() {

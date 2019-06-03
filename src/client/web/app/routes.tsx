@@ -8,7 +8,7 @@ import App from './App';
 
 // Doc Generator
 import DocGen from './common/components/doc-gen';
-import { DocGenEngine } from './common/utils/doc-gen.engine';
+import { DocGenEngine } from '../../shared/common/utils/doc-gen.engine';
 
 const routes = (
   <Switch>
