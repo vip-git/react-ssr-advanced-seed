@@ -123,7 +123,7 @@
     "@types/jest": "23.3.14",
     "@types/node": "7.10.6",
     "@types/prop-types": "15.7.1",
-    "@types/react": "15.6.24",
+    "@types/react": "15.6.25",
     "@types/react-transition-group": "2.9.2",
     "autoprefixer": "8.6.5",
     "babel-core": "7.0.0-bridge.0",
