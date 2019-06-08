@@ -125,7 +125,7 @@
     "@types/prop-types": "15.7.1",
     "@types/react": "15.6.24",
     "@types/react-transition-group": "2.9.2",
-    "autoprefixer": "8.6.5",
+    "autoprefixer": "9.6.0",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "8.2.6",
     "babel-jest": "24.7.1",
