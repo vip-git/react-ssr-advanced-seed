@@ -7,7 +7,6 @@ import { ChatReduxModel } from '../../../../shared/chat/chat.redux-model';
 // Components
 import { ChatComponentsEngine } from './components';
 
-
 const {
   libraries: {
     React,
@@ -19,7 +18,6 @@ const {
 export const ChatModel = ({
   container: true,
   i18nKeys: {
-
   },
   libraries: {
     React,

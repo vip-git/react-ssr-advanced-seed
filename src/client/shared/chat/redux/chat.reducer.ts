@@ -5,7 +5,7 @@ export const initialState = Object.freeze({
   ...ChatReduxModel.attributes,
 });
 
-export default (state = initialState, action) => {
+export default (state = initialState, action: { type: any; payload?: {}; }) => {
   const { type, payload = {} } = action;
 
   // eslint-disable-next-line default-case
@@ -31,7 +31,7 @@ export default (state = initialState, action) => {
     case ChatReduxModel.actionTypes.PROCESS_DELETED_CHAT: {
       return {
         ...state,
-        chats: state.chats.filter(c => c.productCommentSn !== payload),
+        chats: state.chats.filter((c: { productCommentSn: any; }) => c.productCommentSn !== payload),
       };
     }
   }

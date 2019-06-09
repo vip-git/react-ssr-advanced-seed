@@ -1,0 +1,14 @@
+{
+    "name": "ChatContainer",
+    "dependencies": {
+        "libraries": {
+        
+        },
+        "components": {
+            "ChatComponentsEngine": "./components"
+        },
+        "redux": {
+            "ChatReduxModel": "../../../../shared/chat/chat.redux-model"
+        }
+    }
+}

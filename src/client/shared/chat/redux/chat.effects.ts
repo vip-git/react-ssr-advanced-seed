@@ -1,6 +1,6 @@
 // Library
-import { Observable, of, concat, from } from 'rxjs';
-import { map, switchMap, mergeMap, mergeAll, catchError, concatMap } from 'rxjs/operators';
+import { of, concat } from 'rxjs';
+import { map, switchMap, mergeMap } from 'rxjs/operators';
 
 // Model and Actions
 import { ChatModel } from '../../../web/app/containers/chat/chat.model'; // Todo: This would change based on web and mobile
@@ -12,51 +12,51 @@ class ChatEffect {
      * @param action$
      * @returns {any|*|Observable}
      */
-    static readAllChats = action$ =>
+    static readAllChats = (action$: any) =>
       RulesEngine
-        .applyRule(action$, 
+        .applyRule(action$,
           ChatModel.actionTypes.READ_ALL_CHATS,
-          action => [ChatModel.rules.validateChat(action), ChatModel.rules.validateChatAgain(action)],
+          (          action: any) => [ChatModel.rules.validateChat(action), ChatModel.rules.validateChatAgain(action)],
           () => ([
             map(action => ChatModel.services.requestAllChats(action.payload)),
             map(data => ChatModel.actions.reducer.processAllChats(data)),
           ]),
-        );
+        )
 
     /**
      * GET chat epic
      * @param action$
      * @returns {any|*|Observable}
      */
-    static readAllUsers = action$ =>
+    static readAllUsers = (action$: any) =>
       action$.ofType(ChatModel.actionTypes.READ_ALL_USERS)
         .pipe(
           map(action => ChatModel.services.requestAllUsers(action.payload)),
           map(data => ChatModel.actions.reducer.processAllUsers(data)),
-        );
+        )
 
     /**
      * GET chat epic
      * @param action$
      * @returns {any|*|Observable}
      */
-    static readAllUsersAndChats = action$ =>
+    static readAllUsersAndChats = (action$: any) =>
       action$.ofType(ChatModel.actionTypes.READ_ALL_USERS_AND_CHATS)
         .pipe(
-          mergeMap(action => 
+          mergeMap(action =>
             concat(
               of(ChatModel.actions.effects.readAllUsers(action)),
               of(ChatModel.actions.effects.readAllChats(action)),
             ),
           ),
-        );
+        )
 
     /**
      * POST create comment epic
      * @param action$
      * @returns {any|*|Observable}
      */
-    static createChat = (action$) => {
+    static createChat = (action$: any) => {
       const getPayload = {
         productId: null,
         token: null,
@@ -67,17 +67,17 @@ class ChatEffect {
           getPayload.token = action.payload.token;
           return ChatModel.services.requestCreateChat(action.payload);
         }),
-        mergeMap(data => concat(of(ChatModel.actions.reducer.processCreateChat(data)), 
+        mergeMap(data => concat(of(ChatModel.actions.reducer.processCreateChat(data)),
           of(ChatModel.actions.effects.readAllChats(getPayload)))),
       );
-    };
+    }
 
     /**
      * DELETE remove comment epic
      * @param action$
      * @returns {any|*|Observable}
      */
-    static deleteChat = (action$) => {
+    static deleteChat = (action$: any) => {
       const getPayload = {
         productId: null,
         token: null,
@@ -90,17 +90,17 @@ class ChatEffect {
           commentSn = action.payload.productCommentSn;
           return ChatModel.services.deleteComment(action.payload);
         }),
-        mergeMap(() => concat(of(ChatModel.actions.reducer.processRemoveChat(commentSn)), 
+        mergeMap(() => concat(of(ChatModel.actions.reducer.processRemoveChat(commentSn)),
           of(ChatModel.actions.effects.readAllChats(getPayload)))),
       );
-    };
+    }
 
     /**
      * PUT edit comment epic
      * @param action$
      * @returns {any|*|Observable}
      */
-    static editChat = (action$) => {
+    static editChat = (action$: any) => {
       const getPayload = {
         productId: null,
         token: null,
@@ -113,10 +113,10 @@ class ChatEffect {
         }),
         map(() => ChatModel.actions.effects.readAllChats(getPayload)),
       );
-    };
+    }
 }
 
-export const ChatEffectsEngine = 
+export const ChatEffectsEngine =
 {
   $readAllChats: ChatEffect.readAllChats,
   $readAllUsers: ChatEffect.readAllUsers,
