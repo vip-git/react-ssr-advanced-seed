@@ -1,8 +1,8 @@
 
-import { ChatModel } from '../../../web/app/containers/chat/chat.model'; // Todo needs to be web and mobile
+import { ChatReduxModel } from '../chat.redux-model'; // Todo needs to be web and mobile
 
 export const initialState = Object.freeze({
-  ...ChatModel.attributes,
+  ...ChatReduxModel.attributes,
 });
 
 export default (state = initialState, action) => {
@@ -10,25 +10,25 @@ export default (state = initialState, action) => {
 
   // eslint-disable-next-line default-case
   switch (type) {
-    case ChatModel.actionTypes.PROCESS_ALL_CHATS: {
+    case ChatReduxModel.actionTypes.PROCESS_ALL_CHATS: {
       return {
         ...state,
         defaultChats: payload,
       };
     }
-    case ChatModel.actionTypes.PROCESS_ALL_USERS: {
+    case ChatReduxModel.actionTypes.PROCESS_ALL_USERS: {
       return {
         ...state,
         defaultUsers: payload,
       };
     }
-    case ChatModel.actionTypes.PROCESS_NEW_CHAT: {
+    case ChatReduxModel.actionTypes.PROCESS_CREATE_CHAT: {
       return {
         ...state,
         chats: state.chats.concat(payload),
       };
     }
-    case ChatModel.actionTypes.PROCESS_DELETED_CHAT: {
+    case ChatReduxModel.actionTypes.PROCESS_DELETED_CHAT: {
       return {
         ...state,
         chats: state.chats.filter(c => c.productCommentSn !== payload),

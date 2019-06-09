@@ -1,18 +1,12 @@
 // ParentModel
 import { RootModel } from '../../../../shared/common/model/root.model';
 
-// Service
-import { ChatServiceEngine } from '../../../../shared/common/services/chat.service';
-import { UserServiceEngine } from '../../../../shared/common/services/user.service';
+// Shared
+import { ChatReduxModel } from '../../../../shared/chat/chat.redux-model';
 
 // Components
 import { ChatComponentsEngine } from './components';
 
-// Redux
-import { ChatEffectsEngine } from '../../../../shared/chat/redux/chat.effects';
-import { ChatActionsEngine, ChatActionTypes } from '../../../../shared/chat/redux/chat.actions';
-import { getChatState } from '../../../../shared/chat/redux/chat.selectors';
-import { ChatRulesEngine } from '../../../../shared/chat/redux/chat.rules';
 
 const {
   libraries: {
@@ -24,21 +18,6 @@ const {
 
 export const ChatModel = ({
   container: true,
-  attributes: {
-    currentUsers: {
-      id: '',
-      name: '',
-      status: '',
-      avatar: '',
-    },
-    currentChat: {
-      text: '',
-      type: '',
-      date: '',
-    },
-    defaultChats: [],
-    defaultUsers: [],
-  },
   i18nKeys: {
 
   },
@@ -49,22 +28,6 @@ export const ChatModel = ({
   },
   components: {
     ...ChatComponentsEngine,
-  },
-  actionTypes: {
-    ...ChatActionTypes,
-  },
-  actions: {
-    ...ChatActionsEngine,
-  },
-  effects: {
-    ...ChatEffectsEngine,
-  },
-  rules: {
-    ...ChatRulesEngine,
-  },
-  services: {
-    ...ChatServiceEngine,
-    ...UserServiceEngine,
   },
   docs: {
     dispatchReadAllUsersAndChats: {
@@ -126,13 +89,5 @@ export const ChatModel = ({
       },
     },
   },
-  reduxActions: dispatch => ({
-    dispatchReadAllUsersAndChats: payload => dispatch(ChatModel.actions.effects.readAllUsersAndChats(payload)),
-    dispatchCreateChat: payload => dispatch(ChatModel.actions.effects.createChat(payload)),
-    dispatchDeleteChat: payload => dispatch(ChatModel.actions.effects.deleteChat(payload)),
-    dispatchEditChat: payload => dispatch(ChatModel.actions.effects.editChat(payload)),
-  }),
-  reduxState: state => ({
-    chats: getChatState(state),
-  }),
+  ...ChatReduxModel,
 });
