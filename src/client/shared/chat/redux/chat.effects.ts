@@ -3,8 +3,8 @@ import { Observable, of, concat, from } from 'rxjs';
 import { map, switchMap, mergeMap, mergeAll, catchError, concatMap } from 'rxjs/operators';
 
 // Model and Actions
-import { ChatModel } from '../chat.model';
-import { RulesEngine } from '../../../common/utils/rules.engine';
+import { ChatModel } from '../../../web/app/containers/chat/chat.model'; // Todo: This would change based on web and mobile
+import { RulesEngine } from '../../common/utils/rules.engine';
 
 class ChatEffect {
     /**

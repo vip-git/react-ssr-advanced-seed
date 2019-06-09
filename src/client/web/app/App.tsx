@@ -8,7 +8,7 @@ import { translate } from 'react-i18next';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Redux
-import { setLocale } from './common/redux/app/actions';
+import { setLocale } from '../../shared/common/redux/app/actions';
 
 import css from './App.scss';
 

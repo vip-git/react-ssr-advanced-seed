@@ -2,7 +2,7 @@ import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
-import IntlProvider from '../app/common/i18n/IntlProvider';
+import IntlProvider from '../../shared/common/i18n/IntlProvider';
 import Html from './html';
 import App from '../app/App';
 

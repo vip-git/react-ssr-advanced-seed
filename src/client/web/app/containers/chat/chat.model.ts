@@ -1,5 +1,5 @@
 // ParentModel
-import { RootModel } from '../../common/model/root.model';
+import { RootModel } from '../../../../shared/common/model/root.model';
 
 // Service
 import { ChatServiceEngine } from '../../../../shared/common/services/chat.service';

@@ -8,12 +8,12 @@
       "@server/*" : ["src/server/modules/*"],
       "@services/*": ["src/client/shared/common/services/*"],
       "@components/*": ["src/client/web/app/common/components/*"],
-      "@model/*": ["src/client/web/app/common/model/*"],
+      "@model/*": ["src/client/shared/common/model/*"],
       "@config/*": ["src/client/web/app/common/config/*"],
       "@utils/*": ["src/client/shared/common/utils/*"],
       "@containers/*": ["src/client/web/app/containers/*"],
       "@mocks/*": ["src/client/web/app/common/mocks/*"],
-      "@styles/*": ["src/client/web/app/common/styles/*"]
+      "@styles/*": ["src/client/shared/common/styles/*"]
     },
     "declaration": false,
     "noImplicitAny": false,

@@ -1,5 +1,5 @@
 
-import { ChatModel } from '../chat.model';
+import { ChatModel } from '../../../web/app/containers/chat/chat.model'; // Todo needs to be web and mobile
 
 export const initialState = Object.freeze({
   ...ChatModel.attributes,

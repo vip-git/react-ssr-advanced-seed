@@ -19,9 +19,9 @@ const routes = (
         path={'/docs'}
         render={() => {
             const Models = {
-                ...require('./common/model/root.model'),
+                ...require('../../shared/common/model/root.model'),
                 ...require('./containers/chat/chat.model'),
-                ...require('./containers/chat/components/chat-box/chat-box.model')
+                ...require('./containers/chat/components/chat-box/chat-box.model'),
             };
             const docs = DocGenEngine.process({
                 ...Models

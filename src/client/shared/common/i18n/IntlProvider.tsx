@@ -6,8 +6,8 @@ import { I18nextProvider } from 'react-i18next';
 import { connect } from 'react-redux';
 import { getLocale } from '../redux/app/selectors';
 
-import deDE from './locales/de-DE.json.js';
-import enUS from './locales/en-US.json.js';
+import deDE from './locales/de-DE';
+import enUS from './locales/en-US';
 
 i18next.init({
     fallbackLng: 'en-US',

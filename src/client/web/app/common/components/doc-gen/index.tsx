@@ -76,7 +76,7 @@ class DocGen extends React.Component {
         {value === 0 && <TabContainer> <UmlDocGen docs={docs} /> </TabContainer>}
         {value === 1 && <TabContainer> <StateMachineDoc docs={docs} /> </TabContainer>}
         {value === 2 && <TabContainer> 
-           <iframe src={ require('../../../../../../Readme.md').toString() } style={{
+           <iframe src={ require('../../../../../../../Readme.md').toString() } style={{
                  width: '100%',
                  height: window.innerHeight,
                  border: 'none',
