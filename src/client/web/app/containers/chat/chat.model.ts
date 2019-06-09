@@ -30,7 +30,7 @@ export const ChatModel = ({
       name: '',
       status: '',
       avatar: '',
-    }, 
+    },
     currentChat: {
       text: '',
       type: '',
