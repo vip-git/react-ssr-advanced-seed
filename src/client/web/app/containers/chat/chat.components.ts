@@ -1,4 +1,4 @@
-import ChatBox from '../../common/components/chat-box';
+import ChatBox from '@omega-web-components/chat-box';
 
 export const ChatComponentsEngine =
 {

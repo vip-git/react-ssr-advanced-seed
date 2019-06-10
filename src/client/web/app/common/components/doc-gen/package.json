@@ -7,10 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@omega-web-components/chat-box": "^0.1.4",
     "gojs": "2.0.12"
   },
   "author": "",
   "license": "ISC",
-  "gitHead": "80f1b6b2d3a9bcc0852e4fd0a474699b94c02219"
+  "gitHead": "f1d9c9374f54f48c5db371004198815887779cda"
 }
