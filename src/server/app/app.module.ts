@@ -10,8 +10,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 const proxy = require('express-http-proxy');
 
 // Internal Modules
-import { CatsModule, CatModel } from '@server/cats/cats.module';
-import { AuthModule } from '@server/auth/auth.module';
+import { CatsModule, CatModel } from './modules/cats/cats.module';
+import { AuthModule } from './modules/auth/auth.module';
 
 // External Services
 import { TvMazeService } from './services/tvmaze.service';

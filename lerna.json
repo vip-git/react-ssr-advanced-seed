@@ -1,9 +1,11 @@
 {
   "packages": [
-    "src/client/web/app/*",
+    "src/client/web/*",
     "src/client/web/app/common/components/*",
     "src/client/web/app/containers/*",
-    "src/client/shared/state-model/*"
+    "src/client/shared/state-model/*",
+    "src/server/*",
+    "src/client/mobile/*"
   ],
   "npmClient": "npm",
   "useWorkspaces": true,

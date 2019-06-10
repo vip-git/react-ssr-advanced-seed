@@ -5,7 +5,7 @@
     "baseUrl": "./",  // all paths are relative to the baseUrl
     "paths": {
       "*": ["types/*"],
-      "@server/*" : ["src/server/modules/*"],
+      "@server/*" : ["src/server/app/modules/*"],
       "@services/*": ["src/client/shared/common/services/*"],
       "@components/*": ["src/client/web/app/common/components/*"],
       "@model/*": ["src/client/shared/common/model/*"],
