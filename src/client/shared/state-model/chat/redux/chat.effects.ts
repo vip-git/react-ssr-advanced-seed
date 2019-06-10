@@ -3,8 +3,8 @@ import { of, concat } from 'rxjs';
 import { map, switchMap, mergeMap } from 'rxjs/operators';
 
 // Model and Actions
-import { ChatModel } from '../../../../web/app/containers/chat/chat.model'; // Todo: This would change based on web and mobile
-import { RulesEngine } from '../../../common/utils/rules.engine';
+import { ChatModel } from '@omega-web-containers/chat/chat.model'; // Todo: This would change based on web and mobile
+import { RulesEngine } from '@omega-core/utils/rules.engine';
 
 class ChatEffect {
     /**

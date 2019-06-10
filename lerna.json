@@ -4,6 +4,7 @@
     "src/client/web/app/common/components/*",
     "src/client/web/app/containers/*",
     "src/client/shared/state-model/*",
+    "src/client/shared/common/utils/*",
     "src/server/*",
     "src/client/mobile/*"
   ],

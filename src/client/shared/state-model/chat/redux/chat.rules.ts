@@ -12,8 +12,8 @@ class ChatRules {
   }
 }
 
-export const ChatRulesEngine = 
+export const ChatRulesEngine =
 {
-  validateChat: (action: any) => ChatRules.validateChat(action),  
+  validateChat: (action: any) => ChatRules.validateChat(action),
   validateChatAgain: (action: any) => ChatRules.validateChatAgain(action),
 };

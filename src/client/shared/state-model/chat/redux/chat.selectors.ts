@@ -3,6 +3,6 @@
 
 import { createSelector } from 'reselect';
 
-export const chats = (state) => state.chats;
+export const chats = (state: { chats: any; }) => state.chats;
 
 export const getChatState = createSelector([chats], (chatState) => chatState);
