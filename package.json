@@ -1,6 +1,5 @@
 {
   "name": "react-ssr-advanced-seed",
-  "private": true,
   "workspaces": [
     "src/client/web/app/common/components/*",
     "src/client/web/app/containers/*"

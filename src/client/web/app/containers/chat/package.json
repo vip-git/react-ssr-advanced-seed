@@ -3,6 +3,7 @@
     "version": "0.1.3",
     "main": "./index.tsx",
     "dependencies": {
-        "@web-components/chat-box": "^0.1.3"
-    }
+        "@omega-web-components/chat-box": "^0.1.3"
+    },
+    "gitHead": "80f1b6b2d3a9bcc0852e4fd0a474699b94c02219"
 }
