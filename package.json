@@ -1,14 +1,12 @@
 {
   "name": "react-ssr-advanced-seed",
   "workspaces": [
-    "src/client/web/*",
+    "src/*",
     "src/client/web/app/common/components/*",
     "src/client/web/app/containers/*",
     "src/client/shared/state-model/*",
-    "src/client/shared/common/utils/*",
-    "src/client/shared/common/services/*",
-    "src/server/*",
-    "src/client/mobile/*"
+    "src/client/shared/common/*",
+    "src/client/*"
   ],
   "version": "1.0.6",
   "description": "React SSR Advanced Seed (nestJS + React SSR + Docker)",
