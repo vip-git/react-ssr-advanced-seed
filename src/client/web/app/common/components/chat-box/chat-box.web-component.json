@@ -1,0 +1,17 @@
+{
+    "name": "ChatBox",
+    "dependencies": {
+        "libraries": {
+        
+        },
+        "components": {
+
+        },
+        "uiFrameworkComponents": {
+
+        },
+        "styles": {
+
+        }
+    }
+}

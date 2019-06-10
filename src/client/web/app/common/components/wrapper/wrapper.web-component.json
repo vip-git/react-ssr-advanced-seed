@@ -1,0 +1,17 @@
+{
+    "name": "Wrapper",
+    "dependencies": {
+        "libraries": {
+        
+        },
+        "components": {
+
+        },
+        "uiFrameworkComponents": {
+
+        },
+        "styles": {
+
+        }
+    }
+}

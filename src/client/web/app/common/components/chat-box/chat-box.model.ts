@@ -22,14 +22,14 @@ const {
         MenuIcon,
         MoreVertIcon,
         SendIcon,
-    }, 
+    },
     libraries: {
         React,
         Component,
         PropTypes,
         classNames,
-        distanceInWordsToNow
-    }
+        distanceInWordsToNow,
+    },
 } = RootModel;
 // Component
 import Wrapper from '../wrapper';
@@ -41,7 +41,7 @@ export const ChatBoxModel = ({
         Component,
         PropTypes,
         classNames,
-        distanceInWordsToNow
+        distanceInWordsToNow,
     },
     components: {
         Wrapper,
@@ -69,6 +69,6 @@ export const ChatBoxModel = ({
         SendIcon,
     },
     styles: {
-        ChatStyles
-    }
+        ChatStyles,
+    },
 });

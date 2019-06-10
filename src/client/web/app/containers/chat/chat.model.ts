@@ -2,10 +2,10 @@
 import { RootModel } from '../../../../shared/common/model/root.model';
 
 // Shared
-import { ChatReduxModel } from '../../../../shared/chat/chat.redux-model';
+import { ChatReduxModel } from '../../../../shared/state-model/chat/chat.redux-model';
 
 // Components
-import { ChatComponentsEngine } from './components';
+import { ChatComponentsEngine } from './chat.components';
 
 const {
   libraries: {

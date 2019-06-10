@@ -1,4 +1,4 @@
-import ChatBox from './chat-box';
+import ChatBox from '../../common/components/chat-box';
 
 export const ChatComponentsEngine =
 {

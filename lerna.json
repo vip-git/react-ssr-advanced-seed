@@ -1,5 +1,10 @@
 {
-  "packages": ["src/client/*"],
+  "packages": [
+    "src/client/web/app/containers/**",
+    "src/client/shared/state/**",
+    "src/client/shared/common/services/**",
+    "src/client/web/common/components/**"
+  ],
   "npmClient": "yarn",
   "useWorkspaces": true,
   "version": "independent"

@@ -1,5 +1,9 @@
 {
   "name": "react-ssr-advanced-seed",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "version": "1.0.6",
   "description": "React SSR Advanced Seed (nestJS + React SSR + Docker)",
   "author": "Vipin Tanna",
@@ -53,8 +57,8 @@
     "@nestjs/core": "6.3.1",
     "@nestjs/graphql": "6.2.4",
     "@nestjs/microservices": "6.3.1",
-    "@nestjs/platform-express": "6.3.1",
     "@nestjs/passport": "6.1.0",
+    "@nestjs/platform-express": "6.3.1",
     "@nestjs/swagger": "3.0.2",
     "@nestjs/testing": "6.3.1",
     "@nestjs/typeorm": "6.1.1",

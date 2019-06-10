@@ -1,6 +1,6 @@
 // Service
-import { ChatServiceEngine } from '../common/services/chat.service';
-import { UserServiceEngine } from '../common/services/user.service';
+import { ChatServiceEngine } from '../../common/services/chat.service';
+import { UserServiceEngine } from '../../common/services/user.service';
 
 // Redux
 import { ChatEffectsEngine } from './redux/chat.effects';
