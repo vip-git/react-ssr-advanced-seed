@@ -13,7 +13,7 @@ import { setLocale } from '../../shared/common/root-state/app/actions';
 import css from './App.scss';
 
 // containers
-import Chat from './containers/chat';
+import Chat from '@omega-web-containers/chat';
 
 interface PropsT {
     setLocale: (string) => {};
