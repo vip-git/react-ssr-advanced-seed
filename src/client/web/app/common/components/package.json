@@ -1,5 +1,0 @@
-{
-    "name": "@react-ssr/web-components",
-    "version": "0.1.2",
-    "main": "./index.tsx"
-}

@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const path = require('path');
 
 const env = require('../env')();
@@ -25,8 +26,18 @@ const client = [
             process.env.NODE_ENV === 'development' ? '[id].css' : '[id].[contenthash].css',
   }),
   new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-  new ManifestPlugin({ fileName: 'manifest.json' }),
+  new ManifestPlugin({ fileName: 'manifest.json' })
 ];
+
+if (process.env.NODE_ENV === 'production') {
+  client.push(
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true,
+      statsOptions: { source: false }
+    })
+  );
+}
 
 const server = [
   new webpack.DefinePlugin({

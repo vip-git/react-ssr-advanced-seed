@@ -7,14 +7,14 @@ import { Route, Switch } from 'react-router';
 import App from './App';
 
 // Doc Generator
-import DocGen from './common/components/doc-gen';
-import { DocGenEngine } from '../../shared/common/utils/doc-gen.engine';
+// import DocGen from './common/components/doc-gen';
+// import { DocGenEngine } from '../../shared/common/utils/doc-gen.engine';
 
 const routes = (
   <Switch>
       <Route exact path="/" component={App} />
       {/* <Route component={App} /> */}
-      <Route
+      {/* <Route
         exact
         path={'/docs'}
         render={() => {
@@ -30,7 +30,7 @@ const routes = (
                 <DocGen docs={docs} />
             )}
         }
-     />
+     /> */}
   </Switch>
 );
 
