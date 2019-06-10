@@ -1,9 +1,9 @@
 {
-    "name": "omega-web-app",
+    "name": "omega-web",
     "version": "0.2.0",
     "main": "./index.tsx",
     "dependencies": {
-        "@omega-web-containers/chat": "^0.2.0"
+        "@omega-web-containers/chat": "^0.2.1"
     },
     "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b"
 }
