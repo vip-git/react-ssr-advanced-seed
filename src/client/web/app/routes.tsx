@@ -21,7 +21,7 @@ const routes = (
             const Models = {
                 ...require('../../shared/common/model/root.model'),
                 ...require('./containers/chat/chat.model'),
-                ...require('./containers/chat/components/chat-box/chat-box.model'),
+                ...require('./common/components/chat-box/chat-box.model'),
             };
             const docs = DocGenEngine.process({
                 ...Models

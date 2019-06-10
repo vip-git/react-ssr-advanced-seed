@@ -1,5 +1,5 @@
 // AppModel
-import { RootModel } from '../../../../../../shared/common/model/root.model';
+import { RootModel } from '../../../../../shared/common/model/root.model';
 const {
     uiFrameworkComponents: {
         withStyles,
