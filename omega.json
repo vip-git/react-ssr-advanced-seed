@@ -1,12 +1,18 @@
 {
+    "config": {
+        "web": {
+            "app": "./src/client/web/app/common/config",
+            "style": "./src/client/web/app/common/styles"
+        },
+        "mobile": {
+            "app": "./src/client/mobile/app/common/config",
+            "style": "./src/client/mobile/app/common/styles"
+        }
+    },
     "containers": {
         "chat": {
-            "web": {
-
-            },
-            "mobile": {
-                
-            }
+            "web": "./src/client/web/app/containers/chat/chat.web-container.json",
+            "mobile": "./src/client/mobile/app/containers/chat/chat.mobile-container.json"
         }
     },
     "components": {
