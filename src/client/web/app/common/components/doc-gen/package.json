@@ -1,5 +1,5 @@
 {
-  "name": "doc-gen",
+  "name": "@omega-web-components/doc-gen",
   "version": "1.0.1",
   "description": "",
   "main": "index.tsx",
