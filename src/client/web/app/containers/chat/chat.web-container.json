@@ -5,10 +5,10 @@
         
         },
         "components": {
-            "ChatComponentsEngine": "./components"
+            "ChatComponentsEngine": "./chat.components"
         },
         "redux": {
-            "ChatReduxModel": "../../../../shared/chat/chat.redux-model"
+            "ChatReduxModel": "@omega-state-machines/chat"
         }
     }
 }

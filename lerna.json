@@ -1,5 +1,6 @@
 {
   "packages": [
+    "src/client/web/app/",
     "src/client/web/app/common/components/*",
     "src/client/web/app/containers/*",
     "src/client/shared/state-model/*"

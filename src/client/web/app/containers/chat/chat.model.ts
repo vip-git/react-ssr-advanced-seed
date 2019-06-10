@@ -2,7 +2,7 @@
 import { RootModel } from '../../../../shared/common/model/root.model';
 
 // Shared
-import { ChatReduxModel } from '../../../../shared/state-model/chat/chat.redux-model';
+import { ChatReduxModel } from '@omega-state-machines/chat';
 
 // Components
 import { ChatComponentsEngine } from './chat.components';
