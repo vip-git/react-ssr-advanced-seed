@@ -1,13 +1,13 @@
 {
   "name": "@omega-web-components/doc-gen",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "",
   "main": "index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "@omega-web-components/chat-box": "^0.1.3",
+    "@omega-web-components/chat-box": "^0.1.4",
     "gojs": "2.0.12"
   },
   "author": "",

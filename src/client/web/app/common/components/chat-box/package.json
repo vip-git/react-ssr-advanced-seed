@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/chat-box",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "./index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -1,9 +1,9 @@
 {
     "name": "@omega-web-containers/chat",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "main": "./index.tsx",
     "dependencies": {
-        "@omega-web-components/chat-box": "^0.1.3"
+        "@omega-web-components/chat-box": "^0.1.4"
     },
     "gitHead": "80f1b6b2d3a9bcc0852e4fd0a474699b94c02219"
 }
