@@ -1,5 +1,8 @@
 {
     "name": "@web-components/chat-box",
     "version": "0.1.2",
-    "main": "./index.tsx"
+    "main": "./index.tsx",
+    "dependencies": {
+       
+    }
 }

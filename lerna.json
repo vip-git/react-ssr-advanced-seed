@@ -1,6 +1,7 @@
 {
   "packages": [
-    "src/client/web/app/components/*"
+    "src/client/web/app/common/components/*",
+    "src/client/web/app/containers/*"
   ],
   "npmClient": "npm",
   "useWorkspaces": true,

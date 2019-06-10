@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "@web-components/chat-box": "^0.1.2",
     "gojs": "2.0.12"
   },
   "author": "",
