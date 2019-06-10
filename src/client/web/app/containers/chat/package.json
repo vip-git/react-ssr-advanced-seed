@@ -1,5 +1,8 @@
 {
-    "name": "@react-ssr/web-containers",
+    "name": "@web-containers/chat",
     "version": "0.1.2",
-    "main": "./index.tsx"
+    "main": "./index.tsx",
+    "dependencies": {
+        "@web-components/chat-box": "0.1.2"
+    }
 }

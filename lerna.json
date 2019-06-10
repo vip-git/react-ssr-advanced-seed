@@ -1,11 +1,8 @@
 {
   "packages": [
-    "src/client/web/app/containers/**",
-    "src/client/shared/state/**",
-    "src/client/shared/common/services/**",
-    "src/client/web/common/components/**"
+    "src/client/web/app/components/*"
   ],
-  "npmClient": "yarn",
+  "npmClient": "npm",
   "useWorkspaces": true,
   "version": "independent"
 }

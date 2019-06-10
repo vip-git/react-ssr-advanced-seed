@@ -30,7 +30,7 @@ const face2 = require('../../../assets/images/face2.jpg');
 class Chat extends Component {
   state = {
     opened: false,
-  }
+  };
 
   handleDrawerToggle = () => {
     this.setState({ opened: !this.state.opened });
@@ -51,12 +51,12 @@ class Chat extends Component {
     );
     return (
       <Wrapper padding={false}>
-        <AppBar position='static'>       
+        <AppBar position='static'>
           <Toolbar>
             <Typography variant='title' color='inherit' style={{ margin: '0 auto' }}>
                 { this.props.title }
             </Typography>
-          </Toolbar> 
+          </Toolbar>
           <Toolbar />
         </AppBar>
 
@@ -139,11 +139,11 @@ class Chat extends Component {
                           <div className={classNames(classes.body, chat.type === 'sent' ? classes.bodySent : classes.bodyReceived)}>
                             <Typography color='inherit'>{chat.message}</Typography>
                             <Typography
-                                      variant='caption' 
+                                      variant='caption'
                                       className={
                                         classNames(classes.date, chat.type === 'sent' ? classes.dateSent : classes.dateReceived)
                                       }
-                            > {distanceInWordsToNow(chat.date)} 
+                            > {distanceInWordsToNow(chat.date)}
                             </Typography>
                           </div>
                          <Avatar alt='' src={face2} style={{ float: 'right', order: 2, marginLeft: 10, top: 25, display: (chat.type === 'sent') ? 'block' : 'none' }} />
