@@ -1,9 +1,9 @@
 {
     "name": "omega-web",
-    "version": "0.3.1",
+    "version": "0.3.2",
     "main": "./index.tsx",
     "dependencies": {
-        "@omega-web-containers/chat": "^0.3.1"
+        "@omega-web-containers/chat": "^0.3.2"
     },
     "devDependencies": {
         "@material-ui/core": "4.1.0",
