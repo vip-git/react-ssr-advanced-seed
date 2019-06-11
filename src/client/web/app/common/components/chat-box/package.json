@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/chat-box",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "main": "./index.tsx",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,7 @@
   "dependencies": {
     "@material-ui/core": "^4.1.0",
     "@material-ui/icons": "^4.1.0",
-    "@omega-core/assets": "^0.3.3",
+    "@omega-core/assets": "^0.3.4",
     "@omega-web-components/wrapper": "^0.3.3",
     "classnames": "^2.2.6",
     "date-fns": "^1.30.1",

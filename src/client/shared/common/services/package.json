@@ -1,9 +1,9 @@
 {
     "name": "@omega-core/services",
-    "version": "0.3.3",
+    "version": "0.3.4",
     "main": "./index.tsx",
     "dependencies": {
         "@material-ui/core": "^4.1.0",
-        "@omega-core/assets": "^0.3.3"
+        "@omega-core/assets": "^0.3.4"
     }
 }
