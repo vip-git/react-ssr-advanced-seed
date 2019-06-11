@@ -71,6 +71,7 @@
     "@babel/plugin-proposal-optional-chaining": "7.2.0",
     "@babel/plugin-syntax-dynamic-import": "7.2.0",
     "@babel/plugin-transform-modules-commonjs": "7.4.4",
+    "@babel/runtime": "7.4.5",
     "@babel/polyfill": "7.4.4",
     "@babel/preset-env": "7.4.5",
     "@babel/preset-flow": "7.0.0",
@@ -84,11 +85,9 @@
     "@types/react": "15.6.25",
     "@types/react-transition-group": "2.9.2",
     "autoprefixer": "8.6.5",
-    "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "8.2.6",
     "babel-jest": "24.7.1",
     "babel-loader": "8.0.6",
-    "babel-runtime": "6.26.0",
     "body-parser": "1.19.0",
     "chalk": "2.4.2",
     "copy-webpack-plugin": "4.6.0",
@@ -149,8 +148,5 @@
     "typescript": "3.5.1",
     "webpack-bundle-analyzer": "^3.3.2",
     "write-file-webpack-plugin": "4.5.0"
-  },
-  "resolutions": {
-    "babel-core": "7.0.0-bridge.0"
   }
 }
