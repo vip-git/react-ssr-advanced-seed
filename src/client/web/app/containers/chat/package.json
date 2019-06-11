@@ -1,10 +1,10 @@
 {
     "name": "@omega-web-containers/chat",
-    "version": "0.3.4",
+    "version": "0.3.5",
     "main": "./index.tsx",
     "dependencies": {
-        "@omega-state-machines/chat": "^0.3.4",
-        "@omega-web-components/chat-box": "^0.3.4"
+        "@omega-state-machines/chat": "^0.3.5",
+        "@omega-web-components/chat-box": "^0.3.5"
     },
     "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b"
 }
