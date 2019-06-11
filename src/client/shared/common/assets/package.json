@@ -1,0 +1,12 @@
+{
+    "name": "@omega-core/assets",
+    "version": "0.3.3",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "",
+    "license": "ISC",
+    "description": "",
+    "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b"
+  }
+  

@@ -2,13 +2,13 @@ import React from 'react';
 
 import Avatar from '@material-ui/core/Avatar';
 
-const face1 = require('../../assets/images/face1.jpg');
-const face2 = require('../../assets/images/face2.jpg');
-const face3 = require('../../assets/images/face3.jpg');
-const face4 = require('../../assets/images/face4.jpg');
-const face5 = require('../../assets/images/face5.jpg');
-const face6 = require('../../assets/images/face6.jpg');
-const face7 = require('../../assets/images/face7.jpg');
+const face1 = require('@omega-core/assets/images/face1.jpg');
+const face2 = require('@omega-core/assets/images/face2.jpg');
+const face3 = require('@omega-core/assets/images/face3.jpg');
+const face4 = require('@omega-core/assets/images/face4.jpg');
+const face5 = require('@omega-core/assets/images/face5.jpg');
+const face6 = require('@omega-core/assets/images/face6.jpg');
+const face7 = require('@omega-core/assets/images/face7.jpg');
 
 export default [{
   id: 1,
