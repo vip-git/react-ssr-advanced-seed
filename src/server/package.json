@@ -19,7 +19,6 @@
         "classnames": "2.2.6",
         "express": "4.17.1",
         "express-http-proxy": "1.5.1",
-        "express-manifest-helpers-audit-fix": "0.6.3",
         "graphql": "14.3.1",
         "graphql-subscriptions": "1.1.0",
         "graphql-tools": "4.0.4",

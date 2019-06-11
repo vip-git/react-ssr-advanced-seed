@@ -12,7 +12,6 @@
       "@config/*": ["src/client/web/app/common/config/*"],
       "@utils/*": ["src/client/shared/common/utils/*"],
       "@containers/*": ["src/client/web/app/containers/*"],
-      "@mocks/*": ["src/client/web/app/common/mocks/*"],
       "@styles/*": ["src/client/web/app/common/styles/*"]
     },
     "declaration": false,

@@ -4,7 +4,7 @@ import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter as Router, routerMiddleware } from 'react-router-redux';
 import routes from './app/routes';
-import IntlProvider from '../shared/common/i18n/IntlProvider';
+import IntlProvider from './app/common/i18n/IntlProvider';
 import { configureStore } from '../shared/common/root-state';
 
 const browserHistory = window.browserHistory || createHistory();

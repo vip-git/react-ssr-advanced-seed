@@ -1,9 +1,9 @@
 
 import React from 'react';
-import i18next from 'src/client/web/app/common/i18n/node_modules/i18next';
-import { withRouter } from 'src/client/web/app/common/i18n/node_modules/react-router-dom';
-import { I18nextProvider } from 'src/client/web/app/common/i18n/node_modules/react-i18next';
-import { connect } from 'src/client/web/app/common/i18n/node_modules/react-redux';
+import i18next from 'i18next';
+import { withRouter } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+import { connect } from 'react-redux';
 import { getLocale } from '../../../../shared/common/root-state/app/selectors';
 
 import deDE from './locales/de-DE';

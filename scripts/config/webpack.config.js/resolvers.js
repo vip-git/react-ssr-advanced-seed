@@ -9,7 +9,6 @@ module.exports = {
       "@components": path.resolve(__dirname, '../../../src/client/web/app/common/components'),
       "@config": path.resolve(__dirname, '../../../src/client/web/app/common/config'),
       "@utils": path.resolve(__dirname, '../../../src/client/web/app/common/utils'),
-      "@mocks": path.resolve(__dirname, '../../../src/client/web/app/common/mocks'),
       "@styles": path.resolve(__dirname, '../../../src/client/web/app/common/styles'),
   },
 };

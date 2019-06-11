@@ -1,5 +1,5 @@
 // ParentModel
-import { RootModel } from '../../../../shared/common/model/root.model';
+import { RootModel } from '../../common/model/root.model';
 
 // Shared
 import { ChatReduxModel } from '@omega-state-machines/chat';
