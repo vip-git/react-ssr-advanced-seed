@@ -24,8 +24,8 @@ const {
 const { React, Component, classNames, distanceInWordsToNow } = ChatBoxModel.libraries;
 const { Wrapper } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
-const face1 = require('./images/face1.jpg');
-const face2 = require('./images/face2.jpg');
+const face1 = require('@omega-core/assets/images/face1.jpg');
+const face2 = require('@omega-core/assets/images/face2.jpg');
 
 class Chat extends Component {
   state = {
