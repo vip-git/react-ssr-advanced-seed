@@ -3,7 +3,7 @@ const path = require('path');
 
 const babelLoader = {
   test: /\.(ts|js|jsx|tsx)$/,
-  exclude: /node_modules/,
+  exclude: /node_modules\/(?!(@omega-web-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
   loader: 'babel-loader',
   options: {
     "compact": true,
@@ -43,7 +43,7 @@ const babelLoader = {
 
 const cssLoaderClient = {
   test: /\.(css|scss)$/,
-  exclude: /node_modules/,
+  exclude: /node_modules\/(?!(@omega-web-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
   use: [
     'css-hot-loader',
     MiniCssExtractPlugin.loader,
@@ -68,7 +68,7 @@ const cssLoaderClient = {
 
 const cssLoaderServer = {
   test: /\.css$/,
-  exclude: /node_modules/,
+  exclude: /node_modules\/(?!(@omega-web-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
   use: [
     {
       loader: 'css-loader/locals',
@@ -146,7 +146,7 @@ const externalCssLoaderServer = {
 
 const eslintLoaderClient = {
   test: /\.js$/,
-  exclude: /node_modules/,
+  exclude: /node_modules\/(?!(@omega-web-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
   loader: 'eslint-loader',
   options: {
     eslint: {
