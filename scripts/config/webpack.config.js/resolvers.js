@@ -7,6 +7,7 @@ module.exports = {
   alias: {
       "@services": path.resolve(__dirname, '../../../src/client/web/app/common/services'),
       "@components": path.resolve(__dirname, '../../../src/client/web/app/common/components'),
+      "@model": path.resolve(__dirname, '../../../src/client/web/app/common/model'),
       "@config": path.resolve(__dirname, '../../../src/client/web/app/common/config'),
       "@utils": path.resolve(__dirname, '../../../src/client/web/app/common/utils'),
       "@styles": path.resolve(__dirname, '../../../src/client/web/app/common/styles'),

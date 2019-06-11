@@ -1,19 +1,12 @@
-// ParentModel
-import { RootModel } from '../../common/model/root.model';
+// Library
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 // Shared
 import { ChatReduxModel } from '@omega-state-machines/chat';
 
 // Components
 import { ChatComponentsEngine } from './chat.components';
-
-const {
-  libraries: {
-    React,
-    Component,
-    connect,
-  },
-} = RootModel;
 
 export const ChatModel = ({
   container: true,
