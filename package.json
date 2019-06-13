@@ -1,19 +1,11 @@
 {
   "name": "react-ssr-advanced-seed",
-  "workspaces": [
-    "src/*",
-    "src/client/web/app/common/components/*",
-    "src/client/web/app/containers/*",
-    "src/client/shared/state-model/*",
-    "src/client/shared/common/*",
-    "src/client/*"
-  ],
   "version": "1.0.6",
   "description": "React SSR Advanced Seed (nestJS + React SSR + Docker)",
   "author": "Vipin Tanna",
   "license": "MIT",
   "scripts": {
-    "install": "lerna exec npm install",
+    "install": "npx lerna bootstrap --hoist --ignore-scripts -- --production --no-optional",
     "precommit": "lint-staged",
     "build": "npm run build:frontend && npm run build:backend && npm run docker:prod",
     "deploy:frontend": "npm run build:frontend && npx release-it -n --no-npm.publish && npm run docker:prod:publish",

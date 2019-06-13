@@ -3,7 +3,7 @@ import { of, concat } from 'rxjs';
 import { map, switchMap, mergeMap } from 'rxjs/operators';
 
 // Model and Actions
-import { ChatModel } from '@omega-web-containers/chat/chat.model'; // Todo: This would change based on web and mobile
+import { ChatReduxModel } from '../chat.redux-model'; // Todo: This would change based on web and mobile
 import { RulesEngine } from '@omega-core/utils/rules.engine';
 
 class ChatEffect {
@@ -15,11 +15,11 @@ class ChatEffect {
     static readAllChats = (action$: any) =>
       RulesEngine
         .applyRule(action$,
-          ChatModel.actionTypes.READ_ALL_CHATS,
-          (          action: any) => [ChatModel.rules.validateChat(action), ChatModel.rules.validateChatAgain(action)],
+          ChatReduxModel.actionTypes.READ_ALL_CHATS,
+          (          action: any) => [ChatReduxModel.rules.validateChat(action), ChatReduxModel.rules.validateChatAgain(action)],
           () => ([
-            map(action => ChatModel.services.requestAllChats(action.payload)),
-            map(data => ChatModel.actions.reducer.processAllChats(data)),
+            map(action => ChatReduxModel.services.requestAllChats(action.payload)),
+            map(data => ChatReduxModel.actions.reducer.processAllChats(data)),
           ]),
         )
 
@@ -29,10 +29,10 @@ class ChatEffect {
      * @returns {any|*|Observable}
      */
     static readAllUsers = (action$: any) =>
-      action$.ofType(ChatModel.actionTypes.READ_ALL_USERS)
+      action$.ofType(ChatReduxModel.actionTypes.READ_ALL_USERS)
         .pipe(
-          map(action => ChatModel.services.requestAllUsers(action.payload)),
-          map(data => ChatModel.actions.reducer.processAllUsers(data)),
+          map(action => ChatReduxModel.services.requestAllUsers(action.payload)),
+          map(data => ChatReduxModel.actions.reducer.processAllUsers(data)),
         )
 
     /**
@@ -41,12 +41,12 @@ class ChatEffect {
      * @returns {any|*|Observable}
      */
     static readAllUsersAndChats = (action$: any) =>
-      action$.ofType(ChatModel.actionTypes.READ_ALL_USERS_AND_CHATS)
+      action$.ofType(ChatReduxModel.actionTypes.READ_ALL_USERS_AND_CHATS)
         .pipe(
           mergeMap(action =>
             concat(
-              of(ChatModel.actions.effects.readAllUsers(action)),
-              of(ChatModel.actions.effects.readAllChats(action)),
+              of(ChatReduxModel.actions.effects.readAllUsers(action)),
+              of(ChatReduxModel.actions.effects.readAllChats(action)),
             ),
           ),
         )
@@ -61,14 +61,14 @@ class ChatEffect {
         productId: null,
         token: null,
       };
-      return action$.ofType(ChatModel.actionTypes.CREATE_CHAT).pipe(
+      return action$.ofType(ChatReduxModel.actionTypes.CREATE_CHAT).pipe(
         switchMap((action) => {
           getPayload.productId = action.payload.productId;
           getPayload.token = action.payload.token;
-          return ChatModel.services.requestCreateChat(action.payload);
+          return ChatReduxModel.services.requestCreateChat(action.payload);
         }),
-        mergeMap(data => concat(of(ChatModel.actions.reducer.processCreateChat(data)),
-          of(ChatModel.actions.effects.readAllChats(getPayload)))),
+        mergeMap(data => concat(of(ChatReduxModel.actions.reducer.processCreateChat(data)),
+          of(ChatReduxModel.actions.effects.readAllChats(getPayload)))),
       );
     }
 
@@ -83,15 +83,15 @@ class ChatEffect {
         token: null,
       };
       let commentSn = '';
-      return action$.ofType(ChatModel.actionTypes.DELETE_CHAT).pipe(
+      return action$.ofType(ChatReduxModel.actionTypes.DELETE_CHAT).pipe(
         switchMap((action) => {
           getPayload.productId = action.payload.productId;
           getPayload.token = action.payload.token;
           commentSn = action.payload.productCommentSn;
-          return ChatModel.services.deleteComment(action.payload);
+          return ChatReduxModel.services.deleteComment(action.payload);
         }),
-        mergeMap(() => concat(of(ChatModel.actions.reducer.processRemoveChat(commentSn)),
-          of(ChatModel.actions.effects.readAllChats(getPayload)))),
+        mergeMap(() => concat(of(ChatReduxModel.actions.reducer.processRemoveChat(commentSn)),
+          of(ChatReduxModel.actions.effects.readAllChats(getPayload)))),
       );
     }
 
@@ -105,13 +105,13 @@ class ChatEffect {
         productId: null,
         token: null,
       };
-      return action$.ofType(ChatModel.actionTypes.UPDATE_CHAT).pipe(
+      return action$.ofType(ChatReduxModel.actionTypes.UPDATE_CHAT).pipe(
         switchMap((action) => {
           getPayload.productId = action.payload.productId;
           getPayload.token = action.payload.token;
-          return ChatModel.services.editComment(action.payload);
+          return ChatReduxModel.services.editComment(action.payload);
         }),
-        map(() => ChatModel.actions.effects.readAllChats(getPayload)),
+        map(() => ChatReduxModel.actions.effects.readAllChats(getPayload)),
       );
     }
 }

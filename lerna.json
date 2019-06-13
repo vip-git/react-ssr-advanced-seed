@@ -1,5 +1,13 @@
 {
   "npmClient": "npm",
-  "useWorkspaces": true,
+  "packages": [
+    "src/*",
+    "src/client/web/app/common/components/*",
+    "src/client/web/app/containers/*",
+    "src/client/shared/state-model/*",
+    "src/client/shared/common/*",
+    "src/client/*",
+    "src/client/web/*"
+  ],
   "version": "independent"
 }

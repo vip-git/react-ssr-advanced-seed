@@ -16,7 +16,7 @@ i18next.init({
         'de-DE': deDE,
         'en-US': enUS,
     },
-    parseMissingKeyHandler: (missing) => {
+    parseMissingKeyHandler: (missing: any) => {
         if (process.env.NODE_ENV === 'development') {
             console.warn('MISSING TRANSLATION:', missing);
         }
