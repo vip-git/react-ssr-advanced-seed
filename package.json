@@ -70,7 +70,7 @@
     "connected-react-router": "5.0.1",
     "date-fns": "1.30.1",
     "express-http-proxy": "1.5.1",
-    "flow-bin": "0.72.0",
+    "flow-bin": "0.101.0",
     "gojs": "2.0.11",
     "graphql": "14.3.1",
     "graphql-subscriptions": "1.1.0",
