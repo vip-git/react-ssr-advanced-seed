@@ -15,7 +15,7 @@ ENV API_URL "http://localhost:3010"
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY build/client/ /opt/react-ssr-frontend/
 COPY ./run.sh /run.sh
-RUN ["chmod", "+x", "/run.sh"]
+# RUN ["chmod", "+x", "/run.sh"]
 
 EXPOSE 80
 
