@@ -2,17 +2,17 @@ const paths = require('./scripts/config/paths');
 
 module.exports = {
   verbose: true,
-  collectCoverageFrom: ['src/server/**/*.{ts,tsx,mjs}'],
+  collectCoverageFrom: ['src/server/app/**/*.{ts,tsx,mjs}'],
   setupFiles: [
     '<rootDir>/node_modules/regenerator-runtime/runtime',
     '<rootDir>/scripts/config/polyfills.js',
   ],
   setupTestFrameworkScriptFile: '<rootDir>/scripts/config/jest/setup.js',
   testMatch: [
-    '<rootDir>/src/server/modules/**/*.spec.{ts,tsx,mjs}',
-    '<rootDir>/src/server/services/**/*.spec.{ts,tsx,mjs}',
-    '<rootDir>/src/server/services/**/?(*.)(spec|test).{ts,tsx,mjs}',
-    '<rootDir>/src/server/modules/**/?(*.)(spec|test).{ts,tsx,mjs}',
+    '<rootDir>/src/server/app/modules/**/*.spec.{ts,tsx,mjs}',
+    '<rootDir>/src/server/app/services/**/*.spec.{ts,tsx,mjs}',
+    '<rootDir>/src/server/app/services/**/?(*.)(spec|test).{ts,tsx,mjs}',
+    '<rootDir>/src/server/app/modules/**/?(*.)(spec|test).{ts,tsx,mjs}',
   ],
   testEnvironment: 'node',
   testURL: 'http://localhost',
