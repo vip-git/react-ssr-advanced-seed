@@ -23,7 +23,7 @@ hydrate(
             </IntlProvider>
         </Router>
     </Provider>,
-    document.getElementById('app')
+    document.getElementById('app'),
 );
 
 if (process.env.NODE_ENV === 'development') {
