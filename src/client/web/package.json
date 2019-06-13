@@ -4,8 +4,8 @@
     "main": "./index.tsx",
     "dependencies": {
         "@omega-web-containers/chat": "^0.3.5",
-        "@material-ui/core": "4.1.0",
-        "@material-ui/icons": "4.1.0",
+        "@material-ui/core": "4.1.1",
+        "@material-ui/icons": "4.2.0",
         "date-fns": "1.30.1",
         "i18next": "17.0.3",
         "jsonwebtoken": "8.5.1",
