@@ -121,7 +121,7 @@
     "jest": "24.7.1",
     "jest-puppeteer": "4.2.0",
     "lint-staged": "7.3.0",
-    "lerna": "^3.15.0",
+    "lerna": "3.15.0",
     "mini-css-extract-plugin": "0.7.0",
     "nodemon": "1.19.1",
     "plop": "2.3.0",
@@ -155,7 +155,7 @@
     "webpack-manifest-plugin": "2.0.4",
     "webpack-node-externals": "1.7.2",
     "typescript": "3.5.1",
-    "webpack-bundle-analyzer": "^3.3.2",
+    "webpack-bundle-analyzer": "3.3.2",
     "write-file-webpack-plugin": "4.5.0"
   },
   "resolutions": {
