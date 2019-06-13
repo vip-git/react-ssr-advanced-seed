@@ -63,7 +63,7 @@
     "@storybook/addon-links": "4.1.18",
     "@storybook/addons": "4.1.18",
     "@storybook/react": "4.1.18",
-    "apollo-server-express": "2.6.1",
+    "apollo-server-express": "2.6.3",
     "class-transformer": "0.1.10",
     "class-validator": "0.7.3",
     "classnames": "2.2.6",
