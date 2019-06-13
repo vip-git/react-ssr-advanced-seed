@@ -7,7 +7,7 @@ module.exports = env => {
   console.log('NODE_ENV: ', env.NODE_ENV) // 'local'
   console.log('Watch Files: ', env.watchFiles) // true
   return {
-    entry: ['webpack/hot/poll?100', './src/main.ts'],
+    entry: ['webpack/hot/poll?100', './src/server/main.ts'],
     watch: (env.watchFiles === 'true'),
     target: 'node',
     externals: [

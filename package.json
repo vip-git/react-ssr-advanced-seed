@@ -7,7 +7,7 @@
   "scripts": {
     "install": "npx lerna bootstrap --hoist --ignore-scripts -- --production --no-optional",
     "precommit": "lint-staged",
-    "build": "npm run build:frontend && npm run build:backend && npm run docker:prod",
+    "build": "npm run build:frontend && npm run docker:prod",
     "deploy:frontend": "npm run build:frontend && npx release-it -n --no-npm.publish && npm run docker:prod:publish",
     "deploy": "npm run build:frontend && npm run build:backend && npx release-it -n --no-npm.publish && npm run docker:prod:publish",
     "build:frontend": "cross-env NODE_ENV=production node scripts/build.js",

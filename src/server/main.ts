@@ -1,6 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { ApplicationModule } from './server/app.module';
+import { ApplicationModule } from './app/app.module';
 
 declare const module: any;
 
