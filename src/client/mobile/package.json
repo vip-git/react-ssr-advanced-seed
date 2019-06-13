@@ -6,8 +6,11 @@
     "test": "jest"
   },
   "dependencies": {
+    "babel-plugin-inline-import": "^3.0.0",
+    "babel-plugin-module-resolver": "^3.2.0",
     "react": "16.8.3",
-    "react-native": "0.59.8"
+    "react-native": "0.59.8",
+    "react-native-dotenv": "^0.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",
