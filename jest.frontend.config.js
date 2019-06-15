@@ -21,5 +21,5 @@ module.exports = {
   },
   transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$'],
   moduleDirectories: ['node_modules'],
-  moduleFileExtensions: ['js', 'json', 'jsx', 'node', 'mjs'],
+  moduleFileExtensions: ['js', 'json', 'jsx', 'ts', 'tsx', 'node', 'mjs'],
 };
