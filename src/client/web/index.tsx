@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import { ConnectedRouter as Router, routerMiddleware } from 'react-router-redux';
 import routes from './app/routes';
 import IntlProvider from './app/common/i18n/IntlProvider';
-import { configureStore } from '../shared/common/root-state';
+import { configureStore } from '../shared/state';
 
 const browserHistory = window.browserHistory || createHistory();
 const store =

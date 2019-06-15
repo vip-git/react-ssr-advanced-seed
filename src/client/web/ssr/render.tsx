@@ -1,12 +1,37 @@
+// Library
 import React from 'react';
 import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import IntlProvider from '../app/common/i18n/IntlProvider';
+// import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
 import Html from './html';
 import App from '../app/App';
+// import theme from '../../web/app/common/styles';
 
-const serverRenderer = () => (req, res) => {
+interface IReq {
+    store: { getState: () => void; };
+    url: any;
+}
+
+interface IRes {
+    send: (arg0: string) => void;
+    locals: {
+        assetPath: {
+            (arg0: string): string;
+            (arg0: string): string;
+            (arg0: string): string;
+            (arg0: string): string;
+        };
+    };
+}
+
+const serverRenderer = () => (req: IReq, res: IRes) => {
+    // const sheets = new ServerStyleSheets();
+    // sheets.collect(
+    //     <ThemeProvider theme={theme}>
+    //     </ThemeProvider>,
+    // ),
     const content = renderToString(
         <Provider store={req.store}>
             <Router location={req.url} context={{}}>
@@ -14,7 +39,7 @@ const serverRenderer = () => (req, res) => {
                     <App />
                 </IntlProvider>
             </Router>
-        </Provider>
+        </Provider>,
     );
 
     const state = JSON.stringify(req.store.getState());
@@ -28,8 +53,8 @@ const serverRenderer = () => (req, res) => {
                     state={state}
                 >
                     {content}
-                </Html>
-            )
+                </Html>,
+            ),
     );
 };
 

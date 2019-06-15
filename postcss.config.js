@@ -11,7 +11,6 @@ module.exports = {
     require('postcss-custom-properties')(),
     require('postcss-flexbugs-fixes')(),
     require('autoprefixer')({
-      browsers: ['last 3 versions', 'ie >= 9', 'Edge <= 15'],
     }),
     require('postcss-custom-properties')(),
     require('postcss-assets')({

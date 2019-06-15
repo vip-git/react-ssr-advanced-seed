@@ -1,16 +1,14 @@
-
 // Library
-import * as React from 'react';
+import React from 'react';
 import FadeIn from 'react-fade-in';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Redux
-import { setLocale } from '../../shared/common/root-state/app/actions';
+import { setLocale } from '../../shared/state/containers/app/actions';
 
-import css from './App.scss';
+// import './App.scss';
 
 // containers
 import Chat from '@omega-web-containers/chat';
@@ -20,7 +18,7 @@ interface PropsT {
     t: (string) => string;
 }
 
-class App extends React.PureComponent<PropsT> {
+class App extends React.PureComponent<any, any> {
     setLanguage = (e) => {
       this.props.setLocale(e.target.value);
     }

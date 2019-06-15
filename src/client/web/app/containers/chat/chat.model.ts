@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 // Shared
-import { ChatReduxModel } from '@omega-state-machines/chat';
+import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
 
 // Components
 import { ChatComponentsEngine } from './chat.components';

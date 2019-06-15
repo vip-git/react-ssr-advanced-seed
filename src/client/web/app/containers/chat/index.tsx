@@ -2,7 +2,7 @@
 import { ChatModel } from './chat.model';
 const { React, Component, connect } = ChatModel.libraries;
 
-class ChatContainer extends Component {
+class ChatContainer extends Component<any, any> {
   componentDidMount() {
     this.props.dispatchReadAllUsersAndChats();
   }
