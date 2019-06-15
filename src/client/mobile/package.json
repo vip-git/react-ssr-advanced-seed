@@ -8,6 +8,7 @@
   "dependencies": {
     "babel-plugin-inline-import": "3.0.0",
     "babel-plugin-module-resolver": "3.2.0",
+    "braces": "^2.3.1",
     "react": "16.8.3",
     "react-native": "0.59.9",
     "react-native-dotenv": "0.2.0"
