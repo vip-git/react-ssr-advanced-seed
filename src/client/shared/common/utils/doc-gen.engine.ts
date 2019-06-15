@@ -1,9 +1,9 @@
 import _ from 'lodash';
 
-export class DocGenEngine { 
-    static stringifyJson(data) {
-        var cache = [];
-        const stringifyData = JSON.stringify(data, function(key, value) {
+export class DocGenEngine {
+    static stringifyJson(data: any) {
+        let cache = [];
+        const stringifyData = JSON.stringify(data, (key, value) => {
             if (typeof value === 'object' && value !== null) {
                 if (cache.indexOf(value) !== -1) {
                     // Duplicate reference found
@@ -24,13 +24,13 @@ export class DocGenEngine {
 
         return stringifyData;
     }
-    static process(data) {
-        _.map(data, (val, key) => {
+    static process(data: ArrayLike<any>) {
+        _.map(data, (val: { modelName: number | string }, key) => {
             val.modelName = key;
             return val;
         });
         return {
-            rootModel: _.find(data, 'modelName', 'RootModel'),
+            rootModel: _.find(data, ['modelName', 'RootModel']),
             models: _.keys(data),
             containers: _.filter(data, 'container'),
         };

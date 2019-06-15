@@ -14,7 +14,7 @@ class ChatService {
   }
 }
 
-export const ChatServiceEngine = 
+export const ChatServiceEngine =
 {
   requestAllChats: () => ChatService.getAllChats(),
   requestRemoveChat: (chatId: any) => ChatService.removeChat(chatId),

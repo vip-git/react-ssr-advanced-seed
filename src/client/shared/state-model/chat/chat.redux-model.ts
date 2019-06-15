@@ -8,6 +8,13 @@ import { ChatActionsEngine, ChatActionTypes } from './redux/chat.actions';
 import { getChatState } from './redux/chat.selectors';
 import { ChatRulesEngine } from './redux/chat.rules';
 
+interface IDispatch {
+  (arg0: { type: string; payload: any; }): void;
+  (arg0: { type: string; payload: any; }): void;
+  (arg0: { type: string; payload: any; }): void;
+  (arg0: { type: string; payload: any; }): void;
+}
+
 export const ChatReduxModel = ({
   attributes: {
     currentUsers: {
@@ -40,7 +47,7 @@ export const ChatReduxModel = ({
     ...ChatServiceEngine,
     ...UserServiceEngine,
   },
-  reduxActions: (dispatch: { (arg0: { type: string; payload: any; }): void; (arg0: { type: string; payload: any; }): void; (arg0: { type: string; payload: any; }): void; (arg0: { type: string; payload: any; }): void; }) => ({
+  reduxActions: (dispatch: IDispatch) => ({
     dispatchReadAllUsersAndChats: (payload: any) => dispatch(ChatReduxModel.actions.effects.readAllUsersAndChats(payload)),
     dispatchCreateChat: (payload: any) => dispatch(ChatReduxModel.actions.effects.createChat(payload)),
     dispatchDeleteChat: (payload: any) => dispatch(ChatReduxModel.actions.effects.deleteChat(payload)),
