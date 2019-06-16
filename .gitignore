@@ -8,6 +8,7 @@ node_modules
 
 # misc
 npm-debug.log
+package-lock.json
 
 # example
 /quick-start
