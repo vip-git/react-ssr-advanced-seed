@@ -1,0 +1,96 @@
+lane :release do
+  increment_build_number({
+    xcodeproj: "./ios/$(FASTLANE_APP_FOLDER_NAME).xcodeproj",
+    build_number: app_store_build_number(
+    version: ENV['FASTLANE_APP_VERSION'],
+    live: false,
+    username: ENV['FASTLANE_USER'], 
+    app_identifier: ENV['FASTLANE_APP_IDENTIFIER']) + 1
+  })
+  build_app(
+    scheme: "$(FASTLANE_APP_FOLDER_NAME)",
+    workspace: "ios/$(FASTLANE_APP_FOLDER_NAME).xcworkspace",
+    include_bitcode: true,
+    export_method: "app-store",
+  )
+  upload_to_testflight(
+    username: ENV['FASTLANE_USER'],
+    changelog: ENV['FASTLANE_CHANGELOG'],
+    skip_waiting_for_build_processing: ENV['FASTLANE_SKIP_AUTOMATE_SUBMISSION'],
+  )
+end
+
+lane :updateversion do 
+    increment_version_number(
+      version_number: ENV['FASTLANE_VERSION_UPDATE'],
+      xcodeproj: "./ios/$(FASTLANE_APP_FOLDER_NAME).xcodeproj"
+   )
+end
+
+lane :updateidentifier do 
+  update_app_identifier(
+    xcodeproj: "./ios/$(FASTLANE_APP_FOLDER_NAME).xcodeproj", # Optional path to xcodeproj, will use the first .xcodeproj if not set
+    plist_path: "../ios/$(FASTLANE_APP_FOLDER_NAME)/Info.plist", # Path to info plist file, relative to xcodeproj
+    app_identifier: ENV['FASTLANE_APP_IDENTIFIER'] # The App Identifier
+  )
+end
+
+lane :testondevice do
+  build_app(
+    scheme: "$(FASTLANE_APP_FOLDER_NAME)",
+    workspace: "ios/$(FASTLANE_APP_FOLDER_NAME).xcworkspace",
+    include_bitcode: true,
+    export_method: "ad-hoc",
+  )
+  install_on_device(
+    ipa: "./$(FASTLANE_APP_FOLDER_NAME).ipa"
+  )
+end
+lane :release do
+  increment_build_number({
+    xcodeproj: "./ios/$(FASTLANE_APP_FOLDER_NAME).xcodeproj",
+    build_number: app_store_build_number(
+    version: ENV['FASTLANE_APP_VERSION'],
+    live: false,
+    username: ENV['FASTLANE_USER'], 
+    app_identifier: ENV['FASTLANE_APP_IDENTIFIER']) + 1
+  })
+  build_app(
+    scheme: "$(FASTLANE_APP_FOLDER_NAME)",
+    workspace: "ios/$(FASTLANE_APP_FOLDER_NAME).xcworkspace",
+    include_bitcode: true,
+    export_method: "app-store",
+  )
+  upload_to_testflight(
+    username: ENV['FASTLANE_USER'],
+    changelog: ENV['FASTLANE_CHANGELOG'],
+    skip_waiting_for_build_processing: ENV['FASTLANE_SKIP_AUTOMATE_SUBMISSION'],
+  )
+end
+
+lane :updateversion do 
+    increment_version_number(
+      version_number: ENV['FASTLANE_VERSION_UPDATE'],
+      xcodeproj: "./ios/$(FASTLANE_APP_FOLDER_NAME).xcodeproj"
+   )
+end
+
+lane :updateidentifier do 
+  update_app_identifier(
+    xcodeproj: "./ios/$(FASTLANE_APP_FOLDER_NAME).xcodeproj", # Optional path to xcodeproj, will use the first .xcodeproj if not set
+    plist_path: "../ios/$(FASTLANE_APP_FOLDER_NAME)/Info.plist", # Path to info plist file, relative to xcodeproj
+    app_identifier: ENV['FASTLANE_APP_IDENTIFIER'] # The App Identifier
+  )
+end
+
+lane :testondevice do
+  build_app(
+    scheme: "$(FASTLANE_APP_FOLDER_NAME)",
+    workspace: "ios/$(FASTLANE_APP_FOLDER_NAME).xcworkspace",
+    include_bitcode: true,
+    export_method: "ad-hoc",
+  )
+  install_on_device(
+    ipa: "./$(FASTLANE_APP_FOLDER_NAME).ipa"
+  )
+end
