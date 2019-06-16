@@ -23,9 +23,20 @@ npm start (This will start both frontend and backend servers for you)
 npm run build
 ```
 
-### Docker Build
+### Docker Build (Frontend)
 ```
+npm run build:frontend
 npm run docker:prod
+```
+Visit: http://localhost:8080
+
+### Mobile Build
+```
+cd src/client/mobile
+npm install
+
+ios: react-native run-ios
+android: react-native run-android
 ```
 
 ### Kubernetes Deployment
