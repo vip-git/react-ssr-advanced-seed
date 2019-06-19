@@ -3,7 +3,7 @@
     "version": "0.3.4",
     "main": "./index.tsx",
     "dependencies": {
-        "@material-ui/core":"3.9.2",
+        "@material-ui/core":"3.9.3",
         "@omega-core/assets": "^0.3.4"
     }
 }
