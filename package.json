@@ -31,6 +31,7 @@
     "generate-all": "npm run generate:defintions && npm run generate:docs",
     "webpack": "webpack --env.NODE_ENV=development --env.watchFiles=true --config scripts/api-webpack.config.js",
     "storybook": "start-storybook -p 6006",
+    "now-build": "npm run build:frontend",
     "build-storybook": "build-storybook"
   },
   "lint-staged": {
