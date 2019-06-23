@@ -22,7 +22,7 @@ const generateStaticHTML = async () => {
         // {executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox', '--headless', '--disable-gpu']}
         setTimeout(async function() {
             const browser = await puppeteer.launch({
-                executablePath: '/usr/bin/chromium-browser', \
+                executablePath: '/usr/bin/chromium-browser',
                 args: ['--no-sandbox', '--headless', '--disable-gpu']
             });
             const page = await browser.newPage();
