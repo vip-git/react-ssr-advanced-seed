@@ -8,8 +8,7 @@ const { logMessage, compilerPromise } = require('./utils');
 const generateStaticHTML = async () => {
     const nodemon = require('nodemon');
     const fs = require('fs');
-    const chrome = require('chrome-aws-lambda');
-    const puppeteer = require('puppeteer-core');
+    const puppeteer = require('puppeteer');
 
     process.env.PORT = 8500;
 
@@ -23,9 +22,8 @@ const generateStaticHTML = async () => {
         // {executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox', '--headless', '--disable-gpu']}
         setTimeout(async function() {
             const browser = await puppeteer.launch({
-                args: chrome.args,
-                executablePath: await chrome.executablePath,
-                headless: chrome.headless,
+                executablePath: '/usr/bin/chromium-browser', \
+                args: ['--no-sandbox', '--headless', '--disable-gpu']
             });
             const page = await browser.newPage();
             await page.goto(`http://localhost:${process.env.PORT}`);
