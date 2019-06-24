@@ -4,11 +4,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'connected-react-router';
 import { createEpicMiddleware } from 'redux-observable';
+import { createMemoryHistory } from 'history';
 // import { createLogger } from 'redux-logger';
 
 // Global Redux
 import rootReducer from './root.reducer';
 import { rootEffect } from './root.effects';
+
+const history = createMemoryHistory();
 
 const epicMiddleware = createEpicMiddleware();
 const middlewares = [routerMiddleware(history)];
@@ -29,7 +32,7 @@ export const configureStore = ({ initialState = {}, middleware = [] } = {}) => {
   }
 
   const store = createStore(
-    rootReducer,
+    rootReducer(history),
     initialState,
     composeEnhancers(applyMiddleware(...[...middlewares, epicMiddleware])),
   );
