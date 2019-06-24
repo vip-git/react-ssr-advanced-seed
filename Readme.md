@@ -26,8 +26,7 @@ npm run build
 
 ### Docker Build (Frontend)
 ```
-npm run build:frontend
-npm run docker:prod
+npm run start:docker
 ```
 Visit: http://localhost:8080
 
