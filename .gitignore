@@ -9,6 +9,9 @@ node_modules
 # misc
 npm-debug.log
 
+# package-lock
+package-lock.json
+
 # example
 /quick-start
 
