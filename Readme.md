@@ -33,11 +33,12 @@ Visit: http://localhost:8080
 
 ### Mobile Build
 ```
-cd src/client/mobile
-npm install
+npm run install:mobile (Install mobile dependencies)
 
-ios: react-native run-ios
-android: react-native run-android
+Packager: npm run start:mobile
+
+ios: npm run mobile:ios
+android: npm run mobile:android
 ```
 
 ### Kubernetes Deployment

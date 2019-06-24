@@ -37,7 +37,7 @@ class Chat extends Component {
   }
 
   render() {
-    const { classes, defaultChats, defaultUsers } = this.props;
+    const { classes, defaultChats, defaultUsers, sharedComponent } = this.props;
     const { opened } = this.state;
     const menu = (
       <List subheader={<ListSubheader disableSticky>Contacts</ListSubheader>}>
@@ -110,6 +110,7 @@ class Chat extends Component {
                       }}
                     >
                       {menu}
+                      { sharedComponent && sharedComponent() }
                     </Drawer>
                   </Hidden>
                   <Hidden mdUp>

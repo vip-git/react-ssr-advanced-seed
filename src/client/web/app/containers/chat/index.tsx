@@ -8,9 +8,15 @@ class ChatContainer extends Component<any, any> {
   }
 
   render() {
-    const { ChatComponent } = ChatModel.components;
+    const { ChatComponent, ContentComponent } = ChatModel.components;
     const { defaultChats, defaultUsers } = this.props.chats;
-    return <ChatComponent title={this.props.title} defaultChats={defaultChats} defaultUsers={defaultUsers} />;
+    return (
+      <ChatComponent
+        sharedComponent={() => <ContentComponent />}
+        title={this.props.title}
+        defaultChats={defaultChats}
+        defaultUsers={defaultUsers} />
+    );
   }
 }
 
