@@ -54,7 +54,7 @@
     "@storybook/addons": "4.1.18",
     "@storybook/react": "4.1.18",
     "chrome-aws-lambda": "1.18.0",
-    "connected-react-router": "5.0.1",
+    "connected-react-router": "6.4.0",
     "express-manifest-helpers-audit-fix": "0.6.3",
     "history": "4.9.0",
     "puppeteer-core": "1.18.0",
