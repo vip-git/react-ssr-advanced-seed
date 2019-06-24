@@ -5,7 +5,7 @@
   "author": "Vipin Tanna",
   "license": "MIT",
   "scripts": {
-    "install": "npx lerna bootstrap --hoist --ignore-scripts -- --production --no-optional",
+    "install": "npx lerna bootstrap --hoist --ignore-scripts -- --production --no-optional && npm run install:mobile",
     "install:mobile": "cd src/client/mobile && npm install",
     "precommit": "lint-staged",
     "build": "npm run build:frontend && npm run docker:prod",

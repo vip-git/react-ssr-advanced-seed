@@ -1,6 +1,6 @@
 {
     "name": "@omega-shared-components/content",
-    "version": "0.3.17",
+    "version": "0.3.19",
     "main": "./index.tsx",
     "dependencies": {
        "react": "16.8.6",

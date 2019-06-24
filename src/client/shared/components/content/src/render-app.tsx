@@ -1,7 +1,10 @@
 // Library
-import React from 'react';
+import React, { ReactType } from 'react';
 
-export default class App extends React.Component<any, any> {
+// Interface
+import { ISharedComponentProps } from './shared-component.interface';
+
+export default class App extends React.Component<ISharedComponentProps, {}> {
   render() {
     const { View, Text } = this.props.api;
     const { style } = this.props;
