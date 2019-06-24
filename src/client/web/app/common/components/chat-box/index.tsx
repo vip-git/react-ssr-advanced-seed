@@ -1,5 +1,10 @@
 // Model
 import { ChatBoxModel } from './chat-box.model';
+
+// Interfaces
+import { IChatProps, IChatState, IContact, IChat } from './ichat';
+
+// Internals
 const {
   withStyles,
   AppBar,
@@ -27,7 +32,7 @@ const { ChatStyles } = ChatBoxModel.styles;
 const face1 = require('@omega-core/assets/images/face1.jpg');
 const face2 = require('@omega-core/assets/images/face2.jpg');
 
-class Chat extends Component {
+class Chat extends Component<IChatProps, IChatState> {
   state = {
     opened: false,
   };
@@ -37,11 +42,11 @@ class Chat extends Component {
   }
 
   render() {
-    const { classes, defaultChats, defaultUsers, sharedComponent } = this.props;
+    const { classes, defaultChats, defaultUsers, sharedComponent: SharedComponent } = this.props;
     const { opened } = this.state;
     const menu = (
       <List subheader={<ListSubheader disableSticky>Contacts</ListSubheader>}>
-        { defaultUsers.map((contact, index) => (
+        { defaultUsers.map((contact: IContact, index) => (
           <ListItem key={`ListItem-${contact.id}`} button>
             {contact.avatar}
             <ListItemText primary={contact.name} secondary={contact.status} />
@@ -110,7 +115,7 @@ class Chat extends Component {
                       }}
                     >
                       {menu}
-                      { sharedComponent && sharedComponent() }
+                      <SharedComponent />
                     </Drawer>
                   </Hidden>
                   <Hidden mdUp>
@@ -134,7 +139,7 @@ class Chat extends Component {
                   </Hidden>
                   <main className={classes.main}>
                     <div className={classes.content}>
-                      { defaultChats.map((chat, index) => (
+                      { defaultChats.map((chat: IChat, index) => (
                         <div key={`ChatItem-${chat.id}`} className={classNames(classes.conversation, chat.type === 'sent' ? classes.conversationSent : classes.conversationReceived)}>
                          <Avatar alt='' src={face1} style={{ marginRight: 10, display: (chat.type === 'sent') ? 'none' : 'block' }} />
                           <div className={classNames(classes.body, chat.type === 'sent' ? classes.bodySent : classes.bodyReceived)}>
@@ -176,4 +181,4 @@ class Chat extends Component {
   }
 }
 
-export default withStyles(ChatStyles)(Chat);
+export default withStyles((ChatStyles as any))(Chat);

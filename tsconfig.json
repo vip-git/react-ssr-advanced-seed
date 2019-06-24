@@ -21,6 +21,7 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es6",
+    "resolveJsonModule": true,
     "sourceMap": true,
     "allowJs": true,
     "jsx": "react",

@@ -26,7 +26,7 @@ module.exports = env => {
     },
     mode: env.NODE_ENV,
     resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
+      extensions: ['.tsx', '.ts', '.js', '.json'],
       plugins: [new TsconfigPathsPlugin({ configFile: "./tsconfig.json"})]
     },
     plugins: [new webpack.HotModuleReplacementPlugin()],

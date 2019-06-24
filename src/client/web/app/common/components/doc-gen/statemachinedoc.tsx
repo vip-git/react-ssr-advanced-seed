@@ -1,10 +1,11 @@
+/* tslint:disable */
 // Library
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import go from 'gojs';
 
 // Material UI
-import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
@@ -21,7 +22,7 @@ TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export class StateMachineDoc extends React.Component {
+export class StateMachineDoc extends React.Component<any, any> {
   state = {
     value: 0,
     subValue: 0,
@@ -42,8 +43,8 @@ export class StateMachineDoc extends React.Component {
 
   renderDiagram() {
     var $ = go.GraphObject.make;
-    var myDiagram = {};
-    var myPalette = {};
+    var myDiagram: any = {};
+    var myPalette: any = {};
     myDiagram =
       $(go.Diagram, "myStateMachineDiagramDiv",  // must name or refer to the DIV HTML element
         {
@@ -74,7 +75,7 @@ export class StateMachineDoc extends React.Component {
 
     // when the document is modified, add a "*" to the title and enable the "Save" button
     myDiagram.addDiagramListener("Modified", function(e) {
-      var button = document.getElementById("SaveButton");
+      var button: any = document.getElementById("SaveButton");
       if (button) button.disabled = !myDiagram.isModified;
       var idx = document.title.indexOf("*");
       if (myDiagram.isModified) {
@@ -223,7 +224,7 @@ export class StateMachineDoc extends React.Component {
       );
     const { containers } =  this.props.docs;  
     const { value, subValue } = this.state;
-    const docName = (subValue === 0) ? _.keys(containers[value].reduxActions())[0] : subValue;
+    const docName: any = (subValue === 0) ? _.keys(containers[value].reduxActions())[0] : subValue;
     const diagramName = containers[value].docs[docName].template;
     const docVariables = containers[value].docs[docName].vars;
     fetch(`/static/assets/redux-templates/${diagramName}.json`)

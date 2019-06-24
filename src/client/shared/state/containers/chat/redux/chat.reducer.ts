@@ -25,13 +25,13 @@ export default (state = initialState, action: { type: any; payload?: {}; }) => {
     case ChatReduxModel.actionTypes.PROCESS_CREATE_CHAT: {
       return {
         ...state,
-        chats: state.chats.concat(payload),
+        chats: (state as any).chats.concat(payload),
       };
     }
     case ChatReduxModel.actionTypes.PROCESS_DELETED_CHAT: {
       return {
         ...state,
-        chats: state.chats.filter((c: { productCommentSn: any; }) => c.productCommentSn !== payload),
+        chats: (state as any).chats.filter((c: { productCommentSn: any; }) => c.productCommentSn !== payload),
       };
     }
   }

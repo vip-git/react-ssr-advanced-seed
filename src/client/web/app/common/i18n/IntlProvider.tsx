@@ -6,8 +6,10 @@ import { I18nextProvider } from 'react-i18next';
 import { connect } from 'react-redux';
 import { getLocale } from '../../../../shared/state/containers/app/selectors';
 
-import deDE from './locales/de-DE';
-import enUS from './locales/en-US';
+// tslint:disable-next-line: no-var-requires
+const deDE = require('./locales/de-DE.json');
+// tslint:disable-next-line: no-var-requires
+const enUS = require('./locales/en-US.json');
 
 i18next.init({
     fallbackLng: 'en-US',

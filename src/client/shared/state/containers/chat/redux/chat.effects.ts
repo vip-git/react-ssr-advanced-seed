@@ -6,6 +6,14 @@ import { map, switchMap, mergeMap } from 'rxjs/operators';
 import { ChatReduxModel } from '../chat.redux-model'; // Todo: This would change based on web and mobile
 import { RulesEngine } from '@omega-core/utils/rules.engine';
 
+interface IAction {
+   payload: {
+     productId?: number,
+     productCommentSn?: string,
+     token: string,
+   };
+}
+
 class ChatEffect {
     /**
      * GET chat epic
@@ -18,7 +26,7 @@ class ChatEffect {
           ChatReduxModel.actionTypes.READ_ALL_CHATS,
           (          action: any) => [ChatReduxModel.rules.validateChat(action), ChatReduxModel.rules.validateChatAgain(action)],
           () => ([
-            map(action => ChatReduxModel.services.requestAllChats(action.payload)),
+            map(action => ChatReduxModel.services.requestAllChats()),
             map(data => ChatReduxModel.actions.reducer.processAllChats(data)),
           ]),
         )
@@ -31,7 +39,7 @@ class ChatEffect {
     static readAllUsers = (action$: any) =>
       action$.ofType(ChatReduxModel.actionTypes.READ_ALL_USERS)
         .pipe(
-          map(action => ChatReduxModel.services.requestAllUsers(action.payload)),
+          map((action: IAction) => ChatReduxModel.services.requestAllUsers()),
           map(data => ChatReduxModel.actions.reducer.processAllUsers(data)),
         )
 
@@ -52,7 +60,7 @@ class ChatEffect {
         )
 
     /**
-     * POST create comment epic
+     * POST create chat epic
      * @param action$
      * @returns {any|*|Observable}
      */
@@ -62,7 +70,7 @@ class ChatEffect {
         token: null,
       };
       return action$.ofType(ChatReduxModel.actionTypes.CREATE_CHAT).pipe(
-        switchMap((action) => {
+        switchMap((action: IAction) => {
           getPayload.productId = action.payload.productId;
           getPayload.token = action.payload.token;
           return ChatReduxModel.services.requestCreateChat(action.payload);
@@ -73,7 +81,7 @@ class ChatEffect {
     }
 
     /**
-     * DELETE remove comment epic
+     * DELETE remove chat epic
      * @param action$
      * @returns {any|*|Observable}
      */
@@ -84,11 +92,11 @@ class ChatEffect {
       };
       let commentSn = '';
       return action$.ofType(ChatReduxModel.actionTypes.DELETE_CHAT).pipe(
-        switchMap((action) => {
+        switchMap((action: IAction) => {
           getPayload.productId = action.payload.productId;
           getPayload.token = action.payload.token;
           commentSn = action.payload.productCommentSn;
-          return ChatReduxModel.services.deleteComment(action.payload);
+          return ChatReduxModel.services.requestRemoveChat(action.payload);
         }),
         mergeMap(() => concat(of(ChatReduxModel.actions.reducer.processRemoveChat(commentSn)),
           of(ChatReduxModel.actions.effects.readAllChats(getPayload)))),
@@ -96,7 +104,7 @@ class ChatEffect {
     }
 
     /**
-     * PUT edit comment epic
+     * PUT edit chat epic
      * @param action$
      * @returns {any|*|Observable}
      */
@@ -106,10 +114,10 @@ class ChatEffect {
         token: null,
       };
       return action$.ofType(ChatReduxModel.actionTypes.UPDATE_CHAT).pipe(
-        switchMap((action) => {
+        switchMap((action: IAction) => {
           getPayload.productId = action.payload.productId;
           getPayload.token = action.payload.token;
-          return ChatReduxModel.services.editComment(action.payload);
+          return ChatReduxModel.services.requestEditChat(action.payload);
         }),
         map(() => ChatReduxModel.actions.effects.readAllChats(getPayload)),
       );

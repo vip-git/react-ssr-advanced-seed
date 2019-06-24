@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import { routerReducer as router } from 'react-router-redux';
+import { createMemoryHistory } from 'history';
+import { connectRouter } from 'connected-react-router';
+const history = createMemoryHistory();
 
 import app from './containers/app/reducer';
 import chats from './containers/chat/redux/chat.reducer';
 
-const rootReducer = combineReducers({
+const rootReducer: any = combineReducers({
   app,
-  router,
+  router: connectRouter(history),
   chats,
 });
 

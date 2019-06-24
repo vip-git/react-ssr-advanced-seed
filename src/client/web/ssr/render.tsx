@@ -10,14 +10,14 @@ import App from '../app/App';
 // import theme from '../../web/app/common/styles';
 
 interface IReq {
-    store: { getState: () => void; };
-    url: any;
+    store?: { getState: () => void; };
+    url?: any;
 }
 
 interface IRes {
-    send: (arg0: string) => void;
-    locals: {
-        assetPath: {
+    send?: (arg0: string) => void;
+    locals?: {
+        assetPath?: {
             (arg0: string): string;
             (arg0: string): string;
             (arg0: string): string;

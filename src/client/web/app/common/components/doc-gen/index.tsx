@@ -1,3 +1,4 @@
+/* tslint:disable */
 // Library
 import React from 'react';
 import PropTypes from 'prop-types';
@@ -39,7 +40,7 @@ const styles = theme => ({
   },
 });
 
-class DocGen extends React.Component {
+class DocGen extends React.Component<any, any> {
   state = {
     value: 0,
   };
@@ -87,9 +88,5 @@ class DocGen extends React.Component {
     );
   }
 }
-
-DocGen.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default withStyles(styles)(DocGen);

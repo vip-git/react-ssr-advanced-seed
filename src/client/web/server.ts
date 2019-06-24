@@ -1,4 +1,5 @@
-// import React from 'react';
+/* tslint:disable:no-string-literal */
+// Library
 import express from 'express';
 import cors from 'cors';
 import path from 'path';
@@ -27,7 +28,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-    req.store = configureStore();
+    req['store'] = configureStore();
     return next();
 });
 

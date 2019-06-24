@@ -1,12 +1,14 @@
+/* tslint:disable */
 // Library
+import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import go from 'gojs';
 
-export class UmlDocGen extends React.Component {
+export class UmlDocGen extends React.Component<any, any> {
   componentDidMount() {
     var $ = go.GraphObject.make;
-    var myDiagram = {};
+    var myDiagram: any = {};
     myDiagram =
       $(go.Diagram, "myDiagramDiv",
         {
@@ -352,7 +354,7 @@ export class UmlDocGen extends React.Component {
     console.log('doc engine response', this.props.docs);
     
     // setup a few example class nodes and relationships
-    var nodedata = [
+    var nodedata: any = [
       {
         key: 1,
         name: this.props.docs.rootModel.modelName,
