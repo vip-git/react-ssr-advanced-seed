@@ -104,7 +104,7 @@
     "cross-env": "5.2.0",
     "css-hot-loader": "1.4.4",
     "css-loader": "3.0.0",
-    "dotenv": "5.0.1",
+    "dotenv": "8.0.0",
     "dts-generator": "2.1.0",
     "enzyme": "3.10.0",
     "enzyme-adapter-react-16": "1.14.0",
