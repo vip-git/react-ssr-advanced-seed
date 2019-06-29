@@ -19,7 +19,6 @@ const babelLoader = {
         ],
         "@babel/typescript",
         "@babel/preset-react",
-        "@babel/preset-flow",
     ],
     "plugins": [
         '@babel/plugin-transform-runtime',
