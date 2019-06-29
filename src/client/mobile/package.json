@@ -8,7 +8,7 @@
   "dependencies": {
     "@types/jest": "24.0.15",
     "@types/mocha": "5.2.7",
-    "@omega-shared-components/content": "0.3.18",
+    "@omega-shared-components/content": "0.3.19",
     "babel-plugin-inline-import": "3.0.0",
     "babel-plugin-module-resolver": "3.2.0",
     "braces": "3.0.2",
