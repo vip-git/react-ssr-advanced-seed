@@ -14,7 +14,7 @@
     "build:frontend": "cross-env NODE_ENV=production node scripts/build.js",
     "build:backend": "webpack  --env.NODE_ENV=production --env.watchFiles=false --config scripts/api-webpack.config.js",
     "start:frontend": "cross-env NODE_ENV=development node scripts/start.js",
-    "start:backend": "npx ts-node -r tsconfig-paths/register src/main",
+    "start:backend": "npx ts-node -r tsconfig-paths/register src/server/main",
     "start:docker": "npm run build && npm run docker:prod",
     "start": "npm run start:frontend & npm run start:backend",
     "start:mobile": "cd src/client/mobile && npm start",
