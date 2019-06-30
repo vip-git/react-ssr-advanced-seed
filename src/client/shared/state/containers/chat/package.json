@@ -4,7 +4,7 @@
     "main": "./chat.redux-model.ts",
     "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
     "dependencies": {
-        "@omega-core/services": "0.3.4",
+        "@omega-core/services": "0.3.7",
         "@omega-core/rules": "0.3.5",
         "@omega-core/utils": "0.3.0"
     }

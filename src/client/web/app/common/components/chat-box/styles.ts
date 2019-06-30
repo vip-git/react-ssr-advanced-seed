@@ -62,6 +62,7 @@ const ChatStyles = (theme: any) => ({
     alignItems: 'center',
     overflow: 'auto',
     height: '100%',
+    margin: 10,
   },
   wrapper: {
     width: '100%',

@@ -58,7 +58,7 @@ class Chat extends Component<IChatProps, IChatState> {
       <Wrapper padding={false}>
         <AppBar position='static'>
           <Toolbar>
-            <Typography variant='title' color='inherit' style={{ margin: '0 auto' }}>
+            <Typography variant='h1' color='inherit' style={{ margin: '0 auto' }}>
                 { this.props.title }
             </Typography>
           </Toolbar>
