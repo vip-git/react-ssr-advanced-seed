@@ -2,6 +2,7 @@ import { ReactType } from 'react';
 
 export interface IChatProps {
   classes: {
+    avatar: string;
     root: string;
     button: string;
     header: string;

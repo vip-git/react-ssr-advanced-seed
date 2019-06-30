@@ -48,7 +48,7 @@ class Chat extends Component<IChatProps, IChatState> {
       <List subheader={<ListSubheader disableSticky>Contacts</ListSubheader>}>
         { defaultUsers.map((contact: IContact, index) => (
           <ListItem key={`ListItem-${contact.id}`} button>
-            {contact.avatar}
+            <Avatar alt='' src={contact.avatar} className={classes.avatar} />
             <ListItemText primary={contact.name} secondary={contact.status} />
           </ListItem>
         ))}
@@ -58,7 +58,7 @@ class Chat extends Component<IChatProps, IChatState> {
       <Wrapper padding={false}>
         <AppBar position='static'>
           <Toolbar>
-            <Typography variant='h1' color='inherit' style={{ margin: '0 auto' }}>
+            <Typography variant='h6' color='inherit' style={{ margin: '0 auto' }}>
                 { this.props.title }
             </Typography>
           </Toolbar>
@@ -81,12 +81,12 @@ class Chat extends Component<IChatProps, IChatState> {
                       </IconButton>
                     </Hidden>
                     <div className={classes.headerLeft} style={{ width: '100%', maxWidth: '100%' }}>
-                      <Avatar alt='' src={face1} />
+                      <Avatar alt='' src={face1} className={classes.avatar} />
                       <ListItemText primary='Robert' secondary='Online' />
                     </div>
                     <List dense>
                       <ListItem>
-                        <Avatar alt='' src={face2} />
+                        <Avatar alt='' src={face2} className={classes.avatar} />
                         <ListItemText primary='Bobby' secondary='Online' />
                       </ListItem>
                     </List>

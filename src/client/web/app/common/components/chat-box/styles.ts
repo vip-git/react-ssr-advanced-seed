@@ -10,6 +10,9 @@ const ChatStyles = (theme: any) => ({
     marginTop: '-72px',
     padding: '8px',
   },
+  avatar: {
+    margin: 10,
+  },
   appBar: {
     zIndex: theme.zIndex.drawer + 1,
     position: 'relative',

@@ -14,36 +14,36 @@ export default [{
   id: 1,
   name: 'Bobby Sullivan',
   status: 'Mollis Nullam',
-  avatar: <Avatar alt='' src={face3} />,
+  avatar: face3,
 }, {
   id: 2,
   name: 'Bryan Morgan',
   status: 'Risus Justo',
-  avatar: <Avatar alt='' src={face4} />,
+  avatar: face4,
 }, {
   id: 3,
   name: 'Phillip Caroll',
   status: 'Mollis Nibh',
-  avatar: <Avatar alt='' src={face5} />,
+  avatar: face5,
 }, {
   id: 4,
   name: 'Brandon Boyd',
   status: 'Dolor Mattis',
-  avatar: <Avatar alt='' src={face6} />,
+  avatar: face6,
 }, {
   id: 5,
   name: 'Laura Mason',
   status: 'Commodo Amet',
-  avatar: <Avatar alt='' src={face7} />,
+  avatar: face7,
 }, {
   id: 6,
   name: 'Barbara Chapman',
   status: 'Tellus Sollicitudin',
-  avatar: <Avatar alt='' src={face2} />,
+  avatar: face2,
 }, {
   id: 7,
   name: 'Doris Baker',
   status: 'Nibh Adipiscing',
-  avatar: <Avatar alt='' src={face1} />,
+  avatar: face1,
 },
 ];
