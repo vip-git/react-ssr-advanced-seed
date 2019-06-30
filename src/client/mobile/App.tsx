@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 
 // Shared Components
-import SharedComponent from '@omega-shared-components/content';
+// import SharedComponent from '@omega-shared-components/content';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -38,7 +38,7 @@ export default class App extends Component<Props, any> {
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <SharedComponent style={{ flex: 0, padding: 20 }} />
+        {/* <SharedComponent style={{ flex: 0, padding: 20 }} /> */}
       </View>
     );
   }
