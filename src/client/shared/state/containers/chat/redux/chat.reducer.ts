@@ -34,6 +34,12 @@ export default (state = initialState, action: { type: any; payload?: {}; }) => {
         chats: (state as any).chats.filter((c: { productCommentSn: any; }) => c.productCommentSn !== payload),
       };
     }
+    case ChatReduxModel.actionTypes.PROCESS_ERROR_CHAT_RESPONSE: {
+      return {
+        ...state,
+        error: payload,
+      };
+    }
   }
 
   return state;

@@ -1,8 +1,11 @@
-import ChatBox from '@omega-web-components/chat-box';
-import ContentBox from '@omega-shared-components/content';
+// Components
+import ChatComponent from '@omega-web-components/chat-box';
+import DialogComponent from '@omega-web-components/dialog';
+import ContentComponent from '@omega-shared-components/content';
 
 export const ChatComponentsEngine =
 {
-  ChatComponent: ChatBox,
-  ContentComponent: ContentBox,
+  ChatComponent,
+  ContentComponent,
+  DialogComponent,
 };

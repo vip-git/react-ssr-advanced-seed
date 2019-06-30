@@ -14,6 +14,11 @@ interface IAction {
    };
 }
 
+interface IDataResponse {
+    error?: boolean;
+    message?: string;
+}
+
 class ChatEffect {
     /**
      * GET chat epic
@@ -24,10 +29,21 @@ class ChatEffect {
       RulesEngine
         .applyRule(action$,
           ChatReduxModel.actionTypes.READ_ALL_CHATS,
-          (          action: any) => [ChatReduxModel.rules.validateChat(action), ChatReduxModel.rules.validateChatAgain(action)],
+          (action: any) => [
+            ChatReduxModel.rules.validateChat(action),
+            ChatReduxModel.rules.validateChatAgain(action),
+          ],
           () => ([
-            map(action => ChatReduxModel.services.requestAllChats()),
-            map(data => ChatReduxModel.actions.reducer.processAllChats(data)),
+            map(action => ChatReduxModel.services.requestAllChats(action)),
+            map(data => ChatReduxModel.rules.isValidChatResponse(data)),
+            map((data: IDataResponse) => {
+              if (data && data.error) {
+                return ChatReduxModel.actions.reducer.processErrorChatResponse({
+                  ...data,
+                });
+              }
+              return ChatReduxModel.actions.reducer.processAllChats(data);
+            }),
           ]),
         )
 

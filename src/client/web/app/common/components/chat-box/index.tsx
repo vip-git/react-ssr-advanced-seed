@@ -165,7 +165,7 @@ class Chat extends Component<IChatProps, IChatState> {
                           margin='normal'
                           className={classes.input}
                         />
-                        <Button variant='fab' color='primary' aria-label='send' style={{ marginRight: 10 }} className={classes.button}>
+                        <Button variant='contained' color='primary' aria-label='send' style={{ marginRight: 10 }} className={classes.button}>
                           <SendIcon />
                         </Button>
                       </Grid>

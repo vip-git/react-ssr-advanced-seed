@@ -14,6 +14,8 @@ export const ChatActionTypes = {
   PROCESS_DELETED_CHAT: 'chat/process-deleted-chat',
 
   UPDATE_CHAT: 'chat/update-chat',
+
+  PROCESS_ERROR_CHAT_RESPONSE: 'chat/process-error-response',
 };
 
 class ChatActions {
@@ -66,6 +68,11 @@ class ChatActions {
     type: ChatActionTypes.UPDATE_CHAT,
     payload,
   })
+
+  static processErrorChatResponse = (payload: any) => ({
+    type: ChatActionTypes.PROCESS_ERROR_CHAT_RESPONSE,
+    payload,
+  })
 }
 
 export const ChatActionsEngine = {
@@ -82,5 +89,6 @@ export const ChatActionsEngine = {
     processAllUsers: (payload: any) => ChatActions.processAllUsers(payload),
     processCreateChat: (payload: any) => ChatActions.processCreateChat(payload),
     processRemoveChat: (payload: any) => ChatActions.processRemoveChat(payload),
-  }
+    processErrorChatResponse: (payload: any) => ChatActions.processErrorChatResponse(payload),
+  },
 };
