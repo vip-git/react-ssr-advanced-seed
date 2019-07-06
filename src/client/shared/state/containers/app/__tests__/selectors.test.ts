@@ -1,5 +1,5 @@
-import { getLocale } from './selectors';
-import { initialState } from './reducer';
+import { getLocale } from '../selectors';
+import { initialState } from '../reducer';
 
 const state = {
     app: initialState,

@@ -2,6 +2,8 @@
 /* eslint-disable func-names */
 // Setup Env variables
 module.exports = function (wallaby) {
+  const path = require('path');
+  process.env.NODE_PATH += path.delimiter + path.join(wallaby.localProjectDir, 'chat', 'node_modules');
   return {
     files: [
       'tsconfig.json',
@@ -9,6 +11,14 @@ module.exports = function (wallaby) {
       'jest.frontend.config.js',
       'babel.config.js',
       { pattern: './scripts/config/**' },
+      {
+        pattern: 'src/client/**/node_modules/**',
+        ignore: true,
+      },
+      {
+        pattern: 'src/server/**/node_modules/**',
+        ignore: true,
+      },
       'src/**/*.+(sass|scss|jpg|jpeg|gif|png|svg)',
       { pattern: 'src/server/**/*.ts', load: false },
       { pattern: 'src/server/**/*.spec.ts', ignore: true },
@@ -26,8 +36,8 @@ module.exports = function (wallaby) {
     ],
     tests: [
       { pattern: 'src/server/**/*.spec.ts' },
-      { pattern: 'src/client/**/__tests__/*.test.ts' },
-      { pattern: 'src/client/**/__tests__/*.test.tsx' },
+      { pattern: 'src/client/web/**/__tests__/*.test.ts' },
+      { pattern: 'src/client/web/**/__tests__/*.test.tsx' },
     ],
     env: {
       type: 'node',
