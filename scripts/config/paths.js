@@ -12,6 +12,8 @@ const paths = {
     srcClient: resolveApp('src/client/web'),
     srcServer: resolveApp('src/client/web/ssr'),
     srcShared: resolveApp('src/client/web/app'),
+    srcBackEndModules: resolveApp('src/server/node_modules'),
+    srcFrontEndModules: resolveApp('src/client/web/node_modules'),
     publicPath: '/static/',
 };
 
@@ -20,6 +22,8 @@ paths.resolveModules = [
     paths.srcServer,
     paths.srcShared,
     paths.src,
+    paths.srcBackEndModules,
+    paths.srcFrontEndModules,
     'node_modules',
 ];
 

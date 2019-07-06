@@ -41,7 +41,7 @@
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
     "testPathIgnorePatterns": [
       "\\.snap$",
-      "<rootDir>/node_modules/(?!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)\/)",
+      "<rootDir>/node_modules/(?!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)/)",
       "<rootDir>/lib/"
     ],
     "cacheDirectory": ".jest/cache"
