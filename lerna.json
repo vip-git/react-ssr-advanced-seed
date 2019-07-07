@@ -10,5 +10,11 @@
     "src/client/*",
     "src/client/web/*"
   ],
+  "command": {
+    "bootstrap": {
+      "ignore": "__tests__",
+      "npmClientArgs": ["--no-package-lock"]
+    }
+  },
   "version": "independent"
 }
