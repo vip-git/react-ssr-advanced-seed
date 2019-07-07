@@ -1,12 +1,14 @@
+// Library
 import _ from 'lodash';
 import { Observable, throwError } from 'rxjs';
+import { ofType } from 'redux-observable';
 import { catchError, filter } from 'rxjs/operators';
 
 // This should be a library eventually
 export class RulesEngine {
   static applyRule = (action$, actionType, rules, successCallback) => 
-    action$.ofType(actionType)
-      .pipe(
+    action$.pipe(
+        ofType(actionType),
         filter((action) => {
           const processRules = rules(action);
           const processedRuleErrors = _.filter(processRules, { error: true });
@@ -17,5 +19,5 @@ export class RulesEngine {
         }),
         ...successCallback(),
         catchError(err => throwError(`Some Rules are failing - ${err.stack}`)),
-      );
+    );
 }

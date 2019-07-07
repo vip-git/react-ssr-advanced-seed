@@ -10,11 +10,11 @@ module.exports = function (wallaby) {
       'babel.config.js',
       { pattern: './scripts/config/**' },
       {
-        pattern: 'src/client/**/node_modules/**',
+        pattern: 'src/client/**/node_modules/!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)/**',
         ignore: true,
       },
       {
-        pattern: 'src/server/**/node_modules/**',
+        pattern: 'src/server/**/node_modules/!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)/**',
         ignore: true,
       },
       'src/**/*.+(sass|scss|jpg|jpeg|gif|png|svg)',
@@ -25,7 +25,9 @@ module.exports = function (wallaby) {
       { pattern: 'src/client/**/*.tsx', load: false },
       { pattern: 'src/client/**/*.json', load: false },
       { pattern: 'src/client/**/*.test.ts', ignore: true },
+      { pattern: 'src/client/**/*.spec.ts', ignore: true },
       { pattern: 'src/client/**/__tests__/*.test.tsx', ignore: true },
+      { pattern: 'src/client/**/__tests__/*.spec.tsx', ignore: true },
       { pattern: './scripts/config/webpack.config.js/**', ignore: true },
       { pattern: './scripts/config/jest/puppeteer/**', ignore: true },
       { pattern: './scripts/config/jest/cssTransform.js', ignore: true },
@@ -34,8 +36,18 @@ module.exports = function (wallaby) {
     ],
     tests: [
       { pattern: 'src/server/**/*.spec.ts' },
-      { pattern: 'src/client/web/**/__tests__/*.test.ts' },
-      { pattern: 'src/client/web/**/__tests__/*.test.tsx' },
+      { pattern: 'src/client/**/__tests__/*.spec.ts' },
+      { pattern: 'src/client/**/__tests__/*.spec.tsx' },
+      { pattern: 'src/client/**/__tests__/*.test.ts' },
+      { pattern: 'src/client/**/__tests__/*.test.tsx' },
+      {
+        pattern: 'src/client/**/node_modules/**',
+        ignore: true,
+      },
+      {
+        pattern: 'src/server/**/node_modules/**',
+        ignore: true,
+      },
     ],
     env: {
       type: 'node',
@@ -46,7 +58,7 @@ module.exports = function (wallaby) {
         module: 'commonjs',
         jsx: 'React',
       }),
-      'src/client/**/*.js': wallaby.compilers.babel(),  
+      'src/client/**/*.js': wallaby.compilers.babel(),
     },
     setup(wallabyJS) {
       const jestConfig = require('./package').jest || require('./jest.frontend.config');

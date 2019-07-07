@@ -24,17 +24,17 @@ export const ChatModel = ({
     dispatchReadAllUsersAndChats: {
       template: 'two-effects-diagram',
       vars: {
-        '1': {
+        1: {
           effect: 'READ_ALL_USERS_AND_CHATS',
         },
-        '2': {
+        2: {
           effect: 'READ_ALL_USERS',
           rules: ['NONE', 'NONE'],
           api: 'requestAllUsers',
           reducer: 'PROCESS_ALL_USERS',
           state: 'defaultUsers: payload',
         },
-        '3': {
+        3: {
           effect: 'READ_ALL_CHATS',
           rules: ['validateChat', 'validateChatAgain'],
           api: 'requestAllChats',
@@ -46,7 +46,7 @@ export const ChatModel = ({
     dispatchCreateChat: {
       template: 'normal-diagram',
       vars: {
-        '1': {
+        1: {
           effect: 'hello asdads',
           rules: ['asdasdads 2', 'asdasdasd asdasd asd 2'],
           api: 'hello test asdasd asdasdapi 2',
@@ -58,7 +58,7 @@ export const ChatModel = ({
     dispatchDeleteChat: {
       template: 'normal-diagram',
       vars: {
-        '1': {
+        1: {
           effect: 'hello asdads',
           rules: ['asdasdads 2', 'asdasdasd asdasd asd 2'],
           api: 'hello test asdasd asdasdapi 2',
@@ -70,7 +70,7 @@ export const ChatModel = ({
     dispatchEditChat: {
       template: 'normal-diagram',
       vars: {
-        '1': {
+        1: {
           effect: 'hello asdads',
           rules: ['asdasdads 2', 'asdasdasd asdasd asd 2'],
           api: 'hello test asdasd asdasdapi 2',
