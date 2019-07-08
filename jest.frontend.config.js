@@ -9,9 +9,7 @@ module.exports = {
   ],
   setupTestFrameworkScriptFile: '<rootDir>/scripts/config/jest/setup.js',
   testMatch: [
-    '<rootDir>/src/client/web/**/__tests__/**/*.{js,jsx,ts,tsx,mjs}',
     '<rootDir>/src/client/web/**/?(*.)(spec|test).{js,jsx,ts,tsx,mjs}',
-    '<rootDir>/src/client/shared/**/__tests__/**/*.{js,jsx,ts,tsx,mjs}',
     '<rootDir>/src/client/shared/**/?(*.)(spec|test).{js,jsx,ts,tsx,mjs}',
   ],
   testEnvironment: 'node',
