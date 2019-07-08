@@ -1,6 +1,5 @@
 //  Library
 import { of } from 'rxjs';
-import { concat } from 'rxjs/operators';
 import configureStore from 'redux-mock-store';
 import { createEpicMiddleware } from 'redux-observable';
 
@@ -13,7 +12,6 @@ import UserMocks from './mocks/contacts';
 
 // Model
 import { ChatReduxModel } from '../../chat.redux-model';
-import console = require('console');
 
 const epicMiddleware = createEpicMiddleware();
 const middlewares = [epicMiddleware];
@@ -42,11 +40,13 @@ describe('Chat Effects', () => {
 
         ChatEffectsEngine.$readAllUsers(readAllUsers$)
         .subscribe((actual: any) => {
+            expect(ChatReduxModel.services.requestAllUsers).toBeCalled();
             expect(actual.payload).toBe(UserMocks);
           });
 
         ChatEffectsEngine.$readAllChats(readAllChats$)
         .subscribe((actual: any) => {
+            expect(ChatReduxModel.services.requestAllChats).toBeCalled();
             expect(actual.payload).toBe(ChatMocks);
         });
     });

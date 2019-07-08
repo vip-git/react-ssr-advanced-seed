@@ -4,9 +4,10 @@
  *
  * @format
  */
+/* ignore coverage */
 // eslint-disable-next-line import/no-extraneous-dependencies
 const { getDefaultConfig } = require('metro-config');
-
+/* ignore coverage */
 module.exports = (async () => {
   const {
     resolver: { sourceExts, assetExts },

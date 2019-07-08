@@ -10,15 +10,16 @@ import { ConnectedRouter as Router, routerMiddleware } from 'react-router-redux'
 import routes from './app/routes';
 import IntlProvider from './app/common/i18n/IntlProvider';
 import { configureStore } from '../shared/state';
-
+/* ignore coverage */
 const browserHistory = window['browserHistory'] || createHistory();
+/* ignore coverage */
 const store =
     window['store'] ||
     configureStore({
         initialState: window['__PRELOADED_STATE__'],
         middleware: [routerMiddleware(browserHistory)],
     });
-
+/* ignore coverage */
 hydrate(
     <Provider store={store}>
         <Router history={browserHistory}>
@@ -29,7 +30,7 @@ hydrate(
     </Provider>,
     document.getElementById('app'),
 );
-
+/* ignore coverage */
 if (process.env.NODE_ENV === 'development') {
     if (module['hot']) {
         module['hot'].accept();

@@ -16,7 +16,7 @@ export default class HTML extends React.Component<PropsT> {
         scripts: [],
         state: '{}',
     };
-
+    /* ignore coverage */
     render() {
         const head = Helmet.renderStatic();
         const { children, scripts, css, state } = this.props;

@@ -4,7 +4,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 
 // Shared Components
 // import SharedComponent from '@omega-shared-components/content';
-
+/* ignore coverage */
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -13,7 +13,7 @@ const instructions = Platform.select({
 });
 
 type Props = {};
-
+/* ignore coverage */
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
 });
-
+/* ignore coverage */
 export default class App extends Component<Props, any> {
   render() {
     return (

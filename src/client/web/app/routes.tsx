@@ -9,7 +9,7 @@ import App from './App';
 // Doc Generator
 // import DocGen from './common/components/doc-gen';
 // import { DocGenEngine } from '../../shared/common/utils/doc-gen.engine';
-
+/* ignore coverage */
 const routes = (
   <Switch>
       <Route exact path="/" component={App} />

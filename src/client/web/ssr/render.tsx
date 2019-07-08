@@ -25,7 +25,7 @@ interface IRes {
         };
     };
 }
-
+/* ignore coverage */
 const serverRenderer = () => (req: IReq, res: IRes) => {
     // const sheets = new ServerStyleSheets();
     // sheets.collect(

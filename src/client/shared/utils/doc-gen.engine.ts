@@ -1,5 +1,5 @@
 import _ from 'lodash';
-
+/* ignore coverage */
 export class DocGenEngine {
     static stringifyJson(data: any) {
         let cache = [];

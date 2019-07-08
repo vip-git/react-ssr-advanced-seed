@@ -9,11 +9,11 @@ import bodyParser from 'body-parser';
 import { configureStore } from '../shared/state';
 import serverRender from './ssr/render';
 import paths from '../../../scripts/config/paths';
-
+/* ignore coverage */
 require('dotenv').config();
-
+/* ignore coverage */
 const app = express();
-
+/* ignore coverage */
 // Use Nginx or Apache to serve static assets in production or remove the if() around the following
 // lines to use the express.static middleware to serve assets for production (not recommended!)
 if (process.env.NODE_ENV === 'development') {
@@ -22,26 +22,26 @@ if (process.env.NODE_ENV === 'development') {
         res.send('');
     });
 }
-
+/* ignore coverage */
 app.use(cors());
-
+/* ignore coverage */
 app.use(bodyParser.json());
-
+/* ignore coverage */
 app.use((req, res, next) => {
     req['store'] = configureStore();
     return next();
 });
-
+/* ignore coverage */
 const manifestPath = path.join(paths.clientBuild, paths.publicPath);
-
+/* ignore coverage */
 app.use(
     manifestHelpers({
         manifestPath: `${manifestPath}/manifest.json`,
     })
 );
-
+/* ignore coverage */
 app.use(serverRender());
-
+/* ignore coverage */
 // eslint-disable-next-line no-unused-vars
 app.use((err, req, res, next) => {
     return res.status(404).json({
@@ -65,7 +65,7 @@ app.use((err, req, res, next) => {
                 ),
     });
 });
-
+/* ignore coverage */
 app.listen(process.env.PORT || 8500, () => {
     console.log(
         `[${new Date().toISOString()}]`,
@@ -74,5 +74,5 @@ app.listen(process.env.PORT || 8500, () => {
 });
 
 export default app;
-
+/* ignore coverage */
 export const test = 'FOO';

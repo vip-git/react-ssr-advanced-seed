@@ -6,6 +6,7 @@ import { catchError, filter } from 'rxjs/operators';
 
 // This should be a library eventually
 export class RulesEngine {
+  /* ignore coverage */
   static applyRule = (action$, actionType, rules, successCallback) => 
     action$.pipe(
         ofType(actionType),
