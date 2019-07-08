@@ -9,5 +9,9 @@
         "@omega-web-components/dialog": "0.3.6",
         "@omega-shared-components/content": "0.3.19"
     },
-    "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b"
+    "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
+    "devDependencies": {
+        "@material-ui/core": "^4.2.0",
+        "@material-ui/icons": "^4.2.1"
+    }
 }

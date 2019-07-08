@@ -44,6 +44,8 @@ module.exports = function (wallaby) {
       { pattern: 'src/client/**/__tests__/*.spec.tsx' },
       { pattern: 'src/client/**/__tests__/*.test.ts' },
       { pattern: 'src/client/**/__tests__/*.test.tsx' },
+      { pattern: 'src/client/**/*.e2e-test.ts' },
+      { pattern: 'src/client/**/*.e2e-test.tsx' },
       {
         pattern: 'src/client/**/node_modules/**',
         ignore: true,

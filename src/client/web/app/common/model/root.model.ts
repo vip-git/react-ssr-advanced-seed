@@ -27,6 +27,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SendIcon from '@material-ui/icons/Send';
 
+/* ignore coverage */
 export const RootModel = ({
     libraries: {
         React,

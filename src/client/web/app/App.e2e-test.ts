@@ -1,14 +1,16 @@
 /* eslint-disable */
+/* ignore coverage */
 const faker = require('faker');
+/* ignore coverage */
 const puppeteer = require('puppeteer');
-
+/* ignore coverage */
 const person = {
   name: `${faker.name.firstName()} ${faker.name.lastName()}`,
   email: faker.internet.email(),
   phone: faker.phone.phoneNumber(),
   message: faker.random.words(),
 };
-
+/* ignore coverage */
 describe('H2 Text', () => {
   test('h2 loads correctly', async () => {
     const browser = await puppeteer.launch({
