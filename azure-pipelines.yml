@@ -16,7 +16,9 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
+    npm install -g codecov
     npm install
     npm test
     npm run build:frontend
+    codecov
   displayName: 'npm install and build'
