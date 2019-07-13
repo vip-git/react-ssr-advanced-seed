@@ -17,10 +17,10 @@ const app = express();
 // Use Nginx or Apache to serve static assets in production or remove the if() around the following
 // lines to use the express.static middleware to serve assets for production (not recommended!)
 if (process.env.NODE_ENV === 'development') {
-    app.use(paths.publicPath, express.static(path.join(paths.clientBuild, paths.publicPath)));
-    app.use('/favicon.ico', (req, res) => {
-        res.send('');
-    });
+  app.use(paths.publicPath, express.static(path.join(paths.clientBuild, paths.publicPath)));
+  app.use('/favicon.ico', (req, res) => {
+    res.send('');
+  });
 }
 /* ignore coverage */
 app.use(cors());
@@ -28,49 +28,49 @@ app.use(cors());
 app.use(bodyParser.json());
 /* ignore coverage */
 app.use((req, res, next) => {
-    req['store'] = configureStore();
-    return next();
+  req.store = configureStore();
+  return next();
 });
 /* ignore coverage */
 const manifestPath = path.join(paths.clientBuild, paths.publicPath);
 /* ignore coverage */
 app.use(
-    manifestHelpers({
-        manifestPath: `${manifestPath}/manifest.json`,
-    })
+  manifestHelpers({
+    manifestPath: `${manifestPath}/manifest.json`,
+  }),
 );
 /* ignore coverage */
 app.use(serverRender());
 /* ignore coverage */
 // eslint-disable-next-line no-unused-vars
-app.use((err, req, res, next) => {
-    return res.status(404).json({
-        status: 'error',
-        message: err.message,
-        stack:
-            // print a nicer stack trace by splitting line breaks and making them array items
-            process.env.NODE_ENV === 'development' &&
-            (err.stack || '')
-                .split('\n')
-                .map((line) => line.trim())
-                .map((line) => line.split(path.sep).join('/'))
-                .map((line) =>
-                    line.replace(
-                        process
-                            .cwd()
-                            .split(path.sep)
-                            .join('/'),
-                        '.'
-                    )
-                ),
-    });
-});
+app.use((err, req, res, next) =>
+  res.status(404).json({
+    status: 'error',
+    message: err.message,
+    stack:
+			// print a nicer stack trace by splitting line breaks and making them array items
+			process.env.NODE_ENV === 'development' &&
+			(err.stack || '')
+			  .split('\n')
+			  .map(line => line.trim())
+			  .map(line => line.split(path.sep).join('/'))
+			  .map(line =>
+			    line.replace(
+			      process
+			        .cwd()
+			        .split(path.sep)
+			        .join('/'),
+			      '.',
+			    ),
+			  ),
+  }),
+);
 /* ignore coverage */
 app.listen(process.env.PORT || 8500, () => {
-    console.log(
-        `[${new Date().toISOString()}]`,
-        chalk.blue(`App is running: 🌎 http://localhost:${process.env.PORT || 8500}`)
-    );
+  console.log(
+    `[${new Date().toISOString()}]`,
+    chalk.blue(`App is running: 🌎 http://localhost:${process.env.PORT || 8500}`),
+  );
 });
 
 export default app;

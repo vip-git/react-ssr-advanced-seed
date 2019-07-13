@@ -14,16 +14,17 @@ class ChatRules {
   static isValidChatResponse(data: any) {
     // console.log('validating response', data);
 
-    return (!data) ? {
-      error: true,
-      title: 'Invalid Token',
-      message: 'Invalid Token - Please login',
-    } : data;
+    return !data
+      ? {
+        error: true,
+        title: 'Invalid Token',
+        message: 'Invalid Token - Please login',
+			  }
+      : data;
   }
 }
 
-export const ChatRulesEngine =
-{
+export const ChatRulesEngine = {
   validateChat: (action: any) => ChatRules.validateChat(action),
   validateChatAgain: (action: any) => ChatRules.validateChatAgain(action),
   isValidChatResponse: (data: any) => ChatRules.isValidChatResponse(data),

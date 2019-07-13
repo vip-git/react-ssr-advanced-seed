@@ -6,7 +6,6 @@ class UserService {
   }
 }
 
-export const UserServiceEngine =
-{
+export const UserServiceEngine = {
   requestAllUsers: () => UserService.getAllUsers(),
 };

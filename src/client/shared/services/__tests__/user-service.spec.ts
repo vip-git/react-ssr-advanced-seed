@@ -5,8 +5,8 @@ import { UserServiceEngine } from '../user.service';
 import ContactMocks from '../mocks/contacts';
 
 describe('User Service', () => {
-    it('can get all chats', () => {
-        const allUsers = UserServiceEngine.requestAllUsers();
-        expect(allUsers).toBe(ContactMocks);
-    });
+  it('can get all chats', () => {
+    const allUsers = UserServiceEngine.requestAllUsers();
+    expect(allUsers).toBe(ContactMocks);
+  });
 });

@@ -14,31 +14,29 @@ import ChatContainer from '@omega-web-containers/chat';
 import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
 
 interface IState {
-  chats: {
-    currentUsers: {
-      id: string;
-      name: string;
-      status: string;
-      avatar: string;
-    };
-    currentChat: {
-      text: string;
-      type: string;
-      date: string;
-    };
-    defaultChats: any[];
-    defaultUsers: any[];
-  };
+	chats: {
+		currentUsers: {
+			id: string;
+			name: string;
+			status: string;
+			avatar: string;
+		};
+		currentChat: {
+			text: string;
+			type: string;
+			date: string;
+		};
+		defaultChats: any[];
+		defaultUsers: any[];
+	};
 }
 
-const storeFake = (state: IState) => {
-  return {
-    default: jest.fn(),
-    subscribe: jest.fn(),
-    dispatch: jest.fn(),
-    getState: () => state,
-  };
-};
+const storeFake = (state: IState) => ({
+  default: jest.fn(),
+  subscribe: jest.fn(),
+  dispatch: jest.fn(),
+  getState: () => state,
+});
 
 describe('container <ChatContainer />', () => {
   let wrapper;
@@ -53,11 +51,11 @@ describe('container <ChatContainer />', () => {
     });
 
     wrapper = mount(
-      <ThemeProvider theme={theme}>
-        <Provider store={store}>
-          <ChatContainer />
-        </Provider>
-      </ThemeProvider>,
+			<ThemeProvider theme={theme}>
+				<Provider store={store}>
+					<ChatContainer />
+				</Provider>
+			</ThemeProvider>,
     );
     container = wrapper.find(ChatContainer);
     component = container.find(ChatComponent);
@@ -69,23 +67,13 @@ describe('container <ChatContainer />', () => {
   });
 
   it('should map state to props', () => {
-    const expectedPropKeys = [
-      'sharedComponent',
-      'title',
-      'defaultChats',
-      'defaultUsers',
-    ];
+    const expectedPropKeys = ['sharedComponent', 'title', 'defaultChats', 'defaultUsers'];
 
     expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
   });
 
   it('should map dispatch to props', () => {
-    const expectedPropKeys = [
-      'sharedComponent',
-      'title',
-      'defaultChats',
-      'defaultUsers',
-    ];
+    const expectedPropKeys = ['sharedComponent', 'title', 'defaultChats', 'defaultUsers'];
 
     expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
   });

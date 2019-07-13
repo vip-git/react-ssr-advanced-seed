@@ -1,3 +1,5 @@
+/* eslint-disable import/no-extraneous-dependencies */
+/* eslint-disable eol-last */
 /**
  * Metro configuration for React Native
  * https://github.com/facebook/react-native
@@ -6,11 +8,16 @@
  */
 /* ignore coverage */
 // eslint-disable-next-line import/no-extraneous-dependencies
-const { getDefaultConfig } = require('metro-config');
+const {
+  getDefaultConfig,
+} = require('metro-config');
 /* ignore coverage */
 module.exports = (async () => {
   const {
-    resolver: { sourceExts, assetExts },
+    resolver: {
+      sourceExts,
+      assetExts,
+    },
   } = await getDefaultConfig();
   return {
     transformer: {

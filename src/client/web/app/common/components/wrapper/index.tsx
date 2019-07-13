@@ -6,11 +6,7 @@ import WrapperStyles from './styles';
 const Wrapper = (props) => {
   const { classes, children, padding } = props;
 
-  return (
-    <div className={padding ? classes.root : null}>
-      { children }
-    </div>
-  );
+  return <div className={padding ? classes.root : null}>{children}</div>;
 };
 
 Wrapper.prototypes = {

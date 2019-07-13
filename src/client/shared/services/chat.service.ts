@@ -5,8 +5,8 @@ import { of } from 'rxjs';
 import allChats from './mocks/chats';
 
 interface IAction {
-  type: string;
-  payload: object;
+	type: string;
+	payload: object;
 }
 
 class ChatService {
@@ -30,9 +30,8 @@ class ChatService {
   }
 }
 
-export const ChatServiceEngine =
-{
-  requestAllChats: (action) => ChatService.getAllChats(action),
+export const ChatServiceEngine = {
+  requestAllChats: action => ChatService.getAllChats(action),
   requestCreateChat: (payload: any) => ChatService.createChat(payload),
   requestRemoveChat: (chatId: any) => ChatService.removeChat(chatId),
   requestEditChat: (chatId: any) => ChatService.editChat(chatId),

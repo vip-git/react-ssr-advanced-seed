@@ -24,22 +24,22 @@ const styles = (theme: Theme) =>
   });
 
 export interface DialogTitleProps extends WithStyles<typeof styles> {
-  id: string;
-  children: React.ReactNode;
-  onClose?: () => void;
+	id: string;
+	children: React.ReactNode;
+	onClose?: () => void;
 }
 
 const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
   const { children, classes, onClose } = props;
   return (
-    <MuiDialogTitle disableTypography className={classes.root}>
-      <Typography variant='h6'>{children}</Typography>
-      {onClose ? (
-        <IconButton aria-label='Close' className={classes.closeButton} onClick={onClose}>
-          <CloseIcon />
-        </IconButton>
-      ) : null}
-    </MuiDialogTitle>
+		<MuiDialogTitle disableTypography className={classes.root}>
+			<Typography variant='h6'>{children}</Typography>
+			{onClose ? (
+				<IconButton aria-label='Close' className={classes.closeButton} onClick={onClose}>
+					<CloseIcon />
+				</IconButton>
+			) : null}
+		</MuiDialogTitle>
   );
 });
 
@@ -57,41 +57,35 @@ const DialogActions = withStyles((theme: Theme) => ({
 }))(MuiDialogActions);
 
 interface IDialogProps {
-  show: boolean;
-  content: string;
-  title: string;
-  handleClose: () => void;
+	show: boolean;
+	content: string;
+	title: string;
+	handleClose: () => void;
 }
 
 class CustomizedDialogs extends React.Component<IDialogProps, {}> {
   render() {
     const { show, handleClose, content, title } = this.props;
     return (
-      <div>
-        <Dialog
-          onClose={handleClose}
-          aria-labelledby='customized-dialog-title'
-          open={show || false}
-        >
-          <DialogTitle id='customized-dialog-title'>
-            { title }
-          </DialogTitle>
-          <DialogContent dividers
-          style={{
-              minWidth: 500,
-              minHeight: 300,
-          }}>
-            <Typography gutterBottom>
-                { content }
-            </Typography>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color='primary'>
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </div>
+			<div>
+				<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={show || false}>
+					<DialogTitle id='customized-dialog-title'>{title}</DialogTitle>
+					<DialogContent
+						dividers
+						style={{
+							minWidth: 500,
+							minHeight: 300,
+						}}
+					>
+						<Typography gutterBottom>{content}</Typography>
+					</DialogContent>
+					<DialogActions>
+						<Button onClick={handleClose} color='primary'>
+							Close
+						</Button>
+					</DialogActions>
+				</Dialog>
+			</div>
     );
   }
 }

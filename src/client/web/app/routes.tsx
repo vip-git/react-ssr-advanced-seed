@@ -11,10 +11,10 @@ import App from './App';
 // import { DocGenEngine } from '../../shared/common/utils/doc-gen.engine';
 /* ignore coverage */
 const routes = (
-  <Switch>
-      <Route exact path="/" component={App} />
-      {/* <Route component={App} /> */}
-      {/* <Route
+	<Switch>
+		<Route exact path="/" component={App} />
+		{/* <Route component={App} /> */}
+		{/* <Route
         exact
         path={'/docs'}
         render={() => {
@@ -31,7 +31,7 @@ const routes = (
             )}
         }
      /> */}
-  </Switch>
+	</Switch>
 );
 
 export default routes;

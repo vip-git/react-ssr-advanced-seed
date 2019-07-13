@@ -17,6 +17,4 @@ const notificationCenterWidth = 300;
 /* ignore coverage */
 const MobileBreakpoint = 960;
 
-export {
-  infoColor, warningColor, drawerWidth, notificationCenterWidth, MobileBreakpoint
-}
+export { infoColor, warningColor, drawerWidth, notificationCenterWidth, MobileBreakpoint };

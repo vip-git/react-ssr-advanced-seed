@@ -2,7 +2,7 @@
     "name": "ChatContainer",
     "dependencies": {
         "libraries": {
-        
+
         },
         "components": {
             "ChatComponentsEngine": "./chat.components"

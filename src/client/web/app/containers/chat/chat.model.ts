@@ -8,10 +8,9 @@ import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
 // Components
 import { ChatComponentsEngine } from './chat.components';
 
-export const ChatModel = ({
+export const ChatModel = {
   container: true,
-  i18nKeys: {
-  },
+  i18nKeys: {},
   libraries: {
     React,
     Component,
@@ -81,4 +80,4 @@ export const ChatModel = ({
     },
   },
   ...ChatReduxModel,
-});
+};
