@@ -25,6 +25,7 @@ if (!process.env.CI && argv.indexOf('--coverage') < 0) {
 
 if (process.env.CI) {
     argv.push('--ci');
+    argv.push('--coverage');
 }
 
 argv.push('--detectOpenHandles');

@@ -23,7 +23,7 @@
     "server": "npx pm2 start --name=node-api dist/server.js",
     "docker:prod": "node scripts/docker-build.js",
     "docker:prod:publish": "node scripts/docker-build.js --publish",
-    "test": "npm run test:frontend:web -- --coverage && npm run test:frontend:mobile -- --coverage && npm run test:backend -- --coverage",
+    "test": "npm run test:frontend:web && npm run test:frontend:mobile && npm run test:backend",
     "test:backend": "cross-env CI=true API_DB_USERNAME=postgres API_DB_PASSWORD=password API_DB_NAME=postgres node scripts/test.js --env=jsdom --config=jest.backend.config.js",
     "test:e2e": "node scripts/test.js --env=jsdom --config=jest.e2e.config.js",
     "test:watch": "cross-env API_DB_USERNAME=postgres API_DB_PASSWORD=password API_DB_NAME=postgres node scripts/test.js --env=jsdom --config=jest.backend.config.js",
