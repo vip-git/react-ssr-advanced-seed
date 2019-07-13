@@ -6,7 +6,7 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { connect } from 'react-redux';
 
 // Material UI
-import { withStyles } from '@material-ui/styles';
+import { withStyles, createStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Grid from '@material-ui/core/Grid';
@@ -38,6 +38,7 @@ export const RootModel = ({
         connect,
     },
     uiFrameworkComponents: {
+        createStyles,
         withStyles,
         AppBar,
         Toolbar,

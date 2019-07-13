@@ -181,4 +181,4 @@ class Chat extends Component<IChatProps, IChatState> {
   }
 }
 
-export default withStyles(ChatStyles)(Chat);
+export default withStyles((ChatStyles as any))(Chat);

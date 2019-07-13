@@ -1,6 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
+import { ThemeProvider } from '@material-ui/styles';
 import { mount } from 'enzyme';
+
+// Theme
+import theme from '../../../common/styles';
 
 // Internal
 import ChatComponent from '@omega-web-components/chat-box';
@@ -49,9 +53,11 @@ describe('container <ChatContainer />', () => {
     });
 
     wrapper = mount(
-      <Provider store={store}>
-        <ChatContainer />
-      </Provider>,
+      <ThemeProvider theme={theme}>
+        <Provider store={store}>
+          <ChatContainer />
+        </Provider>
+      </ThemeProvider>,
     );
     container = wrapper.find(ChatContainer);
     component = container.find(ChatComponent);
