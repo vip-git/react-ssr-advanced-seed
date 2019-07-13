@@ -27,7 +27,7 @@ app.use(cors());
 /* ignore coverage */
 app.use(bodyParser.json());
 /* ignore coverage */
-app.use((req, res, next) => {
+app.use((req: any, res, next) => {
   req.store = configureStore();
   return next();
 });
