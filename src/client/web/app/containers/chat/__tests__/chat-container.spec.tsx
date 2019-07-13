@@ -3,13 +3,31 @@ import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
 // Internal
-import ChatComponent from '@omega-web-components/chat-box'; // you need to fina a way to compiler this.
+import ChatComponent from '@omega-web-components/chat-box';
 import ChatContainer from '@omega-web-containers/chat';
 
 // Redux Model
 import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
 
-const storeFake = state => {
+interface IState {
+  chats: {
+    currentUsers: {
+      id: string;
+      name: string;
+      status: string;
+      avatar: string;
+    };
+    currentChat: {
+      text: string;
+      type: string;
+      date: string;
+    };
+    defaultChats: any[];
+    defaultUsers: any[];
+  };
+}
+
+const storeFake = (state: IState) => {
   return {
     default: jest.fn(),
     subscribe: jest.fn(),
@@ -33,7 +51,7 @@ describe('container <ChatContainer />', () => {
     wrapper = mount(
       <Provider store={store}>
         <ChatContainer />
-      </Provider>
+      </Provider>,
     );
     container = wrapper.find(ChatContainer);
     component = container.find(ChatComponent);
