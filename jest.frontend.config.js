@@ -14,6 +14,17 @@ module.exports = {
     '<rootDir>/src/client/shared/**/?(*.)(spec|test).{js,jsx,ts,tsx,mjs}',
   ],
   coverageDirectory: '<rootDir>/frontend-coverage',
+  coveragePathIgnorePatterns: [
+    '<rootDir>/node_modules',
+    '<rootDir>/src/client/mobile/metro.config.js',
+    '<rootDir>/src/client/mobile/babel.config.js',
+    '<rootDir>/src/client/mobile/__tests__',
+    '<rootDir>/src/client/web/ssr',
+    '<rootDir>/src/client/web/server.ts',
+    '<rootDir>/src/client/web/app/App.e2e-test.ts',
+    '<rootDir>/src/client/web/app/common/components/doc-gen',
+    '<rootDir>/src/client/shared/utils/doc-gen.engine.ts',
+  ],
   testEnvironment: 'node',
   testURL: 'http://localhost',
   transform: {
