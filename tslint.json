@@ -12,6 +12,7 @@
             true,
             "single"
         ],
+        "trailing-comma": false,
         "indent": false,
         "ordered-imports": [
             false

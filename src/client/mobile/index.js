@@ -1,15 +1,13 @@
-/* eslint-disable eol-last */
-/* eslint-disable indent */
 /**
  * @format
  */
 
 import {
-    AppRegistry,
+    AppRegistry
 } from 'react-native';
-import App from './App.tsx';
+import App from './App';
 import {
-    name as appName,
+    name as appName
 } from './app.json';
-/* ignore coverage */
+
 AppRegistry.registerComponent(appName, () => App);
