@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 const paths = require('./scripts/config/paths');
 
 module.exports = {
@@ -12,6 +13,7 @@ module.exports = {
     '<rootDir>/src/client/web/**/?(*.)(spec|test).{js,jsx,ts,tsx,mjs}',
     '<rootDir>/src/client/shared/**/?(*.)(spec|test).{js,jsx,ts,tsx,mjs}',
   ],
+  coverageDirectory: '<rootDir>/frontend-coverage',
   testEnvironment: 'node',
   testURL: 'http://localhost',
   transform: {

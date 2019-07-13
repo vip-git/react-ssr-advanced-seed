@@ -1,3 +1,4 @@
+/* eslint-disable eol-last */
 const paths = require('./scripts/config/paths');
 
 module.exports = {
@@ -14,6 +15,7 @@ module.exports = {
     '<rootDir>/src/server/app/services/**/?(*.)(spec|test).{ts,tsx,mjs}',
     '<rootDir>/src/server/app/modules/**/?(*.)(spec|test).{ts,tsx,mjs}',
   ],
+  coverageDirectory: '<rootDir>/backend-coverage',
   testEnvironment: 'node',
   testURL: 'http://localhost',
   transform: {

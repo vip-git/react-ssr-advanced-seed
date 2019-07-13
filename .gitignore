@@ -18,6 +18,8 @@ package-lock.json
 # tests
 /test
 /coverage
+/frontend-coverage
+/backend-coverage
 /.nyc_output
 
 # dist
