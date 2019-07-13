@@ -16,6 +16,13 @@ module.exports = {
     '<rootDir>/src/server/app/modules/**/?(*.)(spec|test).{ts,tsx,mjs}',
   ],
   coverageDirectory: '<rootDir>/backend-coverage',
+  coveragePathIgnorePatterns: [
+    '<rootDir>/node_modules',
+    '<rootDir>/src/server/app/generate-typings.ts',
+    '<rootDir>/src/server/app/graphql.schema.ts',
+    '<rootDir>/src/server/app/app.module.ts',
+    '<rootDir>/src/server/app/modules/*.module.ts',
+  ],
   testEnvironment: 'node',
   testURL: 'http://localhost',
   transform: {
