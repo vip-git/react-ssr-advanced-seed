@@ -13,7 +13,7 @@ describe('DateScalar', () => {
     expect(getTypeOfValueDate).toBeDefined();
     expect(getTypeOfValueDate).toBe(1563020782000);
   });
-  it('should return value of type date', async () => {
+  it('should be able to parse literal', async () => {
     const mockDate = new Date(1563020782 * 1000);
     const mockAstValue = { kind: 'IntValue', value: 1563020782 * 1000 };
     const getTypeOfValueNull = new DateScalar().parseLiteral(mockDate);
