@@ -4,10 +4,10 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import IntlProvider from '../app/common/i18n/IntlProvider';
-// import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
+import { ServerStyleSheets, ThemeProvider } from '@material-ui/styles';
 import Html from './html';
 import App from '../app/App';
-// import theme from '../../web/app/common/styles';
+import theme from '../../web/app/common/styles';
 
 interface IReq {
     store?: { getState: () => void; };
@@ -27,19 +27,19 @@ interface IRes {
 }
 /* ignore coverage */
 const serverRenderer = () => (req: IReq, res: IRes) => {
-    // const sheets = new ServerStyleSheets();
-    // sheets.collect(
-    //     <ThemeProvider theme={theme}>
-    //     </ThemeProvider>,
-    // ),
+    const sheets = new ServerStyleSheets();
     const content = renderToString(
-        <Provider store={req.store}>
-            <Router location={req.url} context={{}}>
-                <IntlProvider>
-                    <App />
-                </IntlProvider>
-            </Router>
-        </Provider>,
+        sheets.collect(
+            <ThemeProvider theme={theme}>
+                <Provider store={req.store}>
+                    <Router location={req.url} context={{}}>
+                        <IntlProvider>
+                            <App />
+                        </IntlProvider>
+                    </Router>
+                </Provider>
+            </ThemeProvider>,
+        ),
     );
 
     const state = JSON.stringify(req.store.getState());

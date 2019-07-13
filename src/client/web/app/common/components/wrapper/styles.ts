@@ -1,6 +1,6 @@
 const WrapperStyles = theme => ({
     root: {
-      padding: theme.spacing.unit
+      padding: theme.spacing(2)
     }
   });
   

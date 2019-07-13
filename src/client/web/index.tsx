@@ -1,15 +1,18 @@
 /* tslint:disable:no-string-literal */
 // Library
 import React from 'react';
-import createHistory from 'history/createBrowserHistory';
+import { createBrowserHistory as createHistory } from 'history';
 import { hydrate } from 'react-dom';
 import { Provider } from 'react-redux';
 import { ConnectedRouter as Router, routerMiddleware } from 'react-router-redux';
 
 // Internal
 import routes from './app/routes';
+import { ThemeProvider } from '@material-ui/styles';
 import IntlProvider from './app/common/i18n/IntlProvider';
 import { configureStore } from '../shared/state';
+import theme from './app/common/styles';
+
 /* ignore coverage */
 const browserHistory = window['browserHistory'] || createHistory();
 /* ignore coverage */
@@ -21,13 +24,15 @@ const store =
     });
 /* ignore coverage */
 hydrate(
-    <Provider store={store}>
-        <Router history={browserHistory}>
-            <IntlProvider>
-                { routes }
-            </IntlProvider>
-        </Router>
-    </Provider>,
+    <ThemeProvider theme={theme}>
+        <Provider store={store}>
+            <Router history={browserHistory}>
+                <IntlProvider>
+                    { routes }
+                </IntlProvider>
+            </Router>
+        </Provider>
+    </ThemeProvider>,
     document.getElementById('app'),
 );
 /* ignore coverage */

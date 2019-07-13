@@ -71,7 +71,7 @@ class CustomizedDialogs extends React.Component<IDialogProps, {}> {
         <Dialog
           onClose={handleClose}
           aria-labelledby='customized-dialog-title'
-          open={show}
+          open={show || false}
         >
           <DialogTitle id='customized-dialog-title'>
             { title }

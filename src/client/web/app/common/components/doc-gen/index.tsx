@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 // Material UI
-import { withStyles } from '@material-ui/core/styles';
+import { withStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
@@ -34,9 +34,9 @@ const styles = theme => ({
   },
   text: {
     fontSize: '2em',
-    paddingTop: theme.spacing.unit * 2,
-    paddingLeft: theme.spacing.unit * 2,
-    paddingRight: theme.spacing.unit * 2,
+    paddingTop: theme.spacing(2) * 2,
+    paddingLeft: theme.spacing(2) * 2,
+    paddingRight: theme.spacing(2) * 2,
   },
 });
 /* ignore coverage */
