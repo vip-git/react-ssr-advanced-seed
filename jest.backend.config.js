@@ -12,6 +12,7 @@ module.exports = {
   testMatch: [
     '<rootDir>/src/server/app/modules/**/*.spec.{ts,tsx,mjs}',
     '<rootDir>/src/server/app/services/**/*.spec.{ts,tsx,mjs}',
+    '<rootDir>/src/server/app/scalars/**/*.spec.{ts,tsx,mjs}',
     '<rootDir>/src/server/app/services/**/?(*.)(spec|test).{ts,tsx,mjs}',
     '<rootDir>/src/server/app/modules/**/?(*.)(spec|test).{ts,tsx,mjs}',
   ],
@@ -21,7 +22,7 @@ module.exports = {
     '<rootDir>/src/server/app/generate-typings.ts',
     '<rootDir>/src/server/app/graphql.schema.ts',
     '<rootDir>/src/server/app/app.module.ts',
-    '<rootDir>/src/server/app/modules/*.module.ts',
+    '<rootDir>/src/server/app/modules/cats/cats.module.ts',
   ],
   testEnvironment: 'node',
   testURL: 'http://localhost',
