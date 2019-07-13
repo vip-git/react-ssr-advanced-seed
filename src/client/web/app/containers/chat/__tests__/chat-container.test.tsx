@@ -3,8 +3,11 @@ import { Provider } from 'react-redux';
 import { mount } from 'enzyme';
 
 // Internal
-// import ChatComponent from '@omega-web-components/chat-box'; // you need to fina a way to compiler this.
-import ChatContainer from '../';
+import ChatComponent from '@omega-web-components/chat-box'; // you need to fina a way to compiler this.
+import ChatContainer from '@omega-web-containers/chat';
+
+// Redux Model
+import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
 
 const storeFake = state => {
   return {
@@ -23,7 +26,9 @@ describe('container <ChatContainer />', () => {
   beforeEach(() => {
     jest.resetAllMocks();
 
-    const store = storeFake({});
+    const store = storeFake({
+      chats: ChatReduxModel.attributes,
+    });
 
     wrapper = mount(
       <Provider store={store}>
@@ -31,26 +36,32 @@ describe('container <ChatContainer />', () => {
       </Provider>
     );
     container = wrapper.find(ChatContainer);
-    // component = container.find(ChatComponent);
+    component = container.find(ChatComponent);
   });
 
   it('should render both the container and the component ', () => {
     expect(container.length).toBeTruthy();
-    // expect(component.length).toBeTruthy();
+    expect(component.length).toBeTruthy();
   });
 
   it('should map state to props', () => {
     const expectedPropKeys = [
-      'users',
-      'auth',
-      'config',
+      'sharedComponent',
+      'title',
+      'defaultChats',
+      'defaultUsers',
     ];
 
     expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
   });
 
   it('should map dispatch to props', () => {
-    const expectedPropKeys = ['load'];
+    const expectedPropKeys = [
+      'sharedComponent',
+      'title',
+      'defaultChats',
+      'defaultUsers',
+    ];
 
     expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
   });

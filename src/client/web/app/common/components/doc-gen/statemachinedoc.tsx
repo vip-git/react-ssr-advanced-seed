@@ -9,7 +9,7 @@ import go from 'gojs';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 import Typography from '@material-ui/core/Typography';
-
+/* ignore coverage */
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ backgroundColor: '#dae4e4', border: '1px solid #b9b9b9;', padding: 8 * 3 }}>
@@ -17,11 +17,11 @@ function TabContainer(props) {
     </Typography>
   );
 }
-
+/* ignore coverage */
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
+/* ignore coverage */
 export class StateMachineDoc extends React.Component<any, any> {
   state = {
     value: 0,
@@ -262,9 +262,9 @@ export class StateMachineDoc extends React.Component<any, any> {
           ruleCounter++;
         }
       })
-      console.log('docVariables', docVariables);
+      // console.log('docVariables', docVariables);
     });
-    console.log('redux diagram json', reduxDiagramJson);
+    // console.log('redux diagram json', reduxDiagramJson);
     myDiagram.model = go.Model.fromJson(reduxDiagramJson);
     var pos = myDiagram.model.modelData.position;
     if (pos) myDiagram.initialPosition = go.Point.parse(pos);

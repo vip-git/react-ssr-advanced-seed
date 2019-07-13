@@ -15,17 +15,17 @@ class ChatService {
   }
 
   static createChat(chatId: any) {
-    console.log('i was called to create');
+    // console.log('i was called to create');
     return of('test');
   }
 
   static removeChat(chatId: any) {
-    console.log('i was called to remove');
+    // console.log('i was called to remove');
     return of('test');
   }
 
   static editChat(chatId: any) {
-    console.log('i was called to edit');
+    // console.log('i was called to edit');
     return of('test');
   }
 }

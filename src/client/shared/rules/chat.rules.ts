@@ -1,18 +1,18 @@
 class ChatRules {
   static validateChat(action: any) {
-    console.log('i was called to validate chat', action);
+    // console.log('i was called to validate chat', action);
     // throw new Error('I could not update');
     return 'done';
   }
 
   static validateChatAgain(action: any) {
-    console.log('i was called to validate chat again', action);
+    // console.log('i was called to validate chat again', action);
     // throw new Error('I could not update again');
     return 'done';
   }
 
   static isValidChatResponse(data: any) {
-    console.log('validating response', data);
+    // console.log('validating response', data);
 
     return (!data) ? {
       error: true,

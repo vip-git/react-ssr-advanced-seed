@@ -4,7 +4,7 @@ import _ from 'lodash';
 import React from 'react';
 import PropTypes from 'prop-types';
 import go from 'gojs';
-
+/* ignore coverage */
 export class UmlDocGen extends React.Component<any, any> {
   componentDidMount() {
     var $ = go.GraphObject.make;
@@ -351,7 +351,7 @@ export class UmlDocGen extends React.Component<any, any> {
           new go.Binding("toArrow", "relationship", convertToArrow))
       );
 
-    console.log('doc engine response', this.props.docs);
+    // console.log('doc engine response', this.props.docs);
     
     // setup a few example class nodes and relationships
     var nodedata: any = [

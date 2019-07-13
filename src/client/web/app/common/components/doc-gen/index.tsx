@@ -13,7 +13,7 @@ import Typography from '@material-ui/core/Typography';
 // Internal Components
 import { UmlDocGen } from './umldoc';
 import { StateMachineDoc } from './statemachinedoc';
-
+/* ignore coverage */
 function TabContainer(props) {
   return (
     <Typography component="div" style={{ backgroundColor: '#dae4e4', border: '1px solid #b9b9b9;', padding: 8 * 3 }}>
@@ -21,11 +21,11 @@ function TabContainer(props) {
     </Typography>
   );
 }
-
+/* ignore coverage */
 TabContainer.propTypes = {
   children: PropTypes.node.isRequired,
 };
-
+/* ignore coverage */
 const styles = theme => ({
   root: {
     flexGrow: 1,
@@ -39,7 +39,7 @@ const styles = theme => ({
     paddingRight: theme.spacing.unit * 2,
   },
 });
-
+/* ignore coverage */
 class DocGen extends React.Component<any, any> {
   state = {
     value: 0,
