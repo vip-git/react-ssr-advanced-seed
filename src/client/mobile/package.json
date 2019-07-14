@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"start": "react-native start",
-		"test": "jest --env=jsdom --config=jest.config.js",
+		"test": "jest --env=jsdom --config=jest.config.js --coverage",
 		"lint": "eslint ."
 	},
 	"dependencies": {
