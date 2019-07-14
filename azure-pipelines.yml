@@ -7,12 +7,16 @@ trigger:
 - master
 
 pool:
-  vmImage: 'ubuntu-latest'
+  container: 
+    image: circleci/node:8.16.0
+    name: react-ssr-advanced
 
 ## Multi-container support here
 services:
   postgres:
     image: circleci/postgres:9.6.13-alpine
+    ports:
+      - "5432:5432"
     volumes:
     - db-data:/var/lib/postgresql/data
     env:
@@ -22,11 +26,6 @@ services:
 ## End multi-container
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
 - script: |
     npm install -g codecov
     npm install
