@@ -15,6 +15,8 @@ pool:
 services:
   postgres:
     image: circleci/postgres:9.6.13-alpine
+    ports:
+      - "5432"
     volumes:
     - db-data:/var/lib/postgresql/data
     env:
