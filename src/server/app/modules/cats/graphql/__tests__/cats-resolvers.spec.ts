@@ -28,7 +28,7 @@ describe('CatsResolvers', () => {
 	});
 
 	describe('create', () => {
-		it('should return an array of cats', async () => {
+		it('should return created cat', async () => {
 			const mockedCatData = {
 				id: 1,
 				age: 2,
@@ -53,7 +53,7 @@ describe('CatsResolvers', () => {
 	});
 
 	describe('findOneById', () => {
-		it('should return an array of cats', async () => {
+		it('should return single cat', async () => {
 			const getSingleCat = await catsResolver.findOneById(
 				null,
 				{ id: 1 },
