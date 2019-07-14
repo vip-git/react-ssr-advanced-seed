@@ -8,13 +8,13 @@ trigger:
 
 pool:
   container: 
-    image: node:alpine
+    image: circleci/node:8.16.0
     name: react-ssr-advanced
 
 ## Multi-container support here
 services:
   postgres:
-    image: postgres:9.4
+    image: circleci/postgres:9.6.13-alpine
     volumes:
     - db-data:/var/lib/postgresql/data
     env:
@@ -25,9 +25,9 @@ services:
 
 steps:
 - script: |
-    npm install -g codecov
+    npm install codecov
     npm install
     npm test
     npm run build:frontend
-    codecov
-  displayName: 'npm install and build'
+    npx codecov
+  displayName: 'npm install, test and build'
