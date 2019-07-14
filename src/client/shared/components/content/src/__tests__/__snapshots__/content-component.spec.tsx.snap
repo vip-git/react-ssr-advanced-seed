@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SharedComponent <SharedComponent /> Shared Component Web renders correctly 1`] = `[Function]`;
+
+exports[`SharedComponent <SharedComponent /> Shared Component renders child component correctly 1`] = `[Function]`;

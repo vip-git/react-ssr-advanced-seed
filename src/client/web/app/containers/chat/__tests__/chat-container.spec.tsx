@@ -32,49 +32,63 @@ interface IState {
 }
 
 const storeFake = (state: IState) => ({
-  default: jest.fn(),
-  subscribe: jest.fn(),
-  dispatch: jest.fn(),
-  getState: () => state,
+	default: jest.fn(),
+	subscribe: jest.fn(),
+	dispatch: jest.fn(),
+	getState: () => state
 });
 
 describe('container <ChatContainer />', () => {
-  let wrapper;
-  let component;
-  let container;
+	let wrapper;
+	let component;
+	let container;
 
-  beforeEach(() => {
-    jest.resetAllMocks();
+	beforeEach(() => {
+		jest.resetAllMocks();
 
-    const store = storeFake({
-      chats: ChatReduxModel.attributes,
-    });
+		const store = storeFake({
+			chats: ChatReduxModel.attributes
+		});
 
-    wrapper = mount(
+		wrapper = mount(
 			<ThemeProvider theme={theme}>
 				<Provider store={store}>
 					<ChatContainer />
 				</Provider>
-			</ThemeProvider>,
-    );
-    container = wrapper.find(ChatContainer);
-    component = container.find(ChatComponent);
-  });
+			</ThemeProvider>
+		);
+		container = wrapper.find(ChatContainer);
+		component = container.find(ChatComponent);
+	});
 
-  it('should render both the container and the component ', () => {
-    expect(container.length).toBeTruthy();
-    expect(component.length).toBeTruthy();
-  });
+	it('should render both the container and the component ', () => {
+		expect(container.length).toBeTruthy();
+		expect(component.length).toBeTruthy();
+	});
 
-  it('should map state to props', () => {
-    const expectedPropKeys = ['sharedComponent', 'title', 'defaultChats', 'defaultUsers'];
+	it('should map state to props', () => {
+		const expectedPropKeys = [
+			'sharedComponent',
+			'title',
+			'defaultChats',
+			'defaultUsers'
+		];
 
-    expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
-  });
+		expect(Object.keys(component.props())).toEqual(
+			expect.arrayContaining(expectedPropKeys)
+		);
+	});
 
-  it('should map dispatch to props', () => {
-    const expectedPropKeys = ['sharedComponent', 'title', 'defaultChats', 'defaultUsers'];
+	it('should map dispatch to props', () => {
+		const expectedPropKeys = [
+			'sharedComponent',
+			'title',
+			'defaultChats',
+			'defaultUsers'
+		];
 
-    expect(Object.keys(component.props())).toEqual(expect.arrayContaining(expectedPropKeys));
-  });
+		expect(Object.keys(component.props())).toEqual(
+			expect.arrayContaining(expectedPropKeys)
+		);
+	});
 });

@@ -13,28 +13,31 @@ import { setLocale } from '../../shared/state/containers/app/actions';
 // containers
 import Chat from '@omega-web-containers/chat';
 
-interface PropsT {
+export interface PropsT {
 	setLocale: (string) => {};
 	t: (string) => string;
 }
 
 class App extends React.PureComponent<any, any> {
-	setLanguage = (e) => {
-	  this.props.setLocale(e.target.value);
-	};
+	setLanguage = e => {
+		this.props.setLocale(e.target.value);
+	}
 
 	render() {
-	  const { t } = this.props;
-	  return this.props.tReady ? (
+		const { t } = this.props;
+		return this.props.tReady ? (
 			<FadeIn>
-				<Helmet defaultTitle='React Redux SSR Advanced Seed' titleTemplate='%s – React Redux SSR Advanced Seed' />
+				<Helmet
+					defaultTitle='React Redux SSR Advanced Seed'
+					titleTemplate='%s – React Redux SSR Advanced Seed'
+				/>
 				<React.Fragment>
 					<div
 						style={{
 							position: 'absolute',
 							zIndex: 1,
 							right: '14%',
-							top: 26,
+							top: 26
 						}}
 					>
 						<button value='de-DE' onClick={this.setLanguage}>
@@ -47,17 +50,17 @@ class App extends React.PureComponent<any, any> {
 					<Chat title={t('i18n-example')} />
 				</React.Fragment>
 			</FadeIn>
-	  ) : (
-	    []
-	  );
+		) : (
+			[]
+		);
 	}
 }
 
 const mapDispatchToProps = {
-  setLocale,
+	setLocale
 };
 
 export default connect(
-  null,
-  mapDispatchToProps,
+	null,
+	mapDispatchToProps
 )(translate()(App));

@@ -2,10 +2,10 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "module": "commonjs",
-    "baseUrl": "./",  // all paths are relative to the baseUrl
+    "baseUrl": "./", // all paths are relative to the baseUrl
     "paths": {
       "*": ["types/*"],
-      "@server/*" : ["src/server/app/modules/*"],
+      "@server/*": ["src/server/app/modules/*"],
       "@services/*": ["src/client/shared/services/*"],
       "@components/*": ["src/client/web/app/common/components/*"],
       "@model/*": ["src/client/web/app/common/model/*"],
@@ -48,6 +48,7 @@
   ],
   "exclude": [
     "node_modules",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "**/*.spec.tsx"
   ]
 }
