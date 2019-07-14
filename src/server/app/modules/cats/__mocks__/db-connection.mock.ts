@@ -13,18 +13,39 @@ import { CatModel } from '../shared/cat.model';
 import { CatsService } from '../shared/cats.service';
 
 export const dbConnection = Test.createTestingModule({
-    imports: [TypeOrmModule.forRoot({
-      type: 'postgres',
-      host: process.env.API_DB_HOST,
-      port: parseInt(process.env.API_DB_PORT, 4),
-      username: process.env.API_DB_USERNAME || 'postgres',
-      password: process.env.API_DB_PASSWORD,
-      database: process.env.API_DB_NAME || 'postgres',
-      entities: [CatModel],
-      synchronize: true,
-    }), AuthModule, TypeOrmModule.forFeature([CatModel])],
-    controllers: [CatsController],
-    providers: [
-      CatsService,
-  ],
+	imports: [
+		TypeOrmModule.forRoot({
+			type: 'postgres',
+			host: process.env.API_DB_HOST,
+			port: parseInt(process.env.API_DB_PORT, 4),
+			username: process.env.API_DB_USERNAME || 'postgres',
+			password: process.env.API_DB_PASSWORD,
+			database: process.env.API_DB_NAME || 'postgres',
+			entities: [CatModel],
+			synchronize: true
+		}),
+		AuthModule,
+		TypeOrmModule.forFeature([CatModel])
+	],
+	controllers: [CatsController],
+	providers: [CatsService]
+});
+
+export const dbClearConnection = Test.createTestingModule({
+	imports: [
+		TypeOrmModule.forRoot({
+			type: 'postgres',
+			host: process.env.API_DB_HOST,
+			port: parseInt(process.env.API_DB_PORT, 4),
+			username: process.env.API_DB_USERNAME || 'postgres',
+			password: process.env.API_DB_PASSWORD,
+			database: process.env.API_DB_NAME || 'postgres',
+			entities: [CatModel],
+			dropSchema: true
+		}),
+		AuthModule,
+		TypeOrmModule.forFeature([CatModel])
+	],
+	controllers: [CatsController],
+	providers: [CatsService]
 });
