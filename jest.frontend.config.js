@@ -35,7 +35,9 @@ module.exports = {
 		// Routes
 		'<rootDir>/src/client/web/app/routes.tsx',
 		// Main App
-		'<rootDir>/src/client/web/index.tsx'
+		'<rootDir>/src/client/web/index.tsx',
+		// mobile - covered seperately
+		'<rootDir>/src/client/mobile'
 	],
 	testEnvironment: 'node',
 	testURL: 'http://localhost',

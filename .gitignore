@@ -20,6 +20,7 @@ package-lock.json
 /coverage
 /frontend-coverage
 /backend-coverage
+src/client/mobile/.jest
 /.nyc_output
 
 # dist
