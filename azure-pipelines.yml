@@ -25,6 +25,7 @@ services:
 
 steps:
 - script: |
+    docker container ls
     npm install
     CI=true node scripts/test.js --env=jsdom --config=jest.backend.config.js
   displayName: 'npm install, test and build'
