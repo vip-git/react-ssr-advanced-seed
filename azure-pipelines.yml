@@ -9,6 +9,18 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
+## Multi-container support here
+services:
+  postgres:
+    image: circleci/postgres:9.6.13-alpine
+    volumes:
+    - db-data:/var/lib/postgresql/data
+    env:
+      POSTGRES_USER: postgres
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: password
+## End multi-container
+
 steps:
 - task: NodeTool@0
   inputs:
