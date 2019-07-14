@@ -27,9 +27,9 @@ services:
 
 steps:
 - script: |
-    npm install -g codecov
+    npm install codecov
     npm install
     npm test
     npm run build:frontend
-    codecov
+    npx codecov
   displayName: 'npm install and build'
