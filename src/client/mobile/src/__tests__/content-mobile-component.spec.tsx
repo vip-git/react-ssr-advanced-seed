@@ -2,7 +2,7 @@ import * as React from 'react';
 import { shallow } from 'enzyme';
 
 // Mobile
-import SharedComponentMobile from '../../shared/components/content';
+import SharedComponentMobile from '../../../shared/components/content';
 
 describe('SharedComponent <SharedComponent />', () => {
 	it('Shared Component Mobile renders correctly', () => {
