@@ -26,5 +26,5 @@ services:
 steps:
 - script: |
     npm install
-    npm run test:backend
+    CI=true node scripts/test.js --env=jsdom --config=jest.backend.config.js
   displayName: 'npm install, test and build'
