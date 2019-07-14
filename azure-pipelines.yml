@@ -25,9 +25,6 @@ services:
 
 steps:
 - script: |
-    npm install codecov
     npm install
-    npm test
-    npm run build:frontend
-    npx codecov
+    npm run test:backend
   displayName: 'npm install, test and build'
