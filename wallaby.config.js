@@ -136,7 +136,11 @@ module.exports = function(wallaby) {
 				'.+\\.(svg|css|styl|less|sass|scss|png|jpg|ttf|woff|woff2)$':
 					'jest-transform-stub'
 			};
-			wallabyJS.testFramework.configure(jestConfig);
+			(jestConfig.moduleNameMapper = {
+				'@omega-shared-components/content':
+					'<rootDir>/src/client/shared/components/content'
+			}),
+				wallabyJS.testFramework.configure(jestConfig);
 		},
 		testFramework: 'jest',
 		debug: true

@@ -37,7 +37,8 @@ module.exports = {
 		// Main App
 		'<rootDir>/src/client/web/index.tsx',
 		// mobile - covered seperately
-		'<rootDir>/src/client/mobile'
+		'<rootDir>/src/client/mobile',
+		'<rootDir>/src/client/shared/components/content/src/index.native.tsx'
 	],
 	testEnvironment: 'node',
 	testURL: 'http://localhost',
