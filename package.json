@@ -64,7 +64,7 @@
 		"connected-react-router": "6.4.0",
 		"express-manifest-helpers-audit-fix": "0.6.3",
 		"history": "4.9.0",
-		"puppeteer-core": "1.18.0",
+		"puppeteer-core": "1.18.1",
 		"react": "16.8.6",
 		"react-redux": "5.1.1",
 		"react-router": "4.3.1",
