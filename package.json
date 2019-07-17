@@ -93,7 +93,7 @@
 		"@babel/preset-typescript": "7.3.3",
 		"@babel/register": "7.4.4",
 		"@babel/runtime": "7.5.4",
-		"@types/enzyme": "3.10.2",
+		"@types/enzyme": "3.10.3",
 		"@types/graphql": "14.2.2",
 		"@types/jest": "24.0.15",
 		"@types/node": "7.10.6",
