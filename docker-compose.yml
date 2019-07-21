@@ -14,7 +14,7 @@ services:
     hostname: frontend
     depends_on:
       - postgres
-    build: ./docker/prod
+    build: ./docker/frontend/prod
     environment:
       - API_URL="http://localhost:1234"
       - API_DB_HOST=postgres

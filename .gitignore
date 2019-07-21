@@ -26,6 +26,6 @@ src/client/mobile/.jest
 
 # dist
 dist/
-docker/prod/build
+docker/frontend/prod/build
 yarn-error.log
 lerna-debug.log
