@@ -35,7 +35,7 @@ steps:
     npx codecov
   displayName: 'npm install and build'
 - script: |
-    brew install heroku
+    sudo snap install --classic heroku
     heroku login
     cd docker/backend/prod
     heroku container:login
