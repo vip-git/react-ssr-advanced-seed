@@ -41,7 +41,7 @@
       "es2015.symbol.wellknown",
       "esnext.asynciterable"
     ],
-    "outDir": "./dist"
+    "outDir": "docker/backend/prod/dist"
   },
   "include": [
     "src/**/*"

@@ -1,7 +1,8 @@
 const shell = require('shelljs');
-const dockerName = 'react-ssr-docker';
-const dockerImage = 'vipgit/react-ssr-nginx:' + process.env.npm_package_version;
 const dockerBuild = process.argv.slice(2).length && process.argv.slice(2)[0];
+const dockerName = 'react-ssr-docker-' + dockerBuild;
+const dockerImage = `vipgit/react-ssr-${dockerBuild}:${process.env.npm_package_version}`;
+const dockerPortMapping = dockerBuild === 'frontend' ? '8080:80' : '8090:3000';
 
 shell.cd(`./docker/${dockerBuild}/prod`);
 
@@ -12,7 +13,7 @@ function getDockerContainerId(callback) {
 		stderr
 	) {
 		shell.exec(
-			'docker run -d -p 8080:80 --name=' + dockerName + ' ' + dockerImage,
+			`docker run -d -p ${dockerPortMapping} --name=${dockerName} ${dockerImage}`,
 			callback
 		);
 	});

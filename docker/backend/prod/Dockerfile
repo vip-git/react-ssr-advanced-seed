@@ -1,24 +1,20 @@
 # Use an official node image
-FROM node:10.13.0-alpine
+FROM node:10.16.0-alpine
 
 RUN set -xe \
     && apk add --no-cache bash git openssh \
     && git --version && bash --version && ssh -V && npm -v && node -v
 
 ENV HOST 'localhost'
-ENV PORT 8900
+ENV PORT 3000
 
 WORKDIR /opt/react-ssr-api
-
-COPY package.json /opt/react-ssr-api
-COPY index.js /opt/react-ssr-api
-COPY public/ /opt/react-ssr-api/public
-COPY dist/ /opt/react-ssr-api/dist
+COPY dist/ /opt/react-ssr-api/
 
 RUN npm install
 
-EXPOSE 8900
+EXPOSE 3000
 
 ENV NODE_ENV production
 
-ENTRYPOINT ["node", "."]
+ENTRYPOINT ["node", "server.js"]
