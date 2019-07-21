@@ -2,7 +2,11 @@ const shell = require('shelljs');
 const dockerBuild = process.argv.slice(2).length && process.argv.slice(2)[0];
 const dockerName = 'react-ssr-docker-' + dockerBuild;
 const dockerImage = `vipgit/react-ssr-${dockerBuild}:${process.env.npm_package_version}`;
-const dockerPortMapping = dockerBuild === 'frontend' ? '8080:80' : '8090:3000';
+const dockerPortMapping = dockerBuild === 'frontend' ? '8080:80' : '8090:8090';
+const dockerNetwork =
+	dockerBuild === 'frontend' ? '' : '--network postgres-network';
+
+// docker network create --driver bridge postgres-network
 
 shell.cd(`./docker/${dockerBuild}/prod`);
 
@@ -13,7 +17,7 @@ function getDockerContainerId(callback) {
 		stderr
 	) {
 		shell.exec(
-			`docker run -d -p ${dockerPortMapping} --name=${dockerName} ${dockerImage}`,
+			`docker run -d -p ${dockerPortMapping} --name=${dockerName} ${dockerNetwork} ${dockerImage}`,
 			callback
 		);
 	});

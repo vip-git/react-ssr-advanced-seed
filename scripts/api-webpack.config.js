@@ -1,8 +1,11 @@
 const webpack = require('webpack');
+const shell = require('shelljs');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+
+shell.rm('-rf', `./docker/backend/prod/dist/*`);
 
 module.exports = env => {
 	console.log('NODE_ENV: ', env.NODE_ENV); // 'local'
@@ -39,6 +42,16 @@ module.exports = env => {
 						__dirname,
 						'../docker/backend/prod/dist/package.json'
 					)
+				}
+			]),
+			new CopyWebpackPlugin([
+				{
+					from: path.resolve(
+						__dirname,
+						'../src/server/app/modules/**/*.graphql'
+					),
+					to: path.resolve(__dirname, '../docker/backend/prod/dist/graphql/'),
+					flatten: true
 				}
 			])
 		],
