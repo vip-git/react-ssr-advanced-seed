@@ -31,5 +31,13 @@ steps:
     npm install
     npm test
     npm run build:frontend
+    npm run build:backend
     npx codecov
   displayName: 'npm install and build'
+- script: |
+    brew install heroku
+    cd docker/backend/prod
+    docker login --username=_ --password=$(heroku_token) registry.heroku.com
+    heroku container:push web --app=react-ssr-nest-api
+    heroku container:release web --app=react-ssr-nest-api
+  displayName: 'Deploy Backend Build'
