@@ -36,8 +36,9 @@ steps:
   displayName: 'npm install and build'
 - script: |
     brew install heroku
+    heroku login
     cd docker/backend/prod
-    docker login --username=_ --password=$(heroku_token) registry.heroku.com
+    heroku container:login
     heroku container:push web --app=react-ssr-nest-api
     heroku container:release web --app=react-ssr-nest-api
   displayName: 'Deploy Backend Build'
