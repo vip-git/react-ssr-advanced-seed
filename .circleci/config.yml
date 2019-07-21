@@ -8,6 +8,8 @@ jobs:
     docker:
       # specify the version you desire here
       - image: circleci/node:8.16.0
+        environment:
+          PORT: 3000
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
       - image: circleci/postgres:9.6.13-alpine
         environment:
