@@ -158,7 +158,7 @@
 		"tslint": "5.17.0",
 		"typedoc-ssr": "0.14.3",
 		"typescript": "3.5.1",
-		"url-loader": "2.0.1",
+		"url-loader": "2.1.0",
 		"webpack": "4.35.3",
 		"webpack-bundle-analyzer": "3.3.2",
 		"webpack-cli": "3.3.3",
