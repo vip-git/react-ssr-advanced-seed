@@ -142,7 +142,7 @@
 		"postcss-loader": "3.0.0",
 		"postcss-nested": "4.1.2",
 		"postcss-normalize": "8.0.1",
-		"puppeteer": "1.18.1",
+		"puppeteer": "1.19.0",
 		"redux-mock-store": "1.5.3",
 		"release-it": "12.3.3",
 		"reselect": "4.0.0",
