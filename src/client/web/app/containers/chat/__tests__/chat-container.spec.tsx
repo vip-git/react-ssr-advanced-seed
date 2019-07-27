@@ -15,19 +15,8 @@ import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
 
 interface IState {
 	chats: {
-		currentUsers: {
-			id: string;
-			name: string;
-			status: string;
-			avatar: string;
-		};
-		currentChat: {
-			text: string;
-			type: string;
-			date: string;
-		};
-		defaultChats: any[];
-		defaultUsers: any[];
+		chatData: any[];
+		userData: any[];
 	};
 }
 
@@ -70,8 +59,8 @@ describe('container <ChatContainer />', () => {
 		const expectedPropKeys = [
 			'sharedComponent',
 			'title',
-			'defaultChats',
-			'defaultUsers'
+			'chatData',
+			'userData'
 		];
 
 		expect(Object.keys(component.props())).toEqual(
@@ -83,8 +72,8 @@ describe('container <ChatContainer />', () => {
 		const expectedPropKeys = [
 			'sharedComponent',
 			'title',
-			'defaultChats',
-			'defaultUsers'
+			'chatData',
+			'userData'
 		];
 
 		expect(Object.keys(component.props())).toEqual(

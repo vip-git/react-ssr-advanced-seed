@@ -23,7 +23,7 @@ describe('Chat Reducers', () => {
 				type: ChatActionTypes.PROCESS_ALL_CHATS,
 				payload: 'Run the tests'
 			})
-		).toEqual({ defaultChats: 'Run the tests' });
+		).toEqual({ chatData: 'Run the tests' });
 	});
 
 	it('can handle PROCESS_ALL_USERS', () => {
@@ -32,7 +32,7 @@ describe('Chat Reducers', () => {
 				type: ChatActionTypes.PROCESS_ALL_USERS,
 				payload: 'Run the tests'
 			})
-		).toEqual({ defaultUsers: 'Run the tests' });
+		).toEqual({ userData: 'Run the tests' });
 	});
 
 	it('can handle PROCESS_CREATE_CHAT', () => {
@@ -47,6 +47,8 @@ describe('Chat Reducers', () => {
 			type: 'received',
 			date: new Date(date - 1000 * 60 * 60 * 10)
 		};
+		const expectedResponse = mockChats;
+		expectedResponse.push(mockedNewChatData);
 		expect(
 			ChatReducer(initialState, {
 				type: ChatActionTypes.PROCESS_CREATE_CHAT,
@@ -54,7 +56,8 @@ describe('Chat Reducers', () => {
 			})
 		).toEqual({
 			...ChatReduxModel.attributes,
-			chats: mockChats.concat(mockedNewChatData)
+			chatData: 1,
+			chats: expectedResponse
 		});
 	});
 

@@ -1,5 +1,12 @@
 import { ReactType } from 'react';
 
+export interface ICreateChatPayload {
+	token: string;
+	type: 'sent' | 'recieved';
+	message: string;
+	date: Date;
+}
+
 export interface IChatProps {
 	classes: {
 		avatar: string;
@@ -27,8 +34,10 @@ export interface IChatProps {
 		input: string;
 	};
 	title: string;
-	defaultChats: Array<object>;
-	defaultUsers: Array<object>;
+	chatData: Array<object>;
+	userData: Array<object>;
+	submitChat: (payload) => void;
+	readUsersAndChat: () => void;
 	sharedComponent: ReactType;
 }
 

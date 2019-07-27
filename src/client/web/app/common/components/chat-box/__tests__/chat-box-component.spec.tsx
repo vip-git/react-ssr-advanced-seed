@@ -25,8 +25,10 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 				<ChatBoxComponent
 					sharedComponent={() => <ContentComponent />}
 					title={'Test Me'}
-					defaultChats={mockChats}
-					defaultUsers={mockContacts}
+					readUsersAndChat={() => {}}
+					submitChat={() => {}}
+					chatData={mockChats}
+					userData={mockContacts}
 				/>
 			</ThemeProvider>
 		);
@@ -43,8 +45,10 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 				<ChatBoxComponent
 					sharedComponent={() => <ContentComponent />}
 					title={'Test Me'}
-					defaultChats={mockChats}
-					defaultUsers={mockContacts}
+					readUsersAndChat={() => {}}
+					submitChat={() => {}}
+					chatData={mockChats}
+					userData={mockContacts}
 				/>
 			</ThemeProvider>
 		);

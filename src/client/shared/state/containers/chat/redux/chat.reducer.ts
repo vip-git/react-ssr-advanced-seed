@@ -12,26 +12,26 @@ export default (state = initialState, action: { type: any; payload?: {} }) => {
 		case ChatReduxModel.actionTypes.PROCESS_ALL_CHATS: {
 			return {
 				...state,
-				defaultChats: payload
+				chatData: payload
 			};
 		}
 		case ChatReduxModel.actionTypes.PROCESS_ALL_USERS: {
 			return {
 				...state,
-				defaultUsers: payload
+				userData: payload
 			};
 		}
 		case ChatReduxModel.actionTypes.PROCESS_CREATE_CHAT: {
 			return {
 				...state,
-				chats: (state as any).chats.concat(payload)
+				chatData: (state as any).chatData.push(payload),
 			};
 		}
 		case ChatReduxModel.actionTypes.PROCESS_DELETED_CHAT: {
 			return {
 				...state,
-				chats: (state as any).chats.filter(
-					(c: { productCommentSn: any }) => c.productCommentSn !== payload
+				chatData: (state as any).chatData.filter(
+					(c: { chatId: any }) => c.chatId !== payload
 				)
 			};
 		}

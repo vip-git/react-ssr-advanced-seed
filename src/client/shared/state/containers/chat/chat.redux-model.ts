@@ -19,19 +19,8 @@ interface IDispatch {
 
 export const ChatReduxModel = ({
   attributes: {
-    currentUsers: {
-      id: '',
-      name: '',
-      status: '',
-      avatar: '',
-    },
-    currentChat: {
-      text: '',
-      type: '',
-      date: '',
-    },
-    defaultChats: [],
-    defaultUsers: [],
+    chatData: [],
+    userData: [],
   },
   actionTypes: {
     ...ChatActionTypes,

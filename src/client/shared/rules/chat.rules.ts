@@ -12,8 +12,7 @@ class ChatRules {
 	}
 
 	static isValidChatResponse(data: any) {
-		// console.log('validating response', data);
-
+		// console.log('validating response', data)
 		return !data
 			? {
 					error: true,

@@ -1,25 +1,27 @@
 // Internal
 import { ChatModel } from './chat.model';
 
+// Types
+import { ICreateChatPayload } from '@omega-web-components/chat-box/types';
+
 const { React, Component, connect } = ChatModel.libraries;
 
 class ChatContainer extends Component<any, any> {
-  componentDidMount() {
-    this.props.dispatchReadAllUsersAndChats();
-  }
-
 	handleErrorClose = () => this.props.dispatchProcessErrorChatResponse(false);
 
 	render() {
+	  const { dispatchReadAllUsersAndChats, dispatchCreateChat } = this.props;
 	  const { ChatComponent, ContentComponent, DialogComponent } = ChatModel.components;
-	  const { defaultChats, defaultUsers, error } = this.props.chats;
+	  const { chatData, userData, error } = this.props.chats;
 	  return (
 			<React.Fragment>
 				<ChatComponent
 					sharedComponent={() => <ContentComponent />}
+					submitChat={(payload: ICreateChatPayload) => dispatchCreateChat(payload)}
+					readUsersAndChat={() => dispatchReadAllUsersAndChats()}
 					title={this.props.title}
-					defaultChats={defaultChats}
-					defaultUsers={defaultUsers}
+					chatData={chatData}
+					userData={userData}
 				/>
 				<DialogComponent
 					show={error && error.error}

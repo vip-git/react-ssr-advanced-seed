@@ -14,9 +14,12 @@ class ChatService {
     return allChats;
   }
 
-  static createChat(chatId: any) {
+  static createChat(payload: any) {
     // console.log('i was called to create');
-    return of('test');
+    const response = payload;
+    delete response.token;
+    response.id = Math.floor(Math.random() * 1090901);
+    return of(response);
   }
 
   static removeChat(chatId: any) {

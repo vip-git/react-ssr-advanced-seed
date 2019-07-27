@@ -37,8 +37,8 @@ interface IState {
 			avatar: string;
 		};
 		currentChat: any;
-		defaultChats: any[];
-		defaultUsers: any[];
+		chatData: any[];
+		userData: any[];
 	};
 }
 
@@ -82,8 +82,8 @@ describe('app <App />', () => {
 					type: '',
 					date: ''
 				},
-				defaultChats: [],
-				defaultUsers: []
+				chatData: [],
+				userData: []
 			}
 		});
 
