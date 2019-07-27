@@ -8,7 +8,10 @@ import App from './render-app';
 // Interface
 import { ISharedComponentProps } from './shared-component.interface';
 
-export default class SharedComponent extends Component<ISharedComponentProps, {}> {
+export default class SharedComponent extends Component<
+  ISharedComponentProps,
+  {}
+> {
   render() {
     return <App api={{ View, Text }} {...this.props} />;
   }
