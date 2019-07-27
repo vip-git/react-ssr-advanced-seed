@@ -66,3 +66,34 @@ npm run test:frontend (Runs Frontend Unit Tests)
 npm run test:e2e (Runs Frontend End to End Tests)
 ```
 
+### Lerna Packages and its use
+##### Web Components
+    - ChatBox
+    - Dialog
+    - DocGen
+    - Wrapper
+
+##### React-Native-Web Components 
+    - Shared
+
+##### Web Containers
+    - Chat
+    - Login
+
+##### Mobile Containers
+    - Chat
+
+##### Mobile Components
+    - Chatbox
+
+##### Services
+    - Core
+    - Chat Service
+    - User Service
+
+##### State
+    - Chat
+
+##### Utils
+    - Doc Engine
+    - Rules Engine

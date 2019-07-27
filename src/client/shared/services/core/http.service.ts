@@ -9,9 +9,6 @@ const returnValidURL = (type: any, URI: string) => {
   switch (type) {
     case 'api':
       return config.API_URL + URI;
-
-    default:
-      return '';
   }
 };
 
@@ -30,14 +27,7 @@ export class HttpService {
         delete options.body;
     }
     return from(
-      fetch(URL, {
-        method,
-        headers: {
-          'Authorization': 'Bearer ' + token,
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(payload)
-      })
+      fetch(URL, options)
         .then(response => {
           if (!response.ok) {
             return {
