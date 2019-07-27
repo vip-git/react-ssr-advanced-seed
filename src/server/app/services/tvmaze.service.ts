@@ -9,6 +9,8 @@ interface IDataValues {
 	};
 }
 
+const proxyPort = process.env.PORT || '3000';
+
 export class TvMazeService {
 	static transformProxyData(proxyResData: string) {
 		const data = JSON.parse(proxyResData); // 'utf8'
@@ -16,18 +18,18 @@ export class TvMazeService {
 			data.map((values: IDataValues) => {
 				values._links.self.href = values._links.self.href.replace(
 					'api.tvmaze.com',
-					`localhost:${process.env.PORT}/proxy`
+					`localhost:${proxyPort}/proxy`
 				);
 				values._links.previousepisode.href = values._links.previousepisode.href.replace(
 					'api.tvmaze.com',
-					`localhost:${process.env.PORT}/proxy`
+					`localhost:${proxyPort}/proxy`
 				);
 				return values;
 			});
 		} else {
 			data._links.self.href = data._links.self.href.replace(
 				'api.tvmaze.com',
-				`localhost:${process.env.PORT}/proxy`
+				`localhost:${proxyPort}/proxy`
 			);
 			if (
 				data &&
@@ -37,7 +39,7 @@ export class TvMazeService {
 			) {
 				data._links.previousepisode.href = data._links.previousepisode.href.replace(
 					'api.tvmaze.com',
-					`localhost:${process.env.PORT}/proxy`
+					`localhost:${proxyPort}/proxy`
 				);
 			}
 		}

@@ -7,5 +7,5 @@ class UserService {
 }
 
 export const UserServiceEngine = {
-  requestAllUsers: () => UserService.getAllUsers(),
+  requestAllUsers: () => UserService.getAllUsers()
 };

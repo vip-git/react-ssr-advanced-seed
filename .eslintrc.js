@@ -27,12 +27,5 @@ module.exports = {
     "no-plusplus": "off",
     "object-curly-newline": "off",
   },
-  "settings": {
-    "import/resolver": {
-      "node": {
-        "paths": ["src"]
-      }
-    }
-  },
   "parser": "babel-eslint"
 }
