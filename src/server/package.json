@@ -32,7 +32,7 @@
 		"rest-graphql": "1.0.6",
 		"subscriptions-transport-ws": "0.9.16",
 		"typeorm": "0.2.18",
-		"typescript": "3.5.1",
+		"typescript": "3.5.3",
 		"ws": "4.1.0"
 	},
 	"gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b"
