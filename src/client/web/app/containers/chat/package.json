@@ -2,6 +2,9 @@
     "name": "@omega-web-containers/chat",
     "version": "0.3.8",
     "main": "./index.tsx",
+    "scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
     "dependencies": {
         "reselect": "4.0.0",
         "@omega-state-machines/chat": "0.3.8",

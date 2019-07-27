@@ -2,6 +2,9 @@
     "name": "@omega-core/services",
     "version": "0.3.9",
     "main": "./index.tsx",
+    "scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
     "dependencies": {
         "@material-ui/core": "4.2.0",
         "@material-ui/styles": "4.2.0",

@@ -1,4 +1,7 @@
 {
     "name": "@omega-core/utils",
+    "scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
     "version": "0.3.0"
 }

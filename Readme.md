@@ -18,6 +18,12 @@
 npm install
 
 npm start (This will start both frontend and backend servers for you)
+
+Visit: 
+- http://localhost:8500 (FrontEnd with HMR)
+- http://localhost:3000 (Backend running NestJS)
+- http://localhost:3000/graphql (Graphql server running graphQL playground theme)
+- http://localhost:3000/swagger (running Swagger UI)
 ```
 
 ### Production Build (Client and Server)

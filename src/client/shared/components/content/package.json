@@ -2,6 +2,9 @@
     "name": "@omega-shared-components/content",
     "version": "0.3.19",
     "main": "./index.tsx",
+    "scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
     "dependencies": {
        "react": "16.8.6",
        "react-dom": "16.8.6",
