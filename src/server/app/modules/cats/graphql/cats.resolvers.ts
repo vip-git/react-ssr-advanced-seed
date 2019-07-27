@@ -2,11 +2,11 @@
 import { Injectable, UseGuards } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 import {
-  Query,
-  Mutation,
-  Resolver,
-  DelegateProperty,
-  Subscription,
+	Query,
+	Mutation,
+	Resolver,
+	DelegateProperty,
+	Subscription
 } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 
@@ -17,34 +17,33 @@ import { CatsGuard } from './cats.guard';
 
 const pubSub = new PubSub();
 
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(CatsGuard)
 @Resolver('Cat')
 export class CatsResolvers {
-  constructor(private readonly catsService: CatsService) {}
+	constructor(private readonly catsService: CatsService) {}
 
-  @Query()
-  @UseGuards(CatsGuard)
-  async getCats() {
-    return await this.catsService.findAll();
-  }
+	@Query()
+	async getCats() {
+		return await this.catsService.findAll();
+	}
 
-  @Query('cat')
-  async findOneById(obj, args, context, info): Promise<ICat> {
-    const { id } = args;
-    return await this.catsService.findOneById(+id);
-  }
+	@Query('cat')
+	async findOneById(obj, args, context, info): Promise<ICat> {
+		const { id } = args;
+		return await this.catsService.findOneById(+id);
+	}
 
-  @Mutation('createCat')
-  async create(obj, args: ICat, context, info): Promise<ICat> {
-    const createdCat = await this.catsService.create(args);
-    pubSub.publish('catCreated', { catCreated: createdCat });
-    return createdCat;
-  }
+	@Mutation('createCat')
+	async create(obj, args: ICat, context, info): Promise<ICat> {
+		const createdCat = await this.catsService.create(args);
+		pubSub.publish('catCreated', { catCreated: createdCat });
+		return createdCat;
+	}
 
-  @Subscription('catCreated')
-  catCreated() {
-    return {
-      subscribe: () => pubSub.asyncIterator('catCreated'),
-    };
-  }
+	@Subscription('catCreated')
+	catCreated() {
+		return {
+			subscribe: () => pubSub.asyncIterator('catCreated')
+		};
+	}
 }
