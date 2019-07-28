@@ -9,7 +9,7 @@
 		"install": "npx lerna bootstrap --hoist --ignore __tests__ --ignore-scripts -- --production --no-optional && npm run install:mobile",
 		"install:mobile": "cd src/client/mobile && npm install",
 		"precommit": "lint-staged",
-		"build": "npm run build:backend && npm run build:frontend && npm run docker:frontend:prod",
+		"build": "npm run build:backend && npm run build:frontend && npm run docker:backend:prod && npm run docker:frontend:prod",
 		"deploy:frontend": "npm run build:frontend && npx release-it -n --no-npm.publish && npm run docker:frontend:prod:publish",
 		"deploy": "npm run build:frontend && npm run build:backend && npx release-it -n --no-npm.publish && npm run docker:frontend:prod:publish",
 		"build:frontend": "cross-env NODE_ENV=production node scripts/build.js",

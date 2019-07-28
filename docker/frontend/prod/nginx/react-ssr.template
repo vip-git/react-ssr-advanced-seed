@@ -26,14 +26,8 @@ server {
    }
 
    location /api {
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header Host $http_host;
-        proxy_set_header X-NginX-Proxy true;
- 
-        rewrite ^/api/?(.*) /apiHost/$1 break;
- 
-        proxy_pass http://localhost:3010;
+        rewrite ^/?(.*) /$1 break;
+        proxy_pass ${API_URL};
         proxy_redirect off;
    }
 }

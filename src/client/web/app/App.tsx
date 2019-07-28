@@ -19,7 +19,7 @@ export interface PropsT {
 }
 
 class App extends React.PureComponent<any, any> {
-	setLanguage = (e: { target: { value: any } }) => {
+	setLanguage = (e: any) => {
 		const { dispatchSetLocale } = this.props;
 		dispatchSetLocale(e.target.value);
 	};

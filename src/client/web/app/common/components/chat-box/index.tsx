@@ -247,7 +247,7 @@ class Chat extends Component<IChatProps, IChatState> {
 													type='text'
 													margin='normal'
 													value={this.state.currentChat}
-													onChange={e =>
+													onChange={(e: any) =>
 														this.setState({ currentChat: e.target.value })
 													}
 													className={classes.input}

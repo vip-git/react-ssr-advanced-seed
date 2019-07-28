@@ -12,7 +12,7 @@ ENV NODE_VERSION 8.11.1
 ENV API_URL "http://localhost:3010"
 
 # And we end our Dockerfile with nginx Dockerfile last instructions
-COPY nginx/default.conf /etc/nginx/conf.d/default.conf
+COPY nginx/react-ssr.template /etc/nginx/conf.d/react-ssr.template
 COPY build/client/ /opt/react-ssr-frontend/
 COPY ./run.sh /run.sh
 # RUN ["chmod", "+x", "/run.sh"]

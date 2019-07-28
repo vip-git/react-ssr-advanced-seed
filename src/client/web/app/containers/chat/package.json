@@ -6,8 +6,8 @@
 		"deploy": "npm version patch && npm publish --access public"
 	},
 	"dependencies": {
-		"@omega-state-machines/chat": "0.3.10",
-		"@omega-web-components/chat-box": "0.3.10",
+		"@omega-state-machines/chat": "0.3.11",
+		"@omega-web-components/chat-box": "0.3.11",
 		"@omega-web-components/dialog": "0.3.6",
 		"@omega-shared-components/content": "0.3.19",
 		"react-apollo": "2.5.8",
