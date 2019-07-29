@@ -6,7 +6,7 @@ import { renderToString } from 'react-dom/server';
 import { StaticRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 // Apollo Client
-import { apolloClient } from '@omega-core/utils/apollo-client.engine';
+import { apolloClient } from '@omega-core/utils/apollo-client-ssr.engine';
 import IntlProvider from '../app/common/i18n/IntlProvider';
 import Html from './html';
 import App from '../app/App';

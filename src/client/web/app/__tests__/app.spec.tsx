@@ -3,7 +3,7 @@ import { createBrowserHistory as createHistory } from 'history';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import IntlProvider from '../common/i18n/IntlProvider';
-import { ConnectedRouter as Router } from 'react-router-redux';
+import { ConnectedRouter as Router } from 'connected-react-router';
 import { mount } from 'enzyme';
 
 // Theme

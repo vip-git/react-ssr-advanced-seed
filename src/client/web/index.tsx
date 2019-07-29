@@ -1,13 +1,13 @@
 // Library
 import React from 'react';
-import { ApolloProvider } from 'react-apollo';
 import { createBrowserHistory as createHistory } from 'history';
 import { hydrate } from 'react-dom';
+import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import {
 	ConnectedRouter as Router,
 	routerMiddleware
-} from 'react-router-redux';
+} from 'connected-react-router';
 
 // Internal
 import { ThemeProvider } from '@material-ui/styles';

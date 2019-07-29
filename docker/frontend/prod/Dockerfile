@@ -9,11 +9,13 @@ FROM nginx:1.17-alpine
 # --
 
 ENV NODE_VERSION 8.11.1
-ENV API_URL "http://localhost:3010"
+ENV API_URL https://react-ssr-nest-api.herokuapp.com
 
 # And we end our Dockerfile with nginx Dockerfile last instructions
+# COPY Production build
+RUN rm -rf /usr/share/nginx/html/*
 COPY nginx/react-ssr.template /etc/nginx/conf.d/react-ssr.template
-COPY build/client/ /opt/react-ssr-frontend/
+COPY build/client/ /usr/share/nginx/html/
 COPY ./run.sh /run.sh
 # RUN ["chmod", "+x", "/run.sh"]
 

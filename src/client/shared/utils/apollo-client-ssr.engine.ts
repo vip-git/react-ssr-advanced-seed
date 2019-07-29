@@ -1,5 +1,7 @@
 /* eslint-env browser */
 // Library
+import * as ws from 'ws';
+import fetch from 'node-fetch';
 import { ApolloClient, DefaultOptions } from 'apollo-client';
 import { setContext } from 'apollo-link-context';
 import { HttpLink } from 'apollo-link-http';
@@ -33,13 +35,15 @@ const cacheLink = new InMemoryCache();
 export const httpOnlyLink = (config = {}) =>
 	new HttpLink({
 		...config,
-		uri: `${Config.API_PROTOCOL + Config.API_URL}/graphql`
+		uri: `${Config.API_PROTOCOL + Config.API_URL}/graphql`,
+		fetch
 	});
 
 const subscriptionLink = (config = {}) => {
 	return new WebSocketLink({
 		uri: `${Config.WS_PROTOCOL + Config.WS_URL}/graphql`,
 		options: { reconnect: true },
+		webSocketImpl: ws,
 		...config
 	});
 };
@@ -108,6 +112,7 @@ const links: any = [
 ];
 
 export const apolloClient = new ApolloClient({
+	ssrMode: true,
 	link: from(links),
 	cache: cacheLink,
 	defaultOptions

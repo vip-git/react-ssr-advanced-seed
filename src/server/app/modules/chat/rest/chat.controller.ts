@@ -9,7 +9,7 @@ import {
 } from '@nestjs/swagger';
 
 // Internal
-import { ChatModel, ChatService } from '../';
+import { ChatModel, ChatService } from '../index';
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()

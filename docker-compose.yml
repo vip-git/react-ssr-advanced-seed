@@ -2,7 +2,7 @@ version: "3"
 
 services:
   postgres:
-    name: react-ssr-postgres
+    container_name: react-ssr-postgres
     image: postgres
     environment:
       - POSTGRES_USER=postgres
@@ -14,7 +14,7 @@ services:
       - 5433:5432
   
   frontend:
-    name: react-ssr-frontend
+    container_name: react-ssr-frontend
     hostname: frontend
     depends_on:
       - postgres
@@ -23,12 +23,12 @@ services:
     networks:
       - react-advanced-ssr-network
     environment:
-      - API_URL="http://localhost:8090"
+      - API_URL=http://backend
     ports: 
       - 8080:80
 
   backend:
-    name: react-ssr-backend
+    container_name: react-ssr-backend
     hostname: backend
     depends_on:
       - postgres

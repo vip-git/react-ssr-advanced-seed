@@ -1,6 +1,12 @@
+/* eslint-disable lines-between-class-members */
+/* eslint-disable jsx-a11y/lang */
+/* eslint-disable jsx-a11y/html-has-lang */
+/* eslint-disable react/default-props-match-prop-types */
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/no-danger */
 import React from 'react';
 import Helmet from 'react-helmet';
+import serialize from 'serialize-javascript';
 
 type PropsT = {
 	children: any;
@@ -11,15 +17,15 @@ type PropsT = {
 
 export default class HTML extends React.Component<PropsT> {
 	static defaultProps = {
-	  css: [],
-	  scripts: [],
-	  state: '{}',
+		css: [],
+		scripts: [],
+		state: '{}'
 	};
 	/* ignore coverage */
 	render() {
-	  const head = Helmet.renderStatic();
-	  const { children, scripts, css, state } = this.props;
-	  return (
+		const head = Helmet.renderStatic();
+		const { children, scripts, css, state } = this.props;
+		return (
 			<html lang=''>
 				<head>
 					<meta charSet='utf-8' />
@@ -34,7 +40,9 @@ export default class HTML extends React.Component<PropsT> {
 					))}
 					<script
 						dangerouslySetInnerHTML={{
-							__html: `window.__PRELOADED_STATE__ = ${state}`,
+							__html: `window.__PRELOADED_STATE__ = ${JSON.parse(
+								serialize(state)
+							)}`
 						}}
 					/>
 				</head>
@@ -45,6 +53,6 @@ export default class HTML extends React.Component<PropsT> {
 					))}
 				</body>
 			</html>
-	  );
+		);
 	}
 }

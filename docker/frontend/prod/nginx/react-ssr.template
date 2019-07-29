@@ -1,3 +1,37 @@
+# don't send the nginx version number in error pages and Server header
+  server_tokens off;
+
+# config to don't allow the browser to render the page inside an frame or iframe
+# and avoid clickjacking http://en.wikipedia.org/wiki/Clickjacking
+# if you need to allow [i]frames, you can use SAMEORIGIN or even set an uri with ALLOW-FROM uri
+# https://developer.mozilla.org/en-US/docs/HTTP/X-Frame-Options
+add_header X-Frame-Options SAMEORIGIN always;
+
+# when serving user-supplied content, include a X-Content-Type-Options: nosniff header along with the Content-Type: header,
+# to disable content-type sniffing on some browsers.
+# https://www.owasp.org/index.php/List_of_useful_HTTP_headers
+# currently suppoorted in IE > 8 http://blogs.msdn.com/b/ie/archive/2008/09/02/ie8-security-part-vi-beta-2-update.aspx
+# http://msdn.microsoft.com/en-us/library/ie/gg622941(v=vs.85).aspx
+# 'soon' on Firefox https://bugzilla.mozilla.org/show_bug.cgi?id=471020
+add_header X-Content-Type-Options nosniff always;
+
+# This header enables the Cross-site scripting (XSS) filter built into most recent web browsers.
+# It's usually enabled by default anyway, so the role of this header is to re-enable the filter for
+# this particular website if it was disabled by the user.
+# https://www.owasp.org/index.php/List_of_useful_HTTP_headers
+add_header X-XSS-Protection "1; mode=block" always;
+
+# with Content Security Policy (CSP) enabled(and a browser that supports it(http://caniuse.com/#feat=contentsecuritypolicy),
+# you can tell the browser that it can only download content from the domains you explicitly allow
+# http://www.html5rocks.com/en/tutorials/security/content-security-policy/
+# https://www.owasp.org/index.php/Content_Security_Policy
+# more: http://www.html5rocks.com/en/tutorials/security/content-security-policy/#inline-code-considered-harmful
+add_header Content-Security-Policy "default-src https; script-src 'self' 'unsafe-inline'; connect-src 'self' wss://react-ssr-nest-api.herokuapp.com ws://localhost:8090; font-src 'self' https://fonts.gstatic.com http://www.herokucdn.com; img-src 'self' data:; frame-src 'self'  http://www.herokucdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com" always;
+
+upstream backend {
+    server react-ssr-backend:80;
+}
+
 server {
    listen       80;
    server_name  localhost;
@@ -5,12 +39,13 @@ server {
    #charset koi8-r;
    #access_log  /var/log/nginx/log/host.access.log  main;
 
-   location / {
-       root   /usr/share/nginx/html;
-       index  index.html index.htm;
-   }
+    location / {
+        root /usr/share/nginx/html;
+        index  index.html index.htm;
+        # try_files $uri $uri/ index.html;
+    }
 
-   #error_page  404              /404.html;
+   error_page 404 /index.html;
 
    # redirect server error pages to the static page /50x.html
    #
@@ -26,7 +61,7 @@ server {
    }
 
    location /api {
-        rewrite ^/?(.*) /$1 break;
+        rewrite ^/api/?(.*) /$1 break;
         proxy_pass ${API_URL};
         proxy_redirect off;
    }
