@@ -9,7 +9,7 @@
 	"dependencies": {
 		"@omega-core/services": "0.3.14",
 		"@omega-core/rules": "0.3.5",
-		"@omega-core/utils": "0.3.5",
+		"@omega-core/utils": "0.3.6",
 		"rxjs": "6.5.2",
 		"redux-observable": "1.1.0",
 		"lodash": "4.17.15"
