@@ -24,6 +24,7 @@ services:
       - react-advanced-ssr-network
     environment:
       - API_URL=http://backend
+      - WEB_SOCKET_URL=ws://localhost:8090
     ports: 
       - 8080:80
 

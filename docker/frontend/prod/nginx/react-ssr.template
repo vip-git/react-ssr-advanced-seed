@@ -26,7 +26,7 @@ add_header X-XSS-Protection "1; mode=block" always;
 # http://www.html5rocks.com/en/tutorials/security/content-security-policy/
 # https://www.owasp.org/index.php/Content_Security_Policy
 # more: http://www.html5rocks.com/en/tutorials/security/content-security-policy/#inline-code-considered-harmful
-add_header Content-Security-Policy "default-src https; script-src 'self' 'unsafe-inline'; connect-src 'self' wss://react-ssr-nest-api.herokuapp.com ws://localhost:8090; font-src 'self' https://fonts.gstatic.com http://www.herokucdn.com; img-src 'self' data:; frame-src 'self'  http://www.herokucdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com" always;
+add_header Content-Security-Policy "default-src https; script-src 'self' 'unsafe-inline'; connect-src 'self' ${WEB_SOCKET_URL}; font-src 'self' https://fonts.gstatic.com http://www.herokucdn.com; img-src 'self' data:; frame-src 'self'  http://www.herokucdn.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com" always;
 
 upstream backend {
     server react-ssr-backend:80;
