@@ -40,10 +40,20 @@ export const httpOnlyLink = (config = {}) =>
 	});
 
 const subscriptionLink = (config = {}) => {
+	let token = '';
+	if (typeof window !== 'undefined') {
+		const tokenObj =
+			window.sessionStorage.getItem('token') &&
+			JSON.parse(window.sessionStorage.getItem('token'));
+		token = (tokenObj && tokenObj.accessToken) || '';
+	}
 	return new WebSocketLink({
 		uri: `${Config.WS_PROTOCOL + Config.WS_URL}/graphql`,
 		options: { reconnect: true },
 		webSocketImpl: ws,
+		connectionParams: {
+			authToken: token
+		},
 		...config
 	});
 };

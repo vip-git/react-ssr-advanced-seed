@@ -58,3 +58,15 @@ export const updateChatMutation = gql`
 		}
 	}
 `;
+
+export const chatSubscription = gql`
+	subscription chatSubscription {
+		chatRecieved {
+			id
+			groupId
+			message
+			ownerId
+			date
+		}
+	}
+`;

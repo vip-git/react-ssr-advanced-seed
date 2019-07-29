@@ -16,7 +16,7 @@ const returnValidURL = (type: any, URI: string) => {
 const returnValidGraphQLOpertaion = (
 	apolloClient: any,
 	type: any,
-	gql: DocumentNode,
+	gql: any,
 	variables: Object
 ) => {
 	switch (type) {
@@ -30,6 +30,21 @@ const returnValidGraphQLOpertaion = (
 				mutation: gql,
 				variables
 			});
+		case 'subscription':
+			const { query, document } = gql;
+			const watchQuery = apolloClient.watchQuery({
+				query,
+				variables
+			});
+			watchQuery.subscribeToMore({
+				document,
+				variables,
+				updateQuery: (prev, { subscriptionData }): any => {
+					// Perform updates on previousResult with subscriptionData
+					console.log('new data recieved', subscriptionData);
+				}
+			});
+			return watchQuery.result();
 	}
 };
 
@@ -80,13 +95,21 @@ export class HttpService {
 	static buildGraphQLCall(
 		apolloClient: any,
 		type: any,
-		gql: DocumentNode,
+		gql: any,
 		variables: Object
 	) {
+		const response = returnValidGraphQLOpertaion(
+			apolloClient,
+			type,
+			gql,
+			variables
+		);
+		console.log('response is', response);
 		return from(
-			returnValidGraphQLOpertaion(apolloClient, type, gql, variables).then(
-				data => data
-			)
+			response.then(data => {
+				console.log('data is', data);
+				return data;
+			})
 		);
 	}
 }

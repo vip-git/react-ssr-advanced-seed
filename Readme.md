@@ -32,16 +32,10 @@ Visit:
 - http://localhost:3000/swagger (running Swagger UI)
 ```
 
-### Production Build (Client and Server)
+### Production Build with docker compose (Client and Server) (Frontend, Backend and Postgres)
 
 ```
 npm run build
-```
-
-### Docker Build (Frontend)
-
-```
-npm run start:docker
 ```
 
 Visit: http://localhost:8080
