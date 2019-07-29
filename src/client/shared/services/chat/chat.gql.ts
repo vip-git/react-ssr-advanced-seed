@@ -34,3 +34,27 @@ export const createChatMutation = gql`
 		}
 	}
 `;
+
+export const updateChatMutation = gql`
+	mutation updateChatMutation(
+		$id: Int
+		$message: String
+		$groupId: Int
+		$ownerId: Int
+		$date: String
+	) {
+		updateChat(
+			id: $id
+			message: $message
+			groupId: $groupId
+			ownerId: $ownerId
+			date: $date
+		) {
+			id
+			groupId
+			message
+			ownerId
+			date
+		}
+	}
+`;
