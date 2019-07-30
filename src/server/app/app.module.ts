@@ -32,7 +32,8 @@ const url = require('url');
 		ChatModule,
 		GraphQLModule.forRoot({
 			typePaths: ['./**/*.graphql'],
-			context: ({ req }) => ({ req }),
+			context: ({ req, connection }) =>
+				connection ? { req: connection.context } : { req },
 			installSubscriptionHandlers: true,
 			debug: process.env.NODE_ENV === 'development',
 			playground: process.env.NODE_ENV === 'development'

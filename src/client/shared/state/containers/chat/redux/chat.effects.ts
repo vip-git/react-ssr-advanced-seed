@@ -3,7 +3,7 @@
 import _ from 'lodash';
 import { of, concat } from 'rxjs';
 import { ofType } from 'redux-observable';
-import { map, switchMap, mergeMap } from 'rxjs/operators';
+import { map, switchMap, mergeMap, flatMap } from 'rxjs/operators';
 
 // Model and Actions
 import { RulesEngine } from '@omega-core/utils/rules.engine';
@@ -50,7 +50,7 @@ class ChatEffect {
 				ChatReduxModel.rules.validateChatAgain(action)
 			],
 			() => [
-				switchMap((action: IAction) => {
+				flatMap((action: IAction) => {
 					const { payload } = action.payload;
 					return ChatReduxModel.services.requestAllChats(payload);
 				}),
@@ -118,7 +118,7 @@ class ChatEffect {
 		let componentCallBack = () => {};
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.CREATE_CHAT),
-			switchMap((action: IAction) => {
+			flatMap((action: IAction) => {
 				const {
 					payload: { apolloClient, data, callBack }
 				} = action;

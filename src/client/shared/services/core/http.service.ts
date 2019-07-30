@@ -1,6 +1,5 @@
 /* eslint-disable */
 // Library
-import { DocumentNode } from 'graphql';
 import { from } from 'rxjs';
 
 // Config
@@ -10,6 +9,27 @@ const returnValidURL = (type: any, URI: string) => {
 	switch (type) {
 		case 'api':
 			return config.API_PROTOCOL + config.API_URL + URI;
+	}
+};
+
+const subscribeToMoreResults = async (watchQuery, document, variables) => {
+	console.log('subscribed to more results');
+	try {
+		await watchQuery.subscribeToMore({
+			document,
+			variables,
+			updateQuery: (prev, { subscriptionData }): any => {
+				// Perform updates on previousResult with subscriptionData
+				console.log('new data recieved', subscriptionData);
+				if (!subscriptionData.data) return prev;
+				const chatRecieved = subscriptionData.data.chatRecieved;
+				return Object.assign({}, prev, {
+					getChats: [chatRecieved, ...prev.getChats]
+				});
+			}
+		});
+	} catch (error) {
+		console.log('subscription error', error);
 	}
 };
 
@@ -36,14 +56,10 @@ const returnValidGraphQLOpertaion = (
 				query,
 				variables
 			});
-			watchQuery.subscribeToMore({
-				document,
-				variables,
-				updateQuery: (prev, { subscriptionData }): any => {
-					// Perform updates on previousResult with subscriptionData
-					console.log('new data recieved', subscriptionData);
-				}
-			});
+			setTimeout(
+				() => subscribeToMoreResults(watchQuery, document, variables),
+				100
+			);
 			return watchQuery.result();
 	}
 };
@@ -104,12 +120,6 @@ export class HttpService {
 			gql,
 			variables
 		);
-		console.log('response is', response);
-		return from(
-			response.then(data => {
-				console.log('data is', data);
-				return data;
-			})
-		);
+		return from(response);
 	}
 }

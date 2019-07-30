@@ -43,8 +43,6 @@ export class ChatResolvers {
 
 	@Subscription('chatRecieved')
 	chatRecieved() {
-		return {
-			subscribe: () => pubSub.asyncIterator('chatRecieved')
-		};
+		return pubSub.asyncIterator('chatRecieved');
 	}
 }

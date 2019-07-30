@@ -51,8 +51,13 @@ const subscriptionLink = (config = {}) => {
 		uri: `${Config.WS_PROTOCOL + Config.WS_URL}/graphql`,
 		options: { reconnect: true },
 		webSocketImpl: ws,
-		connectionParams: {
-			authToken: token
+		connectionParams: () => {
+			return {
+				isWebSocket: true,
+				headers: {
+					authorization: `Bearer ${token}`
+				}
+			};
 		},
 		...config
 	});
