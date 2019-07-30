@@ -123,7 +123,7 @@ const links: any = [
 ];
 
 export const apolloClient = new ApolloClient({
-	connectToDevTools: true,
+	connectToDevTools: process.env.NODE_ENV === 'development',
 	link: from(links),
 	cache: cacheLink,
 	defaultOptions

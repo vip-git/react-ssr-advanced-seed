@@ -77,7 +77,8 @@ const authLink = setContext((_, { headers }) => {
 				authorization: token ? `Bearer ${token}` : ''
 			}
 		};
-	} catch (err) {
+	}
+ catch (err) {
 		return {
 			headers: {
 				...headers,
@@ -126,7 +127,7 @@ const links: any = [
 ];
 
 export const apolloClient = new ApolloClient({
-	connectToDevTools: true,
+	connectToDevTools: process.env.NODE_ENV === 'development',
 	ssrMode: true,
 	link: from(links),
 	cache: cacheLink,
