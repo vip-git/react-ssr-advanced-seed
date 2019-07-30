@@ -12,27 +12,6 @@ const returnValidURL = (type: any, URI: string) => {
 	}
 };
 
-const subscribeToMoreResults = async (watchQuery, document, variables) => {
-	console.log('subscribed to more results');
-	try {
-		await watchQuery.subscribeToMore({
-			document,
-			variables,
-			updateQuery: (prev, { subscriptionData }): any => {
-				// Perform updates on previousResult with subscriptionData
-				console.log('new data recieved', subscriptionData);
-				if (!subscriptionData.data) return prev;
-				const chatRecieved = subscriptionData.data.chatRecieved;
-				return Object.assign({}, prev, {
-					getChats: [chatRecieved, ...prev.getChats]
-				});
-			}
-		});
-	} catch (error) {
-		console.log('subscription error', error);
-	}
-};
-
 const returnValidGraphQLOpertaion = (
 	apolloClient: any,
 	type: any,
@@ -56,11 +35,19 @@ const returnValidGraphQLOpertaion = (
 				query,
 				variables
 			});
-			setTimeout(
-				() => subscribeToMoreResults(watchQuery, document, variables),
-				100
-			);
-			return watchQuery.result();
+			watchQuery.subscribeToMore({
+				document,
+				variables,
+				updateQuery: (prev, { subscriptionData }): any => {
+					// Perform updates on previousResult with subscriptionData
+					if (!subscriptionData.data) return prev;
+					const chatRecieved = subscriptionData.data.chatRecieved;
+					return Object.assign({}, prev, {
+						getChats: [...prev.getChats, chatRecieved]
+					});
+				}
+			});
+			return watchQuery;
 	}
 };
 
@@ -120,6 +107,6 @@ export class HttpService {
 			gql,
 			variables
 		);
-		return from(response);
+		return response;
 	}
 }

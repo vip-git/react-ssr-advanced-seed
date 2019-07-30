@@ -22,7 +22,7 @@ interface IMainDefinintion {
 const defaultOptions: DefaultOptions = {
 	watchQuery: {
 		fetchPolicy: 'network-only',
-		errorPolicy: 'ignore'
+		errorPolicy: 'all'
 	},
 	query: {
 		fetchPolicy: 'network-only',
@@ -77,8 +77,7 @@ const authLink = setContext((_, { headers }) => {
 				authorization: token ? `Bearer ${token}` : ''
 			}
 		};
-	}
- catch (err) {
+	} catch (err) {
 		return {
 			headers: {
 				...headers,
@@ -127,6 +126,7 @@ const links: any = [
 ];
 
 export const apolloClient = new ApolloClient({
+	connectToDevTools: true,
 	ssrMode: true,
 	link: from(links),
 	cache: cacheLink,

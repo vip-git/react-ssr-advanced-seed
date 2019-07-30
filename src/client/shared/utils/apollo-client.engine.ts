@@ -20,7 +20,7 @@ interface IMainDefinintion {
 const defaultOptions: DefaultOptions = {
 	watchQuery: {
 		fetchPolicy: 'network-only',
-		errorPolicy: 'ignore'
+		errorPolicy: 'all'
 	},
 	query: {
 		fetchPolicy: 'network-only',
@@ -123,6 +123,7 @@ const links: any = [
 ];
 
 export const apolloClient = new ApolloClient({
+	connectToDevTools: true,
 	link: from(links),
 	cache: cacheLink,
 	defaultOptions

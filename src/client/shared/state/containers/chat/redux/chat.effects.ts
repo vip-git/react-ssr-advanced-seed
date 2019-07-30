@@ -128,14 +128,12 @@ class ChatEffect {
 					data
 				});
 			}),
-			map((response: any) => {
-				const {
-					data: { createChat }
-				} = response;
+			map(() => {
 				componentCallBack();
-				return Object.keys(createChat).length === 0
-					? of([])
-					: ChatReduxModel.actions.reducer.processCreateChat(createChat);
+				return {
+					type: 'CHAT_CREATED_END',
+					payload: {}
+				};
 			})
 		);
 	};
