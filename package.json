@@ -22,7 +22,7 @@
 		"mobile:ios": "cd src/client/mobile && react-native run-ios",
 		"mobile:android": "cd src/client/mobile && react-native run-android",
 		"server": "npx pm2 start --name=node-api dist/server.js",
-		"docker-compose": "docker-compose up -d",
+		"docker-compose": "docker-compose build && docker-compose up -d",
 		"docker:frontend:prod": "node scripts/docker-build.js frontend",
 		"docker:backend:prod": "node scripts/docker-build.js backend",
 		"docker:frontend:prod:publish": "node scripts/docker-build.js frontend --publish",
