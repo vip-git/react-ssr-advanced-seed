@@ -1,0 +1,18 @@
+{
+	"name": "@omega-core/utils",
+	"scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
+	"version": "0.3.7",
+	"dependencies": {
+		"@omega-core/config": "0.3.14",
+		"apollo-client": "2.6.3",
+		"apollo-link": "1.2.12",
+		"apollo-link-context": "1.0.18",
+		"apollo-link-error": "1.1.11",
+		"apollo-link-ws": "1.0.18",
+		"apollo-cache-inmemory": "1.6.2",
+		"apollo-utilities": "1.3.2",
+		"apollo-link-http": "1.5.15"
+	}
+}
