@@ -6,43 +6,17 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 
 const lernaPackages = {
 	containers: {
-		webContainers: [
-			{
-				chat: resolveApp('src/client/web/app/containers/chat'),
-				login: resolveApp('src/client/web/app/containers/login')
-			}
-		],
-		mobileContainers: [
-			{
-				chat: resolveApp('src/client/mobile/app/containers/chat'),
-				login: resolveApp('src/client/mobile/app/containers/login')
-			}
-		]
+		webContainers: resolveApp('src/client/web/app/containers'),
+		mobileContainers: resolveApp('src/client/mobile/app/containers')
 	},
 	components: {
-		webComponents: [
-			{
-				'chat-box': resolveApp('src/client/web/app/common/components/chat-box'),
-				'doc-gen': resolveApp('src/client/web/app/common/components/doc-gen'),
-				wrapper: resolveApp('src/client/web/app/common/components/wrapper'),
-				dialog: resolveApp('src/client/web/app/common/components/dialog')
-			}
-		],
-		mobileComponents: [{
-
-        }],
-		sharedComponents: [{
-            content: resolveApp('src/client/shared/components/content'),
-        }]
+		webComponents: resolveApp('src/client/web/app/common/components'),
+		mobileComponents: resolveApp('src/client/mobile/app/common/components'),
+		sharedComponents: resolveApp('src/client/shared/components')
 	},
 	rules: resolveApp('src/client/shared/rules'),
 	services: resolveApp('src/client/shared/services'),
-	state: [
-		{
-			chat: resolveApp('src/client/shared/rules'),
-			login: resolveApp('src/client/shared/rules')
-		}
-	],
+	state: resolveApp('src/client/shared/state/containers'),
 	config: resolveApp('src/client/shared/config'),
 	assets: resolveApp('src/client/shared/assets'),
 	utils: resolveApp('src/client/shared/utils')

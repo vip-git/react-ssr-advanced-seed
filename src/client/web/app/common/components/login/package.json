@@ -1,0 +1,20 @@
+{
+	"name": "@omega-web-components/login",
+	"version": "0.3.11",
+	"main": "./index.tsx",
+	"scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
+	"dependencies": {
+		"@material-ui/core": "4.2.0",
+		"@material-ui/styles": "4.2.0",
+		"@material-ui/icons": "4.2.1",
+		"@omega-core/assets": "^0.3.4",
+		"prop-types": "^15.7.2",
+		"react": "^16.8.6"
+	}
+}

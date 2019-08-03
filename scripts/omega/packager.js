@@ -46,15 +46,48 @@ const incrementAllLernaPackages = (version) => {
     const {
         components: { webComponents, mobileComponents, sharedComponents },
         containers: { webContainers, mobileContainers },
+        state,
         services,
         rules,
         config,
         utils,
         assets,
      } = paths.lernaPackages;
+     const webComponentsArrayValues = shell
+				.ls(webComponents)
+                .map(val => webComponents + '/' + val);
+     const mobileComponentsArrayValues = shell
+				.ls(mobileComponents)
+                .map(val => mobileComponents + '/' + val);
+     const sharedComponentsArrayValues = shell
+				.ls(sharedComponents)
+                .map(val => sharedComponents + '/' + val);
+     const webContainersArrayValues = shell
+				.ls(webContainers)
+                .map(val => webContainers + '/' + val);
+     const mobileContainersArrayValues = shell
+				.ls(mobileContainers)
+				.map(val => mobileContainers + '/' + val);
+     const stateArrayValues = shell.ls(state).map((val) => state + '/' + val);
+
+     const nonArrayValues = mobileComponentsArrayValues.concat(sharedComponentsArrayValues).concat(webComponentsArrayValues).concat(webContainersArrayValues).concat(mobileContainersArrayValues).concat(stateArrayValues).concat([rules, config, utils, assets, services]);
+     const getDirInfo = (index) => {
+        const dir = nonArrayValues[index];
+        if (dir) {
+            shell.cd(dir);
+            shell.exec(`node -p "require('./package.json').name"`, (code, stdout, stderr) => {
+                shell.exec(`node -p "require('./package.json').version"`,(code, stdout, stderr) => {
+                    getDirInfo(index+1);
+                });
+            });
+        }
+     };
+     getDirInfo(0);
 };
 
 
 const deployAllLernaPackages = () => {
 
 };
+
+incrementAllLernaPackages();
