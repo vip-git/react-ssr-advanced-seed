@@ -42,7 +42,7 @@ const deployAssociatedContainerLernaPackages = (containerName) => {
  * - @omega-shared-components
  *    - @omega-shared-components/content
  * */
-const incrementAllLernaPackages = (version) => {
+const incrementAllLernaPackages = (newIncrementVersion) => {
     const {
         components: { webComponents, mobileComponents, sharedComponents },
         containers: { webContainers, mobileContainers },
@@ -76,7 +76,7 @@ const incrementAllLernaPackages = (version) => {
         if (dir) {
             shell.cd(dir);
             shell.exec(`node -p "require('./package.json').name"`, (code, stdout, stderr) => {
-                shell.exec(`node -p "require('./package.json').version"`,(code, stdout, stderr) => {
+                shell.exec(`npm version ${newIncrementVersion}`,(code, stdout, stderr) => {
                     getDirInfo(index+1);
                 });
             });
