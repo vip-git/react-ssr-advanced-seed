@@ -8,7 +8,7 @@
 		"lint": "eslint ."
 	},
 	"dependencies": {
-		"@omega-shared-components/content": "0.3.19",
+		"@omega-shared-components/content": "^0.4.0",
 		"react": "16.8.6",
 		"react-native": "0.60.3",
 		"react-native-paper": "2.16.0"
