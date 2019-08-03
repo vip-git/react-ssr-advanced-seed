@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/doc-gen",
-  "version": "1.0.7",
+  "version": "1.1.0",
   "description": "",
   "main": "index.tsx",
   "scripts": {

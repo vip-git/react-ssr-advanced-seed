@@ -1,15 +1,15 @@
 {
 	"name": "@omega-web-containers/chat",
-	"version": "0.3.13",
+	"version": "0.4.0",
 	"main": "./index.tsx",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
 	},
 	"dependencies": {
-		"@omega-state-machines/chat": "0.3.12",
-		"@omega-web-components/chat-box": "0.3.11",
-		"@omega-web-components/dialog": "0.3.6",
-		"@omega-shared-components/content": "0.3.19",
+		"@omega-state-machines/chat": "^0.4.0",
+		"@omega-web-components/chat-box": "^0.4.0",
+		"@omega-web-components/dialog": "^0.4.0",
+		"@omega-shared-components/content": "^0.4.0",
 		"react-apollo": "2.5.8",
 		"react": "16.8.6",
 		"react-redux": "7.1.0",

@@ -1,6 +1,6 @@
 {
 	"name": "@omega-web-components/login",
-	"version": "0.3.14",
+	"version": "0.4.0",
 	"main": "./index.tsx",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
@@ -13,7 +13,7 @@
 		"@material-ui/core": "4.2.0",
 		"@material-ui/styles": "4.2.0",
 		"@material-ui/icons": "4.2.1",
-		"@omega-core/assets": "^0.3.4",
+		"@omega-core/assets": "^0.4.0",
 		"prop-types": "^15.7.2",
 		"react": "^16.8.6"
 	}

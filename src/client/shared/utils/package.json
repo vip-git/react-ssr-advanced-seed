@@ -3,7 +3,7 @@
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
 	},
-	"version": "0.3.10",
+	"version": "0.4.0",
 	"dependencies": {
 		"@omega-core/config": "0.3.14",
 		"apollo-client": "2.6.3",

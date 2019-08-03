@@ -1,6 +1,6 @@
 {
     "name": "@omega-core/config",
-    "version": "0.3.17",
+    "version": "0.4.0",
     "main": "./index.ts",
     "scripts": {
         "deploy": "npm version patch && npm publish --access public"

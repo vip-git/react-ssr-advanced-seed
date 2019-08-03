@@ -1,6 +1,6 @@
 {
 	"name": "@omega-core/services",
-	"version": "0.3.18",
+	"version": "0.4.0",
 	"main": "./index.tsx",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
@@ -9,9 +9,9 @@
 		"@material-ui/core": "4.2.0",
 		"@material-ui/styles": "4.2.0",
 		"@material-ui/icons": "4.2.1",
-		"@omega-core/utils": "0.3.7",
-		"@omega-core/assets": "0.3.4",
-		"@omega-core/config": "0.3.14",
+		"@omega-core/utils": "^0.4.0",
+		"@omega-core/assets": "^0.4.0",
+		"@omega-core/config": "^0.4.0",
 		"graphql-tag": "2.10.1",
 		"rxjs": "6.5.2"
 	}
