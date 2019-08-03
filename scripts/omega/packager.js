@@ -85,9 +85,5 @@ const incrementAllLernaPackages = (version) => {
      getDirInfo(0);
 };
 
-
-const deployAllLernaPackages = () => {
-
-};
-
-incrementAllLernaPackages();
+const incrementVersion = process.argv.slice(1).length && process.argv.slice(1)[0];
+incrementAllLernaPackages(incrementVersion);

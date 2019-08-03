@@ -10,13 +10,6 @@ import { ChatEffectsEngine } from './redux/chat.effects';
 import { ChatActionsEngine, ChatActionTypes } from './redux/chat.actions';
 import { getChatState } from './redux/chat.selectors';
 
-interface IDispatch {
-	(arg0: { type: string; payload: any }): void;
-	(arg0: { type: string; payload: any }): void;
-	(arg0: { type: string; payload: any }): void;
-	(arg0: { type: string; payload: any }): void;
-}
-
 export const ChatReduxModel = {
 	attributes: {
 		chatData: [],
@@ -38,7 +31,7 @@ export const ChatReduxModel = {
 		...ChatServiceEngine,
 		...UserServiceEngine
 	},
-	reduxActions: (dispatch: IDispatch) => ({
+	reduxActions: (dispatch: any) => ({
 		dispatchReadAllUsersAndChats: (payload: any) =>
 			dispatch(ChatReduxModel.actions.effects.readAllUsersAndChats(payload)),
 		dispatchCreateChat: (payload: any) =>

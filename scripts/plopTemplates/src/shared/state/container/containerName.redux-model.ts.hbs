@@ -28,7 +28,7 @@ export const {{ pascalCase containerName }}ReduxModel = {
 	services: {
 		...{{ pascalCase containerName }}ServiceEngine
 	},
-	reduxActions: (dispatch: IDispatch) => ({
+	reduxActions: (dispatch: any) => ({
 		dispatchRead{{ pascalCase containerName }}: (payload: any) =>
 			dispatch({{ pascalCase containerName }}ReduxModel.actions.effects.read{{ pascalCase containerName }}(payload)),
 	}),
