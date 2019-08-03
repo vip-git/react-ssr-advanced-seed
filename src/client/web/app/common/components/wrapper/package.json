@@ -1,10 +1,10 @@
 {
   "name": "@omega-web-components/wrapper",
-  "version": "0.3.3",
+  "version": "0.3.5",
   "main": "./index.tsx",
   "scripts": {
-		"deploy": "npm version patch && npm publish --access public"
-	},
+    "deploy": "npm version patch && npm publish --access public"
+  },
   "author": "",
   "license": "ISC",
   "description": "",

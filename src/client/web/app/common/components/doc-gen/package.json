@@ -1,11 +1,11 @@
 {
   "name": "@omega-web-components/doc-gen",
-  "version": "1.0.4",
+  "version": "1.0.6",
   "description": "",
   "main": "index.tsx",
   "scripts": {
-		"deploy": "npm version patch && npm publish --access public"
-	},
+    "deploy": "npm version patch && npm publish --access public"
+  },
   "dependencies": {
     "gojs": "2.0.12"
   },

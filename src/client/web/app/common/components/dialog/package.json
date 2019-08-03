@@ -1,10 +1,10 @@
 {
   "name": "@omega-web-components/dialog",
-  "version": "0.3.6",
+  "version": "0.3.8",
   "main": "./index.tsx",
   "scripts": {
-		"deploy": "npm version patch && npm publish --access public"
-	},
+    "deploy": "npm version patch && npm publish --access public"
+  },
   "author": "",
   "license": "ISC",
   "description": "",

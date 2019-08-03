@@ -1,9 +1,9 @@
 {
   "name": "@omega-core/assets",
-  "version": "0.3.4",
+  "version": "0.3.6",
   "scripts": {
-		"deploy": "npm version patch && npm publish --access public"
-	},
+    "deploy": "npm version patch && npm publish --access public"
+  },
   "author": "",
   "license": "ISC",
   "description": "",

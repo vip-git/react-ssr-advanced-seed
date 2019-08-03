@@ -77,7 +77,9 @@ const incrementAllLernaPackages = (newIncrementVersion) => {
             shell.cd(dir);
             shell.exec(`node -p "require('./package.json').name"`, (code, stdout, stderr) => {
                 shell.exec(`npm version ${newIncrementVersion}`,(code, stdout, stderr) => {
-                    getDirInfo(index+1);
+                    shell.exec(`npm publish --access public`,(code, stdout, stderr) => {
+                        getDirInfo(index+1);
+                    });
                 });
             });
         }
@@ -85,5 +87,5 @@ const incrementAllLernaPackages = (newIncrementVersion) => {
      getDirInfo(0);
 };
 
-const incrementVersion = process.argv.slice(1).length && process.argv.slice(1)[0];
+const incrementVersion = process.argv.slice(2).length && process.argv.slice(2)[0];
 incrementAllLernaPackages(incrementVersion);
