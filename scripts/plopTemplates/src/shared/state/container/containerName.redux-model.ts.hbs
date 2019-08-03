@@ -1,0 +1,38 @@
+// Service
+import { {{ pascalCase containerName }}ServiceEngine } from '@omega-core/services/{{ containerName }}';
+
+// Rules
+import { {{ pascalCase containerName }}RulesEngine } from '@omega-core/rules/{{ containerName }}.rules';
+
+// Redux
+import { {{ pascalCase containerName }}EffectsEngine } from './redux/{{ containerName }}.effects';
+import { {{ pascalCase containerName }}ActionsEngine, {{ pascalCase containerName }}ActionTypes } from './redux/{{ containerName }}.actions';
+import { get{{ pascalCase containerName }}State } from './redux/{{ containerName }}.selectors';
+
+export const {{ pascalCase containerName }}ReduxModel = {
+	attributes: {
+        {{ containerName }}Data: [],
+	},
+	actionTypes: {
+		...{{ pascalCase containerName }}ActionTypes
+	},
+	actions: {
+		...{{ pascalCase containerName }}ActionsEngine
+	},
+	effects: {
+		...{{ pascalCase containerName }}EffectsEngine
+	},
+	rules: {
+		...{{ pascalCase containerName }}RulesEngine
+	},
+	services: {
+		...{{ pascalCase containerName }}ServiceEngine
+	},
+	reduxActions: (dispatch: IDispatch) => ({
+		dispatchRead{{ pascalCase containerName }}: (payload: any) =>
+			dispatch({{ pascalCase containerName }}ReduxModel.actions.effects.read{{ pascalCase containerName }}(payload)),
+	}),
+	reduxState: (state: any) => ({
+        {{ containerName }}: get{{ pascalCase containerName }}State(state)
+	})
+};

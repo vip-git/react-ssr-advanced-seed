@@ -1,0 +1,70 @@
+/* eslint-env browser */
+// Library
+import _ from 'lodash';
+import { of, concat } from 'rxjs';
+import { ofType } from 'redux-observable';
+import { map, switchMap, mergeMap, flatMap } from 'rxjs/operators';
+
+// Model and Actions
+import { RulesEngine } from '@omega-core/utils/rules.engine';
+import { {{ pascalCase containerName }}ReduxModel } from '../{{ containerName }}.redux-model'; // Todo: This would change based on web and mobile
+
+// Interfaces
+export interface I{{ pascalCase containerName }} {
+	id: number;
+}
+
+interface IAction {
+	type: string;
+	payload: any;
+}
+
+interface I{{ pascalCase containerName }}DataResponse {
+	error?: boolean;
+	message?: string;
+	data: any;
+}
+
+// persisted vars
+let initialAction: IAction = {
+	type: 'NO_ACTION',
+	payload: {}
+};
+
+class {{ pascalCase containerName }}Effect {
+	/**
+	 * GET chat epic
+	 * @param action$
+	 * @returns {any|*|Observable}
+	 */
+	static read{{ pascalCase containerName }} = (action$: any) =>
+		RulesEngine.applyRule(
+			action$,
+            {{ pascalCase containerName }}ReduxModel.actionTypes.READ_{{ constantCase containerName }},
+			(action: IAction) => [
+                {{ pascalCase containerName }}ReduxModel.rules.validate{{ pascalCase containerName }}(action),
+			],
+			() => [
+				flatMap((action: IAction) => {
+					const { payload } = action.payload;
+					return {{ pascalCase containerName }}ReduxModel.services.request{{ pascalCase containerName }}(payload);
+				}),
+				map(data => {{ pascalCase containerName }}ReduxModel.rules.isValid{{ pascalCase containerName }}Response(data)),
+				map(({{ containerName }}Response: I{{ pascalCase containerName }}DataResponse) => {
+					if ({{ containerName }}Response && {{ containerName }}Response.error) {
+						return {{ pascalCase containerName }}ReduxModel.actions.reducer.processError{{ pascalCase containerName }}Response({
+							...{{ containerName }}Response
+						});
+					}
+					const {
+						data: { get{{ pascalCase containerName }} }
+					} = {{ containerName }}Response;
+					return {{ pascalCase containerName }}ReduxModel.actions.reducer.process{{ pascalCase containerName }}(finalData);
+				})
+			]
+		);
+}
+
+export const {{ pascalCase containerName }}EffectsEngine = {
+	$read{{ pascalCase containerName }}: {{ pascalCase containerName }}Effect.read{{ pascalCase containerName }},
+};

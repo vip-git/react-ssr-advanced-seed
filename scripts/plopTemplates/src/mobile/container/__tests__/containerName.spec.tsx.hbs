@@ -1,0 +1,46 @@
+import React from 'react';
+import { Provider } from 'react-redux';
+import { ThemeProvider } from '@material-ui/styles';
+import { mount } from 'enzyme';
+
+// Theme
+import theme from '../../../common/styles';
+
+// Internal
+import {{ pascalCase containerName}}Container from '@omega-web-containers/{{containerName}}';
+
+// Redux Model
+import { {{ pascalCase containerName}}ReduxModel } from '@omega-state-machines/{{containerName}}/{{containerName}}.redux-model';
+
+const storeFake = (state: {}) => ({
+	default: jest.fn(),
+	subscribe: jest.fn(),
+	dispatch: jest.fn(),
+	getState: () => state
+});
+
+describe('container <{{ pascalCase containerName}}Container />', () => {
+	let wrapper;
+	let container;
+
+	beforeEach(() => {
+		jest.resetAllMocks();
+
+		const store = storeFake({
+            {{ containerName }}: {{ pascalCase containerName}}ReduxModel.attributes
+		});
+
+		wrapper = mount(
+			<ThemeProvider theme={theme}>
+				<Provider store={store}>
+					<{{ pascalCase containerName}}Container />
+				</Provider>
+			</ThemeProvider>
+		);
+		container = wrapper.find({{ pascalCase containerName}}Container);
+	});
+
+	it('should render both the container and the component ', () => {
+		expect(container.length).toBeTruthy();
+	});
+});

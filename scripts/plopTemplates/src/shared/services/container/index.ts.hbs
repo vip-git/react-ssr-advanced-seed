@@ -1,0 +1,41 @@
+// Library
+import { of, from } from 'rxjs';
+
+// Services
+import { HttpService } from '../core/http.service';
+
+// Gql
+import { {{containerName}}Query, {{containerName}}Mutation, {{containerName}}Subscription } from './{{containerName}}.gql';
+
+class {{ pascalCase containerName }}Service {
+	static get{{ pascalCase containerName }}(payload: any) {
+		const { apolloClient, data } = payload;
+		return HttpService.buildGraphQLCall(apolloClient, 'query', {{ containerName }}Query, data);
+	}
+
+	static get{{ pascalCase containerName }}Subscription(payload: any) {
+		const { apolloClient, data } = payload;
+		return HttpService.buildGraphQLCall(
+			apolloClient,
+			'subscription',
+			{ query: {{ containerName }}Query, document: {{ containerName }}Subscription },
+			data
+		);
+	}
+
+	static mutate{{ pascalCase containerName }}(payload: any) {
+		const { apolloClient, data } = payload;
+		return HttpService.buildGraphQLCall(
+			apolloClient,
+			'mutation',
+            {{ containerName }}Mutation,
+			data
+		);
+	}
+}
+
+export const ChatServiceEngine = {
+	request{{ pascalCase containerName }}Subscription: action => {{ pascalCase containerName }}Service.get{{ pascalCase containerName }}Subscription(action),
+	request{{ pascalCase containerName }}: (payload: any) => {{ pascalCase containerName }}Service.get{{ pascalCase containerName }}(payload),
+	requestMutate{{ pascalCase containerName }}: (payload: any) => {{ pascalCase containerName }}Service.mutate{{ pascalCase containerName }}(payload),
+};

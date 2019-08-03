@@ -1,0 +1,34 @@
+// Model
+import { {{ pascalCase containerName }}ReduxModel } from '../../{{ containerName }}.redux-model';
+
+// Reducer
+import { {{ pascalCase containerName }}ActionTypes } from '../{{ containerName }}.actions';
+import {{ pascalCase containerName }}Reducer from '../{{ containerName }}.reducer';
+
+describe('{{ pascalCase containerName }} Reducers', () => {
+	it('can get Initial State', () => {
+		const initialState = {
+            {{ containerName }}: {}
+		};
+		const state = {{ pascalCase containerName }}ReduxModel.reduxState(initialState);
+		expect(state).toStrictEqual(initialState);
+	});
+
+	it('can handle PROCESS_{{ constantCase containerName }}', () => {
+		expect(
+            {{ pascalCase containerName }}Reducer(null, {
+				type: {{ pascalCase containerName }}ActionTypes.PROCESS_{{ constantCase containerName }},
+				payload: 'Run the tests'
+			})
+		).toEqual({ {{ containerName }}Data: 'Run the tests' });
+	});
+
+	it('can handle PROCESS_ERROR_{{ constantCase containerName }}_RESPONSE', () => {
+		expect(
+            {{ pascalCase containerName }}Reducer(null, {
+				type: {{ pascalCase containerName }}ActionTypes.PROCESS_ERROR_{{ constantCase containerName }}_RESPONSE,
+				payload: 'Run the tests'
+			})
+		).toEqual({ error: 'Run the tests' });
+	});
+});

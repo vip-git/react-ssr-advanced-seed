@@ -1,0 +1,26 @@
+// Library
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { ApolloConsumer } from 'react-apollo';
+
+// Shared
+import { {{ pascalCase containerName }}ReduxModel } from '@omega-state-machines/{{containerName}}/{{containerName}}.redux-model';
+
+// Components
+import { {{ pascalCase containerName }}ComponentsEngine } from './{{containerName}}.components';
+
+export const {{ pascalCase containerName }}Model = {
+    container: true,
+    i18nKeys: {},
+    libraries: {
+        React,
+        Component,
+        connect,
+        ApolloConsumer
+    },
+    components: {
+        ...{{ pascalCase containerName }}ComponentsEngine
+	},
+    docs: {},
+	...{{ pascalCase containerName }}ReduxModel
+};

@@ -1,0 +1,23 @@
+// Internal
+import { {{ pascalCase containerName }}Model } from './{{ containerName }}.model';
+
+const { React, Component, connect, ApolloConsumer } = {{ pascalCase containerName }}Model.libraries;
+
+class {{ pascalCase containerName }}Container extends Component<{}, {}> {
+	render() {
+		return (
+			<ApolloConsumer>
+				{apolloClient => (
+					<React.Fragment>
+						
+					</React.Fragment>
+				)}
+			</ApolloConsumer>
+		);
+	}
+}
+
+export default connect(
+    {{ pascalCase containerName }}Model.reduxState,
+    {{ pascalCase containerName }}Model.reduxActions
+)({{ pascalCase containerName }}Container);

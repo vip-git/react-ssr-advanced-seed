@@ -1,0 +1,19 @@
+// internal
+import { {{ pascalCase containerName}}ServiceEngine } from '../';
+
+describe('{{ pascalCase containerName}} Service', () => {
+	it('can get {{ pascalCase containerName}} Subscription', () => {
+		const subscribe{{ pascalCase containerName}} = {{ pascalCase containerName}}ServiceEngine.request{{ pascalCase containerName}}Subscription({});
+		expect(subscribe{{ pascalCase containerName}}).toBeDefined();
+	});
+
+	it('can get {{containerName}}', () => {
+		const request{{ pascalCase containerName}} = {{ pascalCase containerName}}ServiceEngine.request{{ pascalCase containerName}}({});
+		expect(request{{ pascalCase containerName}}).toBeDefined();
+	});
+
+	it('can update {{containerName}}', () => {
+		const requestMutate{{ pascalCase containerName }} = {{ pascalCase containerName}}ServiceEngine.requestMutate{{ pascalCase containerName }}({});
+		expect(requestMutate{{ pascalCase containerName }}).toBeDefined();
+	});
+});

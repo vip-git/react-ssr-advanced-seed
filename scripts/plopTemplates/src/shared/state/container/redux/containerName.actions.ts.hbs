@@ -1,0 +1,33 @@
+export const {{ pascalCase containerName }}ActionTypes = {
+	READ_{{ constantCase containerName }}: '{{ containerName }}/read-{{ containerName }}',
+	PROCESS_{{ constantCase containerName }}: '{{ containerName }}/process-{{ containerName }}',
+	PROCESS_ERROR_{{ constantCase containerName }}_RESPONSE: '{{ containerName }}/process-error-{{ containerName }}-response'
+};
+
+class {{ pascalCase containerName }}Actions {
+	static read{{pascalCase containerName}} = (payload: any) => ({
+		type: {{ pascalCase containerName }}ActionTypes.READ_{{ constantCase containerName }},
+		payload
+	});
+
+	static process{{ pascalCase containerName }} = (payload: any) => ({
+		type: {{ pascalCase containerName }}ActionTypes.PROCESS_{{ constantCase containerName }},
+		payload
+	});
+
+	static processError{{ pascalCase containerName }} = (payload: any) => ({
+		type: {{ pascalCase containerName }}ActionTypes.PROCESS_ERROR_{{ constantCase containerName }}_RESPONSE,
+		payload
+	});
+}
+
+export const {{pascalCase containerName}}ActionsEngine = {
+	effects: {
+		read{{ pascalCase containerName }}: (payload: any) => {{ pascalCase containerName }}Actions.read{{ pascalCase containerName }}(payload),
+	},
+	reducer: {
+		process{{ pascalCase containerName }}: (payload: any) => {{pascalCase containerName}}Actions.process{{ pascalCase containerName }}(payload),
+		processError{{ pascalCase containerName }}Response: (payload: any) =>
+            {{ pascalCase containerName }}Actions.processError{{ pascalCase containerName }}Response(payload)
+	}
+};

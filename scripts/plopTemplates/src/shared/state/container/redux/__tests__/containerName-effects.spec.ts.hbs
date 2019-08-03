@@ -1,0 +1,38 @@
+//  Library
+import { of } from 'rxjs';
+import configureStore from 'redux-mock-store';
+import { createEpicMiddleware } from 'redux-observable';
+
+// effects
+import { {{ pascalCase containerName }}EffectsEngine } from '../{{ containerName }}.effects';
+
+
+// Model
+import { {{ pascalCase containerName }}ReduxModel } from '../../{{ containerName }}.redux-model';
+
+const epicMiddleware = createEpicMiddleware();
+const middlewares = [epicMiddleware];
+const mockStore = configureStore(middlewares);
+
+describe('{{ pascalCase containerName }} Effects', () => {
+	it('can read {{ containerName }} data', () => {
+		const initialState = {};
+		const store = mockStore(initialState);
+		const dispatchRead{{ pascalCase containerName }} = {{ pascalCase containerName }}ReduxModel.reduxActions(
+			store.dispatch
+		).dispatchRead{{ pascalCase containerName }}({});
+		jest
+			.spyOn({{ pascalCase containerName }}ReduxModel.services, 'request{{ pascalCase containerName }}')
+			.mockImplementation(() => {{ pascalCase containerName }}Mocks);
+		const mockedResponse = ['{{ containerName }}/read-all-{{ containerName }}'];
+		expect(dispatchReadAll{{ pascalCase containerName }}).toStrictEqual(
+			ChatReduxModel.actions.effects.read{{ pascalCase containerName }}({})
+		);
+		const read{{ pascalCase containerName }}$ = of(dispatchRead{{ pascalCase containerName }});
+
+        {{ pascalCase containerName }}EffectsEngine.$read{{ pascalCase containerName }}(read{{ pascalCase containerName }}$).subscribe((actual: any) => {
+			expect({{ pascalCase containerName }}ReduxModel.services.request{{ pascalCase containerName }}).toBeCalled();
+			expect(actual.payload).toBe({{ pascalCase containerName }}Mocks);
+		});
+	});
+});

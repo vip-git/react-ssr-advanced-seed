@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable func-names */
 /* eslint-disable no-tabs */
-const omegaPackager = require('./scripts/omega-packager');
+const omegaGenerator = require('./scripts/omega/generator');
 
 module.exports = plop => {
-	omegaPackager.generateContainer(plop);
-	omegaPackager.generateWebComponent(plop);
-	omegaPackager.generateSharedComponent(plop);
-	omegaPackager.generateMobileComponent(plop);
+	omegaGenerator.generateContainer(plop);
+	omegaGenerator.generateWebComponent(plop);
+	omegaGenerator.generateSharedComponent(plop);
+	omegaGenerator.generateMobileComponent(plop);
 };

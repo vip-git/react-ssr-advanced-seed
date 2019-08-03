@@ -1,0 +1,19 @@
+class {{pascalCase containerName}}Rules {
+	static validate{{pascalCase containerName}}(action: any) {
+		// console.log('i was called to validate {{containerName}}', action);
+		// throw new Error('I could not update');
+		return 'done';
+	}
+
+	static valid{{pascalCase containerName}}Response(action: any) {
+		// console.log('i was called to validate {{containerName}}', action);
+		// throw new Error('I could not update');
+		return 'done';
+	}
+}
+
+export const {{pascalCase containerName}}RulesEngine = {
+	validate{{pascalCase containerName}}: (action: any) => {{pascalCase containerName}}Rules.validate{{pascalCase containerName}}(action),
+	valid{{pascalCase containerName}}Response: (action: any) =>
+		{{pascalCase containerName}}Rules.valid{{pascalCase containerName}}Response(action),
+};

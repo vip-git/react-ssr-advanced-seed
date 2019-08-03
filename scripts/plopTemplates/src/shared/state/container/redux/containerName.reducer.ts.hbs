@@ -1,0 +1,29 @@
+import { {{pascalCase containerName}}ReduxModel } from '../{{containerName}}.redux-model'; // Todo needs to be web and mobile
+
+export const initialState = Object.freeze({
+	...{{pascalCase containerName}}ReduxModel.attributes
+});
+
+export default (state = initialState, action: { type: any; payload?: {} }) => {
+	const { type, payload = {} } = action;
+
+	// eslint-disable-next-line default-case
+	switch (type) {
+		case {{pascalCase containerName}}ReduxModel.actionTypes.PROCESS_{{constantCase containerName}}: {
+			return {
+				...state,
+                {{containerName}}Data: payload
+			};
+		}
+		case {{pascalCase containerName}}ReduxModel.actionTypes.PROCESS_ERROR_{{constantCase containerName}}_RESPONSE: {
+			return {
+				...state,
+				error: payload
+			};
+		}
+
+		default: {
+			return state;
+		}
+	}
+};

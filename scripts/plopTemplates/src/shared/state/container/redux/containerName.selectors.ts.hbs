@@ -1,0 +1,6 @@
+// Library
+import { createSelector } from 'reselect';
+
+export const {{containerName}} = (state: any) => state.{{containerName}};
+
+export const get{{pascalCase containerName}}State = createSelector([{{containerName}}], ({{containerName}}State) => {{containerName}}State);

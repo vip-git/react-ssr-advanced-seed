@@ -1,0 +1,12 @@
+// Internal
+import { get{{ pascalCase containerName}}State } from '../{{containerName}}.selectors';
+
+describe('{{ pascalCase containerName}} Selectors', () => {
+    it('Get Initial State', () => {
+        const initialState = {
+            {{containerName}}: {},
+        };
+        const state = get{{ pascalCase containerName}}State(initialState).{{containerName}};
+        expect(state).toBe(undefined);
+    });
+});

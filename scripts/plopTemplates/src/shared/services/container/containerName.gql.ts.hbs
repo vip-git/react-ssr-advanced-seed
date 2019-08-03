@@ -1,0 +1,26 @@
+// GraphQL
+import gql from 'graphql-tag';
+
+export const {{containerName}}Query = gql`
+	query {{containerName}}Query {
+		get{{ pascalCase containerName}} {
+			id
+		}
+	}
+`;
+
+export const {{containerName}}Mutation = gql`
+	mutation {{containerName}}Mutation() {
+        {{containerName}}() {
+			id
+		}
+	}
+`;
+
+export const {{containerName}}Subscription = gql`
+	subscription {{containerName}}Subscription {
+        {{containerName}} {
+			id
+		}
+	}
+`;

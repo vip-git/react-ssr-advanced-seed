@@ -1,0 +1,9 @@
+// internal
+import { {{pascalCase containerName}}RulesEngine } from '../{{containerName}}.rules';
+
+describe('{{pascalCase containerName}} Rules', () => {
+  it('can get all {{containerName}}', () => {
+    const validate{{pascalCase containerName}} = {{pascalCase containerName}}RulesEngine.validate{{pascalCase containerName}}({});
+    expect(validate{{pascalCase containerName}}).toBe('done');
+  });
+});
