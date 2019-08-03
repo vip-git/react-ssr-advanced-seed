@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/chat-box",
-  "version": "0.3.13",
+  "version": "0.3.14",
   "main": "./index.tsx",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"
