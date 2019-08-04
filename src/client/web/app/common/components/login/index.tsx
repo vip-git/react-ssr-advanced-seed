@@ -1,11 +1,22 @@
-import React from 'react';
-import { createStyles, Theme, withStyles, WithStyles } from '@material-ui/core/styles';
-import Button from '@material-ui/core/Button';
-import Dialog from '@material-ui/core/Dialog';
-import MuiDialogTitle from '@material-ui/core/DialogTitle';
-import MuiDialogContent from '@material-ui/core/DialogContent';
-import MuiDialogActions from '@material-ui/core/DialogActions';
-import Typography from '@material-ui/core/Typography';
+// Types
+import {
+	Theme,
+	WithStyles
+} from '@material-ui/core/styles';
+
+// Model
+import { LoginModel } from './login.model';
+
+const {
+	React,
+	createStyles, 
+	Button,
+	Dialog,
+	MuiDialogTitle,
+	MuiDialogContent,
+	withStyles,
+	Typography
+} = LoginModel.libraries;
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -38,7 +49,7 @@ const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
 				}}
 			>
 				{children}
-   </Typography>
+			</Typography>
 		</MuiDialogTitle>
   );
 });
@@ -49,27 +60,19 @@ const DialogContent = withStyles((theme: Theme) => ({
   },
 }))(MuiDialogContent);
 
-const DialogActions = withStyles((theme: Theme) => ({
-  root: {
-    margin: 0,
-    padding: theme.spacing(1),
-  },
-}))(MuiDialogActions);
-
 interface IDialogProps {
 	show: boolean;
 	content: string;
 	title: string;
-	handleClose: () => void;
+	handleLoginClick: () => void;
 }
 
-class CustomizedDialogs extends React.Component<IDialogProps, {}> {
+class LoginDialog extends React.Component<IDialogProps, {}> {
   render() {
-    const { show, handleClose, content, title } = this.props;
+    const { show, handleLoginClick } = this.props;
     return (
 			<div>
 				<Dialog
-					onClose={handleClose}
 					aria-labelledby='customized-dialog-title'
 					open={show || false}
 				>
@@ -95,8 +98,9 @@ class CustomizedDialogs extends React.Component<IDialogProps, {}> {
 								width: 260,
 								justifyContent: 'center',
 								alignContent: 'center',
-								alignItems: 'center',
+								alignItems: 'center'
 							}}
+							onClick={handleLoginClick}
 						>
 							Login with Github
 						</Button>
@@ -107,4 +111,4 @@ class CustomizedDialogs extends React.Component<IDialogProps, {}> {
   }
 }
 
-export default CustomizedDialogs;
+export default LoginDialog;

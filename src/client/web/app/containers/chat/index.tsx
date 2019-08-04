@@ -17,7 +17,6 @@ class ChatContainer extends Component<any, any> {
 		const {
 			ChatComponent,
 			ContentComponent,
-			LoginComponent
 		} = ChatModel.components;
 		const { chats, title, accessToken } = this.props;
 		const { chatData, userData, error } = chats;
@@ -43,12 +42,6 @@ class ChatContainer extends Component<any, any> {
 							title={title}
 							chatData={chatData}
 							userData={userData}
-						/>
-						<LoginComponent
-							show={accessToken === ''}
-							content={error && error.message}
-							title={error && error.title}
-							handleClose={this.handleErrorClose}
 						/>
 					</React.Fragment>
 				)}

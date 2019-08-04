@@ -7,13 +7,15 @@ import { withTranslation } from 'react-i18next';
 
 // Redux
 import Chat from '@omega-web-containers/chat';
+import LoginDialog from '@omega-web-Components/login';
 import { getLocale } from '../../shared/state/containers/app/selectors';
 import { setLocale } from '../../shared/state/containers/app/actions';
 
 // import './App.scss';
 
-// containers
+// Internal Components
 
+// containers
 export interface PropsT {
 	setLocale: (string) => {};
 	t: (string) => string;
@@ -25,10 +27,14 @@ class App extends React.PureComponent<any, any> {
 		dispatchSetLocale(e.target.value);
 	};
 
-	render() {
-		const { t, tReady, app } = this.props;
+	handleLoginClick = () => {
+
+	};
+
+	renderAppScreen = () => {
+		const { t, app } = this.props;
 		const { accessToken } = app;
-		return tReady ? (
+		return (
 			<FadeIn>
 				<Helmet
 					defaultTitle='React Redux SSR Advanced Seed'
@@ -56,8 +62,15 @@ class App extends React.PureComponent<any, any> {
 					</div>
 					<Chat title={t('i18n-example')} accessToken={accessToken} />
 				</div>
+				<LoginDialog show={accessToken === ''} handleClick={this.handleLoginClick} />
 			</FadeIn>
-		) : (
+		);
+	}
+
+	render() {
+		const { t, tReady, app } = this.props;
+		const { accessToken } = app;
+		return tReady ? this.renderAppScreen() : (
 			[]
 		);
 	}
