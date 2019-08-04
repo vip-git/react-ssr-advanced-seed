@@ -1,6 +1,6 @@
 {
 	"name": "@omega-web-containers/chat",
-	"version": "0.4.1",
+	"version": "0.4.2",
 	"main": "./index.tsx",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
@@ -8,7 +8,7 @@
 	"dependencies": {
 		"@omega-state-machines/chat": "^0.4.0",
 		"@omega-web-components/chat-box": "^0.4.0",
-		"@omega-web-components/dialog": "^0.4.0",
+		"@omega-web-components/login": "^0.4.0",
 		"@omega-shared-components/content": "^0.4.0",
 		"react-apollo": "2.5.8",
 		"react": "16.8.6",

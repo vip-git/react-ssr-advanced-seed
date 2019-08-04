@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/wrapper",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "main": "./index.tsx",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"

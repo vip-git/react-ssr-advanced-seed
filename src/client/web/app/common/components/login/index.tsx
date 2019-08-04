@@ -5,8 +5,6 @@ import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
 import MuiDialogContent from '@material-ui/core/DialogContent';
 import MuiDialogActions from '@material-ui/core/DialogActions';
-import IconButton from '@material-ui/core/IconButton';
-import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 
 const styles = (theme: Theme) =>
@@ -30,15 +28,17 @@ export interface DialogTitleProps extends WithStyles<typeof styles> {
 }
 
 const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
-  const { children, classes, onClose } = props;
+  const { children, classes } = props;
   return (
 		<MuiDialogTitle disableTypography className={classes.root}>
-			<Typography variant='h6'>{children}</Typography>
-			{onClose ? (
-				<IconButton aria-label='Close' className={classes.closeButton} onClick={onClose}>
-					<CloseIcon />
-				</IconButton>
-			) : null}
+			<Typography
+				variant='h6'
+				style={{
+					textAlign: 'center'
+				}}
+			>
+				{children}
+   </Typography>
 		</MuiDialogTitle>
   );
 });
@@ -68,25 +68,42 @@ class CustomizedDialogs extends React.Component<IDialogProps, {}> {
     const { show, handleClose, content, title } = this.props;
     return (
 			<div>
-				<Dialog onClose={handleClose} aria-labelledby='customized-dialog-title' open={show || false}>
-					<DialogTitle id='customized-dialog-title'>{title}</DialogTitle>
+				<Dialog
+					onClose={handleClose}
+					aria-labelledby='customized-dialog-title'
+					open={show || false}
+				>
+					<DialogTitle id='customized-dialog-title'>
+						Welcome to React-SSR-Advanced Seed Demo
+					</DialogTitle>
 					<DialogContent
 						dividers
 						style={{
 							minWidth: 500,
-							minHeight: 300,
+							minHeight: 50,
+							display: 'flex',
+							justifyContent: 'center',
+							alignContent: 'center',
+							alignItems: 'center'
 						}}
 					>
-						<Typography gutterBottom>{content}</Typography>
-					</DialogContent>
-					<DialogActions>
-						<Button onClick={handleClose} color='primary'>
-							Close
+						<Button
+							variant='outlined'
+							style={{
+								margin: 10,
+								padding: 10,
+								width: 260,
+								justifyContent: 'center',
+								alignContent: 'center',
+								alignItems: 'center',
+							}}
+						>
+							Login with Github
 						</Button>
-					</DialogActions>
+					</DialogContent>
 				</Dialog>
 			</div>
-    );
+		);
   }
 }
 
