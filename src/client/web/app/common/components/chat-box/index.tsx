@@ -53,10 +53,12 @@ class Chat extends Component<IChatProps, IChatState> {
 	};
 
 	scrollToBottomChat = () => {
-		setTimeout(() => {
-			const objDiv = document.getElementById('chats');
-			objDiv.scrollTop = objDiv.scrollHeight;
-		}, 1);
+		if (typeof window !== 'undefined') {
+			setTimeout(() => {
+				const objDiv = document.getElementById('chats');
+				objDiv.scrollTop = objDiv.scrollHeight;
+			}, 1);
+		}
 	};
 
 	render() {

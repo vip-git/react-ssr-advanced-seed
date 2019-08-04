@@ -29,7 +29,7 @@ interface IRes {
 	};
 }
 /* ignore coverage */
-const serverRenderer = () => (req: IReq, res: IRes) => {
+const serverRenderer = () => (req: any, res: IRes) => {
 	const sheets = new ServerStyleSheets();
 	const content = renderToString(
 		sheets.collect(
@@ -37,7 +37,7 @@ const serverRenderer = () => (req: IReq, res: IRes) => {
 				<ThemeProvider theme={theme}>
 					<Provider store={req.store}>
 						<Router location={req.url} context={{}}>
-							<IntlProvider>
+							<IntlProvider i18n={req.i18n}>
 								<App />
 							</IntlProvider>
 						</Router>

@@ -17,9 +17,9 @@ class ChatContainer extends Component<any, any> {
 		const {
 			ChatComponent,
 			ContentComponent,
-			DialogComponent
+			LoginComponent
 		} = ChatModel.components;
-		const { chats, title } = this.props;
+		const { chats, title, accessToken } = this.props;
 		const { chatData, userData, error } = chats;
 		return (
 			<ApolloConsumer>
@@ -44,8 +44,8 @@ class ChatContainer extends Component<any, any> {
 							chatData={chatData}
 							userData={userData}
 						/>
-						<DialogComponent
-							show={error && error.error}
+						<LoginComponent
+							show={accessToken === ''}
 							content={error && error.message}
 							title={error && error.title}
 							handleClose={this.handleErrorClose}

@@ -8,7 +8,7 @@ import { ChatRulesEngine } from '@omega-core/rules/chat.rules';
 // Redux
 import { ChatEffectsEngine } from './redux/chat.effects';
 import { ChatActionsEngine, ChatActionTypes } from './redux/chat.actions';
-import { getChatState } from './redux/chat.selectors';
+import { getChatState, getAppState } from './redux/chat.selectors';
 
 export const ChatReduxModel = {
 	attributes: {
@@ -44,6 +44,7 @@ export const ChatReduxModel = {
 			dispatch(ChatReduxModel.actions.reducer.processErrorChatResponse(payload))
 	}),
 	reduxState: (state: any) => ({
-		chats: getChatState(state)
+		chats: getChatState(state),
+		app: getAppState(state)
 	})
 };

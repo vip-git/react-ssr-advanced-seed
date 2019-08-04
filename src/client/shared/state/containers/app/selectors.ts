@@ -6,5 +6,5 @@ export const app = (state: { app: any }): any => state.app;
 
 export const getLocale = createSelector(
   [app],
-  (app): any => app.locale,
+  (app): any => app,
 );

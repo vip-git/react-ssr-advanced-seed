@@ -3,10 +3,11 @@ import React from 'react';
 import FadeIn from 'react-fade-in';
 import Helmet from 'react-helmet';
 import { connect } from 'react-redux';
-import { translate } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
 
 // Redux
 import Chat from '@omega-web-containers/chat';
+import { getLocale } from '../../shared/state/containers/app/selectors';
 import { setLocale } from '../../shared/state/containers/app/actions';
 
 // import './App.scss';
@@ -25,14 +26,19 @@ class App extends React.PureComponent<any, any> {
 	};
 
 	render() {
-		const { t, tReady } = this.props;
+		const { t, tReady, app } = this.props;
+		const { accessToken } = app;
 		return tReady ? (
 			<FadeIn>
 				<Helmet
 					defaultTitle='React Redux SSR Advanced Seed'
 					titleTemplate='%s – React Redux SSR Advanced Seed'
 				/>
-				<React.Fragment>
+				<div
+					style={{
+						filter: accessToken === '' ? 'blur(10px)' : 'none'
+					}}
+				>
 					<div
 						style={{
 							position: 'absolute',
@@ -48,8 +54,8 @@ class App extends React.PureComponent<any, any> {
 							English
 						</button>
 					</div>
-					<Chat title={t('i18n-example')} />
-				</React.Fragment>
+					<Chat title={t('i18n-example')} accessToken={accessToken} />
+				</div>
 			</FadeIn>
 		) : (
 			[]
@@ -61,7 +67,11 @@ const mapDispatchToProps = {
 	dispatchSetLocale: (locale: any) => setLocale(locale)
 };
 
+const mapStateToProps = (state: { app: any }) => ({
+	app: getLocale(state)
+});
+
 export default connect(
-	null,
+	mapStateToProps,
 	mapDispatchToProps
-)(translate()(App));
+)(withTranslation()(App));
