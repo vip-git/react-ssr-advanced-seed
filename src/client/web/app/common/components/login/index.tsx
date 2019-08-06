@@ -32,13 +32,13 @@ const styles = (theme: Theme) =>
     },
   });
 
-export interface DialogTitleProps extends WithStyles<typeof styles> {
+export interface LoginTitleProps extends WithStyles<typeof styles> {
 	id: string;
 	children: React.ReactNode;
 	onClose?: () => void;
 }
 
-const DialogTitle = withStyles(styles)((props: DialogTitleProps) => {
+const LoginTitle = withStyles(styles)((props: LoginTitleProps) => {
   const { children, classes } = props;
   return (
 		<MuiDialogTitle disableTypography className={classes.root}>
@@ -60,14 +60,14 @@ const DialogContent = withStyles((theme: Theme) => ({
   },
 }))(MuiDialogContent);
 
-interface IDialogProps {
+interface ILoginProps {
 	show: boolean;
 	content: string;
 	title: string;
 	handleLoginClick: () => void;
 }
 
-class LoginDialog extends React.Component<IDialogProps, {}> {
+class LoginDialog extends React.Component<ILoginProps, {}> {
   render() {
     const { show, handleLoginClick } = this.props;
     return (
@@ -76,9 +76,9 @@ class LoginDialog extends React.Component<IDialogProps, {}> {
 					aria-labelledby='customized-dialog-title'
 					open={show || false}
 				>
-					<DialogTitle id='customized-dialog-title'>
+					<LoginTitle id='customized-Login-title'>
 						Welcome to React-SSR-Advanced Seed Demo
-					</DialogTitle>
+					</LoginTitle>
 					<DialogContent
 						dividers
 						style={{
