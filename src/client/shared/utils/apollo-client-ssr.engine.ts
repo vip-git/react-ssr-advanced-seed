@@ -35,7 +35,7 @@ const cacheLink = new InMemoryCache();
 export const httpOnlyLink = (config = {}) =>
 	new HttpLink({
 		...config,
-		uri: `${Config.API_PROTOCOL + Config.API_URL}/graphql`,
+		uri: `${Config.API_URL}/graphql`,
 		fetch
 	});
 

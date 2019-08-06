@@ -62,7 +62,7 @@ class App extends React.PureComponent<any, any> {
 
 	handleLoginClick = () => {
 		if (typeof window !== 'undefined') {
-			window.location.href = config.API_PROTOCOL + config.API_URL + config.LOGIN_URL;
+			window.location.href = Config.API_URL + config.LOGIN_URL;
 		}
 	};
 
