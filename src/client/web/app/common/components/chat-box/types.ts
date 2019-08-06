@@ -36,6 +36,7 @@ export interface IChatProps {
 		dateReceived: string;
 		input: string;
 	};
+	accessToken: string;
 	title: string;
 	chatData: Array<object>;
 	userData: Array<object>;

@@ -11,7 +11,7 @@ describe('App Reducer', () => {
 	});
 	it('sets the locale', () => {
 		expect(
-			reducer(initialState, { type: ActionTypes.SETLOCALE, payload: 'de-DE' })
+			reducer(initialState, { type: ActionTypes.SET_LOCALE, payload: 'de-DE' })
 		).toEqual({
 			locale: 'de-DE'
 		});

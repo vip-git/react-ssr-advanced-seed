@@ -62,9 +62,9 @@ const DialogContent = withStyles((theme: Theme) => ({
 
 interface ILoginProps {
 	show: boolean;
-	content: string;
-	title: string;
-	handleLoginClick: () => void;
+	content?: string;
+	title?: string;
+	handleLoginClick?: () => void;
 }
 
 class LoginDialog extends React.Component<ILoginProps, {}> {

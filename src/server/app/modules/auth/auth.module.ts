@@ -1,14 +1,18 @@
 import { Module, NestModule, MiddlewareConsumer } from '@nestjs/common';
-import { authenticate } from 'passport';
-import { PassportModule } from '@nestjs/passport';
 import { ExpressSessionMiddleware } from '@nest-middlewares/express-session';
+import { authenticate } from 'passport';
+import { PassportModule } from '@nestjs/passport'; 
+import { JwtModule } from '@nestjs/jwt';
 import { AuthService } from './auth.service';
 import { JwtStrategy } from './jwt.strategy';
 import { AuthController } from './auth.controller';
 import { GithubStrategy } from './github.strategy';
 
 @Module({
-	imports: [PassportModule],
+	imports: [PassportModule.register({ defaultStrategy: 'jwt' }), JwtModule.register({
+		secret: 'secretKey',
+		signOptions: { expiresIn: '60s' },
+	})],
 	controllers: [AuthController],
 	providers: [AuthService, JwtStrategy, GithubStrategy]
 })
