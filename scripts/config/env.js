@@ -37,7 +37,8 @@ module.exports = () => {
 	const raw = {
 		PORT: process.env.PORT || 8500,
 		NODE_ENV: process.env.NODE_ENV || 'development',
-		WS_PROTOCOL_URL: process.env.WS_PROTOCOL_URL || 'ws://localhost8090'
+		WS_PROTOCOL: process.env.WS_PROTOCOL || 'ws://',
+		WS_URL: process.env.WS_URL || 'localhost:8090'
 	};
 
 	// Stringify all values so we can feed into Webpack DefinePlugin
