@@ -30,10 +30,10 @@ const defaultOptions: DefaultOptions = {
 
 const cacheLink = new InMemoryCache();
 
-export const httpOnlyLink = (config = {}) =>
+export const httpOnlyLink = (config: any = {}) =>
 	new HttpLink({
 		...config,
-		uri: `${config.API_URL}/graphql`
+		uri: `${Config.API_URL}/graphql`
 	});
 
 const subscriptionLink = (config = {}) => {

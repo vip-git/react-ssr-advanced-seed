@@ -2,7 +2,7 @@
 export const GITHUB_CONFIG = {
 	clientID: 'dcb3a7c487da9d5807b7',
 	clientSecret: '6961949a356196bdd946e72fae2a87286c6ac742',
-	callbackURL: 'http://localhost:3000/auth/callback'
+	callbackURL: process.env.GITHUB_CALLBACK_URL
 };
 
 export const JWT_SECRET =

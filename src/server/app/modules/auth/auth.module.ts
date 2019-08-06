@@ -20,6 +20,7 @@ export class AuthModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {
 		ExpressSessionMiddleware.configure({
 			secret: 'test',
+			saveUninitialized: true,
     		resave: true
 		});
 		consumer
