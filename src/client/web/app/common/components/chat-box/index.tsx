@@ -31,12 +31,12 @@ const {
 	React,
 	Component,
 	classNames,
-	distanceInWordsToNow
+	distanceInWordsToNow,
+	JWTDecode
 } = ChatBoxModel.libraries;
 const { Wrapper } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
 const face1 = require('@omega-core/assets/images/face1.jpg');
-const face2 = require('@omega-core/assets/images/face2.jpg');
 
 class Chat extends Component<IChatProps, IChatState> {
 	state = {
@@ -70,6 +70,10 @@ class Chat extends Component<IChatProps, IChatState> {
 			sharedComponent: SharedComponent
 		} = this.props;
 		const { opened } = this.state;
+		const githubUserData = JWTDecode(this.props.accessToken);
+		const currentUsername = githubUserData.name.indexOf(' ') === -1 ? githubUserData.name : githubUserData.name.split(
+			' '
+		)[0];
 		const menu = (
 			<List subheader={<ListSubheader disableSticky>Contacts</ListSubheader>}>
 				{userData.map((contact: IContact, index) => (
@@ -124,13 +128,24 @@ class Chat extends Component<IChatProps, IChatState> {
 											className={classes.headerLeft}
 											style={{ width: '100%', maxWidth: '100%' }}
 										>
-											<Avatar alt='' src={face1} className={classes.avatar} />
+											<Avatar
+												alt=''
+												src={face1}
+												className={classes.avatar}
+											/>
 											<ListItemText primary='Robert' secondary='Online' />
 										</div>
 										<List dense>
 											<ListItem>
-												<Avatar alt='' src={face2} className={classes.avatar} />
-												<ListItemText primary='Bobby' secondary='Online' />
+												<Avatar
+													alt=''
+													src={githubUserData.avatar_url}
+													className={classes.avatar}
+												/>
+												<ListItemText
+													primary={currentUsername}
+													secondary='Online'
+												/>
 											</ListItem>
 										</List>
 										<span className='flexSpacer' />
@@ -224,7 +239,7 @@ class Chat extends Component<IChatProps, IChatState> {
 													</div>
 													<Avatar
 														alt=''
-														src={face2}
+														src={githubUserData.avatar_url}
 														style={{
 															float: 'right',
 															order: 2,
@@ -263,7 +278,8 @@ class Chat extends Component<IChatProps, IChatState> {
 																message: this.state.currentChat,
 																date: new Date().toISOString()
 															},
-															callBack: () => this.setState({ currentChat: '' })
+															callBack: () =>
+																this.setState({ currentChat: '' })
 														})
 													}
 													disabled={this.state.currentChat.length === 0}

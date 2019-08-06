@@ -39,6 +39,7 @@ class ChatContainer extends Component<any, any> {
 									data: {}
 								})
 							}
+							accessToken={accessToken}
 							title={title}
 							chatData={chatData}
 							userData={userData}

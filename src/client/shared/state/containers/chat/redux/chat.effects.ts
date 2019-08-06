@@ -30,7 +30,7 @@ interface IChatDataResponse {
 }
 
 // persisted vars
-let initialAction: IAction = {
+const initialAction: IAction = {
 	type: 'NO_ACTION',
 	payload: {}
 };
@@ -96,15 +96,10 @@ class ChatEffect {
 	static readAllUsersAndChats = (action$: any) =>
 		action$.pipe(
 			ofType(ChatReduxModel.actionTypes.READ_ALL_USERS_AND_CHATS),
-			switchMap((action: IAction) => {
-				initialAction = action;
-				return ChatReduxModel.services.getSession();
-			}),
-			map(data => window.sessionStorage.setItem('token', JSON.stringify(data))),
-			mergeMap(() =>
+			mergeMap((action: IAction) =>
 				concat(
-					of(ChatReduxModel.actions.effects.readAllUsers(initialAction)),
-					of(ChatReduxModel.actions.effects.readAllChats(initialAction))
+					of(ChatReduxModel.actions.effects.readAllUsers(action)),
+					of(ChatReduxModel.actions.effects.readAllChats(action))
 				)
 			)
 		);

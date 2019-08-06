@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
+import JWTDecode from 'jwt-decode';
 
 // Material UI
 import { withStyles } from '@material-ui/styles';
@@ -37,6 +38,7 @@ export const ChatBoxModel = {
     PropTypes,
     classNames,
     distanceInWordsToNow,
+    JWTDecode,
   },
   components: {
     Wrapper,

@@ -22,6 +22,7 @@ import { apolloClient } from '@omega-core/utils/apollo-client.engine';
 /* ignore coverage */
 const browserHistory =
 	((window as any) && (window as any).browserHistory) || createHistory();
+	
 /* ignore coverage */
 const store =
 	((window as any) && (window as any).store) ||
