@@ -8,7 +8,7 @@ import { config } from '@omega-core/config';
 const returnValidURL = (type: any, URI: string) => {
 	switch (type) {
 		case 'api':
-			return Config.API_URL + URI;
+			return config.API_URL + URI;
 	}
 };
 

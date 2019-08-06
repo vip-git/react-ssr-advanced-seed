@@ -33,7 +33,7 @@ const cacheLink = new InMemoryCache();
 export const httpOnlyLink = (config = {}) =>
 	new HttpLink({
 		...config,
-		uri: `${Config.API_URL}/graphql`
+		uri: `${config.API_URL}/graphql`
 	});
 
 const subscriptionLink = (config = {}) => {
