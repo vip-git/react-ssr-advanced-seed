@@ -12,7 +12,7 @@
 		"build": "npm run build:backend && npm run build:frontend && npm run docker-compose",
 		"deploy:frontend": "npm run build:frontend && npx release-it -n --no-npm.publish && npm run docker:frontend:prod:publish",
 		"deploy": "npm run build:frontend && npm run build:backend && npx release-it -n --no-npm.publish && npm run docker:frontend:prod:publish",
-		"build:frontend": "cross-env NODE_ENV=production WS_PROTOCOL_URL=ws://localhost:8090 node scripts/build.js",
+		"build:frontend": "cross-env NODE_ENV=production WS_PROTOCOL=ws:// WS_URL=localhost:8090 API_PROTOCOL=http:// node scripts/build.js",
 		"build:backend": "webpack --env.FRONT_END_HOST=http://localhost:8080 --env.NODE_ENV=production --env.watchFiles=false --config scripts/api-webpack.config.js",
 		"start:frontend": "cross-env NODE_ENV=development node scripts/start.js",
 		"start:backend": "cross-env FRONT_END_HOST=http://localhost:8500 NODE_ENV=development npx ts-node -r tsconfig-paths/register src/server/main",

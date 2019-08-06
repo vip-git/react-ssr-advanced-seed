@@ -28,7 +28,7 @@ module.exports = env => {
 				}
 			]
 		},
-		mode: env.NODE_ENV,
+		mode: 'development',
 		resolve: {
 			extensions: ['.tsx', '.ts', '.js', '.json'],
 			plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]

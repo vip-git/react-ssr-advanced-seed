@@ -19,7 +19,8 @@ import { GithubStrategy } from './github.strategy';
 export class AuthModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {
 		ExpressSessionMiddleware.configure({
-			secret: 'test'
+			secret: 'test',
+    		resave: true
 		});
 		consumer
 			.apply(ExpressSessionMiddleware, authenticate('github'))
