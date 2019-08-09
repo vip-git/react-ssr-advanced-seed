@@ -2,17 +2,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 // Library
-import {
-	Module,
-	MiddlewareConsumer,
-	NestModule,
-	RequestMethod
-} from '@nestjs/common';
-import { GraphQLModule, GraphQLFactory } from '@nestjs/graphql';
+import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Internal Modules
-import { CatsModule, CatModel } from './modules/cats/cats.module';
+import { ChatModule, ChatModel } from './modules/chat/chat.module';
 import { AuthModule } from './modules/auth/auth.module';
 
 // External Services
@@ -30,11 +25,11 @@ const url = require('url');
 			username: process.env.API_DB_USERNAME || 'postgres',
 			password: process.env.API_DB_PASSWORD,
 			database: process.env.API_DB_NAME || 'postgres',
-			entities: [CatModel],
+			entities: [ChatModel],
 			synchronize: true
 		}),
 		AuthModule,
-		CatsModule,
+		ChatModule,
 		GraphQLModule.forRoot({
 			typePaths: ['./**/*.graphql'],
 			context: ({ req }) => ({ req }),

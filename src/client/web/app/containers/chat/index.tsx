@@ -1,40 +1,63 @@
-// Internal
-import { ChatModel } from './chat.model';
-
 // Types
 import { ICreateChatPayload } from '@omega-web-components/chat-box/types';
 
-const { React, Component, connect } = ChatModel.libraries;
+// Internal
+import { ChatModel } from './chat.model';
+
+const { React, Component, connect, ApolloConsumer } = ChatModel.libraries;
 
 class ChatContainer extends Component<any, any> {
-	handleErrorClose = () => this.props.dispatchProcessErrorChatResponse(false);
+	handleErrorClose = () => {
+		const { dispatchProcessErrorChatResponse } = this.props;
+		return dispatchProcessErrorChatResponse(false);
+	};
 
 	render() {
-	  const { dispatchReadAllUsersAndChats, dispatchCreateChat } = this.props;
-	  const { ChatComponent, ContentComponent, DialogComponent } = ChatModel.components;
-	  const { chatData, userData, error } = this.props.chats;
-	  return (
-			<React.Fragment>
-				<ChatComponent
-					sharedComponent={() => <ContentComponent />}
-					submitChat={(payload: ICreateChatPayload) => dispatchCreateChat(payload)}
-					readUsersAndChat={() => dispatchReadAllUsersAndChats()}
-					title={this.props.title}
-					chatData={chatData}
-					userData={userData}
-				/>
-				<DialogComponent
-					show={error && error.error}
-					content={error && error.message}
-					title={error && error.title}
-					handleClose={this.handleErrorClose}
-				/>
-			</React.Fragment>
-	  );
+		const { dispatchReadAllUsersAndChats, dispatchCreateChat } = this.props;
+		const {
+			ChatComponent,
+			ContentComponent,
+			DialogComponent
+		} = ChatModel.components;
+		const { chats, title } = this.props;
+		const { chatData, userData, error } = chats;
+		return (
+			<ApolloConsumer>
+				{apolloClient => (
+					<React.Fragment>
+						<ChatComponent
+							sharedComponent={() => <ContentComponent />}
+							submitChat={(payload: ICreateChatPayload) =>
+								dispatchCreateChat({
+									apolloClient,
+									data: payload.variables,
+									callBack: () => payload.callBack()
+								})
+							}
+							readUsersAndChat={() =>
+								dispatchReadAllUsersAndChats({
+									apolloClient,
+									data: {}
+								})
+							}
+							title={title}
+							chatData={chatData}
+							userData={userData}
+						/>
+						<DialogComponent
+							show={error && error.error}
+							content={error && error.message}
+							title={error && error.title}
+							handleClose={this.handleErrorClose}
+						/>
+					</React.Fragment>
+				)}
+			</ApolloConsumer>
+		);
 	}
 }
 
 export default connect(
-  ChatModel.reduxState,
-  ChatModel.reduxActions,
+	ChatModel.reduxState,
+	ChatModel.reduxActions
 )(ChatContainer);

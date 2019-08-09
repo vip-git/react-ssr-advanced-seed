@@ -6,11 +6,11 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from '../../auth/auth.module';
 
 // Rest
-import { CatsController } from '../rest/cats.controller';
+import { ChatsController } from '../rest/chat.controller';
 
 // Shared
-import { CatModel } from '../shared/cat.model';
-import { CatsService } from '../shared/cats.service';
+import { ChatModel } from '../shared/chat.model';
+import { ChatService } from '../shared/chat.service';
 
 export const dbConnection = Test.createTestingModule({
 	imports: [
@@ -21,14 +21,14 @@ export const dbConnection = Test.createTestingModule({
 			username: process.env.API_DB_USERNAME || 'postgres',
 			password: process.env.API_DB_PASSWORD,
 			database: process.env.API_DB_NAME || 'postgres',
-			entities: [CatModel],
+			entities: [ChatModel],
 			synchronize: true
 		}),
 		AuthModule,
-		TypeOrmModule.forFeature([CatModel])
+		TypeOrmModule.forFeature([ChatModel])
 	],
-	controllers: [CatsController],
-	providers: [CatsService]
+	controllers: [ChatsController],
+	providers: [ChatService]
 });
 
 export const dbClearConnection = Test.createTestingModule({
@@ -40,12 +40,12 @@ export const dbClearConnection = Test.createTestingModule({
 			username: process.env.API_DB_USERNAME || 'postgres',
 			password: process.env.API_DB_PASSWORD,
 			database: process.env.API_DB_NAME || 'postgres',
-			entities: [CatModel],
+			entities: [ChatModel],
 			dropSchema: true
 		}),
 		AuthModule,
-		TypeOrmModule.forFeature([CatModel])
+		TypeOrmModule.forFeature([ChatModel])
 	],
-	controllers: [CatsController],
-	providers: [CatsService]
+	controllers: [ChatsController],
+	providers: [ChatService]
 });

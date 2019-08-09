@@ -22,9 +22,11 @@ export default (state = initialState, action: { type: any; payload?: {} }) => {
 			};
 		}
 		case ChatReduxModel.actionTypes.PROCESS_CREATE_CHAT: {
+			const chatData = state.chatData;
+			state.chatData.push(payload);
 			return {
 				...state,
-				chatData: (state as any).chatData.push(payload),
+				chatData
 			};
 		}
 		case ChatReduxModel.actionTypes.PROCESS_DELETED_CHAT: {

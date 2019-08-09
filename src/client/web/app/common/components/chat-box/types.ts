@@ -1,10 +1,13 @@
 import { ReactType } from 'react';
 
 export interface ICreateChatPayload {
-	token: string;
-	type: 'sent' | 'recieved';
-	message: string;
-	date: Date;
+	variables: {
+		ownerId: Number;
+		groupId: Number;
+		message: string;
+		date: Date;
+	};
+	callBack: () => void;
 }
 
 export interface IChatProps {
@@ -43,13 +46,15 @@ export interface IChatProps {
 
 export interface IChat {
 	id: number;
-	type: 'sent' | 'recieved';
+	groupId?: number;
+	ownerId: number;
 	message: string;
 	date: Date;
 }
 
 export interface IChatState {
 	opened: boolean;
+	currentChat: string;
 }
 
 export interface IContact {

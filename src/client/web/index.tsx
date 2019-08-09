@@ -1,18 +1,13 @@
-/* tslint:disable:no-string-literal */
 // Library
 import React from 'react';
 import { createBrowserHistory as createHistory } from 'history';
 import { hydrate } from 'react-dom';
-import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import {
 	ConnectedRouter as Router,
 	routerMiddleware
 } from 'react-router-redux';
-
-// Config
-import { config } from '@omega-core/config';
 
 // Internal
 import { ThemeProvider } from '@material-ui/styles';
@@ -21,8 +16,8 @@ import IntlProvider from './app/common/i18n/IntlProvider';
 import { configureStore } from '../shared/state';
 import theme from './app/common/styles';
 
-// graphql client
-const client = new ApolloClient({ uri: `${config.API_URL}/graphql` });
+// Apollo Client
+import { apolloClient } from '@omega-core/utils/apollo-client.engine';
 
 /* ignore coverage */
 const browserHistory =
@@ -36,7 +31,7 @@ const store =
 	});
 /* ignore coverage */
 hydrate(
-	<ApolloProvider client={client}>
+	<ApolloProvider client={apolloClient}>
 		<ThemeProvider theme={theme}>
 			<Provider store={store}>
 				<Router history={browserHistory}>

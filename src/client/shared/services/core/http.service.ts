@@ -1,8 +1,7 @@
 /* eslint-disable */
 // Library
+import { DocumentNode } from 'graphql';
 import { from } from 'rxjs';
-import { gql } from 'apollo-boost';
-import { Query } from 'react-apollo';
 
 // Config
 import { config } from '@omega-core/config';
@@ -10,7 +9,27 @@ import { config } from '@omega-core/config';
 const returnValidURL = (type: any, URI: string) => {
 	switch (type) {
 		case 'api':
-			return config.API_URL + URI;
+			return config.API_PROTOCOL + config.API_URL + URI;
+	}
+};
+
+const returnValidGraphQLOpertaion = (
+	apolloClient: any,
+	type: any,
+	gql: DocumentNode,
+	variables: Object
+) => {
+	switch (type) {
+		case 'query':
+			return apolloClient.query({
+				query: gql,
+				variables
+			});
+		case 'mutation':
+			return apolloClient.mutate({
+				mutation: gql,
+				variables
+			});
 	}
 };
 
@@ -48,12 +67,26 @@ export class HttpService {
 				})
 				.then(response => response)
 				.catch(error => {
+					console.log('error is', error);
 					return {
 						message: 'API call failed',
 						error: true,
 						payload
 					};
 				})
+		);
+	}
+
+	static buildGraphQLCall(
+		apolloClient: any,
+		type: any,
+		gql: DocumentNode,
+		variables: Object
+	) {
+		return from(
+			returnValidGraphQLOpertaion(apolloClient, type, gql, variables).then(
+				data => data
+			)
 		);
 	}
 }

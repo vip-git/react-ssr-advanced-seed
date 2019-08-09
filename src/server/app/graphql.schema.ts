@@ -4,27 +4,32 @@
  */
 
 /* tslint:disable */
-export class Cat {
+export class Chat {
 	id?: number;
-	name?: string;
-	age?: number;
+	groupId?: number;
+	message?: string;
+	type?: string;
+	date?: string;
 	humanId?: number;
 }
 
 export abstract class IMutation {
-	abstract createCat(name?: string, age?: number, breed?: string): Cat | Promise<Cat>;
+	abstract createChat(
+		message?: string,
+		groupId?: number,
+		type?: string,
+		date?: string
+	): Chat | Promise<Chat>;
 }
 
 export abstract class IQuery {
-	abstract getCats(): Cat[] | Promise<Cat[]>;
+	abstract getChats(): Chat[] | Promise<Chat[]>;
 
-	abstract cat(id: string): Cat | Promise<Cat>;
+	abstract chat(id: string): Chat | Promise<Chat>;
 
-	abstract catByHumanId(id: string): Cat | Promise<Cat>;
-
-	abstract temp__(): boolean | Promise<boolean>;
+	abstract chatByHumanId(id: string): Chat | Promise<Chat>;
 }
 
 export abstract class ISubscription {
-	abstract catCreated(): Cat | Promise<Cat>;
+	abstract chatRecieved(): Chat | Promise<Chat>;
 }

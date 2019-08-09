@@ -16,7 +16,8 @@ module.exports = {
 		ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
 		sourceType: 'module', // Allows for the use of imports
 		ecmaFeatures: {
-			jsx: true // Allows for the parsing of JSX
+			jsx: true, // Allows for the parsing of JSX
+			legacyDecorators: true
 		},
 		project: './tsconfig.json'
 	},
@@ -26,6 +27,8 @@ module.exports = {
 		'react/jsx-indent': 'off',
 		'no-unused-vars': 'off',
 		'react/jsx-indent-props': 'off',
+		'react/jsx-filename-extension': 'off',
+		'react/button-has-type': 'off',
 		'react/prop-types': 'off',
 		'react/jsx-curly-brace-presence': 'off',
 		'react/prefer-stateless-function': 'off',
@@ -55,6 +58,19 @@ module.exports = {
 		],
 		'brace-style': ['error', 'stroustrup'],
 		'no-plusplus': 'off',
-		'object-curly-newline': 'off'
+		'object-curly-newline': 'off',
+		'@typescript-eslint/explicit-function-return-type': 'off',
+		'@typescript-eslint/explicit-member-accessibility': 'off'
+	},
+	settings: {
+		'import/resolver': {
+			node: {
+				extensions: ['.js', '.jsx', '.ts', '.tsx'],
+				paths: ['src']
+			}
+		}
+	},
+	env: {
+		jest: true
 	}
 };

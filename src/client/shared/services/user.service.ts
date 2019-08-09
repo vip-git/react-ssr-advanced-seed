@@ -1,11 +1,25 @@
+// Library
+import { from } from 'rxjs';
+
+// Services
+import { HttpService } from './core/http.service';
+
+// Contacts
 import allUsers from './mocks/contacts';
 
 class UserService {
-  static getAllUsers() {
-    return allUsers;
-  }
+	static getSession() {
+		return from(
+			HttpService.buildRestApiCall('api', 'GET', '/auth/token', null, {})
+		);
+	}
+
+	static getAllUsers() {
+		return allUsers;
+	}
 }
 
 export const UserServiceEngine = {
-  requestAllUsers: () => UserService.getAllUsers()
+	requestAllUsers: () => UserService.getAllUsers(),
+	getSession: () => UserService.getSession()
 };

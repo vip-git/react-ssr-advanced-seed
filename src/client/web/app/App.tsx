@@ -6,12 +6,12 @@ import { connect } from 'react-redux';
 import { translate } from 'react-i18next';
 
 // Redux
+import Chat from '@omega-web-containers/chat';
 import { setLocale } from '../../shared/state/containers/app/actions';
 
 // import './App.scss';
 
 // containers
-import Chat from '@omega-web-containers/chat';
 
 export interface PropsT {
 	setLocale: (string) => {};
@@ -19,13 +19,14 @@ export interface PropsT {
 }
 
 class App extends React.PureComponent<any, any> {
-	setLanguage = e => {
-		this.props.setLocale(e.target.value);
-	}
+	setLanguage = (e: { target: { value: any } }) => {
+		const { dispatchSetLocale } = this.props;
+		dispatchSetLocale(e.target.value);
+	};
 
 	render() {
-		const { t } = this.props;
-		return this.props.tReady ? (
+		const { t, tReady } = this.props;
+		return tReady ? (
 			<FadeIn>
 				<Helmet
 					defaultTitle='React Redux SSR Advanced Seed'
@@ -57,7 +58,7 @@ class App extends React.PureComponent<any, any> {
 }
 
 const mapDispatchToProps = {
-	setLocale
+	dispatchSetLocale: (locale: any) => setLocale(locale)
 };
 
 export default connect(

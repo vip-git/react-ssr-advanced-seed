@@ -1,3 +1,4 @@
+// Library
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ApplicationModule } from './app/app.module';
@@ -5,12 +6,14 @@ import { ApplicationModule } from './app/app.module';
 declare const module: any;
 
 async function bootstrap() {
-	const app = await NestFactory.create(ApplicationModule);
+	const app = await NestFactory.create(ApplicationModule, {
+		cors: process.env.NODE_ENV === 'development'
+	});
 	const options = new DocumentBuilder()
-		.setTitle('Cats example')
-		.setDescription('The cats API description')
+		.setTitle('Chats example')
+		.setDescription('Chat API description')
 		.setVersion('1.0')
-		.addTag('cats')
+		.addTag('chat')
 		.addBearerAuth('Authorization', 'header')
 		.build();
 

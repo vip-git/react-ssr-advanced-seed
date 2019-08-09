@@ -12,12 +12,12 @@ class ChatRules {
 	}
 
 	static isValidChatResponse(data: any) {
-		// console.log('validating response', data)
-		return !data
+		return !data || (data && data.errors && data.errors.length)
 			? {
 					error: true,
-					title: 'Invalid Token',
-					message: 'Invalid Token - Please login'
+					title: data.errors[0].message.error,
+					statusCode: data.errors[0].message.statusCode,
+					message: 'Expired Session - Please login'
 			  }
 			: data;
 	}
