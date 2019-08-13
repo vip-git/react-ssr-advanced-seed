@@ -44,7 +44,11 @@
     "outDir": "docker/backend/prod/dist"
   },
   "include": [
-    "src/**/*"
+    "src/**/*",
+    "src/**/**/*",
+    "src/**/**/**/*",
+    "src/**/**/**/**/*",
+    "src/**/**/**/**/**/*",
   ],
   "exclude": [
     "node_modules",

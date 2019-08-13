@@ -57,11 +57,9 @@ const mapStateToProps = (state: { app: any }) => ({
   locale: getLocale(state).locale,
 });
 
-export default withRouter(
-  connect(
+export default connect(
     mapStateToProps,
     null,
     null,
     { pure: false },
-  )(I18N),
-);
+  )(I18N);

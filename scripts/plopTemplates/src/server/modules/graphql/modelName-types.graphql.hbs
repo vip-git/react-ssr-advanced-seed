@@ -1,0 +1,28 @@
+type Query {
+getChats: [Chat]
+chat(id: ID!): Chat
+}
+
+type Mutation {
+createChat(message: String, groupId: Int, ownerId: Int, date: String): Chat
+updateChat(
+id: ID!
+message: String
+groupId: Int
+ownerId: Int
+date: String
+): Chat
+}
+
+type Subscription {
+chatRecieved: Chat
+}
+
+type Chat {
+id: Int
+groupId: Int
+ownerId: Int
+message: String
+type: String
+date: String
+}
