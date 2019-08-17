@@ -8,4 +8,6 @@ module.exports = plop => {
 	omegaGenerator.generateWebComponent(plop);
 	omegaGenerator.generateSharedComponent(plop);
 	omegaGenerator.generateMobileComponent(plop);
+	omegaGenerator.generateCustomServerActions(plop);
+	omegaGenerator.generateServerModule(plop);
 };

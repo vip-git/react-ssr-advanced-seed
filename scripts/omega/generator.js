@@ -1,3 +1,6 @@
+// Library
+const shell = require('shelljs');
+
 /***
  * This is the first iteration of omega packager.
  * ------------------
@@ -504,6 +507,64 @@ module.exports = {
 					path:
 						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.rules.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
+				}
+			]
+		}),
+
+	generateCustomServerActions: plop =>
+		plop.setActionType('generateServerModule', function(answers, config, plop) {
+			// if something went wrong
+			//throw 'error message';
+			shell.cd('src/server');
+			// otherwise
+			return new Promise((resolve, reject) => {
+				shell.exec(
+					`npx nest generate module ${
+						answers.moduleName
+					} server/app/modules`,
+					function(code, stdout, stderr) {
+						shell.exec(
+							`npx nest generate service ${
+								answers.moduleName
+							} server/app/modules/${
+								answers.moduleName
+							}/shared --flat`,
+							function(code, stdout, stderr) {
+								shell.exec(
+									`npx nest generate controller ${
+										answers.moduleName
+									} server/app/modules/${
+										answers.moduleName
+									}/rest --flat`,
+									function(code, stdout, stderr) {
+										if (code !== 0) {
+											reject('error message');
+										} else {
+											resolve('Module created Successfully');
+										}
+									}
+								);
+							}
+						);
+					}
+				);
+			});
+		}),
+
+	generateServerModule: plop =>
+		plop.setGenerator('serverModule', {
+			description: 'React-SSR-Advanced Server Module generator',
+			prompts: [
+				{
+					type: 'input',
+					name: 'moduleName',
+					message: 'Module name please'
+				}
+			],
+			actions: [
+				{
+					type: 'generateServerModule',
+					moduleName: '{{moduleName}}'
 				}
 			]
 		})
