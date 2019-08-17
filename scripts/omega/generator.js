@@ -519,21 +519,21 @@ module.exports = {
 				shell.exec(
 					`npx nest generate module ${
 						answers.moduleName
-					} /server/app/modules --dry-run`,
+					} /server/app/modules`,
 					function(code, stdout, stderr) {
 						shell.exec(
 							`npx nest generate service ${
 								answers.moduleName
 							} /server/app/modules/${
 								answers.moduleName
-							}/shared --flat --dry-run`,
+							}/shared --flat`,
 							function(code, stdout, stderr) {
 								shell.exec(
 									`npx nest generate controller ${
 										answers.moduleName
 									} /server/app/modules/${
 										answers.moduleName
-									}/rest --flat --dry-run`,
+									}/rest --flat`,
 									function(code, stdout, stderr) {
 										if (code !== 0) {
 											reject('error message');
