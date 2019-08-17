@@ -515,27 +515,25 @@ module.exports = {
 		plop.setActionType('generateServerModule', function(answers, config, plop) {
 			// if something went wrong
 			//throw 'error message';
-			shell.cd('src/server');
-			// otherwise
 			return new Promise((resolve, reject) => {
 				shell.exec(
 					`npx nest generate module ${
 						answers.moduleName
-					} server/app/modules`,
+					} /server/app/modules --dry-run`,
 					function(code, stdout, stderr) {
 						shell.exec(
 							`npx nest generate service ${
 								answers.moduleName
-							} server/app/modules/${
+							} /server/app/modules/${
 								answers.moduleName
-							}/shared --flat`,
+							}/shared --flat --dry-run`,
 							function(code, stdout, stderr) {
 								shell.exec(
 									`npx nest generate controller ${
 										answers.moduleName
-									} server/app/modules/${
+									} /server/app/modules/${
 										answers.moduleName
-									}/rest --flat`,
+									}/rest --flat --dry-run`,
 									function(code, stdout, stderr) {
 										if (code !== 0) {
 											reject('error message');
