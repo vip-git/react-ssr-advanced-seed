@@ -1,17 +1,18 @@
+import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ChatModule, ChatModel } from './modules/chat/chat.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { TvMazeService } from './services/tvmaze.service';
+import { ProfileModule } from './modules/profile/profile.module';
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 // Library
-import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Internal Modules
-import { ChatModule, ChatModel } from './modules/chat/chat.module';
-import { AuthModule } from './modules/auth/auth.module';
 
 // External Services
-import { TvMazeService } from './services/tvmaze.service';
 
 const proxy = require('express-http-proxy');
 const url = require('url');
@@ -37,7 +38,8 @@ const url = require('url');
 			installSubscriptionHandlers: true,
 			debug: process.env.NODE_ENV === 'development',
 			playground: process.env.NODE_ENV === 'development'
-		})
+		}),
+		ProfileModule
 	]
 })
 export class ApplicationModule implements NestModule {
