@@ -5,6 +5,7 @@ import { ChatModule, ChatModel } from './modules/chat/chat.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { TvMazeService } from './services/tvmaze.service';
 import { ProfileModule } from './modules/profile/profile.module';
+import { GroupModule } from './modules/group/group.module';
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
@@ -39,7 +40,8 @@ const url = require('url');
 			debug: process.env.NODE_ENV === 'development',
 			playground: process.env.NODE_ENV === 'development'
 		}),
-		ProfileModule
+		ProfileModule,
+		GroupModule
 	]
 })
 export class ApplicationModule implements NestModule {
