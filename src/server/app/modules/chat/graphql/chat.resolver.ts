@@ -12,7 +12,7 @@ const pubSub = new PubSub();
 
 // @UseGuards(ChatsGuard)
 @Resolver('Chat')
-export class ChatResolvers {
+export class ChatResolver {
 	constructor(private readonly chatService: ChatService) {}
 
 	@Query()

@@ -535,11 +535,22 @@ module.exports = {
 										answers.moduleName
 									}/rest --flat`,
 									function(code, stdout, stderr) {
-										if (code !== 0) {
-											reject('error message');
-										} else {
-											resolve('Module created Successfully');
-										}
+										shell.exec(
+											`npx nest generate resolver ${
+												answers.moduleName
+											} /server/app/modules/${
+												answers.moduleName
+											}/graphql --flat`,
+											function(code, stdout, stderr) {
+												if (code !== 0) {
+													reject('error message');
+												} else {
+													resolve(
+														'Module created Successfully'
+													);
+												}
+											}
+										);
 									}
 								);
 							}

@@ -6,7 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ChatsController } from './rest/chat.controller';
 
 // Graphql
-import { ChatResolvers } from './graphql/chat.resolvers';
+import { ChatResolver } from './graphql/chat.resolver';
 
 // Shared
 import { ChatService } from './shared/chat.service';
@@ -15,7 +15,7 @@ import { ChatModel } from './shared/chat.model';
 @Module({
 	imports: [TypeOrmModule.forFeature([ChatModel])],
 	controllers: [ChatsController],
-	providers: [ChatService, ChatResolvers]
+	providers: [ChatService, ChatResolver]
 })
 export class ChatModule {}
 
