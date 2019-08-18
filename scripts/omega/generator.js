@@ -618,6 +618,14 @@ module.exports = {
 						'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.service.ts',
 					templateFile:
 						'scripts/plopTemplates/src/server/modules/shared/modelName-service.ts.hbs'
+				},
+				{
+					type: 'add',
+					force: true,
+					path:
+						'src/server/app/modules/{{moduleName}}/index.ts',
+					templateFile:
+						'scripts/plopTemplates/src/server/modules/index.ts.hbs'
 				}
 			]
 		})

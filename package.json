@@ -43,7 +43,7 @@
 		"generate:webComponent": "npx plop webComponent",
 		"generate:sharedComponent": "npx plop sharedComponent",
 		"generate:mobileComponent": "npx plop mobileComponent",
-		"generate:server:module": "npx plop serverModule",
+		"generate:server:module": "npx plop serverModule && npm run generate:server:modelHelpers",
 		"generate:server:modelHelpers": "npx plop serverModelHelpers",
 		"generate:graphqltypes": "npx ts-node src/server/app/generate-typings.ts",
 		"generate:docs": "npx typedoc --out docs/ src/ --mode file --module commonjs --target es6",
