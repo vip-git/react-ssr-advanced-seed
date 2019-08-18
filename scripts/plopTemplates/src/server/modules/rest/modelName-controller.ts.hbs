@@ -9,33 +9,33 @@ import {
 } from '@nestjs/swagger';
 
 // Internal
-import { ChatModel, ChatService } from '../index';
+import { {{pascalCase moduleName}}Model, {{pascalCase moduleName}}Service } from '../index';
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
-@ApiUseTags('chats')
-@Controller('chats')
-export class ChatsController {
-	constructor(private readonly chatService: ChatService) {}
+@ApiUseTags('{{pascalCase moduleName}}')
+@Controller('{{pascalCase moduleName}}')
+export class {{pascalCase moduleName}}Controller {
+	constructor(private readonly {{pascalCase moduleName}}Service: {{pascalCase moduleName}}Service) {}
 
 	@Post()
-	@ApiOperation({ title: 'Create chat' })
+	@ApiOperation({ title: 'Create {{pascalCase moduleName}}' })
 	@ApiResponse({
 		status: 201,
 		description: 'The record has been successfully created.'
 	})
 	@ApiResponse({ status: 403, description: 'Forbidden.' })
-	async create(@Body() ChatModel: ChatModel) {
-		return await this.chatService.create(ChatModel);
+	async create(@Body() {{pascalCase moduleName}}Model: {{pascalCase moduleName}}Model) {
+		return await this.{{pascalCase moduleName}}Service.create({{pascalCase moduleName}}Model);
 	}
 
 	@Get()
-	async findAll(): Promise<ChatModel[]> {
-		return await this.chatService.findAll();
+	async findAll(): Promise<{{pascalCase moduleName}}Model[]> {
+		return await this.{{pascalCase moduleName}}Service.findAll();
 	}
 
 	@Get(':id')
-	async findOne(@Param('id') id: string): Promise<ChatModel> {
-		return await this.chatService.findOneById(+id);
+	async findOne(@Param('id') id: string): Promise<{{pascalCase moduleName}}Model> {
+		return await this.{{pascalCase moduleName}}Service.findOneById(+id);
 	}
 }

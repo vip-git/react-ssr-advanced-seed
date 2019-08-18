@@ -8,15 +8,15 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 // Internal
-import { ChatModel } from './chat.model';
+import { {{pascalCase moduleName}}Model } from './{{moduleName}}.model';
 
 @Injectable()
-export class ChatService {
-private readonly chats: ChatModel[] = [];
+export class {{pascalCase moduleName}}Service {
+private readonly {{moduleName}}: {{pascalCase moduleName}}Model[] = [];
 
 constructor(
-@InjectRepository(ChatModel)
-private readonly chatRepository: Repository<ChatModel>
+@InjectRepository({{pascalCase moduleName}}Model)
+private readonly {{moduleName}}Repository: Repository<{{pascalCase moduleName}}Model>
     ) {}
 
     protected getId(paramId: any): number {
@@ -29,36 +29,36 @@ private readonly chatRepository: Repository<ChatModel>
         return id;
     }
 
-    async create(chatPayload: ChatModel): Promise<ChatModel> {
-        const chat = new ChatModel();
-        chat.groupId = chatPayload.groupId;
-        chat.message = chatPayload.message;
-        chat.date = chatPayload.date;
-        chat.ownerId = chatPayload.ownerId;
+    async create({{moduleName}}Payload: {{pascalCase moduleName}}Model): Promise<{{pascalCase moduleName}}Model> {
+        const {{moduleName}} = new {{pascalCase moduleName}}Model();
+        {{moduleName}}.groupId = {{moduleName}}Payload.groupId;
+        {{moduleName}}.message = {{moduleName}}Payload.message;
+        {{moduleName}}.date = {{moduleName}}Payload.date;
+        {{moduleName}}.ownerId = {{moduleName}}Payload.ownerId;
 
-        return await this.chatRepository.save(chat);
+        return await this.{{moduleName}}Repository.save({{moduleName}});
     }
 
-    async findAll(): Promise<ChatModel[]> {
-        return await this.chatRepository.find({
+    async findAll(): Promise<{{pascalCase moduleName}}Model[]> {
+        return await this.{{moduleName}}Repository.find({
             cache: true,
             order: { id: 'ASC' }
         });
     }
 
-    async findOneById(id: number): Promise<ChatModel> {
-        return await this.chatRepository.findOne(id, { cache: true });
+    async findOneById(id: number): Promise<{{pascalCase moduleName}}Model> {
+        return await this.{{moduleName}}Repository.findOne(id, { cache: true });
     }
 
-    async update(paramId: any, entity: ChatModel): Promise<ChatModel> {
-        await this.chatRepository.update(paramId, entity);
+    async update(paramId: any, entity: {{pascalCase moduleName}}Model): Promise<{{pascalCase moduleName}}Model> {
+        await this.{{moduleName}}Repository.update(paramId, entity);
         return await this.findOneById(paramId);
     }
 
     async delete(paramId: any): Promise<void> {
         const id = this.getId(paramId);
         try {
-            await this.chatRepository.delete(id);
+            await this.{{moduleName}}Repository.delete(id);
         } catch (err) {
             throw new NotFoundException();
         }

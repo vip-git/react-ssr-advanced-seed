@@ -83,41 +83,41 @@ module.exports = {
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/index.tsx',
+						'src/client/web/app/containers/{{containerName}}/index.tsx',
 					templateFile: 'scripts/plopTemplates/src/web/container/index.tsx.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
 					templateFile:
 						'scripts/plopTemplates/src/web/container/containerName.model.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.components.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.components.ts',
 					templateFile:
 						'scripts/plopTemplates/src/web/container/containerName.components.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.web-container.json',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.web-container.json',
 					templateFile:
 						'scripts/plopTemplates/src/web/container/containerName.web-container.json.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/package.json',
+						'src/client/web/app/containers/{{containerName}}/package.json',
 					templateFile:
 						'scripts/plopTemplates/src/web/container/package.json.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/__tests__/{{containerName}}-container.spec.tsx',
+						'src/client/web/app/containers/{{containerName}}/__tests__/{{containerName}}-container.spec.tsx',
 					templateFile:
 						'scripts/plopTemplates/src/web/container/__tests__/containerName.spec.tsx.hbs'
 				},
@@ -126,63 +126,63 @@ module.exports = {
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/{{containerName}}.redux-model.ts',
+						'src/client/shared/state/containers/{{containerName}}/{{containerName}}.redux-model.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/containerName.redux-model.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/package.json',
+						'src/client/shared/state/containers/{{containerName}}/package.json',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/package.json.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
+						'src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/redux/containerName.actions.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
+						'src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/redux/containerName.effects.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
+						'src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/redux/containerName.reducer.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.selectors.ts',
+						'src/client/shared/state/containers/{{containerName}}/redux/{{containerName}}.selectors.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/redux/containerName.selectors.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/redux/__tests__/{{containerName}}-effects.spec.ts',
+						'src/client/shared/state/containers/{{containerName}}/redux/__tests__/{{containerName}}-effects.spec.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/redux/__tests__/containerName-effects.spec.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/redux/__tests__/{{containerName}}-reducer.spec.ts',
+						'src/client/shared/state/containers/{{containerName}}/redux/__tests__/{{containerName}}-reducer.spec.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/redux/__tests__/containerName-reducer.spec.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/state/containers/{{containerName}}/redux/__tests__/{{containerName}}-selectors.spec.ts',
+						'src/client/shared/state/containers/{{containerName}}/redux/__tests__/{{containerName}}-selectors.spec.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/state/container/redux/__tests__/containerName-selectors.spec.ts.hbs'
 				},
@@ -190,14 +190,14 @@ module.exports = {
 				// rules folder starts here
 				{
 					type: 'add',
-					path: 'temp/src/client/shared/rules/{{containerName}}.rules.ts',
+					path: 'src/client/shared/rules/{{containerName}}.rules.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/rules/containerName.rules.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/rules/__tests__/{{containerName}}-rules.spec.ts',
+						'src/client/shared/rules/__tests__/{{containerName}}-rules.spec.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/rules/__tests__/containerName-rules.spec.ts.hbs'
 				},
@@ -206,27 +206,27 @@ module.exports = {
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/services/{{containerName}}/{{containerName}}.gql.ts',
+						'src/client/shared/services/{{containerName}}/{{containerName}}.gql.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/services/container/containerName.gql.ts.hbs'
 				},
 				{
 					type: 'add',
-					path: 'temp/src/client/shared/services/{{containerName}}/index.ts',
+					path: 'src/client/shared/services/{{containerName}}/index.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/services/container/index.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/services/{{containerName}}/__tests__/{{containerName}}-service.spec.ts',
+						'src/client/shared/services/{{containerName}}/__tests__/{{containerName}}-service.spec.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/services/container/__tests__/index-spec.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/shared/services/{{containerName}}/__tests__/{{containerName}}-gql.spec.ts',
+						'src/client/shared/services/{{containerName}}/__tests__/{{containerName}}-gql.spec.ts',
 					templateFile:
 						'scripts/plopTemplates/src/shared/services/container/__tests__/containerName-gql.spec.ts.hbs'
 				},
@@ -235,42 +235,42 @@ module.exports = {
 				{
 					type: 'add',
 					path:
-						'temp/src/client/mobile/app/containers/{{containerName}}/index.tsx',
+						'src/client/mobile/app/containers/{{containerName}}/index.tsx',
 					templateFile:
 						'scripts/plopTemplates/src/mobile/container/index.tsx.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/mobile/app/containers/{{containerName}}/{{containerName}}.model.ts',
+						'src/client/mobile/app/containers/{{containerName}}/{{containerName}}.model.ts',
 					templateFile:
 						'scripts/plopTemplates/src/mobile/container/containerName.model.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/mobile/app/containers/{{containerName}}/{{containerName}}.components.ts',
+						'src/client/mobile/app/containers/{{containerName}}/{{containerName}}.components.ts',
 					templateFile:
 						'scripts/plopTemplates/src/mobile/container/containerName.components.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/mobile/app/containers/{{containerName}}/{{containerName}}.mobile-container.json',
+						'src/client/mobile/app/containers/{{containerName}}/{{containerName}}.mobile-container.json',
 					templateFile:
 						'scripts/plopTemplates/src/mobile/container/containerName.mobile-container.json.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/mobile/app/containers/{{containerName}}/package.json',
+						'src/client/mobile/app/containers/{{containerName}}/package.json',
 					templateFile:
 						'scripts/plopTemplates/src/mobile/container/package.json.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/mobile/app/containers/{{containerName}}/__tests__/{{containerName}}-container.spec.tsx',
+						'src/client/mobile/app/containers/{{containerName}}/__tests__/{{containerName}}-container.spec.tsx',
 					templateFile:
 						'scripts/plopTemplates/src/mobile/container/__tests__/containerName.spec.tsx.hbs'
 				}
@@ -309,48 +309,48 @@ module.exports = {
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{dashCase containerName}}.scss',
+						'src/client/web/app/containers/{{containerName}}/{{dashCase containerName}}.scss',
 					templateFile: 'templates/BasicComponent/BasicComponent.scss.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
 					templateFile: 'templates/BasicComponent/BasicComponent.test.ts.hbs'
 				},
 				{
 					type: 'add',
-					path: 'temp/src/client/web/app/containers/{{containerName}}/index.ts',
+					path: 'src/client/web/app/containers/{{containerName}}/index.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.rules.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.rules.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				}
 			]
@@ -386,48 +386,48 @@ module.exports = {
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{dashCase containerName}}.scss',
+						'src/client/web/app/containers/{{containerName}}/{{dashCase containerName}}.scss',
 					templateFile: 'templates/BasicComponent/BasicComponent.scss.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
 					templateFile: 'templates/BasicComponent/BasicComponent.test.ts.hbs'
 				},
 				{
 					type: 'add',
-					path: 'temp/src/client/web/app/containers/{{containerName}}/index.ts',
+					path: 'src/client/web/app/containers/{{containerName}}/index.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.rules.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.rules.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				}
 			]
@@ -464,48 +464,48 @@ module.exports = {
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{dashCase containerName}}.scss',
+						'src/client/web/app/containers/{{containerName}}/{{dashCase containerName}}.scss',
 					templateFile: 'templates/BasicComponent/BasicComponent.scss.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
+						'src/client/web/app/containers/{{containerName}}/{{containerName}}.model.ts',
 					templateFile: 'templates/BasicComponent/BasicComponent.test.ts.hbs'
 				},
 				{
 					type: 'add',
-					path: 'temp/src/client/web/app/containers/{{containerName}}/index.ts',
+					path: 'src/client/web/app/containers/{{containerName}}/index.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.actions.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.effects.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.reducer.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				},
 				{
 					type: 'add',
 					path:
-						'temp/src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.rules.ts',
+						'src/client/web/app/containers/{{containerName}}/redux/{{containerName}}.rules.ts',
 					templateFile: 'scripts/plopTemplates/container.ts.hbs'
 				}
 			]
@@ -517,23 +517,17 @@ module.exports = {
 			//throw 'error message';
 			return new Promise((resolve, reject) => {
 				shell.exec(
-					`npx nest generate module ${
-						answers.moduleName
-					} /server/app/modules`,
+					`npx nest generate module ${answers.moduleName} /server/app/modules`,
 					function(code, stdout, stderr) {
 						shell.exec(
 							`npx nest generate service ${
 								answers.moduleName
-							} /server/app/modules/${
-								answers.moduleName
-							}/shared --flat`,
+							} /server/app/modules/${answers.moduleName}/shared --flat`,
 							function(code, stdout, stderr) {
 								shell.exec(
 									`npx nest generate controller ${
 										answers.moduleName
-									} /server/app/modules/${
-										answers.moduleName
-									}/rest --flat`,
+									} /server/app/modules/${answers.moduleName}/rest --flat`,
 									function(code, stdout, stderr) {
 										shell.exec(
 											`npx nest generate resolver ${
@@ -542,13 +536,26 @@ module.exports = {
 												answers.moduleName
 											}/graphql --flat`,
 											function(code, stdout, stderr) {
-												if (code !== 0) {
-													reject('error message');
-												} else {
-													resolve(
-														'Module created Successfully'
-													);
-												}
+												shell.exec(
+													`npx nest generate guard ${
+														answers.moduleName
+													} /server/app/modules/${
+														answers.moduleName
+													}/graphql --flat`,
+													function(
+														code,
+														stdout,
+														stderr
+													) {
+														if (code !== 0) {
+															reject('error message');
+														} else {
+															resolve(
+																'Module created Successfully'
+															);
+														}
+													}
+												);
 											}
 										);
 									}
@@ -574,6 +581,48 @@ module.exports = {
 				{
 					type: 'generateServerModule',
 					moduleName: '{{moduleName}}'
+				}
+			]
+		}),
+
+	generateServerModelHelpers: plop =>
+		plop.setGenerator('serverModelHelpers', {
+			description: 'React-SSR-Advanced Server Model helper generator',
+			prompts: [
+				{
+					type: 'input',
+					name: 'moduleName',
+					message: 'Module name please'
+				}
+			],
+			actions: [
+				{
+					type: 'modify',
+					path:
+						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.guard.ts',
+					templateFile:
+						'scripts/plopTemplates/src/server/modules/graphql/modelName-guard.ts.hbs'
+				},
+				{
+					type: 'modify',
+					path:
+						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.resolver.ts',
+					templateFile:
+						'scripts/plopTemplates/src/server/modules/graphql/modelName-resolvers.ts.hbs'
+				},
+				{
+					type: 'modify',
+					path:
+						'src/server/app/modules/{{moduleName}}/rest/{{moduleName}}.controller.ts',
+					templateFile:
+						'scripts/plopTemplates/src/server/modules/rest/modelName-controller.ts.hbs'
+				},
+				{
+					type: 'modify',
+					path:
+						'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.service.ts',
+					templateFile:
+						'scripts/plopTemplates/src/server/modules/shared/modelName-service.ts.hbs'
 				}
 			]
 		})

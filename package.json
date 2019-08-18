@@ -44,6 +44,7 @@
 		"generate:sharedComponent": "npx plop sharedComponent",
 		"generate:mobileComponent": "npx plop mobileComponent",
 		"generate:server:module": "npx plop serverModule",
+		"generate:server:modelHelpers": "npx plop serverModelHelpers",
 		"generate:graphqltypes": "npx ts-node src/server/app/generate-typings.ts",
 		"generate:docs": "npx typedoc --out docs/ src/ --mode file --module commonjs --target es6",
 		"generate:defintions": "npx dts-generator --name node-advanced-api --project ./ --out node-advanced-api.d.ts",

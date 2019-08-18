@@ -10,4 +10,5 @@ module.exports = plop => {
 	omegaGenerator.generateMobileComponent(plop);
 	omegaGenerator.generateCustomServerActions(plop);
 	omegaGenerator.generateServerModule(plop);
+	omegaGenerator.generateServerModelHelpers(plop);
 };
