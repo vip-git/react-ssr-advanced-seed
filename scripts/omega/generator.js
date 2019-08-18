@@ -622,10 +622,14 @@ module.exports = {
 				{
 					type: 'add',
 					force: true,
-					path:
-						'src/server/app/modules/{{moduleName}}/index.ts',
-					templateFile:
-						'scripts/plopTemplates/src/server/modules/index.ts.hbs'
+					path: 'src/server/app/modules/{{moduleName}}/index.ts',
+					templateFile: 'scripts/plopTemplates/src/server/modules/index.ts.hbs'
+				},
+				{
+					type: 'add',
+					force: true,
+					path: 'src/server/app/modules/{{moduleName}}/{{moduleName}}.module.ts',
+					templateFile: 'scripts/plopTemplates/src/server/modules/modelName-module.ts.hbs'
 				}
 			]
 		})

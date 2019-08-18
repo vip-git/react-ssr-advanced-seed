@@ -31,7 +31,7 @@ private readonly profileRepository: Repository<ProfileModel>
 
     async create(profilePayload: ProfileModel): Promise<ProfileModel> {
         const profile = new ProfileModel();
-        profile.githubId = profilePayload.githubId;
+        profile.groupId = profilePayload.groupId;
         profile.message = profilePayload.message;
         profile.date = profilePayload.date;
         profile.ownerId = profilePayload.ownerId;

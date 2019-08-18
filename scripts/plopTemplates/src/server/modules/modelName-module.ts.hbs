@@ -3,22 +3,22 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Rest
-import { ChatsController } from './rest/chat.controller';
+import { {{pascalCase moduleName}}Controller } from './rest/{{moduleName}}.controller';
 
 // Graphql
-import { ChatResolvers } from './graphql/chat.resolvers';
+import { {{pascalCase moduleName}}Resolver } from './graphql/{{moduleName}}.resolver';
 
 // Shared
-import { ChatService } from './shared/chat.service';
-import { ChatModel } from './shared/chat.model';
+import { {{pascalCase moduleName}}Service } from './shared/{{moduleName}}.service';
+import { {{pascalCase moduleName}}Model } from './shared/{{moduleName}}.model';
 
 @Module({
-imports: [TypeOrmModule.forFeature([ChatModel])],
-controllers: [ChatsController],
-providers: [ChatService, ChatResolvers]
+    imports: [TypeOrmModule.forFeature([{{pascalCase moduleName}}Model])],
+    controllers: [{{pascalCase moduleName}}Controller],
+    providers: [{{pascalCase moduleName}}Service, {{pascalCase moduleName}}Resolver]
 })
-export class ChatModule {}
+export class {{pascalCase moduleName}}Module {}
 
 // Extra exports
-export * from './shared/chat.model';
-export * from './shared/chat.service';
+export * from './shared/{{moduleName}}.model';
+export * from './shared/{{moduleName}}.service';
