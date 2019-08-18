@@ -1,0 +1,27 @@
+type Query {
+    getGroup: [Group]
+    group(id: ID!): Group
+}
+
+type Mutation {
+    createGroup(ownerId: ID!, groupName: String, groupDescription: String, date: String): Group
+    updateGroup(
+        id: ID!
+        ownerId: String
+        groupName: String
+        groupDescription: String
+        date: String
+    ): Group
+}
+
+type Subscription {
+    groupRecieved: Group
+}
+
+type Group {
+    id: Int
+    ownerId: Int
+    groupName: String
+    groupDescription: String
+    date: String
+}

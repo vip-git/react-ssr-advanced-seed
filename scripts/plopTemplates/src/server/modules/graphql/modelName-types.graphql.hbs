@@ -1,28 +1,28 @@
 type Query {
-getChats: [Chat]
-chat(id: ID!): Chat
+    get{{pascalCase moduleName}}: [{{pascalCase moduleName}}]
+    {{moduleName}}(id: ID!): {{pascalCase moduleName}}
 }
 
 type Mutation {
-createChat(message: String, groupId: Int, ownerId: Int, date: String): Chat
-updateChat(
-id: ID!
-message: String
-groupId: Int
-ownerId: Int
-date: String
-): Chat
+    create{{pascalCase moduleName}}(message: String, groupId: Int, ownerId: Int, date: String): {{pascalCase moduleName}}
+    update{{pascalCase moduleName}}(
+        id: ID!
+        message: String
+        groupId: Int
+        ownerId: Int
+        date: String
+    ): {{pascalCase moduleName}}
 }
 
 type Subscription {
-chatRecieved: Chat
+    {{moduleName}}Recieved: {{pascalCase moduleName}}
 }
 
-type Chat {
-id: Int
-groupId: Int
-ownerId: Int
-message: String
-type: String
-date: String
+type {{pascalCase moduleName}} {
+    id: Int
+    groupId: Int
+    ownerId: Int
+    message: String
+    type: String
+    date: String
 }

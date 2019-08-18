@@ -1,0 +1,27 @@
+type Query {
+    getProfile: [Profile]
+    profile(id: ID!): Profile
+}
+
+type Mutation {
+    createProfile(githubId: Int, message: String, ownerId: Int, date: String): Profile
+    updateProfile(
+        id: ID!
+        githubId: Int
+        message: String
+        ownerId: Int
+        date: String
+    ): Profile
+}
+
+type Subscription {
+    profileRecieved: Profile
+}
+
+type Profile {
+    id: Int
+    githubId: Int
+    message: String
+    ownerId: String
+    date: String
+}

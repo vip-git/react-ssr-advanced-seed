@@ -16,7 +16,7 @@ export class ProfileResolver {
 constructor(private readonly profileService: ProfileService) {}
 
 @Query()
-async getprofile() {
+async getProfile() {
     return await this.profileService.findAll();
 }
 
@@ -26,14 +26,14 @@ async findOneById(obj, args, context, info): Promise<IProfile> {
         return await this.profileService.findOneById(+id);
     }
 
-    @Mutation('createprofile')
+    @Mutation('createProfile')
     async create(obj, args: IProfile, context, info): Promise<IProfile> {
         const createdProfile = await this.profileService.create(args);
         pubSub.publish('profileRecieved', { profileRecieved: createdProfile });
         return createdProfile;
     }
 
-    @Mutation('updateprofile')
+    @Mutation('updateProfile')
     async update(obj, args: IProfile, context, info): Promise<IProfile> {
         const { id } = args;
         const updatedProfile = await this.profileService.update(id, args);

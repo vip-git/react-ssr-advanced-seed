@@ -16,7 +16,7 @@ export class GroupResolver {
 constructor(private readonly groupService: GroupService) {}
 
 @Query()
-async getgroup() {
+async getGroup() {
     return await this.groupService.findAll();
 }
 
@@ -26,14 +26,14 @@ async findOneById(obj, args, context, info): Promise<IGroup> {
         return await this.groupService.findOneById(+id);
     }
 
-    @Mutation('creategroup')
+    @Mutation('createGroup')
     async create(obj, args: IGroup, context, info): Promise<IGroup> {
         const createdGroup = await this.groupService.create(args);
         pubSub.publish('groupRecieved', { groupRecieved: createdGroup });
         return createdGroup;
     }
 
-    @Mutation('updategroup')
+    @Mutation('updateGroup')
     async update(obj, args: IGroup, context, info): Promise<IGroup> {
         const { id } = args;
         const updatedGroup = await this.groupService.update(id, args);

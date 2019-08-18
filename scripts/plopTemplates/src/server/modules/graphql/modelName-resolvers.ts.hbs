@@ -16,7 +16,7 @@ export class {{pascalCase moduleName}}Resolver {
 constructor(private readonly {{moduleName}}Service: {{pascalCase moduleName}}Service) {}
 
 @Query()
-async get{{moduleName}}() {
+async get{{pascalCase moduleName}}() {
     return await this.{{moduleName}}Service.findAll();
 }
 
@@ -26,14 +26,14 @@ async findOneById(obj, args, context, info): Promise<I{{pascalCase moduleName}}>
         return await this.{{moduleName}}Service.findOneById(+id);
     }
 
-    @Mutation('create{{moduleName}}')
+    @Mutation('create{{pascalCase moduleName}}')
     async create(obj, args: I{{pascalCase moduleName}}, context, info): Promise<I{{pascalCase moduleName}}> {
         const created{{pascalCase moduleName}} = await this.{{moduleName}}Service.create(args);
         pubSub.publish('{{moduleName}}Recieved', { {{moduleName}}Recieved: created{{pascalCase moduleName}} });
         return created{{pascalCase moduleName}};
     }
 
-    @Mutation('update{{moduleName}}')
+    @Mutation('update{{pascalCase moduleName}}')
     async update(obj, args: I{{pascalCase moduleName}}, context, info): Promise<I{{pascalCase moduleName}}> {
         const { id } = args;
         const updated{{pascalCase moduleName}} = await this.{{moduleName}}Service.update(id, args);

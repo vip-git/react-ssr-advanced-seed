@@ -628,8 +628,18 @@ module.exports = {
 				{
 					type: 'add',
 					force: true,
-					path: 'src/server/app/modules/{{moduleName}}/{{moduleName}}.module.ts',
-					templateFile: 'scripts/plopTemplates/src/server/modules/modelName-module.ts.hbs'
+					path:
+						'src/server/app/modules/{{moduleName}}/{{moduleName}}.module.ts',
+					templateFile:
+						'scripts/plopTemplates/src/server/modules/modelName-module.ts.hbs'
+				},
+				{
+					type: 'add',
+					force: true,
+					path:
+						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.types.graphql',
+					templateFile:
+						'scripts/plopTemplates/src/server/modules/graphql/modelName-types.graphql.hbs'
 				}
 			]
 		})
