@@ -6,9 +6,14 @@ import { connect } from 'react-redux';
 import { withTranslation } from 'react-i18next';
 import queryString from 'query-string';
 
-// Redux
+// Containers & component
 import Chat from '@omega-web-containers/chat';
 import LoginDialog from '@omega-web-Components/login';
+
+// Services
+import { HttpService } from '@omega-core/services/core/http.service';
+
+// Redux
 import { config } from '@omega-core/config';
 import { getLocale } from '../../shared/state/containers/app/selectors';
 import { setLocale, setToken } from '../../shared/state/containers/app/actions';
@@ -34,8 +39,13 @@ class App extends React.PureComponent<any, any> {
 			const { dispatchSetToken } = this.props;
 			window.sessionStorage.setItem(
 				'token',
-				JSON.stringify(accessTokenObj)
+				 'true',
 			);
+			HttpService.setCookie('accessToken', accessTokenObj.accessToken, {
+				// 'Secure': true,
+				// 'HttpOnly': true,
+				'max-age': 3600
+			});
 			dispatchSetToken(accessTokenObj.accessToken);
 			window.location.search = '';
 		}
@@ -45,8 +55,8 @@ class App extends React.PureComponent<any, any> {
 				const accessTokenStorage =
 					window.sessionStorage.getItem('token') &&
 					JSON.parse(window.sessionStorage.getItem('token'));
-					if (accessTokenStorage && accessTokenStorage.accessToken) {
-						dispatchSetToken(accessTokenStorage.accessToken);
+					if (accessTokenStorage) {
+						dispatchSetToken(accessTokenStorage);
 					}
 			}
  			catch(error) {

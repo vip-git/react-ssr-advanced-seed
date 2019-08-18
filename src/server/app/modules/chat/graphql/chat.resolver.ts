@@ -10,7 +10,7 @@ import { ChatsGuard } from './chat.guard';
 
 const pubSub = new PubSub();
 
-// @UseGuards(ChatsGuard)
+@UseGuards(ChatsGuard)
 @Resolver('Chat')
 export class ChatResolver {
 	constructor(private readonly chatService: ChatService) {}

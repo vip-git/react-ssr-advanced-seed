@@ -33,7 +33,8 @@ const cacheLink = new InMemoryCache();
 export const httpOnlyLink = (config: any = {}) =>
 	new HttpLink({
 		...config,
-		uri: `${Config.API_URL}/graphql`
+		uri: `${Config.API_URL}/graphql`,
+		credentials: 'include'
 	});
 
 const subscriptionLink = (config = {}) => {
@@ -115,7 +116,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const links: any = [
 	errorLink,
-	authLink,
+	// authLink,
 	requestLink({
 		httpLink: httpOnlyLink(),
 		wsLink: subscriptionLink()

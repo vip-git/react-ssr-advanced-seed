@@ -23,7 +23,10 @@ if (process.env.NODE_ENV === 'development') {
   });
 }
 /* ignore coverage */
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true // <-- REQUIRED backend setting
+}));
 /* ignore coverage */
 app.use(bodyParser.json());
 /* ignore coverage */

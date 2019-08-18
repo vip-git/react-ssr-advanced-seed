@@ -109,4 +109,28 @@ export class HttpService {
 		);
 		return response;
 	}
+
+	static setCookie(name, value, options: any = {}) {
+		options = {
+			path: '/',
+			// add other defaults here if necessary
+			...options
+		};
+
+		if (options && options.expires && options.expires.toUTCString) {
+			options.expires = options.expires.toUTCString();
+		}
+
+		let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+		for (let optionKey in options) {
+			updatedCookie += "; " + optionKey;
+			let optionValue = options[optionKey];
+			if (optionValue !== true) {
+				updatedCookie += "=" + optionValue;
+			}
+		}
+		console.log('about to set cookie', updatedCookie);
+		document.cookie = updatedCookie;
+	}
 }

@@ -36,6 +36,7 @@ export const httpOnlyLink = (config: any = {}) =>
 	new HttpLink({
 		...config,
 		uri: `${Config.API_URL}/graphql`,
+		credentials: 'include',
 		fetch
 	});
 
@@ -119,7 +120,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const links: any = [
 	errorLink,
-	authLink,
+	// authLink,
 	requestLink({
 		httpLink: httpOnlyLink(),
 		wsLink: subscriptionLink()

@@ -38,7 +38,11 @@ const url = require('url');
 				connection ? { req: connection.context } : { req },
 			installSubscriptionHandlers: true,
 			debug: process.env.NODE_ENV === 'development',
-			playground: process.env.NODE_ENV === 'development'
+			playground: process.env.NODE_ENV === 'development',
+			cors: process.env.NODE_ENV === 'development' ? {
+				origin: 'http://localhost:8500',
+				credentials: true // <-- REQUIRED backend setting
+			} : {},
 		}),
 		ProfileModule,
 		GroupModule
