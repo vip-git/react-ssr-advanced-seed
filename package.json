@@ -38,6 +38,7 @@
 		"omega:update-package:minor": "node scripts/omega/packager.js minor",
 		"omega:update-package:major": "node scripts/omega/packager.js major",
 		"omega:update-package:patch": "node scripts/omega/packager.js patch",
+		"omega:update-package:alpha": "node scripts/omega/packager.js alpha",
 		"generate": "npx plop",
 		"generate:container": "npx plop container",
 		"generate:webComponent": "npx plop webComponent",

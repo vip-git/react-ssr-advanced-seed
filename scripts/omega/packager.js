@@ -88,4 +88,6 @@ const incrementAllLernaPackages = (newIncrementVersion) => {
 };
 
 const incrementVersion = process.argv.slice(2).length && process.argv.slice(2)[0];
-incrementAllLernaPackages(incrementVersion);
+const finalIncrementVersion =
+	incrementVersion === 'alpha' ? 'prerelease --preid=alpha' : incrementVersion; 
+incrementAllLernaPackages(finalIncrementVersion);
