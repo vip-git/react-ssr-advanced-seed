@@ -43,6 +43,7 @@ export interface IChatProps {
 	submitChat: (payload) => void;
 	readUsersAndChat: () => void;
 	sharedComponent: ReactType;
+	t: (string) => string;
 }
 
 export interface IChat {

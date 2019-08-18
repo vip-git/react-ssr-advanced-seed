@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
+import i18next from 'i18next';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import { connect } from 'react-redux';
 
@@ -36,6 +37,7 @@ export const RootModel = {
     classNames,
     distanceInWordsToNow,
     connect,
+    i18next,
   },
   uiFrameworkComponents: {
     createStyles,

@@ -32,7 +32,9 @@ const {
 	Component,
 	classNames,
 	distanceInWordsToNow,
-	JWTDecode
+	JWTDecode,
+	i18next,
+	withTranslation,
 } = ChatBoxModel.libraries;
 const { Wrapper } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
@@ -45,6 +47,16 @@ class Chat extends Component<IChatProps, IChatState> {
 	};
 
 	componentDidMount() {
+		i18next.addResourceBundle(
+			'en-US',
+			'translation',
+			ChatBoxModel.i18nKeys['en-US'],
+		);
+		i18next.addResourceBundle(
+			'de-DE',
+			'translation',
+			ChatBoxModel.i18nKeys['de-DE'],
+		);
 		this.props.readUsersAndChat();
 	}
 
@@ -67,7 +79,8 @@ class Chat extends Component<IChatProps, IChatState> {
 			chatData,
 			userData,
 			submitChat,
-			sharedComponent: SharedComponent
+			sharedComponent: SharedComponent,
+			t,
 		} = this.props;
 		const { opened } = this.state;
 		const githubUserData = JWTDecode(this.props.accessToken);
@@ -75,11 +88,24 @@ class Chat extends Component<IChatProps, IChatState> {
 			' '
 		)[0];
 		const menu = (
-			<List subheader={<ListSubheader disableSticky>Contacts</ListSubheader>}>
+			<List
+				subheader={
+					<ListSubheader disableSticky>
+						{t('chatbox-previous-chat')}
+					</ListSubheader>
+				}
+			>
 				{userData.map((contact: IContact, index) => (
 					<ListItem key={`ListItem-${contact.id}`} button>
-						<Avatar alt='' src={contact.avatar} className={classes.avatar} />
-						<ListItemText primary={contact.name} secondary={contact.status} />
+						<Avatar
+							alt=''
+							src={contact.avatar}
+							className={classes.avatar}
+						/>
+						<ListItemText
+							primary={contact.name}
+							secondary={contact.status}
+						/>
 					</ListItem>
 				))}
 			</List>
@@ -304,4 +330,4 @@ class Chat extends Component<IChatProps, IChatState> {
 	}
 }
 
-export default withStyles(ChatStyles as any)(Chat);
+export default withStyles(ChatStyles as any)(withTranslation()(Chat as any));

@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import JWTDecode from 'jwt-decode';
+import i18next from 'i18next';
+import { withTranslation } from 'react-i18next';
 
 // Material UI
 import { withStyles } from '@material-ui/styles';
@@ -39,6 +41,16 @@ export const ChatBoxModel = {
     classNames,
     distanceInWordsToNow,
     JWTDecode,
+    i18next,
+    withTranslation,
+  },
+  i18nKeys: {
+    'en-US': {
+      'chatbox-previous-chat': 'Previous Chats'
+    },
+    'de-DE': {
+      'chatbox-previous-chat': 'Vorherige Chats'
+    }
   },
   components: {
     Wrapper,
