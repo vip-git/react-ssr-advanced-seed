@@ -37,15 +37,12 @@ class App extends React.PureComponent<any, any> {
 		);
 		if (typeof window !== 'undefined' && idTokenObj && idTokenObj.idToken) {
 			const { dispatchSetToken } = this.props;
-			window.sessionStorage.setItem(
-				'token',
-				JSON.stringify(idTokenObj)
-			);
-			HttpService.setCookie('accessToken', idTokenObj.accessToken, {
-				// 'Secure': true,
-				// 'HttpOnly': true,
-				'max-age': 3600
-			});
+			window.sessionStorage.setItem('token', JSON.stringify(idTokenObj));
+			// HttpService.setCookie('accessToken', idTokenObj.accessToken, {
+			// 	// 'Secure': true,
+			// 	// 'HttpOnly': true,
+			// 	'max-age': 3600
+			// });
 			dispatchSetToken(idTokenObj.idToken);
 			window.location.search = '';
 		}

@@ -11,4 +11,10 @@ export class AuthController {
 		const tokenObj = await this.authService.createToken(code, state);
 		return response.redirect(303, `${process.env.FRONT_END_HOST}/?accessToken=${tokenObj.accessToken}&idToken=${tokenObj.idToken}`);
 	}
+
+	@Get('refresh')
+	async refreshToken(@Req() request): Promise<any> {
+		const { lastToken } = request.query;
+		return await this.authService.refreshToken(lastToken);
+	}
 }

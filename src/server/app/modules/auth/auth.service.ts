@@ -43,13 +43,21 @@ export class AuthService {
 				Authorization: `${token_type} ${access_token}`
 			}
 		});
-		const expiresIn = 3600;
-		const accessToken = jwt.sign(getUserInfo.data, JWT_SECRET, { expiresIn });
-		const idToken = jwt.sign(getUserInfo.data, access_token, { expiresIn });
+		const idToken = jwt.sign(getUserInfo.data, access_token, { expiresIn: 5 });
 		return {
-			expiresIn,
-			accessToken,
+			...this.refreshToken(access_token),
 			idToken
+		};
+	}
+
+	async refreshToken(lastToken) {
+		const expiresIn = 5;
+		const accessToken = jwt.sign({
+			lastToken
+		}, JWT_SECRET, { expiresIn });
+		return {
+			accessToken,
+			expiresIn
 		};
 	}
 

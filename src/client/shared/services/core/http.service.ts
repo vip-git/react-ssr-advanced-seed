@@ -52,13 +52,14 @@ const returnValidGraphQLOpertaion = (
 };
 
 export class HttpService {
-	static buildRestApiCall(
+	static async buildRestApiCall(
 		type: any,
 		method: string,
 		URI: any,
 		token: string,
 		payload: any
 	) {
+		await this.getRefreshToken();
 		const URL = returnValidURL(type, URI);
 		const options: any = {
 			credentials: 'include',
@@ -94,6 +95,38 @@ export class HttpService {
 					};
 				})
 		);
+	}
+
+	static getRefreshToken() {
+		const lastAccessToken = window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token')).accessToken;
+		const URL = returnValidURL('api', '/auth/refresh?lastToken=' + lastAccessToken);
+		const options: any = {
+			method: 'GET',
+		};
+		return fetch(URL, options)
+			.then(response => {
+				if (!response.ok) {
+					return {
+						message: 'Refresh API call failed',
+						error: true,
+					};
+				}
+				return response.json();
+			})
+			.then(response => {
+				const newToken = response.accessToken;
+				const token = window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token'));
+				token.accessToken = newToken;
+				window.sessionStorage.setItem('token', JSON.stringify(token));
+				return newToken;
+			})
+			.catch(error => {
+				console.log('error is', error);
+				return {
+					message: 'Refresh API call failed',
+					error: true
+				};
+			});
 	}
 
 	static buildGraphQLCall(

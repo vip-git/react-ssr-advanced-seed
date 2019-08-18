@@ -13,14 +13,16 @@ const cookieExtractor = function (req) {
 	}
 	return token;
 };
-
+/**
+ * ExtractJwt.fromExtractors([
+		cookieExtractor,
+	])
+ */
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
 	constructor(private readonly authService: AuthService) {
 		super({
-			jwtFromRequest: ExtractJwt.fromExtractors([
-				cookieExtractor
-			]),
+			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 			secretOrKey: JWT_SECRET
 		});
 	}

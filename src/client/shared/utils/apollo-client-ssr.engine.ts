@@ -120,7 +120,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 
 const links: any = [
 	errorLink,
-	// authLink,
+	authLink,
 	requestLink({
 		httpLink: httpOnlyLink(),
 		wsLink: subscriptionLink()

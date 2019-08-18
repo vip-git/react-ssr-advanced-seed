@@ -53,7 +53,7 @@ class ChatService {
 }
 
 export const ChatServiceEngine = {
-	requestAllChats: action => ChatService.getChats(action),
+	requestAllChats: action => ChatService.getAllChats(action),
 	requestAllChatsRest: action => ChatService.getChatsRest(action),
 	requestCreateChat: (payload: any) => ChatService.createChat(payload),
 	requestRemoveChat: (chatId: any) => ChatService.removeChat(chatId),
