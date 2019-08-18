@@ -2,7 +2,7 @@
 // Library
 import { ApolloClient, DefaultOptions } from 'apollo-client';
 import { setContext } from 'apollo-link-context';
-import { HttpLink } from 'apollo-link-http';
+import { createHttpLink } from 'apollo-link-http';
 import { WebSocketLink } from 'apollo-link-ws';
 import { from, split } from 'apollo-link';
 import { onError } from 'apollo-link-error';
@@ -31,7 +31,7 @@ const defaultOptions: DefaultOptions = {
 const cacheLink = new InMemoryCache();
 
 export const httpOnlyLink = (config: any = {}) =>
-	new HttpLink({
+	createHttpLink({
 		...config,
 		uri: `${Config.API_URL}/graphql`,
 		credentials: 'include'
@@ -123,7 +123,7 @@ const links: any = [
 	})
 ];
 
-export const apolloClient = new ApolloClient({
+export const apolloClient: any = new ApolloClient({
 	connectToDevTools: process.env.NODE_ENV === 'development',
 	link: from(links),
 	cache: cacheLink,

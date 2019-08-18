@@ -3,7 +3,7 @@ import { ActionTypes } from './actions';
 
 export const initialState: any = Object.freeze({
 	locale: 'en-US',
-	accessToken: ''
+	idToken: ''
 });
 
 export default (state: any = initialState, action: any): any => {
@@ -19,7 +19,7 @@ export default (state: any = initialState, action: any): any => {
 		case ActionTypes.SET_TOKEN: {
 			return {
 				...state,
-				accessToken: payload
+				idToken: payload
 			};
 		}
 	}

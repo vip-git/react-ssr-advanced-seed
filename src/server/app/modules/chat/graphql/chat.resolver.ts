@@ -1,5 +1,5 @@
 // Library
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, Res, Session } from '@nestjs/common';
 import { Query, Mutation, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 

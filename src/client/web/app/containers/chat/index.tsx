@@ -18,14 +18,15 @@ class ChatContainer extends Component<any, any> {
 			ChatComponent,
 			ContentComponent,
 		} = ChatModel.components;
-		const { chats, title, accessToken } = this.props;
+		const { chats, title, idToken } = this.props;
 		const { chatData, userData, error } = chats;
+		const ChatComponentTyped: any = ChatComponent;
 		return (
 			<ApolloConsumer>
 				{apolloClient => (
 					<React.Fragment>
-						<ChatComponent
-							sharedComponent={() => <ContentComponent />}
+						<ChatComponentTyped
+							SharedComponent={() => <ContentComponent />}
 							submitChat={(payload: ICreateChatPayload) =>
 								dispatchCreateChat({
 									apolloClient,
@@ -36,10 +37,11 @@ class ChatContainer extends Component<any, any> {
 							readUsersAndChat={() =>
 								dispatchReadAllUsersAndChats({
 									apolloClient,
-									data: {}
+									data: {},
+									idToken
 								})
 							}
-							accessToken={accessToken}
+							idToken={idToken}
 							title={title}
 							chatData={chatData}
 							userData={userData}

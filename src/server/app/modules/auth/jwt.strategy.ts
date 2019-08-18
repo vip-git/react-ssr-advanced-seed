@@ -6,11 +6,21 @@ import { JwtPayload } from './interfaces/jwt-payload.interface';
 
 import { JWT_SECRET } from './config';
 
+const cookieExtractor = function (req) {
+	var token = null;
+	if (req && req.cookies) {
+		token = req.cookies['accessToken'];
+	}
+	return token;
+};
+
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
 	constructor(private readonly authService: AuthService) {
 		super({
-			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+			jwtFromRequest: ExtractJwt.fromExtractors([
+				cookieExtractor
+			]),
 			secretOrKey: JWT_SECRET
 		});
 	}

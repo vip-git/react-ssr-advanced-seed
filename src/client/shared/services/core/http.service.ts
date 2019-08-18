@@ -60,7 +60,8 @@ export class HttpService {
 		payload: any
 	) {
 		const URL = returnValidURL(type, URI);
-		const options = {
+		const options: any = {
+			credentials: 'include',
 			method,
 			headers: {
 				Authorization: 'Bearer ' + token,

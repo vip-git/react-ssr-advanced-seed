@@ -45,7 +45,7 @@ const subscriptionLink = (config = {}) => {
 		const tokenObj =
 			window.sessionStorage.getItem('token') &&
 			JSON.parse(window.sessionStorage.getItem('token'));
-		token = (tokenObj && tokenObj.accessToken) || '';
+		token = (tokenObj && tokenObj.idToken) || '';
 	}
 	return new WebSocketLink({
 		uri: `${Config.WS_PROTOCOL + Config.WS_URL}/graphql`,
@@ -69,7 +69,7 @@ const authLink = setContext((_, { headers }) => {
 		const tokenObj =
 			window.sessionStorage.getItem('token') &&
 			JSON.parse(window.sessionStorage.getItem('token'));
-		const token = (tokenObj && tokenObj.accessToken) || '';
+		const token = (tokenObj && tokenObj.idToken) || '';
 		// return the headers to the context so httpLink can read them
 		return {
 			headers: {

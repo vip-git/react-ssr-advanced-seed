@@ -79,13 +79,11 @@ class Chat extends Component<IChatProps, IChatState> {
 			chatData,
 			userData,
 			submitChat,
-			sharedComponent: SharedComponent,
+			SharedComponent,
 			t,
 		} = this.props;
 		const { opened } = this.state;
-		const githubUserData = {
-			name: 'vip-git'
-		}; // JWTDecode(this.props.accessToken);
+		const githubUserData: any = JWTDecode(this.props.idToken);
 		const currentUsername = githubUserData.name.indexOf(' ') === -1 ? githubUserData.name : githubUserData.name.split(
 			' '
 		)[0];

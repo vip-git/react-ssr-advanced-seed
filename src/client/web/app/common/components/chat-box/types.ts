@@ -11,7 +11,7 @@ export interface ICreateChatPayload {
 }
 
 export interface IChatProps {
-	classes: {
+	classes?: {
 		avatar: string;
 		root: string;
 		button: string;
@@ -36,14 +36,14 @@ export interface IChatProps {
 		dateReceived: string;
 		input: string;
 	};
-	accessToken: string;
-	title: string;
-	chatData: Array<object>;
-	userData: Array<object>;
-	submitChat: (payload) => void;
-	readUsersAndChat: () => void;
-	sharedComponent: ReactType;
-	t: (string) => string;
+	idToken?: string;
+	title?: string;
+	chatData?: Array<{}>;
+	userData?: Array<{}>;
+	submitChat?: (payload: any) => void;
+	readUsersAndChat?: () => void;
+	SharedComponent?: ReactType;
+	t?: (string) => string;
 }
 
 export interface IChat {

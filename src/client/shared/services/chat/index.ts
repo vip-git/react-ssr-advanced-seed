@@ -17,6 +17,10 @@ class ChatService {
 		return HttpService.buildGraphQLCall(apolloClient, 'query', chatQuery, data);
 	}
 
+	static getChatsRest(payload: any) {
+		return HttpService.buildRestApiCall('api', 'GET', '/chats', payload.accessToken, {})
+	}
+
 	static getAllChats(payload: any) {
 		const { apolloClient, data } = payload;
 		return HttpService.buildGraphQLCall(
@@ -49,7 +53,8 @@ class ChatService {
 }
 
 export const ChatServiceEngine = {
-	requestAllChats: action => ChatService.getAllChats(action),
+	requestAllChats: action => ChatService.getChats(action),
+	requestAllChatsRest: action => ChatService.getChatsRest(action),
 	requestCreateChat: (payload: any) => ChatService.createChat(payload),
 	requestRemoveChat: (chatId: any) => ChatService.removeChat(chatId),
 	requestEditChat: (chatId: any) => ChatService.editChat(chatId)

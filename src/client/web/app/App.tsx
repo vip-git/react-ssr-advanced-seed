@@ -32,31 +32,31 @@ export interface PropsT {
 
 class App extends React.PureComponent<any, any> {
 	componentDidMount() {
-		const accessTokenObj = queryString.parse(
+		const idTokenObj = queryString.parse(
 			this.props.location.search
 		);
-		if (typeof window !== 'undefined' && accessTokenObj && accessTokenObj.accessToken) {
+		if (typeof window !== 'undefined' && idTokenObj && idTokenObj.idToken) {
 			const { dispatchSetToken } = this.props;
 			window.sessionStorage.setItem(
 				'token',
-				 'true',
+				JSON.stringify(idTokenObj)
 			);
-			HttpService.setCookie('accessToken', accessTokenObj.accessToken, {
+			HttpService.setCookie('accessToken', idTokenObj.accessToken, {
 				// 'Secure': true,
 				// 'HttpOnly': true,
 				'max-age': 3600
 			});
-			dispatchSetToken(accessTokenObj.accessToken);
+			dispatchSetToken(idTokenObj.idToken);
 			window.location.search = '';
 		}
  		else {
 			try {
 				const { dispatchSetToken } = this.props;
-				const accessTokenStorage =
+				const idTokenStorage =
 					window.sessionStorage.getItem('token') &&
 					JSON.parse(window.sessionStorage.getItem('token'));
-					if (accessTokenStorage) {
-						dispatchSetToken(accessTokenStorage);
+					if (idTokenStorage && idTokenStorage.idToken) {
+						dispatchSetToken(idTokenStorage.idToken);
 					}
 			}
  			catch(error) {
@@ -78,16 +78,16 @@ class App extends React.PureComponent<any, any> {
 
 	renderChat = () => {
 		const { t, app } = this.props;
-		const { accessToken } = app;
-		return accessToken === '' ? (
+		const { idToken } = app;
+		return idToken === '' ? (
 			<LoginDialog
-				show={accessToken === ''}
+				show={idToken === ''}
 				handleLoginClick={this.handleLoginClick}
 			/>
 		) : (
 			<div
 				style={{
-					filter: accessToken === '' ? 'blur(10px)' : 'none'
+					filter: idToken === '' ? 'blur(10px)' : 'none'
 				}}
 			>
 				<div
@@ -105,7 +105,7 @@ class App extends React.PureComponent<any, any> {
 						English
 					</button>
 				</div>
-				<Chat title={t('i18n-example')} accessToken={accessToken} />
+				<Chat title={t('i18n-example')} idToken={idToken} />
 			</div>
 		);
 	}
@@ -124,7 +124,7 @@ class App extends React.PureComponent<any, any> {
 
 	render() {
 		const { t, tReady, app } = this.props;
-		const { accessToken } = app;
+		const { idToken } = app;
 		return tReady ? this.renderAppScreen() : [];
 	}
 }

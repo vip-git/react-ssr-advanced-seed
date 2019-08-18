@@ -1,6 +1,7 @@
 // Library
 import { NestFactory } from '@nestjs/core';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import cookieParser from 'cookie-parser';
 import { ApplicationModule } from './app/app.module';
 
 declare const module: any;
@@ -12,6 +13,7 @@ async function bootstrap() {
 			credentials: true // <-- REQUIRED backend setting
 		} : false
 	});
+	app.use(cookieParser());
 	const options = new DocumentBuilder()
 		.setTitle('Chats example')
 		.setDescription('Chat API description')

@@ -20,6 +20,7 @@
 		"class-transformer": "0.2.3",
 		"class-validator": "0.9.1",
 		"classnames": "2.2.6",
+		"cookie-parser": "1.4.4",
 		"express": "4.17.1",
 		"express-http-proxy": "1.5.1",
 		"graphql": "14.4.2",
