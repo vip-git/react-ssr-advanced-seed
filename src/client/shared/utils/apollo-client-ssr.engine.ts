@@ -13,6 +13,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 
 // Config
 import { config as Config } from '@omega-core/config';
+import { HttpService } from '@omega-core/services/core/http.service';
 
 interface IMainDefinintion {
 	kind: string;
@@ -64,13 +65,10 @@ const subscriptionLink = (config = {}) => {
 	});
 };
 
-const authLink = setContext((_, { headers }) => {
+const authLink = setContext(async (_, { headers }) => {
 	try {
 		// get the authentication token from local storage if it exists
-		const tokenObj =
-			window.sessionStorage.getItem('token') &&
-			JSON.parse(window.sessionStorage.getItem('token'));
-		const token = (tokenObj && tokenObj.accessToken) || '';
+		const token = await HttpService.getRefreshToken();
 		// return the headers to the context so httpLink can read them
 		return {
 			headers: {

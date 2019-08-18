@@ -59,7 +59,6 @@ export class HttpService {
 		token: string,
 		payload: any
 	) {
-		await this.getRefreshToken();
 		const URL = returnValidURL(type, URI);
 		const options: any = {
 			credentials: 'include',
