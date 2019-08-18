@@ -82,8 +82,7 @@ module.exports = {
 				// Container folder starts here
 				{
 					type: 'add',
-					path:
-						'src/client/web/app/containers/{{containerName}}/index.tsx',
+					path: 'src/client/web/app/containers/{{containerName}}/index.tsx',
 					templateFile: 'scripts/plopTemplates/src/web/container/index.tsx.hbs'
 				},
 				{
@@ -109,8 +108,7 @@ module.exports = {
 				},
 				{
 					type: 'add',
-					path:
-						'src/client/web/app/containers/{{containerName}}/package.json',
+					path: 'src/client/web/app/containers/{{containerName}}/package.json',
 					templateFile:
 						'scripts/plopTemplates/src/web/container/package.json.hbs'
 				},
@@ -234,8 +232,7 @@ module.exports = {
 				// mobile container starts here
 				{
 					type: 'add',
-					path:
-						'src/client/mobile/app/containers/{{containerName}}/index.tsx',
+					path: 'src/client/mobile/app/containers/{{containerName}}/index.tsx',
 					templateFile:
 						'scripts/plopTemplates/src/mobile/container/index.tsx.hbs'
 				},
@@ -542,17 +539,11 @@ module.exports = {
 													} /server/app/modules/${
 														answers.moduleName
 													}/graphql --flat`,
-													function(
-														code,
-														stdout,
-														stderr
-													) {
+													function(code, stdout, stderr) {
 														if (code !== 0) {
 															reject('error message');
 														} else {
-															resolve(
-																'Module created Successfully'
-															);
+															resolve('Module created Successfully');
 														}
 													}
 												);
@@ -597,28 +588,32 @@ module.exports = {
 			],
 			actions: [
 				{
-					type: 'modify',
+					type: 'add',
+					force: true,
 					path:
 						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.guard.ts',
 					templateFile:
 						'scripts/plopTemplates/src/server/modules/graphql/modelName-guard.ts.hbs'
 				},
 				{
-					type: 'modify',
+					type: 'add',
+					force: true,
 					path:
 						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.resolver.ts',
 					templateFile:
 						'scripts/plopTemplates/src/server/modules/graphql/modelName-resolvers.ts.hbs'
 				},
 				{
-					type: 'modify',
+					type: 'add',
+					force: true,
 					path:
 						'src/server/app/modules/{{moduleName}}/rest/{{moduleName}}.controller.ts',
 					templateFile:
 						'scripts/plopTemplates/src/server/modules/rest/modelName-controller.ts.hbs'
 				},
 				{
-					type: 'modify',
+					type: 'add',
+					force: true,
 					path:
 						'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.service.ts',
 					templateFile:
