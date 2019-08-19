@@ -11,7 +11,7 @@ import Chat from '@omega-web-containers/chat';
 import LoginDialog from '@omega-web-Components/login';
 
 // Services
-import { HttpService } from '@omega-core/services/core/http.service';
+// import { HttpService } from '@omega-core/services/core/http.service';
 
 // Redux
 import { config } from '@omega-core/config';

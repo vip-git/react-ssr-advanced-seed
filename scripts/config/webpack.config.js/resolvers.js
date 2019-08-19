@@ -6,11 +6,11 @@ module.exports = {
   modules: paths.resolveModules,
   alias: {
       "react-native$": "react-native-web/dist/cjs",
-      "@services": path.resolve(__dirname, '../../../src/client/web/app/common/services'),
-      "@components": path.resolve(__dirname, '../../../src/client/web/app/common/components'),
-      "@model": path.resolve(__dirname, '../../../src/client/web/app/common/model'),
-      "@config": path.resolve(__dirname, '../../../src/client/web/app/common/config'),
-      "@utils": path.resolve(__dirname, '../../../src/client/web/app/common/utils'),
-      "@styles": path.resolve(__dirname, '../../../src/client/web/app/common/styles'),
+      // "@services": path.resolve(__dirname, '../../../src/client/web/app/common/services'),
+      // "@components": path.resolve(__dirname, '../../../src/client/web/app/common/components'),
+      // "@model": path.resolve(__dirname, '../../../src/client/web/app/common/model'),
+      // "@config": path.resolve(__dirname, '../../../src/client/web/app/common/config'),
+      // "@utils": path.resolve(__dirname, '../../../src/client/web/app/common/utils'),
+      // "@styles": path.resolve(__dirname, '../../../src/client/web/app/common/styles'),
   },
 };

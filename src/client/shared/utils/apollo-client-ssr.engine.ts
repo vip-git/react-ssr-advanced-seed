@@ -51,15 +51,19 @@ const subscriptionLink = (config = {}) => {
 	}
 	return new WebSocketLink({
 		uri: `${Config.WS_PROTOCOL + Config.WS_URL}/graphql`,
-		options: { reconnect: true },
 		webSocketImpl: ws,
-		connectionParams: () => {
-			return {
-				isWebSocket: true,
-				headers: {
-					authorization: `Bearer ${token}`
-				}
-			};
+		options: { 
+			reconnect: true,
+			connectionParams: () => {
+				// const token = await HttpService.getRefreshToken();
+				console.log('token is', token);
+				return {
+					isWebSocket: true,
+					headers: {
+						authorization: `Bearer ${token}`
+					}
+				};
+			},
 		},
 		...config
 	});

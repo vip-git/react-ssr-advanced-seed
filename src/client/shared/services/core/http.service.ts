@@ -97,35 +97,41 @@ export class HttpService {
 	}
 
 	static getRefreshToken() {
-		const lastAccessToken = window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token')).accessToken;
-		const URL = returnValidURL('api', '/auth/refresh?lastToken=' + lastAccessToken);
-		const options: any = {
-			method: 'GET',
-		};
-		return fetch(URL, options)
-			.then(response => {
-				if (!response.ok) {
-					return {
-						message: 'Refresh API call failed',
-						error: true,
-					};
-				}
-				return response.json();
-			})
-			.then(response => {
-				const newToken = response.accessToken;
-				const token = window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token'));
-				token.accessToken = newToken;
-				window.sessionStorage.setItem('token', JSON.stringify(token));
-				return newToken;
-			})
-			.catch(error => {
-				console.log('error is', error);
-				return {
-					message: 'Refresh API call failed',
-					error: true
-				};
-			});
+		try {
+			const lastAccessToken = window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token')).accessToken;
+			if (!lastAccessToken) {
+				return 'Refresh API call failed';
+			}
+			const URL = returnValidURL('api', '/auth/refresh?lastToken=' + lastAccessToken);
+			const options: any = {
+				method: 'GET',
+			};
+			return fetch(URL, options)
+				.then(response => {
+					if (!response.ok) {
+						return 'Refresh API call failed';
+					}
+					return response.json();
+				})
+				.then(response => {
+					let newToken = '';
+					try {
+						newToken = response.accessToken;
+						const token = window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token'));
+						token.accessToken = newToken;
+						window.sessionStorage.setItem('token', JSON.stringify(token));
+					} catch (error) {
+						newToken = '';
+					}
+					return newToken;
+				})
+				.catch(error => {
+					console.log('error is', error);
+					return 'Refresh API call failed';
+				});
+		} catch (error) {
+			return 'Refresh API call failed';
+		}
 	}
 
 	static buildGraphQLCall(
