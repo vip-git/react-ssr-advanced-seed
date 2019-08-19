@@ -14,10 +14,7 @@ class ChatContainer extends Component<any, any> {
 
 	render() {
 		const { dispatchReadAllUsersAndChats, dispatchCreateChat } = this.props;
-		const {
-			ChatComponent,
-			ContentComponent,
-		} = ChatModel.components;
+		const { ChatComponent, ContentComponent } = ChatModel.components;
 		const { chats, title, idToken } = this.props;
 		const { chatData, userData, error } = chats;
 		const ChatComponentTyped: any = ChatComponent;

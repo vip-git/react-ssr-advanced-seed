@@ -55,8 +55,11 @@ const subscriptionLink = (config = {}) => {
 		options: { 
 			reconnect: true,
 			connectionParams: () => {
+				/**
+				 * Todo: just needs a valid token on first handshake thats it later it handles it itself
+				 * so no refresh token is needed for this.
+				 */
 				// const token = await HttpService.getRefreshToken();
-				console.log('token is', token);
 				return {
 					isWebSocket: true,
 					headers: {

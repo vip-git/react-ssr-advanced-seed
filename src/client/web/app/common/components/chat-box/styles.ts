@@ -85,6 +85,7 @@ const ChatStyles = (theme: Theme) => ({
     flexDirection: 'row',
   },
   main: {
+    flexGrow: 1,
     [theme.breakpoints.up('md')]: {
       width: 'calc(100% - 240px)',
     },

@@ -52,8 +52,9 @@ export class AuthService {
 
 	async refreshToken(lastToken) {
 		const expiresIn = 5;
+		const time = new Date().getTime();
 		const accessToken = jwt.sign({
-			lastToken
+			time
 		}, JWT_SECRET, { expiresIn });
 		return {
 			accessToken,

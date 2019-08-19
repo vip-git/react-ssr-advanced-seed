@@ -50,12 +50,12 @@ class Chat extends Component<IChatProps, IChatState> {
 		i18next.addResourceBundle(
 			'en-US',
 			'translation',
-			ChatBoxModel.i18nKeys['en-US'],
+			ChatBoxModel.i18nKeys['en-US']
 		);
 		i18next.addResourceBundle(
 			'de-DE',
 			'translation',
-			ChatBoxModel.i18nKeys['de-DE'],
+			ChatBoxModel.i18nKeys['de-DE']
 		);
 		this.props.readUsersAndChat();
 	}
@@ -73,20 +73,31 @@ class Chat extends Component<IChatProps, IChatState> {
 		}
 	};
 
+	sendChat = () =>
+		this.state.currentChat !== '' && this.props.submitChat({
+			variables: {
+				ownerId: 1,
+				groupId: 2,
+				message: this.state.currentChat,
+				date: new Date().toISOString()
+			},
+			callBack: () => this.setState({ currentChat: '' })
+		});
+
+	handleKeyDown = e => {
+		if (e.key === 'Enter') {
+			this.sendChat();
+		}
+	};
+
 	render() {
-		const {
-			classes,
-			chatData,
-			userData,
-			submitChat,
-			SharedComponent,
-			t,
-		} = this.props;
+		const { classes, chatData, userData, SharedComponent, t } = this.props;
 		const { opened } = this.state;
 		const githubUserData: any = JWTDecode(this.props.idToken);
-		const currentUsername = githubUserData.name.indexOf(' ') === -1 ? githubUserData.name : githubUserData.name.split(
-			' '
-		)[0];
+		const currentUsername =
+			githubUserData.name.indexOf(' ') === -1
+				? githubUserData.name
+				: githubUserData.name.split(' ')[0];
 		const menu = (
 			<List
 				subheader={
@@ -97,15 +108,8 @@ class Chat extends Component<IChatProps, IChatState> {
 			>
 				{userData.map((contact: IContact, index) => (
 					<ListItem key={`ListItem-${contact.id}`} button>
-						<Avatar
-							alt=''
-							src={contact.avatar}
-							className={classes.avatar}
-						/>
-						<ListItemText
-							primary={contact.name}
-							secondary={contact.status}
-						/>
+						<Avatar alt='' src={contact.avatar} className={classes.avatar} />
+						<ListItemText primary={contact.name} secondary={contact.status} />
 					</ListItem>
 				))}
 			</List>
@@ -154,11 +158,7 @@ class Chat extends Component<IChatProps, IChatState> {
 											className={classes.headerLeft}
 											style={{ width: '100%', maxWidth: '100%' }}
 										>
-											<Avatar
-												alt=''
-												src={face1}
-												className={classes.avatar}
-											/>
+											<Avatar alt='' src={face1} className={classes.avatar} />
 											<ListItemText primary='Robert' secondary='Online' />
 										</div>
 										<List dense>
@@ -293,21 +293,11 @@ class Chat extends Component<IChatProps, IChatState> {
 													onChange={(e: any) =>
 														this.setState({ currentChat: e.target.value })
 													}
+													onKeyDown={this.handleKeyDown}
 													className={classes.input}
 												/>
 												<Button
-													onClick={() =>
-														submitChat({
-															variables: {
-																ownerId: 1,
-																groupId: 2,
-																message: this.state.currentChat,
-																date: new Date().toISOString()
-															},
-															callBack: () =>
-																this.setState({ currentChat: '' })
-														})
-													}
+													onClick={() => this.sendChat()}
 													disabled={this.state.currentChat.length === 0}
 													variant='contained'
 													color='primary'
