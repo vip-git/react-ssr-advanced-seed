@@ -77,13 +77,15 @@ class DocGen extends React.Component<any, any> {
 				{value === 0 && (
 					<TabContainer>
 						{' '}
-						<UmlDocGen docs={docs} />{' '}
+						<UmlDocGen docs={docs} />
+{' '}
 					</TabContainer>
 				)}
 				{value === 1 && (
 					<TabContainer>
 						{' '}
-						<StateMachineDoc docs={docs} />{' '}
+						<StateMachineDoc docs={docs} />
+{' '}
 					</TabContainer>
 				)}
 				{value === 2 && (

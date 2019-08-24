@@ -28,10 +28,14 @@ module.exports = env => {
 				}
 			]
 		},
-		mode: 'development',
+		mode: 'production',
 		resolve: {
-			extensions: ['.tsx', '.ts', '.js', '.json'],
+			extensions: ['.tsx', '.ts', '.js'],
 			plugins: [new TsconfigPathsPlugin({ configFile: './tsconfig.json' })]
+		},
+		optimization: {
+			// We no not want to minimize our code.
+			minimize: false,
 		},
 		plugins: [
 			new webpack.HotModuleReplacementPlugin(),

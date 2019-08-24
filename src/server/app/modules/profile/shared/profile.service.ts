@@ -32,9 +32,9 @@ private readonly profileRepository: Repository<ProfileModel>
     async create(profilePayload: ProfileModel): Promise<ProfileModel> {
         const profile = new ProfileModel();
         profile.githubId = profilePayload.githubId;
-        profile.message = profilePayload.message;
-        profile.date = profilePayload.date;
-        profile.ownerId = profilePayload.ownerId;
+        profile.lastTokenWeb = profilePayload.lastTokenWeb;
+        profile.createdAt = profilePayload.createdAt;
+        profile.updatedAt = profilePayload.updatedAt;
 
         return await this.profileRepository.save(profile);
     }

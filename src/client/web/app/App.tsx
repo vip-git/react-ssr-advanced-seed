@@ -10,9 +10,6 @@ import queryString from 'query-string';
 import Chat from '@omega-web-containers/chat';
 import LoginDialog from '@omega-web-Components/login';
 
-// Services
-// import { HttpService } from '@omega-core/services/core/http.service';
-
 // Redux
 import { config } from '@omega-core/config';
 import { getLocale } from '../../shared/state/containers/app/selectors';

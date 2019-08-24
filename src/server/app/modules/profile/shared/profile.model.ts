@@ -8,8 +8,8 @@ export interface IProfile {
 	githubId: string;
 	lastTokenWeb: string;
 	lastTokenMobile: string;
-	ownerId: number;
-	date: Date;
+	createdAt: Date;
+	updatedAt: Date;
 }
 
 @Entity('profile')
@@ -34,13 +34,13 @@ export class ProfileModel implements IProfile {
 	@IsString()
 	lastTokenMobile: string;
 
-	@Column('int')
-	@ApiModelProperty()
+	@Column('text')
+	@ApiModelProperty({ type: Date })
 	@IsString()
-	ownerId: number;
+	createdAt: Date;
 
 	@Column('text')
 	@ApiModelProperty({ type: Date })
 	@IsString()
-	date: Date;
+	updatedAt: Date;
 }

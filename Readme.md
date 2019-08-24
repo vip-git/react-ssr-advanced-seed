@@ -1,6 +1,6 @@
-## React SSR Advanced Seed
+## React (SSR) Advanced Seed
 
-## (nestJS + React SSR + React Native + Nginx + Docker)
+## (NestJS + React (SSR) + React Native + Nginx + Docker)
 
 ## (Work In Progress)
 
@@ -8,15 +8,9 @@
 
 ## [![npm version](https://badge.fury.io/js/npm.svg)](https://badge.fury.io/js/npm) [![dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed.svg)](https://david-dm.org/vip-git/react-ssr-advanced-seed) [![dev-dependencies](https://david-dm.org/vip-git/react-ssr-advanced-seed/dev-status.svg)](https://david-dm.org/vip-git/react-ssr-advanced-seed)
 
-## Auto-Generated DOCS
-
-- https://vip-git.github.io/react-ssr-advanced-seed (Backend)
-
 ### Prerequisites
 
 - [Node.js 8.0+](http://nodejs.org)
-
-### Todo List
 
 ### Getting Started
 
@@ -72,3 +66,6 @@ npm run test (Runs Backend Unit Tests)
 npm run test:frontend (Runs Frontend Unit Tests)
 npm run test:e2e (Runs Frontend End to End Tests)
 ```
+
+## Auto-Generated DOCS
+- Coming Soon

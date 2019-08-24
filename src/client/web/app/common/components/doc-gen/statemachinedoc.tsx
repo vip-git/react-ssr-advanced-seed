@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 /* ignore coverage */
 function TabContainer(props) {
   return (
-    <Typography component="div" style={{ backgroundColor: '#dae4e4', border: '1px solid #b9b9b9;', padding: 8 * 3 }}>
+    <Typography component='div' style={{ backgroundColor: '#dae4e4', border: '1px solid #b9b9b9;', padding: 8 * 3 }}>
       {props.children}
     </Typography>
   );
@@ -42,47 +42,46 @@ export class StateMachineDoc extends React.Component<any, any> {
   };
 
   renderDiagram() {
-    var $ = go.GraphObject.make;
-    var myDiagram: any = {};
-    var myPalette: any = {};
+    const $ = go.GraphObject.make;
+    let myDiagram: any = {};
+    let myPalette: any = {};
     myDiagram =
-      $(go.Diagram, "myStateMachineDiagramDiv",  // must name or refer to the DIV HTML element
+      $(go.Diagram, 'myStateMachineDiagramDiv',  // must name or refer to the DIV HTML element
         {
-          grid: $(go.Panel, "Grid",
-                  $(go.Shape, "LineH", { stroke: "lightgray", strokeWidth: 0.5 }),
-                  $(go.Shape, "LineH", { stroke: "gray", strokeWidth: 0.5, interval: 10 }),
-                  $(go.Shape, "LineV", { stroke: "lightgray", strokeWidth: 0.5 }),
-                  $(go.Shape, "LineV", { stroke: "gray", strokeWidth: 0.5, interval: 10 })
+          'grid': $(go.Panel, 'Grid',
+                  $(go.Shape, 'LineH', { stroke: 'lightgray', strokeWidth: 0.5 }),
+                  $(go.Shape, 'LineH', { stroke: 'gray', strokeWidth: 0.5, interval: 10 }),
+                  $(go.Shape, 'LineV', { stroke: 'lightgray', strokeWidth: 0.5 }),
+                  $(go.Shape, 'LineV', { stroke: 'gray', strokeWidth: 0.5, interval: 10 })
                 ),
-          "draggingTool.dragsLink": true,
-          "draggingTool.isGridSnapEnabled": true,
-          "linkingTool.isUnconnectedLinkValid": true,
-          "linkingTool.portGravity": 20,
-          "relinkingTool.isUnconnectedLinkValid": true,
-          "relinkingTool.portGravity": 20,
-          "relinkingTool.fromHandleArchetype":
-            $(go.Shape, "Diamond", { segmentIndex: 0, cursor: "pointer", desiredSize: new go.Size(8, 8), fill: "tomato", stroke: "darkred" }),
-          "relinkingTool.toHandleArchetype":
-            $(go.Shape, "Diamond", { segmentIndex: -1, cursor: "pointer", desiredSize: new go.Size(8, 8), fill: "darkred", stroke: "tomato" }),
-          "linkReshapingTool.handleArchetype":
-            $(go.Shape, "Diamond", { desiredSize: new go.Size(7, 7), fill: "lightblue", stroke: "deepskyblue" }),
-          "rotatingTool.handleAngle": 270,
-          "rotatingTool.handleDistance": 30,
-          "rotatingTool.snapAngleMultiple": 15,
-          "rotatingTool.snapAngleEpsilon": 15,
-          "undoManager.isEnabled": true
+          'draggingTool.dragsLink': true,
+          'draggingTool.isGridSnapEnabled': true,
+          'linkingTool.isUnconnectedLinkValid': true,
+          'linkingTool.portGravity': 20,
+          'relinkingTool.isUnconnectedLinkValid': true,
+          'relinkingTool.portGravity': 20,
+          'relinkingTool.fromHandleArchetype':
+            $(go.Shape, 'Diamond', { segmentIndex: 0, cursor: 'pointer', desiredSize: new go.Size(8, 8), fill: 'tomato', stroke: 'darkred' }),
+          'relinkingTool.toHandleArchetype':
+            $(go.Shape, 'Diamond', { segmentIndex: -1, cursor: 'pointer', desiredSize: new go.Size(8, 8), fill: 'darkred', stroke: 'tomato' }),
+          'linkReshapingTool.handleArchetype':
+            $(go.Shape, 'Diamond', { desiredSize: new go.Size(7, 7), fill: 'lightblue', stroke: 'deepskyblue' }),
+          'rotatingTool.handleAngle': 270,
+          'rotatingTool.handleDistance': 30,
+          'rotatingTool.snapAngleMultiple': 15,
+          'rotatingTool.snapAngleEpsilon': 15,
+          'undoManager.isEnabled': true
         });
 
     // when the document is modified, add a "*" to the title and enable the "Save" button
-    myDiagram.addDiagramListener("Modified", function(e) {
-      var button: any = document.getElementById("SaveButton");
+    myDiagram.addDiagramListener('Modified', function(e) {
+      const button: any = document.getElementById('SaveButton');
       if (button) button.disabled = !myDiagram.isModified;
-      var idx = document.title.indexOf("*");
+      const idx = document.title.indexOf('*');
       if (myDiagram.isModified) {
-        if (idx < 0) document.title += "*";
-      } else {
-        if (idx >= 0) document.title = document.title.substr(0, idx);
+        if (idx < 0) document.title += '*';
       }
+ else if (idx >= 0) document.title = document.title.substr(0, idx);
     });
 
     // Define a function for creating a "port" that is normally transparent.
@@ -91,7 +90,7 @@ export class StateMachineDoc extends React.Component<any, any> {
     // control whether the user can draw links from or to the port.
     function makePort(name, spot, output, input) {
       // the port is basically just a small transparent square
-      return $(go.Shape, "Circle",
+      return $(go.Shape, 'Circle',
                {
                   fill: null,  // not seen, by default; set to a translucent gray by showSmallPorts, defined below
                   stroke: null,
@@ -101,94 +100,98 @@ export class StateMachineDoc extends React.Component<any, any> {
                   portId: name,  // declare this object to be a "port"
                   fromSpot: spot, toSpot: spot,  // declare where links may connect at this port
                   fromLinkable: output, toLinkable: input,  // declare whether the user may draw links to/from here
-                  cursor: "pointer"  // show a different cursor to indicate potential link point
+                  cursor: 'pointer'  // show a different cursor to indicate potential link point
                });
     }
 
-    var nodeSelectionAdornmentTemplate =
-      $(go.Adornment, "Auto",
-        $(go.Shape, { fill: null, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] }),
+    const nodeSelectionAdornmentTemplate =
+      $(go.Adornment, 'Auto',
+        $(go.Shape, { fill: null, stroke: 'deepskyblue', strokeWidth: 1.5, strokeDashArray: [4, 2] }),
         $(go.Placeholder)
       );
 
-    var nodeResizeAdornmentTemplate =
-      $(go.Adornment, "Spot",
+    const nodeResizeAdornmentTemplate =
+      $(go.Adornment, 'Spot',
         { locationSpot: go.Spot.Right },
         $(go.Placeholder),
-        $(go.Shape, { alignment: go.Spot.TopLeft, cursor: "nw-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
-        $(go.Shape, { alignment: go.Spot.Top, cursor: "n-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
-        $(go.Shape, { alignment: go.Spot.TopRight, cursor: "ne-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { alignment: go.Spot.TopLeft, cursor: 'nw-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' }),
+        $(go.Shape, { alignment: go.Spot.Top, cursor: 'n-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' }),
+        $(go.Shape, { alignment: go.Spot.TopRight, cursor: 'ne-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' }),
 
-        $(go.Shape, { alignment: go.Spot.Left, cursor: "w-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
-        $(go.Shape, { alignment: go.Spot.Right, cursor: "e-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
+        $(go.Shape, { alignment: go.Spot.Left, cursor: 'w-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' }),
+        $(go.Shape, { alignment: go.Spot.Right, cursor: 'e-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' }),
 
-        $(go.Shape, { alignment: go.Spot.BottomLeft, cursor: "se-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
-        $(go.Shape, { alignment: go.Spot.Bottom, cursor: "s-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" }),
-        $(go.Shape, { alignment: go.Spot.BottomRight, cursor: "sw-resize", desiredSize: new go.Size(6, 6), fill: "lightblue", stroke: "deepskyblue" })
+        $(go.Shape, { alignment: go.Spot.BottomLeft, cursor: 'se-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' }),
+        $(go.Shape, { alignment: go.Spot.Bottom, cursor: 's-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' }),
+        $(go.Shape, { alignment: go.Spot.BottomRight, cursor: 'sw-resize', desiredSize: new go.Size(6, 6), fill: 'lightblue', stroke: 'deepskyblue' })
       );
 
-    var nodeRotateAdornmentTemplate =
+    const nodeRotateAdornmentTemplate =
       $(go.Adornment,
-        { locationSpot: go.Spot.Center, locationObjectName: "CIRCLE" },
-        $(go.Shape, "Circle", { name: "CIRCLE", cursor: "pointer", desiredSize: new go.Size(7, 7), fill: "lightblue", stroke: "deepskyblue" }),
-        $(go.Shape, { geometryString: "M3.5 7 L3.5 30", isGeometryPositioned: true, stroke: "deepskyblue", strokeWidth: 1.5, strokeDashArray: [4, 2] })
+        { locationSpot: go.Spot.Center, locationObjectName: 'CIRCLE' },
+        $(go.Shape, 'Circle', { name: 'CIRCLE', cursor: 'pointer', desiredSize: new go.Size(7, 7), fill: 'lightblue', stroke: 'deepskyblue' }),
+        $(go.Shape, { geometryString: 'M3.5 7 L3.5 30', isGeometryPositioned: true, stroke: 'deepskyblue', strokeWidth: 1.5, strokeDashArray: [4, 2] })
       );
 
     myDiagram.nodeTemplate =
-      $(go.Node, "Spot",
+      $(go.Node, 'Spot',
         { locationSpot: go.Spot.Center },
-        new go.Binding("location", "loc", go.Point.parse).makeTwoWay(go.Point.stringify),
+        new go.Binding('location', 'loc', go.Point.parse).makeTwoWay(go.Point.stringify),
         { selectable: true, selectionAdornmentTemplate: nodeSelectionAdornmentTemplate },
-        { resizable: true, resizeObjectName: "PANEL", resizeAdornmentTemplate: nodeResizeAdornmentTemplate },
+        { resizable: true, resizeObjectName: 'PANEL', resizeAdornmentTemplate: nodeResizeAdornmentTemplate },
         { rotatable: true, rotateAdornmentTemplate: nodeRotateAdornmentTemplate },
-        new go.Binding("angle").makeTwoWay(),
+        new go.Binding('angle').makeTwoWay(),
         // the main object is a Panel that surrounds a TextBlock with a Shape
-        $(go.Panel, "Auto",
-          { name: "PANEL" },
-          new go.Binding("desiredSize", "size", go.Size.parse).makeTwoWay(go.Size.stringify),
-          $(go.Shape, "Rectangle",  // default figure
+        $(go.Panel, 'Auto',
+          { name: 'PANEL' },
+          new go.Binding('desiredSize', 'size', go.Size.parse).makeTwoWay(go.Size.stringify),
+          $(go.Shape, 'Rectangle',  // default figure
             {
-              portId: "", // the default port: if no spot on link data, use closest side
-              fromLinkable: true, toLinkable: true, cursor: "pointer",
-              fill: "white",  // default color
+              portId: '', // the default port: if no spot on link data, use closest side
+              fromLinkable: true, toLinkable: true, cursor: 'pointer',
+              fill: 'white',  // default color
               strokeWidth: 2
             },
-            new go.Binding("figure"),
-            new go.Binding("fill")),
+            new go.Binding('figure'),
+            new go.Binding('fill')),
           $(go.TextBlock,
             {
-              font: "bold 10pt Helvetica, Arial, sans-serif",
+              font: 'bold 10pt Helvetica, Arial, sans-serif',
               margin: 8,
               maxSize: new go.Size(160, NaN),
               wrap: go.TextBlock.WrapFit,
               editable: false
             },
-            new go.Binding("text").makeTwoWay())
+            new go.Binding('text').makeTwoWay())
         ),
         // four small named ports, one on each side:
-        makePort("T", go.Spot.Top, false, true),
-        makePort("L", go.Spot.Left, true, true),
-        makePort("R", go.Spot.Right, true, true),
-        makePort("B", go.Spot.Bottom, true, false),
+        makePort('T', go.Spot.Top, false, true),
+        makePort('L', go.Spot.Left, true, true),
+        makePort('R', go.Spot.Right, true, true),
+        makePort('B', go.Spot.Bottom, true, false),
         { // handle mouse enter/leave events to show/hide the ports
-          mouseEnter: function(e, node) { showSmallPorts(node, true); },
-          mouseLeave: function(e, node) { showSmallPorts(node, false); }
+          mouseEnter(e, node) {
+ showSmallPorts(node, true); 
+},
+          mouseLeave(e, node) {
+ showSmallPorts(node, false); 
+}
         },
       );
 
     function showSmallPorts(node, show) {
       node.ports.each(function(port) {
-        if (port.portId !== "") {  // don't change the default port, which is the big shape
-          port.fill = show ? "rgba(0,0,0,.3)" : null;
+        if (port.portId !== '') {  // don't change the default port, which is the big shape
+          port.fill = show ? 'rgba(0,0,0,.3)' : null;
         }
       });
     }
 
-    var linkSelectionAdornmentTemplate =
-      $(go.Adornment, "Link",
+    const linkSelectionAdornmentTemplate =
+      $(go.Adornment, 'Link',
         $(go.Shape,
           // isPanelMain declares that this Shape shares the Link.geometry
-          { isPanelMain: true, fill: null, stroke: "deepskyblue", strokeWidth: 0 })  // use selection object's strokeWidth
+          { isPanelMain: true, fill: null, stroke: 'deepskyblue', strokeWidth: 0 })  // use selection object's strokeWidth
       );
 
     myDiagram.linkTemplate =
@@ -201,25 +204,25 @@ export class StateMachineDoc extends React.Component<any, any> {
           corner: 5,
           toShortLength: 4
         },
-        new go.Binding("points").makeTwoWay(),
+        new go.Binding('points').makeTwoWay(),
         $(go.Shape,  // the link path shape
           { isPanelMain: true, strokeWidth: 2 }),
         $(go.Shape,  // the arrowhead
-          { toArrow: "Standard", stroke: null }),
-        $(go.Panel, "Auto",
-          new go.Binding("visible", "isSelected").ofObject(),
-          $(go.Shape, "RoundedRectangle",  // the link shape
-            { fill: "#F8F8F8", stroke: null }),
+          { toArrow: 'Standard', stroke: null }),
+        $(go.Panel, 'Auto',
+          new go.Binding('visible', 'isSelected').ofObject(),
+          $(go.Shape, 'RoundedRectangle',  // the link shape
+            { fill: '#F8F8F8', stroke: null }),
           $(go.TextBlock,
             {
-              textAlign: "center",
-              font: "10pt helvetica, arial, sans-serif",
-              stroke: "#919191",
+              textAlign: 'center',
+              font: '10pt helvetica, arial, sans-serif',
+              stroke: '#919191',
               margin: 2,
               minSize: new go.Size(10, NaN),
               editable: true
             },
-            new go.Binding("text").makeTwoWay())
+            new go.Binding('text').makeTwoWay())
         )
       );
     const { containers } =  this.props.docs;  
@@ -241,24 +244,24 @@ export class StateMachineDoc extends React.Component<any, any> {
         val.text = docName.replace('dispatch', 'dispatch ');
       }
       _.map(docVariables, (docVal, key) => {
-        if (val.text === 'Effect '+ key) {
+        if (val.text === `Effect ${ key}`) {
           val.text = docVal.effect;
         }
-        if (val.text === 'Reducer '+ key) {
+        if (val.text === `Reducer ${ key}`) {
           val.text = docVal.reducer;
         }
-        if (val.text === 'API '+ key) {
+        if (val.text === `API ${ key}`) {
           val.text = docVal.api;
         }
-        if (val.text === 'State '+ key) {
+        if (val.text === `State ${ key}`) {
           val.text = docVal.state;
         }
-        if (val.text === 'Rule '+ key) {
-          if (valText !== 'Rule '+ key) {
+        if (val.text === `Rule ${ key}`) {
+          if (valText !== `Rule ${ key}`) {
             ruleCounter = 0;
           }
           val.text = docVal.rules[ruleCounter];
-          valText = 'Rule '+ key;
+          valText = `Rule ${ key}`;
           ruleCounter++;
         }
       })
@@ -266,12 +269,12 @@ export class StateMachineDoc extends React.Component<any, any> {
     });
     // console.log('redux diagram json', reduxDiagramJson);
     myDiagram.model = go.Model.fromJson(reduxDiagramJson);
-    var pos = myDiagram.model.modelData.position;
+    const pos = myDiagram.model.modelData.position;
     if (pos) myDiagram.initialPosition = go.Point.parse(pos);
 
     // initialize the Palette that is on the left side of the page
     myPalette =
-      $(go.Palette, "myPaletteDiv",  // must name or refer to the DIV HTML element
+      $(go.Palette, 'myPaletteDiv',  // must name or refer to the DIV HTML element
         {
           maxSelectionCount: 1,
           nodeTemplateMap: myDiagram.nodeTemplateMap,  // share the templates used by myDiagram
@@ -281,12 +284,12 @@ export class StateMachineDoc extends React.Component<any, any> {
                 // to line up the Link in the same manner we have to pretend the Link has the same location spot
                 locationSpot: go.Spot.Center,
                 selectionAdornmentTemplate:
-                  $(go.Adornment, "Link",
+                  $(go.Adornment, 'Link',
                     { locationSpot: go.Spot.Center },
                     $(go.Shape,
-                      { isPanelMain: true, fill: null, stroke: "deepskyblue", strokeWidth: 0 }),
+                      { isPanelMain: true, fill: null, stroke: 'deepskyblue', strokeWidth: 0 }),
                     $(go.Shape,  // the arrowhead
-                      { toArrow: "Standard", stroke: null })
+                      { toArrow: 'Standard', stroke: null })
                   )
               },
               {
@@ -295,22 +298,22 @@ export class StateMachineDoc extends React.Component<any, any> {
                 corner: 5,
                 toShortLength: 4
               },
-              new go.Binding("points"),
+              new go.Binding('points'),
               $(go.Shape,  // the link path shape
                 { isPanelMain: true, strokeWidth: 2 }),
               $(go.Shape,  // the arrowhead
-                { toArrow: "Standard", stroke: null })
+                { toArrow: 'Standard', stroke: null })
             ),
           model: new go.GraphLinksModel([  // specify the contents of the Palette
-            { text: "Start", figure: "Circle", fill: "#00AD5F" },
-            { text: "Step" },
-            { text: "DB", figure: "Database", fill: "lightgray" },
-            { text: "???", figure: "Diamond", fill: "lightskyblue" },
-            { text: "End", figure: "Circle", fill: "#CE0620" },
-            { text: "Comment", figure: "RoundedRectangle", fill: "lightyellow" }
+            { text: 'Start', figure: 'Circle', fill: '#00AD5F' },
+            { text: 'Step' },
+            { text: 'DB', figure: 'Database', fill: 'lightgray' },
+            { text: '???', figure: 'Diamond', fill: 'lightskyblue' },
+            { text: 'End', figure: 'Circle', fill: '#CE0620' },
+            { text: 'Comment', figure: 'RoundedRectangle', fill: 'lightyellow' }
           ], [
             // the Palette also has a disconnected Link, which the user can drag-and-drop
-            { points: new go.List(/*go.Point*/).addAll([new go.Point(0, 0), new go.Point(30, 0), new go.Point(30, 40), new go.Point(60, 40)]) }
+            { points: new go.List(/* go.Point */).addAll([new go.Point(0, 0), new go.Point(30, 0), new go.Point(30, 40), new go.Point(60, 40)]) }
           ])
         });
     });
@@ -328,29 +331,33 @@ export class StateMachineDoc extends React.Component<any, any> {
               <Tabs
                   value={(subValue === 0) ? _.keys(containers[value].reduxActions())[0] : subValue}
                   onChange={this.handleSubChange}
-                  variant="fullWidth"
-                  scrollButtons="on"
-                  indicatorColor="primary"
-                  textColor="primary"
+                  variant='fullWidth'
+                  scrollButtons='on'
+                  indicatorColor='primary'
+                  textColor='primary'
                   centered
-                >
+              >
                 { 
                   _.keys(containers[value].reduxActions()).map((val) => {
                     return (<Tab label={val.replace('dispatch', 'Action: ')} value={val} />)
                   })
                 }
               </Tabs>
-                <div id="myPaletteDiv" style={{
+                <div
+id='myPaletteDiv'
+style={{
                   display: 'none'
-                }}></div>
-                <div id="myStateMachineDiagramDiv"
+                }}
+                />
+                <div
+id='myStateMachineDiagramDiv'
                       style={{
                           width: '100%', 
                           height: 850, 
                           backgroundColor: '#DAE4E4'
-                      }}>
-                </div>
-      </React.Fragment>
+                      }}
+                />
+        </React.Fragment>
     )
   };
 
@@ -362,20 +369,24 @@ export class StateMachineDoc extends React.Component<any, any> {
           <Tabs
               value={value}
               onChange={this.handleChange}
-              variant="fullWidth"
-              scrollButtons="on"
-              indicatorColor="primary"
-              textColor="primary"
+              variant='fullWidth'
+              scrollButtons='on'
+              indicatorColor='primary'
+              textColor='primary'
               centered
-            >
+          >
             { 
               containers.map((val) => {
                 return (<Tab label={`${val.modelName.replace('Model', '')} Container`} />)
               })
             }
           </Tabs>
-          {<TabContainer> { this.renderReduxContainer() } </TabContainer>}
-         </React.Fragment>
+          {<TabContainer> 
+{' '}
+{ this.renderReduxContainer() }
+{' '}
+           </TabContainer>}
+        </React.Fragment>
       );
   }
 }
