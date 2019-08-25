@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-fragments */
 // Types
 import { ICreateChatPayload } from '@omega-web-components/chat-box/types';
 
@@ -29,15 +30,13 @@ class ChatContainer extends Component<any, any> {
 									apolloClient,
 									data: payload.variables,
 									callBack: () => payload.callBack()
-								})
-							}
+								})}
 							readUsersAndChat={() =>
 								dispatchReadAllUsersAndChats({
 									apolloClient,
 									data: {},
 									idToken
-								})
-							}
+								})}
 							idToken={idToken}
 							title={title}
 							chatData={chatData}

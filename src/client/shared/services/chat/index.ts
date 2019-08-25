@@ -4,9 +4,6 @@ import { of, from } from 'rxjs';
 // Services
 import { HttpService } from '../core/http.service';
 
-// Mocks
-import allChats from '../mocks/chats';
-
 // Gql
 import { chatQuery, createChatMutation, chatSubscription } from './chat.gql';
 

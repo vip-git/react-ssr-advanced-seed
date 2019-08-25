@@ -1,6 +1,6 @@
 // Service
 import { ChatServiceEngine } from '@omega-core/services/chat';
-import { UserServiceEngine } from '@omega-core/services/user.service';
+import { UserServiceEngine } from '@omega-core/services/user';
 
 // Rules
 import { ChatRulesEngine } from '@omega-core/rules/chat.rules';

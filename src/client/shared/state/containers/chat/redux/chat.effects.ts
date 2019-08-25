@@ -23,7 +23,7 @@ interface IAction {
 	payload: any;
 }
 
-interface IChatDataResponse {
+interface IGraphqlDataResponse {
 	error?: boolean;
 	message?: string;
 	data: any;
@@ -55,7 +55,7 @@ class ChatEffect {
 					return ChatReduxModel.services.requestAllChats(payload);
 				}),
 				map(data => ChatReduxModel.rules.isValidChatResponse(data)),
-				map((chatResponse: IChatDataResponse) => {
+				map((chatResponse: IGraphqlDataResponse) => {
 					if (chatResponse && chatResponse.error) {
 						return ChatReduxModel.actions.reducer.processErrorChatResponse({
 							...chatResponse
@@ -84,8 +84,16 @@ class ChatEffect {
 	static readAllUsers = (action$: any) =>
 		action$.pipe(
 			ofType(ChatReduxModel.actionTypes.READ_ALL_USERS),
-			map((action: IAction) => ChatReduxModel.services.requestAllUsers()),
-			map(data => ChatReduxModel.actions.reducer.processAllUsers(data))
+			flatMap((action: IAction) => ChatReduxModel.services.requestAllUsers(action.payload)),
+			map((userResponse: IGraphqlDataResponse) => {
+				const {
+					data: { getProfile }
+				} = userResponse;
+				const finalData = Array.isArray(getProfile)
+					? getProfile
+					: [];
+				return ChatReduxModel.actions.reducer.processAllUsers(finalData)
+			})
 		);
 
 	/**
