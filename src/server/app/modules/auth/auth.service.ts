@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
+// Library
 import * as jwt from 'jsonwebtoken';
 import { Injectable } from '@nestjs/common';
 import axios from 'axios';
@@ -43,18 +44,22 @@ export class AuthService {
 				Authorization: `${token_type} ${access_token}`
 			}
 		});
+		const time = new Date().getTime();
 		const idToken = jwt.sign(getUserInfo.data, access_token, { expiresIn: 5 });
+		const accessToken = jwt.sign({
+			time
+		}, JWT_SECRET, { expiresIn: 5 });
 		return {
-			...this.refreshToken(access_token),
-			idToken
+			accessToken,
+			idToken,
+			userInfo: getUserInfo.data,
 		};
 	}
 
-	async refreshToken(lastToken) {
+	async refreshToken(githubId) {
 		const expiresIn = process.env.NODE_ENV === 'development' ? 555 : 5;
-		const time = new Date().getTime();
 		const accessToken = jwt.sign({
-			time
+			githubId
 		}, JWT_SECRET, { expiresIn });
 		return {
 			accessToken,

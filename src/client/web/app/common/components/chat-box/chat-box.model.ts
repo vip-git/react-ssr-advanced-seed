@@ -46,10 +46,10 @@ export const ChatBoxModel = {
   },
   i18nKeys: {
     'en-US': {
-      'chatbox-previous-chat': 'Previous Chats'
+      'chatbox-previous-chat': 'All Users'
     },
     'de-DE': {
-      'chatbox-previous-chat': 'Vorherige Chats'
+      'chatbox-previous-chat': 'Alle Nutzer'
     }
   },
   components: {

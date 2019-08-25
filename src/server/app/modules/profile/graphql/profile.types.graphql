@@ -8,6 +8,11 @@ type Mutation {
         githubId: String
         lastTokenWeb: String
         lastTokenMobile: String
+        name: String
+        email: String
+        avatarUrl: String
+        bio: String
+        location: String
         createdAt: String
         updatedAt: String
     ): Profile
@@ -16,6 +21,11 @@ type Mutation {
         githubId: String
         lastTokenWeb: String
         lastTokenMobile: String
+        name: String
+        email: String
+        avatarUrl: String
+        bio: String
+        location: String
         createdAt: String
         updatedAt: String
     ): Profile
@@ -30,6 +40,11 @@ type Profile {
     githubId: String
     lastTokenWeb: String
     lastTokenMobile: String
+    name: String
+	email: String
+	avatarUrl: String
+	bio: String
+	location: String
     createdAt: String
     updatedAt: String
 }

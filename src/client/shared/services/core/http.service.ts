@@ -1,6 +1,7 @@
 /* eslint-disable */
 // Library
 import { from } from 'rxjs';
+import JWTDecode from 'jwt-decode';
 
 // Config
 import { config } from '@omega-core/config';
@@ -99,10 +100,11 @@ export class HttpService {
 	static getRefreshToken() {
 		try {
 			const lastAccessToken = window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token')).accessToken;
+			const githubUserData: any = JWTDecode(window.sessionStorage.getItem('token') && JSON.parse(window.sessionStorage.getItem('token')).idToken);
 			if (!lastAccessToken) {
 				return 'Refresh API call failed';
 			}
-			const URL = returnValidURL('api', '/auth/refresh?lastToken=' + lastAccessToken);
+			const URL = returnValidURL('api', '/auth/refresh?lastToken=' + lastAccessToken + '&githubId=' + githubUserData.login);
 			const options: any = {
 				method: 'GET',
 			};

@@ -10,7 +10,7 @@ import { GroupGuard } from './group.guard';
 
 const pubSub = new PubSub();
 
-// @UseGuards(GroupGuard)
+@UseGuards(GroupGuard)
 @Resolver('Group')
 export class GroupResolver {
 constructor(private readonly groupService: GroupService) {}

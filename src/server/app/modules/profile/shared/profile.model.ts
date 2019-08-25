@@ -8,6 +8,11 @@ export interface IProfile {
 	githubId: string;
 	lastTokenWeb: string;
 	lastTokenMobile: string;
+	name: string;
+	email: string;
+	avatarUrl: string;
+	bio: string;
+	location: string;
 	createdAt: Date;
 	updatedAt: Date;
 }
@@ -19,20 +24,45 @@ export class ProfileModel implements IProfile {
 	@IsInt()
 	id: number;
 
-	@Column('text')
+	@Column('text', { unique: true })
 	@ApiModelProperty()
 	@IsString()
 	githubId: string;
 
-	@Column({ length: 500 })
+	@Column('text', { unique: true })
 	@ApiModelProperty()
 	@IsString()
 	lastTokenWeb: string;
 
-	@Column({ length: 500 })
+	@Column('text', { unique: true })
 	@ApiModelProperty()
 	@IsString()
 	lastTokenMobile: string;
+
+	@Column('text')
+	@ApiModelProperty()
+	@IsString()
+	name: string;
+
+	@Column('text')
+	@ApiModelProperty()
+	@IsString()
+	email: string;
+
+	@Column('text')
+	@ApiModelProperty()
+	@IsString()
+	avatarUrl: string;
+
+	@Column('text')
+	@ApiModelProperty()
+	@IsString()
+	bio: string;
+
+	@Column('text')
+	@ApiModelProperty()
+	@IsString()
+	location: string;
 
 	@Column('text')
 	@ApiModelProperty({ type: Date })

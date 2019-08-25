@@ -10,7 +10,7 @@ import { ProfileGuard } from './profile.guard';
 
 const pubSub = new PubSub();
 
-// @UseGuards(ProfileGuard)
+@UseGuards(ProfileGuard)
 @Resolver('Profile')
 export class ProfileResolver {
 constructor(private readonly profileService: ProfileService) {}

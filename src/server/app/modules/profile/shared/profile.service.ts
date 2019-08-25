@@ -34,10 +34,23 @@ private readonly profileRepository: Repository<ProfileModel>
         profile.githubId = profilePayload.githubId;
         profile.lastTokenWeb = profilePayload.lastTokenWeb;
         profile.lastTokenMobile = profilePayload.lastTokenMobile;
+        profile.name = profilePayload.name;
+        profile.email = profilePayload.email;
+        profile.avatarUrl = profilePayload.avatarUrl;
+        profile.bio = profilePayload.bio;
+        profile.location = profilePayload.location;
         profile.createdAt = profilePayload.createdAt;
         profile.updatedAt = profilePayload.updatedAt;
-
-        return await this.profileRepository.save(profile);
+        
+        // Check if user exists
+        const doesUserExist  = await this.profileRepository.find({ githubId: profilePayload.githubId });
+        let updatedUser = doesUserExist && doesUserExist.length && doesUserExist[0];
+        if (doesUserExist && doesUserExist.length) {
+            delete profilePayload.id;
+            await this.update(doesUserExist[0].id, profilePayload);
+            updatedUser = await this.findOneById(doesUserExist[0].id);
+        }
+        return (updatedUser) ? updatedUser : await this.profileRepository.save(profile);
     }
 
     async findAll(): Promise<ProfileModel[]> {
@@ -54,6 +67,20 @@ private readonly profileRepository: Repository<ProfileModel>
     async update(paramId: any, entity: ProfileModel): Promise<ProfileModel> {
         await this.profileRepository.update(paramId, entity);
         return await this.findOneById(paramId);
+    }
+
+    async updateToken(githubId: any, lastToken: string, newToken: string): Promise<boolean> {
+        const doesUserExist = await this.profileRepository.find({ githubId, lastTokenWeb: lastToken });
+        if (doesUserExist && doesUserExist.length && doesUserExist[0] && doesUserExist[0].id) {
+            const updateUserPayload = {
+                lastTokenWeb: newToken,
+                updatedAt: new Date(),
+            };
+            await this.profileRepository.update(doesUserExist[0].id, updateUserPayload);
+            return true;
+        } else {
+            return false;
+        }
     }
 
     async delete(paramId: any): Promise<void> {

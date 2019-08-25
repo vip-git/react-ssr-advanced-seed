@@ -11,8 +11,7 @@ import { GroupModule, GroupModel } from './modules/group/group.module';
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 // Library
 
-// Internal Modules
-
+// Internal Modules 
 // External Services
 
 const proxy = require('express-http-proxy');
@@ -46,7 +45,7 @@ const url = require('url');
 		}),
 		ProfileModule,
 		GroupModule
-	]
+	],
 })
 export class ApplicationModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {

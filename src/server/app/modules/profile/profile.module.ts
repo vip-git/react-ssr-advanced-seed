@@ -15,7 +15,7 @@ import { ProfileModel } from './shared/profile.model';
 @Module({
     imports: [TypeOrmModule.forFeature([ProfileModel])],
     controllers: [ProfileController],
-    providers: [ProfileService, ProfileResolver]
+    providers: [ProfileService, ProfileResolver],
 })
 export class ProfileModule {}
 
