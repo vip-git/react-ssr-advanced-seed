@@ -4,13 +4,20 @@ type Query {
 }
 
 type Mutation {
-    createProfile(githubId: Int, message: String, ownerId: Int, date: String): Profile
+    createProfile(        
+        githubId: String
+        lastTokenWeb: String
+        lastTokenMobile: String
+        createdAt: String
+        updatedAt: String
+    ): Profile
     updateProfile(
         id: ID!
-        githubId: Int
-        message: String
-        ownerId: Int
-        date: String
+        githubId: String
+        lastTokenWeb: String
+        lastTokenMobile: String
+        createdAt: String
+        updatedAt: String
     ): Profile
 }
 
@@ -20,8 +27,9 @@ type Subscription {
 
 type Profile {
     id: Int
-    githubId: Int
-    message: String
-    ownerId: String
-    date: String
+    githubId: String
+    lastTokenWeb: String
+    lastTokenMobile: String
+    createdAt: String
+    updatedAt: String
 }

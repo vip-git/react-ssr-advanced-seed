@@ -33,6 +33,7 @@ private readonly profileRepository: Repository<ProfileModel>
         const profile = new ProfileModel();
         profile.githubId = profilePayload.githubId;
         profile.lastTokenWeb = profilePayload.lastTokenWeb;
+        profile.lastTokenMobile = profilePayload.lastTokenMobile;
         profile.createdAt = profilePayload.createdAt;
         profile.updatedAt = profilePayload.updatedAt;
 

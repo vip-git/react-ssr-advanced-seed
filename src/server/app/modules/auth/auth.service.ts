@@ -51,7 +51,7 @@ export class AuthService {
 	}
 
 	async refreshToken(lastToken) {
-		const expiresIn = 5;
+		const expiresIn = process.env.NODE_ENV === 'development' ? 555 : 5;
 		const time = new Date().getTime();
 		const accessToken = jwt.sign({
 			time

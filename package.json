@@ -46,7 +46,7 @@
 		"generate:mobileComponent": "npx plop mobileComponent",
 		"generate:server:module": "npx plop serverModule && npm run generate:server:modelHelpers",
 		"generate:server:modelHelpers": "npx plop serverModelHelpers",
-		"generate:graphqltypes": "npx ts-node src/server/app/generate-typings.ts",
+		"generate:graphqltypes": "cd src/server/app && npx ts-node generate-typings.ts",
 		"generate:docs": "npx typedoc --out docs/ src/ --mode file --module commonjs --target es6",
 		"generate:defintions": "npx dts-generator --name node-advanced-api --project ./ --out node-advanced-api.d.ts",
 		"generate-all": "npm run generate:defintions && npm run generate:docs",
