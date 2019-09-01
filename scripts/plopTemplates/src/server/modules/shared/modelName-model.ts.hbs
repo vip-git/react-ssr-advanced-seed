@@ -10,6 +10,7 @@ export interface I{{pascalCase moduleName}} {
 
 @Entity('{{camelCase moduleName}}')
 export class {{pascalCase moduleName}}Model implements I{{pascalCase moduleName}} {
+    
     @PrimaryGeneratedColumn()
     @ApiModelProperty()
     @IsInt()
