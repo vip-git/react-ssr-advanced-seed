@@ -13,36 +13,36 @@ const pubSub = new PubSub();
 // @UseGuards({{pascalCase moduleName}}Guard)
 @Resolver('{{pascalCase moduleName}}')
 export class {{pascalCase moduleName}}Resolver {
-constructor(private readonly {{moduleName}}Service: {{pascalCase moduleName}}Service) {}
+constructor(private readonly {{pascalCase moduleName}}Service: {{pascalCase moduleName}}Service) {}
 
 @Query()
 async get{{pascalCase moduleName}}() {
-    return await this.{{moduleName}}Service.findAll();
+    return await this.{{pascalCase moduleName}}Service.findAll();
 }
 
-@Query('{{moduleName}}')
+@Query('{{pascalCase moduleName}}')
 async findOneById(obj, args, context, info): Promise<I{{pascalCase moduleName}}> {
     const { id } = args;
-        return await this.{{moduleName}}Service.findOneById(+id);
+        return await this.{{pascalCase moduleName}}Service.findOneById(+id);
     }
 
     @Mutation('create{{pascalCase moduleName}}')
     async create(obj, args: I{{pascalCase moduleName}}, context, info): Promise<I{{pascalCase moduleName}}> {
-        const created{{pascalCase moduleName}} = await this.{{moduleName}}Service.create(args);
-        pubSub.publish('{{moduleName}}Recieved', { {{moduleName}}Recieved: created{{pascalCase moduleName}} });
+        const created{{pascalCase moduleName}} = await this.{{pascalCase moduleName}}Service.create(args);
+        pubSub.publish('{{pascalCase moduleName}}Recieved', { {{pascalCase moduleName}}Recieved: created{{pascalCase moduleName}} });
         return created{{pascalCase moduleName}};
     }
 
     @Mutation('update{{pascalCase moduleName}}')
     async update(obj, args: I{{pascalCase moduleName}}, context, info): Promise<I{{pascalCase moduleName}}> {
         const { id } = args;
-        const updated{{pascalCase moduleName}} = await this.{{moduleName}}Service.update(id, args);
-        pubSub.publish('{{moduleName}}Recieved', { {{moduleName}}Recieved: updated{{pascalCase moduleName}} });
+        const updated{{pascalCase moduleName}} = await this.{{pascalCase moduleName}}Service.update(id, args);
+        pubSub.publish('{{pascalCase moduleName}}Recieved', { {{pascalCase moduleName}}Recieved: updated{{pascalCase moduleName}} });
         return updated{{pascalCase moduleName}};
     }
 
-    @Subscription('{{moduleName}}Recieved')
-    {{moduleName}}Recieved() {
-        return pubSub.asyncIterator('{{moduleName}}Recieved');
+    @Subscription('{{pascalCase moduleName}}Recieved')
+    {{pascalCase moduleName}}Recieved() {
+        return pubSub.asyncIterator('{{pascalCase moduleName}}Recieved');
     }
 }
