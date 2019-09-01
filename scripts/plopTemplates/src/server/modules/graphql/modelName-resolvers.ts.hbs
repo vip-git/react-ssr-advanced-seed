@@ -1,6 +1,6 @@
 // Library
 import { UseGuards } from '@nestjs/common';
-import { Query, Mutation, Resolver, Subscription } from '@nestjs/graphql';
+import { Query, Mutation, Resolver, Subscription, Args } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 
 // Internal
@@ -16,8 +16,8 @@ export class {{pascalCase moduleName}}Resolver {
 constructor(private readonly {{pascalCase moduleName}}Service: {{pascalCase moduleName}}Service) {}
 
 @Query()
-async get{{pascalCase moduleName}}() {
-    return await this.{{pascalCase moduleName}}Service.findAll();
+async get{{pascalCase moduleName}}(@Args('filters') filters: Object) {
+    return await this.{{pascalCase moduleName}}Service.findAll(params);
 }
 
 @Query('{{pascalCase moduleName}}')

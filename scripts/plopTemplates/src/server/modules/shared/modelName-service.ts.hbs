@@ -4,6 +4,7 @@ Injectable,
 BadRequestException,
 NotFoundException
 } from '@nestjs/common';
+import _ from 'lodash';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
@@ -36,11 +37,54 @@ private readonly {{pascalCase moduleName}}Repository: Repository<{{pascalCase mo
         return await this.{{pascalCase moduleName}}Repository.save({{pascalCase moduleName}});
     }
 
-    async findAll(): Promise<{{pascalCase moduleName}}Model[]> {
-        return await this.{{pascalCase moduleName}}Repository.find({
-            cache: true,
-            order: { id: 'ASC' }
-        });
+    async findAll(filters: any): Promise<{{pascalCase moduleName}}Model[]> {
+        const params: any = {
+            where: {},
+            cache: filters.cache || true,
+            order: { id: 'ASC' },
+        };
+        
+        if (filters.where) {
+            params.where = { ...filters.where };
+        }
+        
+        if (filters.not) {
+            _.map(filters.not, (val, key) => {
+                params['where'][key] = Not(val)
+            })
+        }
+        
+        if (filters.like) {
+            _.map(filters.like, (val, key) => {
+                params['where'][key] = Like(val)
+            })
+        }
+        
+        if (filters.in) {
+            _.map(filters.in, (val, key) => {
+                params['where'][key] = In(val)
+            })
+        }
+        
+        if (filters.any) {
+            _.map(filters.any, (val, key) => {
+                params['where'][key] = Any(val)
+            })
+        }
+        
+        if (filters.order) {
+            params.order = { ...filters.order };
+        }
+        
+        if (filters.skip) {
+            params.skip = filters.skip;
+        }
+        
+        if (filters.take) {
+            params.take = filters.take;
+        }
+        
+        return await this.{{pascalCase moduleName}}Repository.find(params);
     }
 
     async findOneById(id: number): Promise<{{pascalCase moduleName}}Model> {
