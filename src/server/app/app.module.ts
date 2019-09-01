@@ -44,7 +44,7 @@ const url = require('url');
 			} : {},
 		}),
 		ProfileModule,
-		GroupModule
+		GroupModule,
 	],
 })
 export class ApplicationModule implements NestModule {

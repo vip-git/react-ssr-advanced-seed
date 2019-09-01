@@ -12,11 +12,11 @@ import { {{pascalCase moduleName}}Model } from './{{moduleName}}.model';
 
 @Injectable()
 export class {{pascalCase moduleName}}Service {
-private readonly {{moduleName}}: {{pascalCase moduleName}}Model[] = [];
+private readonly {{pascalCase moduleName}}: {{pascalCase moduleName}}Model[] = [];
 
 constructor(
 @InjectRepository({{pascalCase moduleName}}Model)
-private readonly {{moduleName}}Repository: Repository<{{pascalCase moduleName}}Model>
+private readonly {{pascalCase moduleName}}Repository: Repository<{{pascalCase moduleName}}Model>
     ) {}
 
     protected getId(paramId: any): number {
@@ -29,36 +29,36 @@ private readonly {{moduleName}}Repository: Repository<{{pascalCase moduleName}}M
         return id;
     }
 
-    async create({{moduleName}}Payload: {{pascalCase moduleName}}Model): Promise<{{pascalCase moduleName}}Model> {
-        const {{moduleName}} = new {{pascalCase moduleName}}Model();
-        {{moduleName}}.groupId = {{moduleName}}Payload.groupId;
-        {{moduleName}}.message = {{moduleName}}Payload.message;
-        {{moduleName}}.date = {{moduleName}}Payload.date;
-        {{moduleName}}.ownerId = {{moduleName}}Payload.ownerId;
+    async create({{pascalCase moduleName}}Payload: {{pascalCase moduleName}}Model): Promise<{{pascalCase moduleName}}Model> {
+        const {{pascalCase moduleName}} = new {{pascalCase moduleName}}Model();
+        {{pascalCase moduleName}}.groupId = {{pascalCase moduleName}}Payload.groupId;
+        {{pascalCase moduleName}}.message = {{pascalCase moduleName}}Payload.message;
+        {{pascalCase moduleName}}.date = {{pascalCase moduleName}}Payload.date;
+        {{pascalCase moduleName}}.ownerId = {{pascalCase moduleName}}Payload.ownerId;
 
-        return await this.{{moduleName}}Repository.save({{moduleName}});
+        return await this.{{pascalCase moduleName}}Repository.save({{pascalCase moduleName}});
     }
 
     async findAll(): Promise<{{pascalCase moduleName}}Model[]> {
-        return await this.{{moduleName}}Repository.find({
+        return await this.{{pascalCase moduleName}}Repository.find({
             cache: true,
             order: { id: 'ASC' }
         });
     }
 
     async findOneById(id: number): Promise<{{pascalCase moduleName}}Model> {
-        return await this.{{moduleName}}Repository.findOne(id, { cache: true });
+        return await this.{{pascalCase moduleName}}Repository.findOne(id, { cache: true });
     }
 
     async update(paramId: any, entity: {{pascalCase moduleName}}Model): Promise<{{pascalCase moduleName}}Model> {
-        await this.{{moduleName}}Repository.update(paramId, entity);
+        await this.{{pascalCase moduleName}}Repository.update(paramId, entity);
         return await this.findOneById(paramId);
     }
 
     async delete(paramId: any): Promise<void> {
         const id = this.getId(paramId);
         try {
-            await this.{{moduleName}}Repository.delete(id);
+            await this.{{pascalCase moduleName}}Repository.delete(id);
         } catch (err) {
             throw new NotFoundException();
         }

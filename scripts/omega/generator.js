@@ -517,28 +517,16 @@ module.exports = {
 					`npx nest generate module ${answers.moduleName} /server/app/modules`,
 					function(code, stdout, stderr) {
 						shell.exec(
-							`npx nest generate service ${
-								answers.moduleName
-							} /server/app/modules/${answers.moduleName}/shared --flat`,
+							`npx nest generate service ${answers.moduleName} /server/app/modules/${answers.moduleName}/shared --flat`,
 							function(code, stdout, stderr) {
 								shell.exec(
-									`npx nest generate controller ${
-										answers.moduleName
-									} /server/app/modules/${answers.moduleName}/rest --flat`,
+									`npx nest generate controller ${answers.moduleName} /server/app/modules/${answers.moduleName}/rest --flat`,
 									function(code, stdout, stderr) {
 										shell.exec(
-											`npx nest generate resolver ${
-												answers.moduleName
-											} /server/app/modules/${
-												answers.moduleName
-											}/graphql --flat`,
+											`npx nest generate resolver ${answers.moduleName} /server/app/modules/${answers.moduleName}/graphql --flat`,
 											function(code, stdout, stderr) {
 												shell.exec(
-													`npx nest generate guard ${
-														answers.moduleName
-													} /server/app/modules/${
-														answers.moduleName
-													}/graphql --flat`,
+													`npx nest generate guard ${answers.moduleName} /server/app/modules/${answers.moduleName}/graphql --flat`,
 													function(code, stdout, stderr) {
 														if (code !== 0) {
 															reject('error message');
@@ -583,64 +571,129 @@ module.exports = {
 				{
 					type: 'input',
 					name: 'moduleName',
-					message: 'Module name please'
+					message: 'Module name again please'
+				},
+				{
+					type: 'recursive',
+					message: 'Do you want to define a model field ?',
+					name: 'modelDefinitions',
+					prompts: [
+						{
+							type: 'input',
+							name: 'modelName',
+							message: 'what is the name of this field ?',
+							validate: function(value) {
+								if (/.+/.test(value)) {
+									return true;
+								}
+								return 'name is required';
+							}
+						},
+						{
+							type: 'input',
+							name: 'modelType',
+							message: 'What is the type ?',
+							validate: function(value) {
+								if (/.+/.test(value)) {
+									return true;
+								}
+								return 'type is required';
+							}
+						}
+					]
 				}
 			],
-			actions: [
-				{
-					type: 'add',
-					force: true,
-					path:
-						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.guard.ts',
-					templateFile:
-						'scripts/plopTemplates/src/server/modules/graphql/modelName-guard.ts.hbs'
-				},
-				{
-					type: 'add',
-					force: true,
-					path:
-						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.resolver.ts',
-					templateFile:
-						'scripts/plopTemplates/src/server/modules/graphql/modelName-resolvers.ts.hbs'
-				},
-				{
-					type: 'add',
-					force: true,
-					path:
-						'src/server/app/modules/{{moduleName}}/rest/{{moduleName}}.controller.ts',
-					templateFile:
-						'scripts/plopTemplates/src/server/modules/rest/modelName-controller.ts.hbs'
-				},
-				{
-					type: 'add',
-					force: true,
-					path:
-						'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.service.ts',
-					templateFile:
-						'scripts/plopTemplates/src/server/modules/shared/modelName-service.ts.hbs'
-				},
-				{
-					type: 'add',
-					force: true,
-					path: 'src/server/app/modules/{{moduleName}}/index.ts',
-					templateFile: 'scripts/plopTemplates/src/server/modules/index.ts.hbs'
-				},
-				{
-					type: 'add',
-					force: true,
-					path:
-						'src/server/app/modules/{{moduleName}}/{{moduleName}}.module.ts',
-					templateFile:
-						'scripts/plopTemplates/src/server/modules/modelName-module.ts.hbs'
-				},
-				{
-					type: 'add',
-					force: true,
-					path:
-						'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.types.graphql',
-					templateFile:
-						'scripts/plopTemplates/src/server/modules/graphql/modelName-types.graphql.hbs'
+			actions: function(data) {
+				var actions = [
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.guard.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/graphql/modelName-guard.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.resolver.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/graphql/modelName-resolvers.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/rest/{{moduleName}}.controller.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/rest/modelName-controller.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.service.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/shared/modelName-service.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path: 'src/server/app/modules/{{moduleName}}/index.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/index.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/{{moduleName}}.module.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/modelName-module.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.types.graphql',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/graphql/modelName-types.graphql.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.model.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/shared/modelName-model.ts.hbs'
+					}
+				];
+
+				if (data.modelDefinitions) {
+					data.modelDefinitions.map((value, index) => {
+						actions = actions.concat([
+							{
+								type: 'modify',
+								path:
+									'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.model.ts',
+								pattern: /(\/\/ -- Model Definition Here --)/gi,
+								template: `$1\r\n	@Column('{{value.modelType}}')
+	@ApiModelProperty()
+	${value.modelName}: ${value.modelType};`
+							},
+							{
+								type: 'modify',
+								path:
+									'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.model.ts',
+								pattern: /(\/\/ -- Autogenerated Model Definition --)/gi,
+								template: `$1\r\n	${value.modelName}: ${value.modelType}`
+							}
+						]);
+					});
 				}
-			]
+
+				return actions;
+			}
 		})
 };
