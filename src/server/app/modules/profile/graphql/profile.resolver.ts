@@ -1,6 +1,6 @@
 // Library
 import { UseGuards } from '@nestjs/common';
-import { Query, Mutation, Resolver, Subscription } from '@nestjs/graphql';
+import { Query, Mutation, Resolver, Subscription, Args } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 
 // Internal
@@ -15,14 +15,15 @@ const pubSub = new PubSub();
 export class ProfileResolver {
 constructor(private readonly profileService: ProfileService) {}
 
-@Query()
-async getProfile() {
-    return await this.profileService.findAll();
-}
+    @Query()
+    async getProfile(@Args('filters') filters: Object) {
+        const params = filters ? filters : {};
+        return await this.profileService.findAll(params);
+    }
 
-@Query('profile')
-async findOneById(obj, args, context, info): Promise<IProfile> {
-    const { id } = args;
+    @Query('profile')
+    async findOneById(obj, args, context, info): Promise<IProfile> {
+        const { id } = args;
         return await this.profileService.findOneById(+id);
     }
 

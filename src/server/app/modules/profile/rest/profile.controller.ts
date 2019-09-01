@@ -31,7 +31,7 @@ export class ProfileController {
 
 	@Get()
 	async findAll(): Promise<ProfileModel[]> {
-		return await this.ProfileService.findAll();
+		return await this.ProfileService.findAll({});
 	}
 
 	@Get(':id')

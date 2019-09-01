@@ -42,7 +42,7 @@ export class AuthController {
 		const { lastToken, githubId } = request.query;
 		const newToken = await this.authService.refreshToken(githubId);
 		const canUpdateToken = await this.profileService.updateToken(githubId, lastToken, newToken.accessToken);
-		return (canUpdateToken) ? newToken : {
+		return (canUpdateToken || process.env.NODE_ENV === 'development') ? newToken : {
 			accessToken: lastToken,
 			expiresIn: 5
 		};

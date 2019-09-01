@@ -1,5 +1,5 @@
 type Query {
-    getProfile: [Profile]
+    getProfile(filters: FindOptions!): [Profile]
     profile(id: ID!): Profile
 }
 
@@ -36,15 +36,43 @@ type Subscription {
 }
 
 type Profile {
-    id: Int
-    githubId: String
-    lastTokenWeb: String
-    lastTokenMobile: String
-    name: String
+	id: Int
+	githubId: String
+	lastTokenWeb: String
+	lastTokenMobile: String
+	name: String
 	email: String
 	avatarUrl: String
 	bio: String
 	location: String
-    createdAt: String
-    updatedAt: String
+	createdAt: String
+	updatedAt: String
+}
+
+input FindOptions {
+	select: [String]
+	relations: [String]
+	where: InputProfile
+	not: InputProfile
+	in: InputProfile
+	like: InputProfile
+    any: InputProfile
+	order: InputProfile
+	skip: Int
+	take: Int
+	cache: Boolean
+}
+
+input InputProfile {
+	id: Int
+	githubId: String
+	lastTokenWeb: String
+	lastTokenMobile: String
+	name: String
+	email: String
+	avatarUrl: String
+	bio: String
+	location: String
+	createdAt: String
+	updatedAt: String
 }

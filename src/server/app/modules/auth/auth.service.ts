@@ -45,10 +45,11 @@ export class AuthService {
 			}
 		});
 		const time = new Date().getTime();
-		const idToken = jwt.sign(getUserInfo.data, access_token, { expiresIn: 5 });
+		const expiresIn = process.env.NODE_ENV === 'development' ? 555 : 5;
+		const idToken = jwt.sign(getUserInfo.data, access_token, { expiresIn });
 		const accessToken = jwt.sign({
 			time
-		}, JWT_SECRET, { expiresIn: 5 });
+		}, JWT_SECRET, { expiresIn });
 		return {
 			accessToken,
 			idToken,
