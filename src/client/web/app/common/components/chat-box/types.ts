@@ -36,7 +36,8 @@ export interface IChatProps {
 		dateReceived: string;
 		input: string;
 	};
-	idToken?: string;
+	githubUserData?: any;
+	groupId: number;
 	title?: string;
 	chatData?: Array<{}>;
 	userData?: Array<{}>;

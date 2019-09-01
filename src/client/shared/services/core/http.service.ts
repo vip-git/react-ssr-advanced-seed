@@ -32,7 +32,6 @@ const returnValidGraphQLOpertaion = (
 			});
 		case 'subscription':
 			const { query, document } = gql;
-			console.log('apollo client is', apolloClient);
 			const watchQuery = apolloClient.watchQuery({
 				query,
 				variables
@@ -172,7 +171,6 @@ export class HttpService {
 				updatedCookie += "=" + optionValue;
 			}
 		}
-		console.log('about to set cookie', updatedCookie);
 		document.cookie = updatedCookie;
 	}
 }

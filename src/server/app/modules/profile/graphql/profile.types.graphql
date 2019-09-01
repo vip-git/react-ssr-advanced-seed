@@ -1,5 +1,5 @@
 type Query {
-    getProfile(filters: FindOptions!): [Profile]
+    getProfile(filters: ProfileFindOptions!): [Profile]
     profile(id: ID!): Profile
 }
 
@@ -49,14 +49,14 @@ type Profile {
 	updatedAt: String
 }
 
-input FindOptions {
+input ProfileFindOptions {
 	select: [String]
 	relations: [String]
 	where: InputProfile
 	not: InputProfile
 	in: InputProfile
 	like: InputProfile
-    any: InputProfile
+	any: InputProfile
 	order: InputProfile
 	skip: Int
 	take: Int

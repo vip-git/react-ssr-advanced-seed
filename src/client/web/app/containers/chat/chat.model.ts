@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ApolloConsumer } from 'react-apollo';
+import JWTDecode from 'jwt-decode';
 
 // Shared
 import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
@@ -16,6 +17,7 @@ export const ChatModel = {
 		React,
 		Component,
 		connect,
+		JWTDecode,
 		ApolloConsumer
 	},
 	components: {

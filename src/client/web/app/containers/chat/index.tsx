@@ -5,7 +5,7 @@ import { ICreateChatPayload } from '@omega-web-components/chat-box/types';
 // Internal
 import { ChatModel } from './chat.model';
 
-const { React, Component, connect, ApolloConsumer } = ChatModel.libraries;
+const { React, Component, connect, ApolloConsumer, JWTDecode } = ChatModel.libraries;
 
 class ChatContainer extends Component<any, any> {
 	handleErrorClose = () => {
@@ -19,6 +19,7 @@ class ChatContainer extends Component<any, any> {
 		const { chats, title, idToken } = this.props;
 		const { chatData, userData, error } = chats;
 		const ChatComponentTyped: any = ChatComponent;
+		const githubUserData: any = JWTDecode(idToken);
 		return (
 			<ApolloConsumer>
 				{apolloClient => (
@@ -34,10 +35,22 @@ class ChatContainer extends Component<any, any> {
 							readUsersAndChat={() =>
 								dispatchReadAllUsersAndChats({
 									apolloClient,
-									data: {},
+									data: {
+										chatPayload: {
+											filters: {}
+										},
+										profilePayload: {
+											filters: {
+												not: {
+													githubId: githubUserData.login
+												}
+											}
+										}
+									},
 									idToken
 								})}
-							idToken={idToken}
+							githubUserData={githubUserData}
+							groupId={2}
 							title={title}
 							chatData={chatData}
 							userData={userData}

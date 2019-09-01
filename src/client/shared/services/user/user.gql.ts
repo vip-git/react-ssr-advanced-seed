@@ -2,8 +2,8 @@
 import gql from 'graphql-tag';
 
 export const userQuery = gql`
-	query userQuery {
-        getProfile {
+	query userQuery($filters: ProfileFindOptions!) {
+        getProfile(filters: $filters) {
             id
             githubId
             name

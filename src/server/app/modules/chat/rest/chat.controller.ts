@@ -31,7 +31,7 @@ export class ChatsController {
 
 	@Get()
 	async findAll(): Promise<ChatModel[]> {
-		return await this.chatService.findAll();
+		return await this.chatService.findAll({});
 	}
 
 	@Get(':id')

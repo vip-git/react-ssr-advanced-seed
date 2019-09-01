@@ -1,5 +1,5 @@
 type Query {
-	getChats: [Chat]
+	getChats(filters: ChatFindOptions!): [Chat]
 	chat(id: ID!): Chat
 }
 
@@ -19,6 +19,29 @@ type Subscription {
 }
 
 type Chat {
+	id: Int
+	groupId: Int
+	ownerId: Int
+	message: String
+	type: String
+	date: String
+}
+
+input ChatFindOptions {
+	select: [String]
+	relations: [String]
+	where: InputChat
+	not: InputChat
+	in: InputChat
+	like: InputChat
+	any: InputChat
+	order: InputChat
+	skip: Int
+	take: Int
+	cache: Boolean
+}
+
+input InputChat {
 	id: Int
 	groupId: Int
 	ownerId: Int

@@ -4,8 +4,9 @@ import {
 	BadRequestException,
 	NotFoundException
 } from '@nestjs/common';
+import _ from 'lodash';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Not, Like, In, Any } from 'typeorm';
 
 // Internal
 import { ChatModel } from './chat.model';
@@ -39,11 +40,53 @@ export class ChatService {
 		return await this.chatRepository.save(chat);
 	}
 
-	async findAll(): Promise<ChatModel[]> {
-		return await this.chatRepository.find({
-			cache: true,
-			order: { id: 'ASC' }
-		});
+	async findAll(filters: any): Promise<ChatModel[]> {
+		const params: any = {
+			where: {},
+			cache: filters.cache || true,
+			order: { id: 'ASC' },
+		};
+
+		if (filters.where) {
+			params.where = { ...filters.where };
+		}
+
+		if (filters.not) {
+			_.map(filters.not, (val, key) => {
+				params['where'][key] = Not(val)
+			})
+		}
+
+		if (filters.like) {
+			_.map(filters.like, (val, key) => {
+				params['where'][key] = Like(val)
+			})
+		}
+
+		if (filters.in) {
+			_.map(filters.in, (val, key) => {
+				params['where'][key] = In(val)
+			})
+		}
+
+		if (filters.any) {
+			_.map(filters.any, (val, key) => {
+				params['where'][key] = Any(val)
+			})
+		}
+
+		if (filters.order) {
+			params.order = { ...filters.order };
+		}
+
+		if (filters.skip) {
+			params.skip = filters.skip;
+		}
+
+		if (filters.take) {
+			params.take = filters.take;
+		}
+		return await this.chatRepository.find(params);
 	}
 
 	async findOneById(id: number): Promise<ChatModel> {

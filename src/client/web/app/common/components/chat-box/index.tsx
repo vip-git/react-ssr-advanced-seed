@@ -32,7 +32,6 @@ const {
 	Component,
 	classNames,
 	distanceInWordsToNow,
-	JWTDecode,
 	i18next,
 	withTranslation,
 } = ChatBoxModel.libraries;
@@ -74,10 +73,11 @@ class Chat extends Component<IChatProps, IChatState> {
 	};
 
 	sendChat = () =>
-		this.state.currentChat !== '' && this.props.submitChat({
+		this.state.currentChat !== '' &&
+		this.props.submitChat({
 			variables: {
-				ownerId: 1,
-				groupId: 2,
+				ownerId: this.props.githubUserData.id,
+				groupId: this.props.groupId,
 				message: this.state.currentChat,
 				date: new Date().toISOString()
 			},
@@ -91,9 +91,15 @@ class Chat extends Component<IChatProps, IChatState> {
 	};
 
 	render() {
-		const { classes, chatData, userData, SharedComponent, t } = this.props;
+		const {
+			classes,
+			chatData,
+			userData,
+			SharedComponent,
+			t,
+			githubUserData
+		} = this.props;
 		const { opened } = this.state;
-		const githubUserData: any = JWTDecode(this.props.idToken);
 		const currentUsername =
 			githubUserData.name.indexOf(' ') === -1
 				? githubUserData.name

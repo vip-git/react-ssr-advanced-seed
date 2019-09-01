@@ -12,6 +12,7 @@
 		"react-apollo": "2.5.8",
 		"react": "16.8.6",
 		"react-redux": "7.1.0",
+    	"jwt-decode": "2.2.0",
 		"reselect": "4.0.0"
 	},
 	"gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",

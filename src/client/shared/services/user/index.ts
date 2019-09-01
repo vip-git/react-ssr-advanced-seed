@@ -14,8 +14,8 @@ class UserService {
         );
     }
 
-    static getAllUsers(action: any) {
-        const { apolloClient, data } = action.payload;
+    static getAllUsers(payload: any) {
+        const { apolloClient, data } = payload;
         return HttpService.buildGraphQLCall(
             apolloClient,
             'subscription',

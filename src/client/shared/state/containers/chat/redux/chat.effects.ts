@@ -51,8 +51,13 @@ class ChatEffect {
 			],
 			() => [
 				flatMap((action: IAction) => {
-					const { payload } = action.payload;
-					return ChatReduxModel.services.requestAllChats(payload);
+					const { apolloClient, data } = action.payload.payload;
+					const { chatPayload } = data;
+					const graphqlPayload = {
+						apolloClient,
+						data: chatPayload,
+					};
+					return ChatReduxModel.services.requestAllChats(graphqlPayload);
 				}),
 				map(data => ChatReduxModel.rules.isValidChatResponse(data)),
 				map((chatResponse: IGraphqlDataResponse) => {
@@ -84,7 +89,15 @@ class ChatEffect {
 	static readAllUsers = (action$: any) =>
 		action$.pipe(
 			ofType(ChatReduxModel.actionTypes.READ_ALL_USERS),
-			flatMap((action: IAction) => ChatReduxModel.services.requestAllUsers(action.payload)),
+			flatMap((action: IAction) => {
+				const { apolloClient, data } = action.payload.payload;
+				const { profilePayload } = data;
+				const graphqlPayload = {
+					apolloClient,
+					data: profilePayload,
+				};
+				return ChatReduxModel.services.requestAllUsers(graphqlPayload);
+			}),
 			map((userResponse: IGraphqlDataResponse) => {
 				const {
 					data: { getProfile }

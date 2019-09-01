@@ -2,8 +2,8 @@
 import gql from 'graphql-tag';
 
 export const chatQuery = gql`
-	query chatQuery {
-		getChats {
+	query chatQuery($filters: ChatFindOptions!) {
+		getChats(filters: $filters) {
 			id
 			groupId
 			message
