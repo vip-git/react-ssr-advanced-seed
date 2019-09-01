@@ -6,6 +6,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { TvMazeService } from './services/tvmaze.service';
 import { ProfileModule, ProfileModel } from './modules/profile/profile.module';
 import { GroupModule, GroupModel } from './modules/group/group.module';
+import { GroupMemberModule } from './modules/group-member/group-member.module';
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
@@ -45,6 +46,7 @@ const url = require('url');
 		}),
 		ProfileModule,
 		GroupModule,
+		GroupMemberModule,
 	],
 })
 export class ApplicationModule implements NestModule {
