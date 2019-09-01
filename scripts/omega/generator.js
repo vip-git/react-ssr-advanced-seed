@@ -592,7 +592,7 @@ module.exports = {
 						{
 							type: 'input',
 							name: 'modelType',
-							message: 'What is the type ?',
+							message: 'What is the type (TypeORM) ?',
 							validate: function(value) {
 								if (/.+/.test(value)) {
 									return true;
@@ -731,7 +731,7 @@ module.exports = {
 							path:
 								'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.types.graphql',
 							pattern: /## replace name here ##/gi,
-							template: 'replaced => {{}}'
+							template: 'replaced => {{value.modelType}}'
 						}
 					]);
 				}
