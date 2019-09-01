@@ -6,7 +6,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { TvMazeService } from './services/tvmaze.service';
 import { ProfileModule, ProfileModel } from './modules/profile/profile.module';
 import { GroupModule, GroupModel } from './modules/group/group.module';
-import { GroupMemberModule } from './modules/group-member/group-member.module';
+import { GroupMemberModule, GroupMemberModel } from './modules/group-member/group-member.module';
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
@@ -27,7 +27,7 @@ const url = require('url');
 			username: process.env.API_DB_USERNAME || 'postgres',
 			password: process.env.API_DB_PASSWORD,
 			database: process.env.API_DB_NAME || 'postgres',
-			entities: [ChatModel, ProfileModel, GroupModel],
+			entities: [ChatModel, ProfileModel, GroupModel, GroupMemberModel],
 			synchronize: true
 		}),
 		AuthModule,
