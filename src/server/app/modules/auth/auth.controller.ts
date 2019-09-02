@@ -22,6 +22,7 @@ export class AuthController {
 		const { id, login, avatar_url, name, bio, email, location } = tokenObj.userInfo;
 		const createUserPayload: ProfileModel = {
 			id,
+			githubUid: id,
 			githubId: login,
 			lastTokenWeb: tokenObj.accessToken,
 			lastTokenMobile: tokenObj.accessToken,

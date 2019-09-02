@@ -232,7 +232,7 @@ class Chat extends Component<IChatProps, IChatState> {
 													key={`ChatItem-${chat.id}`}
 													className={classNames(
 														classes.conversation,
-														chat.ownerId === 1
+														chat.ownerId === githubUserData.id
 															? classes.conversationSent
 															: classes.conversationReceived
 													)}
@@ -242,13 +242,16 @@ class Chat extends Component<IChatProps, IChatState> {
 														src={face1}
 														style={{
 															marginRight: 10,
-															display: chat.ownerId === 1 ? 'none' : 'block'
+															display:
+																chat.ownerId === githubUserData.id
+																	? 'none'
+																	: 'block'
 														}}
 													/>
 													<div
 														className={classNames(
 															classes.body,
-															chat.ownerId === 1
+															chat.ownerId === githubUserData.id
 																? classes.bodySent
 																: classes.bodyReceived
 														)}
@@ -260,7 +263,7 @@ class Chat extends Component<IChatProps, IChatState> {
 															variant='caption'
 															className={classNames(
 																classes.date,
-																chat.ownerId === 1
+																chat.ownerId === githubUserData.id
 																	? classes.dateSent
 																	: classes.dateReceived
 															)}
@@ -277,7 +280,10 @@ class Chat extends Component<IChatProps, IChatState> {
 															order: 2,
 															marginLeft: 10,
 															top: 25,
-															display: chat.ownerId === 1 ? 'block' : 'none'
+															display:
+																chat.ownerId === githubUserData.id
+																	? 'block'
+																	: 'none'
 														}}
 													/>
 												</div>

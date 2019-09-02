@@ -1,11 +1,15 @@
 // Library
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, JoinColumn, ManyToOne } from 'typeorm';
 import { IsString, IsInt } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
+
+// Model
+import { GroupModel } from '../../group/shared/group.model';
 
 export interface IChat {
 	id: number;
 	groupId: number;
+	group: GroupModel;
 	message: string;
 	ownerId: number;
 	date: Date;
@@ -22,6 +26,10 @@ export class ChatModel implements IChat {
 	@ApiModelProperty()
 	@IsInt()
 	groupId: number;
+
+	@ManyToOne(type => GroupModel, group => group.id, { eager: true, cascade: false  })
+	@JoinColumn()
+	group: GroupModel;
 
 	@Column({ length: 500 })
 	@ApiModelProperty()

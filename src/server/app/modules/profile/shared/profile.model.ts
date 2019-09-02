@@ -5,6 +5,7 @@ import { ApiModelProperty } from '@nestjs/swagger';
 
 export interface IProfile {
 	id: number;
+	githubUid: number;
 	githubId: string;
 	lastTokenWeb: string;
 	lastTokenMobile: string;
@@ -23,6 +24,11 @@ export class ProfileModel implements IProfile {
 	@ApiModelProperty()
 	@IsInt()
 	id: number;
+
+	@Column('int', { unique: true })
+	@ApiModelProperty()
+	@IsInt()
+	githubUid: number;
 
 	@Column('text', { unique: true })
 	@ApiModelProperty()

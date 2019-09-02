@@ -25,3 +25,11 @@ type Group {
     groupDescription: String
     date: String
 }
+
+input InputGroup {
+	id: Int
+	ownerId: Int
+	groupName: String
+	groupDescription: String
+	date: String
+}

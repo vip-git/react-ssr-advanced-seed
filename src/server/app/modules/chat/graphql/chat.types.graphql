@@ -21,6 +21,7 @@ type Subscription {
 type Chat {
 	id: Int
 	groupId: Int
+	group: Group
 	ownerId: Int
 	message: String
 	type: String
@@ -44,6 +45,7 @@ input ChatFindOptions {
 input InputChat {
 	id: Int
 	groupId: Int
+	group: InputGroup
 	ownerId: Int
 	message: String
 	type: String
