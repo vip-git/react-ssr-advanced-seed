@@ -78,6 +78,7 @@ export interface IChatState {
 
 export interface IContact {
 	id: number;
+	githubId: string;
 	avatar: string;
 	name: string;
 	status: string;

@@ -188,7 +188,7 @@ class Chat extends Component<IChatProps, IChatState> {
 				{userData.map((contact: IContact, index) => (
 					<ListItem key={`ListItem-${contact.id}`} button>
 						<Avatar alt='' src={contact.avatar} className={classes.avatar} />
-						<ListItemText primary={contact.name} secondary={contact.status} />
+						<ListItemText primary={contact.name || contact.githubId} secondary={contact.status} />
 					</ListItem>
 				))}
 			</List>
