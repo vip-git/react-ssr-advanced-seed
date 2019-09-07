@@ -17,7 +17,8 @@ const returnValidGraphQLOpertaion = (
 	apolloClient: any,
 	type: any,
 	gql: any,
-	variables: Object
+	variables: Object,
+	updateQuery: (prev: any, subscriptionData: any) => void = null
 ) => {
 	switch (type) {
 		case 'query':
@@ -39,14 +40,7 @@ const returnValidGraphQLOpertaion = (
 			watchQuery.subscribeToMore({
 				document,
 				variables,
-				updateQuery: (prev, { subscriptionData }): any => {
-					// Perform updates on previousResult with subscriptionData
-					if (!subscriptionData.data) return prev;
-					const chatRecieved = subscriptionData.data.chatRecieved;
-					return Object.assign({}, prev, {
-						getChats: [...prev.getChats, chatRecieved]
-					});
-				}
+				updateQuery
 			});
 			return watchQuery;
 	}
@@ -140,13 +134,15 @@ export class HttpService {
 		apolloClient: any,
 		type: any,
 		gql: any,
-		variables: Object
+		variables: Object,
+		updateQuery: (prev: any, subscriptionData: any) => void = null,
 	) {
 		const response = returnValidGraphQLOpertaion(
 			apolloClient,
 			type,
 			gql,
-			variables
+			variables,
+			updateQuery
 		);
 		return response;
 	}

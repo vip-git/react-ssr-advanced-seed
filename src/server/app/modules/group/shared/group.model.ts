@@ -1,17 +1,22 @@
 // Library
-import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
+import {
+	Entity,
+	Column,
+	PrimaryGeneratedColumn,
+	OneToMany
+} from 'typeorm';
 import { IsString, IsInt } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
 // Model
-// import { GroupMemberModel } from '../../group-member/shared/group-member.model';
+import { GroupMemberModel } from '../../group-member/shared/group-member.model';
 import { ChatModel } from '../../chat/shared/chat.model';
 
 export interface IGroup {
 	id: number;
 	ownerId: number;
 	groupName: string;
-	// groupMembers: GroupMemberModel[];
+	groupMembers: GroupMemberModel[];
 	chats: ChatModel[];
 	groupDescription: string;
 	date: Date;
@@ -39,6 +44,12 @@ export class GroupModel implements IGroup {
 		cascade: false
 	})
 	chats: ChatModel[];
+
+	@OneToMany(type => GroupMemberModel, groupMember => groupMember.group, {
+		eager: true,
+		cascade: false
+	})
+	groupMembers: GroupMemberModel[];
 
 	@Column('text')
 	@ApiModelProperty()

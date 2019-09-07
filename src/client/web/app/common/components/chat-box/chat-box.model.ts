@@ -1,5 +1,6 @@
 // Library
 import React, { Component } from 'react';
+import { reject } from 'lodash';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
@@ -43,6 +44,7 @@ export const ChatBoxModel = {
     JWTDecode,
     i18next,
     withTranslation,
+    reject,
   },
   i18nKeys: {
     'en-US': {

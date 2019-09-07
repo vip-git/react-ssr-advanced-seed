@@ -23,6 +23,7 @@ type Group {
     groupName: String
     groupDescription: String
     date: String
+    groupMembers: [GroupMember]
     chats: [Chat]
 }
 

@@ -39,8 +39,8 @@ export interface IChatProps {
 	githubUserData?: any;
 	groupId: number;
 	title?: string;
-	chatData?: Array<{}>;
-	userData?: Array<{}>;
+	chatData?: any;
+	userData?: any;
 	submitChat?: (payload: any) => void;
 	readUsersAndChat?: () => void;
 	SharedComponent?: ReactType;

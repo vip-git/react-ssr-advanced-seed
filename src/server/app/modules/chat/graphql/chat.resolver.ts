@@ -29,7 +29,8 @@ export class ChatResolver {
 
 	@Mutation('createChat')
 	async create(obj, args: IChat, context, info): Promise<IChat> {
-		const createdChat = await this.chatService.create(args);
+		const createChat = await this.chatService.create(args);
+		const createdChat = await this.chatService.findOneById(createChat.id);
 		pubSub.publish('chatRecieved', { chatRecieved: createdChat });
 		return createdChat;
 	}
@@ -37,7 +38,8 @@ export class ChatResolver {
 	@Mutation('updateChat')
 	async update(obj, args: IChat, context, info): Promise<IChat> {
 		const { id } = args;
-		const updatedChat = await this.chatService.update(id, args);
+		const updateChat = await this.chatService.update(id, args);
+		const updatedChat = await this.chatService.findOneById(updateChat.id);
 		pubSub.publish('chatRecieved', { chatRecieved: updatedChat });
 		return updatedChat;
 	}

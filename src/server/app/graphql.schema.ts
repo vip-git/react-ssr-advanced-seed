@@ -53,6 +53,7 @@ export class InputGroup {
 
 export class InputProfile {
     id?: number;
+    githubUid?: number;
     githubId?: string;
     lastTokenWeb?: string;
     lastTokenMobile?: string;
@@ -82,8 +83,8 @@ export class ProfileFindOptions {
 export class Chat {
     id?: number;
     groupId?: number;
-    group?: Group;
     ownerId?: number;
+    owner?: Profile;
     message?: string;
     type?: string;
     date?: string;
@@ -95,12 +96,14 @@ export class Group {
     groupName?: string;
     groupDescription?: string;
     date?: string;
+    groupMembers?: GroupMember[];
     chats?: Chat[];
 }
 
 export class GroupMember {
     id?: number;
     memberId?: number;
+    member?: Profile;
     groupId?: number;
     date?: string;
 }
@@ -118,13 +121,14 @@ export abstract class IMutation {
 
     abstract updateGroup(id: string, ownerId?: string, groupName?: string, groupDescription?: string, date?: string): Group | Promise<Group>;
 
-    abstract createProfile(githubId?: string, lastTokenWeb?: string, lastTokenMobile?: string, name?: string, email?: string, avatarUrl?: string, bio?: string, location?: string, createdAt?: string, updatedAt?: string): Profile | Promise<Profile>;
+    abstract createProfile(githubUid?: number, githubId?: string, lastTokenWeb?: string, lastTokenMobile?: string, name?: string, email?: string, avatarUrl?: string, bio?: string, location?: string, createdAt?: string, updatedAt?: string): Profile | Promise<Profile>;
 
-    abstract updateProfile(id: string, githubId?: string, lastTokenWeb?: string, lastTokenMobile?: string, name?: string, email?: string, avatarUrl?: string, bio?: string, location?: string, createdAt?: string, updatedAt?: string): Profile | Promise<Profile>;
+    abstract updateProfile(id: string, githubUid?: number, githubId?: string, lastTokenWeb?: string, lastTokenMobile?: string, name?: string, email?: string, avatarUrl?: string, bio?: string, location?: string, createdAt?: string, updatedAt?: string): Profile | Promise<Profile>;
 }
 
 export class Profile {
     id?: number;
+    githubUid?: number;
     githubId?: string;
     lastTokenWeb?: string;
     lastTokenMobile?: string;

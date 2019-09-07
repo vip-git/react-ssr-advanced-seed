@@ -6,6 +6,20 @@ export const chatQuery = gql`
 		getGroup(filters: $filters) {
 			id
 			groupName
+			groupMembers {
+				id
+				member {
+					id
+					email
+					githubUid
+					githubId
+					name
+					bio
+					avatarUrl
+					location
+				}
+				date
+			}
 			chats {
 				id
 				groupId
@@ -77,8 +91,17 @@ export const chatSubscription = gql`
 		chatRecieved {
 			id
 			groupId
-			message
 			ownerId
+			owner {
+				id
+				email
+				githubId
+				name
+				bio
+				avatarUrl
+				location
+			}
+			message
 			date
 		}
 	}

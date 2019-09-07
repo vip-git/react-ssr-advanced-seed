@@ -34,6 +34,7 @@ const {
 	distanceInWordsToNow,
 	i18next,
 	withTranslation,
+	reject,
 } = ChatBoxModel.libraries;
 const { Wrapper } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
@@ -93,7 +94,7 @@ class Chat extends Component<IChatProps, IChatState> {
 	render() {
 		const {
 			classes,
-			chatData,
+			chatData: { chats, groupMembers },
 			userData,
 			SharedComponent,
 			t,
@@ -104,6 +105,16 @@ class Chat extends Component<IChatProps, IChatState> {
 			githubUserData.name.indexOf(' ') === -1
 				? githubUserData.name
 				: githubUserData.name.split(' ')[0];
+		const groupMemberData = reject(groupMembers, [
+			'member.githubUid',
+			githubUserData.id
+		]);
+		const oppositeAvatarUrl =
+			groupMemberData.length === 1
+				? groupMemberData[0].member.avatarUrl
+				: face1;
+		const oppositeUserName =
+			groupMemberData.length === 1 ? groupMemberData[0].member.name : 'Group Name';
 		const menu = (
 			<List
 				subheader={
@@ -164,8 +175,15 @@ class Chat extends Component<IChatProps, IChatState> {
 											className={classes.headerLeft}
 											style={{ width: '100%', maxWidth: '100%' }}
 										>
-											<Avatar alt='' src={face1} className={classes.avatar} />
-											<ListItemText primary='Robert' secondary='Online' />
+											<Avatar
+												alt=''
+												src={oppositeAvatarUrl}
+												className={classes.avatar}
+											/>
+											<ListItemText
+												primary={oppositeUserName}
+												secondary='Online'
+											/>
 										</div>
 										<List dense>
 											<ListItem>
@@ -227,67 +245,68 @@ class Chat extends Component<IChatProps, IChatState> {
 									</Hidden>
 									<main className={classes.main}>
 										<div id={'chats'} className={classes.content}>
-											{chatData.map((chat: IChat, index) => (
-												<div
-													key={`ChatItem-${chat.id}`}
-													className={classNames(
-														classes.conversation,
-														chat.ownerId === githubUserData.id
-															? classes.conversationSent
-															: classes.conversationReceived
-													)}
-												>
-													<Avatar
-														alt=''
-														src={chat.owner.avatarUrl}
-														style={{
-															marginRight: 10,
-															display:
-																chat.ownerId === githubUserData.id
-																	? 'none'
-																	: 'block'
-														}}
-													/>
+											{chats &&
+												chats.map((chat: IChat, index) => (
 													<div
+														key={`ChatItem-${chat.id}`}
 														className={classNames(
-															classes.body,
+															classes.conversation,
 															chat.ownerId === githubUserData.id
-																? classes.bodySent
-																: classes.bodyReceived
+																? classes.conversationSent
+																: classes.conversationReceived
 														)}
 													>
-														<Typography color='inherit'>
-															{chat.message}
-														</Typography>
-														<Typography
-															variant='caption'
+														<Avatar
+															alt=''
+															src={chat.owner.avatarUrl}
+															style={{
+																marginRight: 10,
+																display:
+																	chat.ownerId === githubUserData.id
+																		? 'none'
+																		: 'block'
+															}}
+														/>
+														<div
 															className={classNames(
-																classes.date,
+																classes.body,
 																chat.ownerId === githubUserData.id
-																	? classes.dateSent
-																	: classes.dateReceived
+																	? classes.bodySent
+																	: classes.bodyReceived
 															)}
 														>
-															{' '}
-															{distanceInWordsToNow(chat.date)}
-														</Typography>
+															<Typography color='inherit'>
+																{chat.message}
+															</Typography>
+															<Typography
+																variant='caption'
+																className={classNames(
+																	classes.date,
+																	chat.ownerId === githubUserData.id
+																		? classes.dateSent
+																		: classes.dateReceived
+																)}
+															>
+																{' '}
+																{distanceInWordsToNow(chat.date)}
+															</Typography>
+														</div>
+														<Avatar
+															alt=''
+															src={githubUserData.avatar_url}
+															style={{
+																float: 'right',
+																order: 2,
+																marginLeft: 10,
+																top: 25,
+																display:
+																	chat.ownerId === githubUserData.id
+																		? 'block'
+																		: 'none'
+															}}
+														/>
 													</div>
-													<Avatar
-														alt=''
-														src={githubUserData.avatar_url}
-														style={{
-															float: 'right',
-															order: 2,
-															marginLeft: 10,
-															top: 25,
-															display:
-																chat.ownerId === githubUserData.id
-																	? 'block'
-																	: 'none'
-														}}
-													/>
-												</div>
-											))}
+												))}
 										</div>
 										<Divider />
 										<div className='px-2'>

@@ -24,7 +24,14 @@ class ChatService {
 			apolloClient,
 			'subscription',
 			{ query: chatQuery, document: chatSubscription },
-			data
+			data,
+			(prev, { subscriptionData }): any => {
+				// Perform updates on previousResult with subscriptionData
+				if (!subscriptionData.data) return prev;
+				const { chatRecieved } = subscriptionData.data;
+				prev.getGroup[0].chats.push(chatRecieved);
+				return { ...prev};
+			}
 		);
 	}
 
