@@ -4,13 +4,15 @@ import { IsString, IsInt } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
 // Model
-import { GroupMemberModel } from '../../group-member/shared/group-member.model';
+// import { GroupMemberModel } from '../../group-member/shared/group-member.model';
+import { ChatModel } from '../../chat/shared/chat.model';
 
 export interface IGroup {
 	id: number;
 	ownerId: number;
 	groupName: string;
-	groupMembers: GroupMemberModel[];
+	// groupMembers: GroupMemberModel[];
+	chats: ChatModel[];
 	groupDescription: string;
 	date: Date;
 }
@@ -32,8 +34,8 @@ export class GroupModel implements IGroup {
 	@IsString()
 	groupName: string;
 
-	@OneToMany(type => GroupMemberModel, group => group.memberId, { eager: true, cascade: false })
-	groupMembers: GroupMemberModel[];
+	@OneToMany(type => ChatModel, chat => chat.group)
+	chats: ChatModel[];
 
 	@Column('text')
 	@ApiModelProperty()
