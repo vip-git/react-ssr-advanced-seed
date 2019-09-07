@@ -47,14 +47,29 @@ export interface IChatProps {
 	t?: (string) => string;
 }
 
+export interface IProfile {
+	id: number;
+	githubId: string;
+	lastTokenWeb: string;
+	lastTokenMobile: string;
+	name: string;
+	email: string;
+	avatarUrl: string;
+	bio: string;
+	location: string;
+	createdAt: string;
+	updatedAt: string;
+}
+
 export interface IChat {
 	id: number;
 	groupId?: number;
 	ownerId: number;
-	owner: any;
+	owner: IProfile;
 	message: string;
 	date: Date;
 }
+
 
 export interface IChatState {
 	opened: boolean;
