@@ -21,8 +21,8 @@ type Subscription {
 type Chat {
 	id: Int
 	groupId: Int
-	group: Group
 	ownerId: Int
+	owner: Profile
 	message: String
 	type: String
 	date: String

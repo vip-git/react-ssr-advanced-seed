@@ -2,7 +2,7 @@
 import { Controller, Get, Req, Res } from '@nestjs/common';
 
 // Models
-import { ProfileModel } from '../profile/shared/profile.model';
+import { IProfile } from '../profile/shared/profile.model';
 
 // Services
 import { AuthService } from './auth.service';
@@ -20,7 +20,7 @@ export class AuthController {
 		const { code, state } = request.query;
 		const tokenObj: any = await this.authService.createToken(code, state);
 		const { id, login, avatar_url, name, bio, email, location } = tokenObj.userInfo;
-		const createUserPayload: ProfileModel = {
+		const createUserPayload: IProfile = {
 			id,
 			githubUid: id,
 			githubId: login,

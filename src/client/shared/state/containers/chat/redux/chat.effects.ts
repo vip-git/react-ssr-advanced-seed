@@ -67,10 +67,11 @@ class ChatEffect {
 						});
 					}
 					const {
-						data: { getChats }
+						data: { getGroup }
 					} = chatResponse;
-					const finalData = Array.isArray(getChats)
-						? getChats.map((val: IChat) => {
+					const { chats } = getGroup[0];
+					const finalData = Array.isArray(chats)
+						? chats.map((val: IChat) => {
 								// eslint-disable-next-line no-param-reassign
 								val.date = new Date(val.date).getTime();
 								return val;

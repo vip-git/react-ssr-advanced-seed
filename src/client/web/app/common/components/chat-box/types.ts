@@ -51,6 +51,7 @@ export interface IChat {
 	id: number;
 	groupId?: number;
 	ownerId: number;
+	owner: any;
 	message: string;
 	date: Date;
 }

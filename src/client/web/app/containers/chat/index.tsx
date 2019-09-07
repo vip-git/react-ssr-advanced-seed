@@ -37,7 +37,11 @@ class ChatContainer extends Component<any, any> {
 									apolloClient,
 									data: {
 										chatPayload: {
-											filters: {}
+											filters: {
+												where: {
+													id: 2
+												}
+											}
 										},
 										profilePayload: {
 											filters: {

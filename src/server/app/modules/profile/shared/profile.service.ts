@@ -9,7 +9,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Not, Like, In, Any } from 'typeorm';
 
 // Internal
-import { ProfileModel } from './profile.model';
+import { ProfileModel, IProfile } from './profile.model';
 
 @Injectable()
 export class ProfileService {
@@ -30,7 +30,7 @@ private readonly profileRepository: Repository<ProfileModel>
         return id;
     }
 
-    async create(profilePayload: ProfileModel): Promise<ProfileModel> {
+    async create(profilePayload: IProfile): Promise<ProfileModel> {
         const profile = new ProfileModel();
         profile.githubUid = profilePayload.githubUid;
         profile.githubId = profilePayload.githubId;
@@ -108,7 +108,7 @@ private readonly profileRepository: Repository<ProfileModel>
         return await this.profileRepository.findOne(id, { cache: true });
     }
 
-    async update(paramId: any, entity: ProfileModel): Promise<ProfileModel> {
+    async update(paramId: any, entity: IProfile): Promise<ProfileModel> {
         await this.profileRepository.update(paramId, entity);
         return await this.findOneById(paramId);
     }

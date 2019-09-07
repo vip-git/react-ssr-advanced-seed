@@ -239,7 +239,7 @@ class Chat extends Component<IChatProps, IChatState> {
 												>
 													<Avatar
 														alt=''
-														src={face1}
+														src={chat.owner.avatarUrl}
 														style={{
 															marginRight: 10,
 															display:

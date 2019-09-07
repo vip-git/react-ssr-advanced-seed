@@ -1,10 +1,11 @@
 // Library
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn } from 'typeorm';
 import { IsString, IsInt } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
 // Model
 import { GroupModel } from '../../group/shared/group.model';
+import { ProfileModel } from '../../profile/shared/profile.model';
 
 export interface IChat {
 	id: number;
@@ -12,6 +13,7 @@ export interface IChat {
 	group: GroupModel;
 	message: string;
 	ownerId: number;
+	owner: ProfileModel;
 	date: Date;
 }
 
@@ -27,7 +29,7 @@ export class ChatModel implements IChat {
 	@IsInt()
 	groupId: number;
 
-	@ManyToOne(type => GroupModel, group => group.id, { eager: true, cascade: false  })
+	@ManyToOne(type => GroupModel, group => group.id, { cascade: false })
 	group: GroupModel;
 
 	@Column({ length: 500 })
@@ -39,6 +41,13 @@ export class ChatModel implements IChat {
 	@ApiModelProperty()
 	@IsString()
 	ownerId: number;
+
+	@ManyToOne(type => ProfileModel, profile => profile.githubUid, {
+		eager: true,
+		cascade: false
+	})
+	@JoinColumn({ name: 'ownerId', referencedColumnName: 'githubUid' })
+	owner: ProfileModel;
 
 	@Column('text')
 	@ApiModelProperty({ type: Date })

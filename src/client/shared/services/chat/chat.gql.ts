@@ -2,13 +2,26 @@
 import gql from 'graphql-tag';
 
 export const chatQuery = gql`
-	query chatQuery($filters: ChatFindOptions!) {
-		getChats(filters: $filters) {
+	query chatQuery($filters: GroupFindOptions!) {
+		getGroup(filters: $filters) {
 			id
-			groupId
-			message
-			ownerId
-			date
+			groupName
+			chats {
+				id
+				groupId
+				ownerId
+				owner {
+					id
+					email
+					githubId
+					name
+					bio
+					avatarUrl
+					location
+				}
+				message
+				date
+			}
 		}
 	}
 `;

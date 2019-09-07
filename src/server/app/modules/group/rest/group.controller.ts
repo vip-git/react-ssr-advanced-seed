@@ -31,7 +31,9 @@ export class GroupController {
 
 	@Get()
 	async findAll(): Promise<GroupModel[]> {
-		return await this.GroupService.findAll();
+		return await this.GroupService.findAll({
+			relations: ['chats']
+		});
 	}
 
 	@Get(':id')

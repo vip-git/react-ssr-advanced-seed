@@ -1,5 +1,5 @@
 type Query {
-    getGroup: [Group]
+    getGroup(filters: GroupFindOptions!): [Group]
     group(id: ID!): Group
 }
 
@@ -17,13 +17,27 @@ type Mutation {
 type Subscription {
     groupRecieved: Group
 }
-
 type Group {
     id: Int
     ownerId: Int
     groupName: String
     groupDescription: String
     date: String
+    chats: [Chat]
+}
+
+input GroupFindOptions {
+	select: [String]
+	relations: [String]
+	where: InputGroup
+	not: InputGroup
+	in: InputGroup
+	like: InputGroup
+	any: InputGroup
+	order: InputGroup
+	skip: Int
+	take: Int
+	cache: Boolean
 }
 
 input InputGroup {

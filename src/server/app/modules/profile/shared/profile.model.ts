@@ -1,11 +1,15 @@
 // Library
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 import { IsString, IsInt } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
+
+// Model
+import { ChatModel } from '../../chat/shared/chat.model';
 
 export interface IProfile {
 	id: number;
 	githubUid: number;
+	chats?: ChatModel[];
 	githubId: string;
 	lastTokenWeb: string;
 	lastTokenMobile: string;
@@ -29,6 +33,12 @@ export class ProfileModel implements IProfile {
 	@ApiModelProperty()
 	@IsInt()
 	githubUid: number;
+
+	@OneToMany(type => ChatModel, chat => chat.ownerId, {
+		eager: false,
+		cascade: false
+	})
+	chats: ChatModel[];
 
 	@Column('text', { unique: true })
 	@ApiModelProperty()
