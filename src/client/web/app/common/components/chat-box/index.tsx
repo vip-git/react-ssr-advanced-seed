@@ -98,7 +98,13 @@ class Chat extends Component<IChatProps, IChatState> {
 	render() {
 		const {
 			classes,
-			chatData: { chats, groupMembers },
+			chatData: {
+				chats,
+				groupMembers,
+				groupName,
+				groupDescription,
+				groupImage
+			},
 			userData,
 			SharedComponent,
 			t,
@@ -117,9 +123,11 @@ class Chat extends Component<IChatProps, IChatState> {
 		const oppositeAvatarUrl =
 			groupMemberData.length === 1
 				? groupMemberData[0].member.avatarUrl
-				: face1;
+				: groupImage;
 		const oppositeUserName =
-			groupMemberData.length === 1 ? groupMemberData[0].member.name : 'Group Name';
+			groupMemberData.length === 1 ? groupMemberData[0].member.name : groupName;
+		const oppositeDescription =
+			groupMemberData.length === 1 ? 'Online' : groupDescription;
 		const menu = (
 			<List
 				subheader={(
@@ -187,7 +195,7 @@ class Chat extends Component<IChatProps, IChatState> {
 											/>
 											<ListItemText
 												primary={oppositeUserName}
-												secondary='Online'
+												secondary={oppositeDescription}
 											/>
 										</div>
 										<List dense>

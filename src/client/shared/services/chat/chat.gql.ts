@@ -6,6 +6,8 @@ export const chatQuery = gql`
 		getGroup(filters: $filters) {
 			id
 			groupName
+			groupDescription
+        	groupImage
 			groupMembers {
 				id
 				member {

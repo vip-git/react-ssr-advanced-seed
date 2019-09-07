@@ -69,7 +69,7 @@ class ChatEffect {
 					const {
 						data: { getGroup }
 					} = chatResponse;
-					const { chats, groupMembers } = getGroup[0];
+					const { chats, groupMembers, groupName, groupDescription, groupImage } = getGroup[0];
 					const finalData = Array.isArray(chats)
 						? chats.map((val: IChat) => {
 								// eslint-disable-next-line no-param-reassign
@@ -78,6 +78,9 @@ class ChatEffect {
 						  })
 						: [];
 					return ChatReduxModel.actions.reducer.processAllChats({
+						groupName,
+						groupDescription,
+						groupImage,
 						chats: finalData,
 						groupMembers
 					});

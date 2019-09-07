@@ -19,6 +19,7 @@ export interface IGroup {
 	groupMembers: GroupMemberModel[];
 	chats: ChatModel[];
 	groupDescription: string;
+	groupImage: string;
 	date: Date;
 }
 
@@ -55,6 +56,11 @@ export class GroupModel implements IGroup {
 	@ApiModelProperty()
 	@IsString()
 	groupDescription: string;
+
+	@Column('text')
+	@ApiModelProperty()
+	@IsString()
+	groupImage: string;
 
 	@Column('text')
 	@ApiModelProperty({ type: Date })
