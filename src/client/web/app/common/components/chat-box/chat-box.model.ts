@@ -1,6 +1,6 @@
 // Library
 import React, { Component } from 'react';
-import { reject } from 'lodash';
+import { reject, find } from 'lodash';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
@@ -45,6 +45,7 @@ export const ChatBoxModel = {
     i18next,
     withTranslation,
     reject,
+    find
   },
   i18nKeys: {
     'en-US': {

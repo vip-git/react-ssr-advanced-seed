@@ -39,10 +39,10 @@ const {
 	i18next,
 	withTranslation,
 	reject,
+	find
 } = ChatBoxModel.libraries;
 const { Wrapper } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
-const face1 = require('@omega-core/assets/images/face1.jpg');
 
 class Chat extends Component<IChatProps, IChatState> {
 	state = {
@@ -94,6 +94,55 @@ class Chat extends Component<IChatProps, IChatState> {
 			this.sendChat();
 		}
 	};
+
+	renderSubmitChatBox = () => {
+		const {
+			classes,
+			chatData: {
+				groupMembers,
+			},
+			githubUserData
+		} = this.props;
+		const groupMemberData = find(groupMembers, [
+			'member.githubUid',
+			githubUserData.id
+		]);
+		return groupMemberData ? (
+			<div className='px-2'>
+				<Grid container spacing={0} justify={'center'} alignItems={'center'}>
+					<TextField
+						label='Write a message'
+						type='text'
+						margin='normal'
+						value={this.state.currentChat}
+						onChange={(e: any) =>
+							this.setState({ currentChat: e.target.value })}
+						onKeyDown={this.handleKeyDown}
+						className={classes.input}
+					/>
+					<Button
+						onClick={() => this.sendChat()}
+						disabled={this.state.currentChat.length === 0}
+						variant='contained'
+						color='primary'
+						aria-label='send'
+						style={{ marginRight: 10 }}
+						className={classes.button}
+					>
+						<SendIcon />
+					</Button>
+				</Grid>
+			</div>
+		) : (
+			<div className='px-2'>
+				<Grid container spacing={0} justify={'center'} alignItems={'center'}>
+					<Typography style={{ marginTop: 20 }}>
+						You are not part of this group - Click here to Join
+					</Typography>
+				</Grid>
+			</div>
+		);
+	}
 
 	render() {
 		const {
@@ -322,36 +371,7 @@ class Chat extends Component<IChatProps, IChatState> {
 												))}
 										</div>
 										<Divider />
-										<div className='px-2'>
-											<Grid
-												container
-												spacing={0}
-												justify={'center'}
-												alignItems={'center'}
-											>
-												<TextField
-													label='Write a message'
-													type='text'
-													margin='normal'
-													value={this.state.currentChat}
-													onChange={(e: any) =>
-														this.setState({ currentChat: e.target.value })}
-													onKeyDown={this.handleKeyDown}
-													className={classes.input}
-												/>
-												<Button
-													onClick={() => this.sendChat()}
-													disabled={this.state.currentChat.length === 0}
-													variant='contained'
-													color='primary'
-													aria-label='send'
-													style={{ marginRight: 10 }}
-													className={classes.button}
-												>
-													<SendIcon />
-												</Button>
-											</Grid>
-										</div>
+										{ this.renderSubmitChatBox() }
 									</main>
 								</div>
 							</div>
