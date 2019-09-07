@@ -37,7 +37,7 @@ export interface IChatProps {
 		input: string;
 	};
 	githubUserData?: any;
-	groupId: number;
+	groupId?: number;
 	title?: string;
 	chatData?: any;
 	userData?: any;

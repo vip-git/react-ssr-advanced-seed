@@ -1,3 +1,7 @@
+/* eslint-disable react/no-access-state-in-setstate */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable react/state-in-constructor */
 // Model
 import { ChatBoxModel } from './chat-box.model';
 
@@ -67,7 +71,7 @@ class Chat extends Component<IChatProps, IChatState> {
 	scrollToBottomChat = () => {
 		if (typeof window !== 'undefined') {
 			setTimeout(() => {
-				const objDiv = document.getElementById('chats');
+				const objDiv = typeof document !== 'undefined' && document.getElementById('chats');
 				objDiv.scrollTop = objDiv.scrollHeight;
 			}, 1);
 		}
@@ -102,9 +106,10 @@ class Chat extends Component<IChatProps, IChatState> {
 		} = this.props;
 		const { opened } = this.state;
 		const currentUsername =
-			githubUserData.name.indexOf(' ') === -1
+			githubUserData.name && githubUserData.name.indexOf(' ') === -1
 				? githubUserData.name
-				: githubUserData.name.split(' ')[0];
+				: (githubUserData.name && githubUserData.name.split(' ')[0]) ||
+				  githubUserData.login;
 		const groupMemberData = reject(groupMembers, [
 			'member.githubUid',
 			githubUserData.id
@@ -117,11 +122,11 @@ class Chat extends Component<IChatProps, IChatState> {
 			groupMemberData.length === 1 ? groupMemberData[0].member.name : 'Group Name';
 		const menu = (
 			<List
-				subheader={
+				subheader={(
 					<ListSubheader disableSticky>
 						{t('chatbox-previous-chat')}
 					</ListSubheader>
-				}
+				)}
 			>
 				{userData.map((contact: IContact, index) => (
 					<ListItem key={`ListItem-${contact.id}`} button>
@@ -322,8 +327,7 @@ class Chat extends Component<IChatProps, IChatState> {
 													margin='normal'
 													value={this.state.currentChat}
 													onChange={(e: any) =>
-														this.setState({ currentChat: e.target.value })
-													}
+														this.setState({ currentChat: e.target.value })}
 													onKeyDown={this.handleKeyDown}
 													className={classes.input}
 												/>
@@ -351,4 +355,6 @@ class Chat extends Component<IChatProps, IChatState> {
 	}
 }
 
-export default withStyles(ChatStyles as any)(withTranslation()(Chat as any));
+const TypedChatStyles: any = ChatStyles;
+const TypeChatBox: any = Chat;
+export default withStyles(TypedChatStyles)(withTranslation()(TypeChatBox));
