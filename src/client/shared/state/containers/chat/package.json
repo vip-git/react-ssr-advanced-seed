@@ -1,6 +1,6 @@
 {
 	"name": "@omega-state-machines/chat",
-	"version": "0.4.12",
+	"version": "0.4.13",
 	"main": "./chat.redux-model.ts",
 	"gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
 	"scripts": {
