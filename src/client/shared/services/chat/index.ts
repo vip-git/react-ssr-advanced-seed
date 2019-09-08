@@ -1,5 +1,5 @@
 // Library
-import { of, from } from 'rxjs';
+import { of } from 'rxjs';
 
 // Services
 import { HttpService } from '../core/http.service';
@@ -7,18 +7,24 @@ import { HttpService } from '../core/http.service';
 // Gql
 import { chatQuery, createChatMutation, chatSubscription } from './chat.gql';
 
+export interface Payload {
+	apolloClient: {};
+	data: {};
+	accessToken: string;
+}
+
 class ChatService {
-	static getChats(payload: any) {
+	static getChats(payload: Payload) {
 		// allChats
 		const { apolloClient, data } = payload;
 		return HttpService.buildGraphQLCall(apolloClient, 'query', chatQuery, data);
 	}
 
-	static getChatsRest(payload: any) {
+	static getChatsRest(payload: Payload) {
 		return HttpService.buildRestApiCall('api', 'GET', '/chats', payload.accessToken, {})
 	}
 
-	static getAllChats(payload: any) {
+	static getAllChats(payload: Payload) {
 		const { apolloClient, data } = payload;
 		return HttpService.buildGraphQLCall(
 			apolloClient,
@@ -35,7 +41,7 @@ class ChatService {
 		);
 	}
 
-	static createChat(payload: any) {
+	static createChat(payload: Payload) {
 		const { apolloClient, data } = payload;
 		return HttpService.buildGraphQLCall(
 			apolloClient,
