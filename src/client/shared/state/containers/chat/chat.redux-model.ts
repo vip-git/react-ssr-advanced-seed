@@ -1,6 +1,7 @@
 // Service
 import { ChatServiceEngine } from '@omega-core/services/chat';
 import { UserServiceEngine } from '@omega-core/services/user';
+import { GroupServiceEngine } from '@omega-core/services/groups';
 
 // Rules
 import { ChatRulesEngine } from '@omega-core/rules/chat.rules';
@@ -13,7 +14,8 @@ import { getChatState, getAppState } from './redux/chat.selectors';
 export const ChatReduxModel = {
 	attributes: {
 		chatData: [],
-		userData: []
+		userData: [],
+		groupData: []
 	},
 	actionTypes: {
 		...ChatActionTypes
@@ -29,7 +31,8 @@ export const ChatReduxModel = {
 	},
 	services: {
 		...ChatServiceEngine,
-		...UserServiceEngine
+		...UserServiceEngine,
+		...GroupServiceEngine
 	},
 	reduxActions: (dispatch: any) => ({
 		dispatchReadAllUsersAndChats: (payload: any) =>

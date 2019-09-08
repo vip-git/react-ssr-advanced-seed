@@ -48,7 +48,10 @@ export default function OptionsBar(props: Options) {
 				onClose={handleClose}
 			>
 				{menuItems.map((menuVal: MenuObj) => (
-					<MenuItem onClick={() => handleClose(menuVal.callback)}>
+					<MenuItem
+						onClick={() => handleClose(menuVal.callback)}
+						key={`menu-name-${menuVal.menuName}`}
+					>
 						{menuVal.menuName}
 					</MenuItem>
 				))}

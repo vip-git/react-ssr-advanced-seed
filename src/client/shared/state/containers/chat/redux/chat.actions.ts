@@ -7,6 +7,9 @@ export const ChatActionTypes = {
 	READ_ALL_USERS: 'chat/read-all-users',
 	PROCESS_ALL_USERS: 'chat/process-all-users',
 
+	READ_ALL_GROUPS: 'chat/read-all-groups',
+	PROCESS_ALL_GROUPS: 'chat/process-all-groups',
+
 	CREATE_CHAT: 'chat/create-chat',
 	PROCESS_CREATE_CHAT: 'chat/process-create-chat',
 
@@ -34,6 +37,11 @@ class ChatActions {
 		payload
 	});
 
+	static readAllGroups = (payload: any) => ({
+		type: ChatActionTypes.READ_ALL_GROUPS,
+		payload
+	});
+
 	static readAllUsersAndChats = (payload: any) => ({
 		type: ChatActionTypes.READ_ALL_USERS_AND_CHATS,
 		payload
@@ -41,6 +49,11 @@ class ChatActions {
 
 	static processAllUsers = (payload: any) => ({
 		type: ChatActionTypes.PROCESS_ALL_USERS,
+		payload
+	});
+
+	static processAllGroups = (payload: any) => ({
+		type: ChatActionTypes.PROCESS_ALL_GROUPS,
 		payload
 	});
 
@@ -81,6 +94,7 @@ export const ChatActionsEngine = {
 			ChatActions.readAllUsersAndChats(payload),
 		readAllChats: (payload: any) => ChatActions.readAllChats(payload),
 		readAllUsers: (payload: any) => ChatActions.readAllUsers(payload),
+		readAllGroups: (payload: any) => ChatActions.readAllGroups(payload),
 		createChat: (payload: any) => ChatActions.createChat(payload),
 		editChat: (payload: any) => ChatActions.editChat(payload),
 		deleteChat: (payload: any) => ChatActions.deleteChat(payload)
@@ -88,6 +102,7 @@ export const ChatActionsEngine = {
 	reducer: {
 		processAllChats: (payload: any) => ChatActions.processAllChats(payload),
 		processAllUsers: (payload: any) => ChatActions.processAllUsers(payload),
+		processAllGroups: (payload: any) => ChatActions.processAllGroups(payload),
 		processCreateChat: (payload: any) => ChatActions.processCreateChat(payload),
 		processRemoveChat: (payload: any) => ChatActions.processRemoveChat(payload),
 		processErrorChatResponse: (payload: any) =>

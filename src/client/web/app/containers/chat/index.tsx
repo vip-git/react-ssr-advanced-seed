@@ -17,7 +17,7 @@ class ChatContainer extends Component<any, any> {
 		const { dispatchReadAllUsersAndChats, dispatchCreateChat } = this.props;
 		const { ChatComponent, ContentComponent } = ChatModel.components;
 		const { chats, title, idToken } = this.props;
-		const { chatData, userData, error } = chats;
+		const { chatData, userData, groupData, error } = chats;
 		const ChatComponentTyped: any = ChatComponent;
 		const githubUserData: any = JWTDecode(idToken);
 		return (
@@ -43,6 +43,14 @@ class ChatContainer extends Component<any, any> {
 												}
 											}
 										},
+										groupPayload: {
+											filters: {
+												take: 10,
+												where: {
+													accessType: 'public'
+												}
+											}
+										},
 										profilePayload: {
 											filters: {
 												not: {
@@ -58,6 +66,7 @@ class ChatContainer extends Component<any, any> {
 							title={title}
 							chatData={chatData}
 							userData={userData}
+							groupData={groupData}
 						/>
 					</React.Fragment>
 				)}

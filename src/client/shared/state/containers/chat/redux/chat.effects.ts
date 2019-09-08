@@ -89,7 +89,7 @@ class ChatEffect {
 		);
 
 	/**
-	 * GET chat epic
+	 * GET user epic
 	 * @param action$
 	 * @returns {any|*|Observable}
 	 */
@@ -117,6 +117,34 @@ class ChatEffect {
 		);
 
 	/**
+	 * GET group epic
+	 * @param action$
+	 * @returns {any|*|Observable}
+	 */
+	static readAllGroups = (action$: any) =>
+		action$.pipe(
+			ofType(ChatReduxModel.actionTypes.READ_ALL_GROUPS),
+			flatMap((action: IAction) => {
+				const { apolloClient, data } = action.payload.payload;
+				const { groupPayload } = data;
+				const graphqlPayload = {
+					apolloClient,
+					data: groupPayload,
+				};
+				return ChatReduxModel.services.requestAllGroups(graphqlPayload);
+			}),
+			map((userResponse: IGraphqlDataResponse) => {
+				const {
+					data: { getGroup }
+				} = userResponse;
+				const finalData = Array.isArray(getGroup)
+					? getGroup
+					: [];
+				return ChatReduxModel.actions.reducer.processAllGroups(finalData)
+			})
+		);
+
+	/**
 	 * GET chat epic
 	 * @param action$
 	 * @returns {any|*|Observable}
@@ -127,6 +155,7 @@ class ChatEffect {
 			mergeMap((action: IAction) =>
 				concat(
 					of(ChatReduxModel.actions.effects.readAllUsers(action)),
+					of(ChatReduxModel.actions.effects.readAllGroups(action)),
 					of(ChatReduxModel.actions.effects.readAllChats(action))
 				)
 			)
@@ -219,6 +248,7 @@ class ChatEffect {
 export const ChatEffectsEngine = {
 	$readAllChats: ChatEffect.readAllChats,
 	$readAllUsers: ChatEffect.readAllUsers,
+	$readAllGroups: ChatEffect.readAllGroups,
 	$readAllUsersAndChats: ChatEffect.readAllUsersAndChats,
 	$createChat: ChatEffect.createChat,
 	$deleteChat: ChatEffect.deleteChat,

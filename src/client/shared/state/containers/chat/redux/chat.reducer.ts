@@ -21,6 +21,12 @@ export default (state = initialState, action: { type: any; payload?: {} }) => {
 				userData: payload
 			};
 		}
+		case ChatReduxModel.actionTypes.PROCESS_ALL_GROUPS: {
+			return {
+				...state,
+				groupData: payload
+			};
+		}
 		case ChatReduxModel.actionTypes.PROCESS_CREATE_CHAT: {
 			const chatData = state.chatData;
 			state.chatData.push(payload);

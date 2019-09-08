@@ -1,33 +1,54 @@
 type Query {
-    getGroup(filters: GroupFindOptions!): [Group]
-    group(id: ID!): Group
+	getGroup(filters: GroupFindOptions!): [Group]
+	group(id: ID!): Group
+}
+
+enum GroupType {
+	personal
+	group
+}
+
+enum AccessType {
+	public
+	private
 }
 
 type Mutation {
-    createGroup(ownerId: ID!, groupName: String, groupDescription: String,
-        groupImage: String, date: String): Group
-    updateGroup(
-        id: ID!
-        ownerId: String
-        groupName: String
-        groupDescription: String
-        groupImage: String
-        date: String
-    ): Group
+	createGroup(
+		ownerId: ID!
+		groupName: String
+		groupDescription: String
+		groupImage: String
+		groupType: GroupType
+		accessType: AccessType
+		date: String
+	): Group
+	updateGroup(
+		id: ID!
+		ownerId: String
+		groupName: String
+		groupDescription: String
+		groupType: GroupType
+		accessType: AccessType
+		groupImage: String
+		date: String
+	): Group
 }
 
 type Subscription {
-    groupRecieved: Group
+	groupRecieved: Group
 }
 type Group {
-    id: Int
-    ownerId: Int
-    groupName: String
-    groupDescription: String
-    groupImage: String
-    date: String
-    groupMembers: [GroupMember]
-    chats: [Chat]
+	id: Int
+	ownerId: Int
+	groupName: String
+	groupDescription: String
+	groupType: GroupType
+	accessType: AccessType
+	groupImage: String
+	date: String
+	groupMembers: [GroupMember]
+	chats: [Chat]
 }
 
 input GroupFindOptions {
@@ -48,7 +69,9 @@ input InputGroup {
 	id: Int
 	ownerId: Int
 	groupName: String
-    groupImage: String
+	groupImage: String
 	groupDescription: String
+	groupType: GroupType
+	accessType: AccessType
 	date: String
 }

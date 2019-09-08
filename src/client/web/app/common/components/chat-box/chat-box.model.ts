@@ -10,6 +10,7 @@ import i18next from 'i18next';
 import { withTranslation } from 'react-i18next';
 
 // Material UI
+import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
 import { withStyles } from '@material-ui/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -27,8 +28,14 @@ import TextField from '@material-ui/core/TextField';
 import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
-import MenuIcon from '@material-ui/icons/Menu';
-import SendIcon from '@material-ui/icons/Send';
+
+// Icons
+import { 
+  AccountCircle as AccountCircleIcon, 
+  GroupWork as GroupWorkIcon, 
+  Menu as MenuIcon, 
+  Send as SendIcon 
+} from '@material-ui/icons';
 
 // Component
 import Wrapper from '@omega-web-components/wrapper';
@@ -66,6 +73,8 @@ export const ChatBoxModel = {
     Tabs
   },
   uiFrameworkComponents: {
+    withWidth,
+    isWidthUp,
     withStyles,
     AppBar,
     Toolbar,
@@ -85,6 +94,8 @@ export const ChatBoxModel = {
     IconButton,
     MenuIcon,
     SendIcon,
+    AccountCircleIcon,
+    GroupWorkIcon,
   },
   styles: {
     ChatStyles,

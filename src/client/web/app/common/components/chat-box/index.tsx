@@ -11,6 +11,8 @@ import './style.scss';
 
 // Internals
 const {
+	withWidth,
+	isWidthUp,
 	withStyles,
 	AppBar,
 	Toolbar,
@@ -21,7 +23,6 @@ const {
 	List,
 	ListItem,
 	ListItemText,
-	ListSubheader,
 	Avatar,
 	Divider,
 	TextField,
@@ -29,7 +30,9 @@ const {
 	Button,
 	IconButton,
 	MenuIcon,
-	SendIcon
+	SendIcon,
+	AccountCircleIcon,
+	GroupWorkIcon
 } = ChatBoxModel.uiFrameworkComponents;
 const {
 	React,
@@ -157,6 +160,7 @@ class Chat extends Component<IChatProps, IChatState> {
 				groupImage
 			},
 			userData,
+			groupData,
 			SharedComponent,
 			t,
 			githubUserData
@@ -180,24 +184,52 @@ class Chat extends Component<IChatProps, IChatState> {
 		const oppositeDescription =
 			groupMemberData.length === 1 ? 'Online' : groupDescription;
 		const menu = (
-			<List
-				subheader={(
-					<ListSubheader disableSticky>
-						{t('chatbox-previous-chat')}
-					</ListSubheader>
-				)}
-			>
-				{userData.map((contact: IContact, index) => (
-					<ListItem key={`ListItem-${contact.id}`} button>
-						<Avatar alt='' src={contact.avatar} className={classes.avatar} />
-						<ListItemText
-							primary={contact.name || contact.githubId}
-							secondary={contact.status}
-						/>
-					</ListItem>
-				))}
-				<Tabs />
-			</List>
+			<Tabs
+				tabs={[
+					{
+						icon: <AccountCircleIcon />,
+						tabName: t('chatbox-previous-chat'),
+						tabContent: () => (
+							<List>
+								{userData.map((contact: IContact, index) => (
+									<ListItem key={`ListItem-${contact.id}`} button>
+										<Avatar
+											alt=''
+											src={contact.avatar}
+											className={classes.avatar}
+										/>
+										<ListItemText
+											primary={contact.name || contact.githubId}
+											secondary={contact.status || contact.bio}
+										/>
+									</ListItem>
+								))}
+							</List>
+						)
+					},
+					{
+						icon: <GroupWorkIcon />,
+						tabName: 'Groups',
+						tabContent: () => (
+							<List>
+								{groupData.map((groupVal: any, index) => (
+									<ListItem key={`ListItem-${groupVal.id}`} button>
+										<Avatar
+											alt=''
+											src={groupVal.groupImage}
+											className={classes.avatar}
+										/>
+										<ListItemText
+											primary={groupVal.groupName}
+											secondary={groupVal.groupDescription}
+										/>
+									</ListItem>
+								))}
+							</List>
+						)
+					}
+				]}
+			/>
 		);
 		this.scrollToBottomChat();
 		return (
@@ -292,9 +324,10 @@ class Chat extends Component<IChatProps, IChatState> {
 								<div className={classes.wrapper}>
 									<SplitPane
 										split='vertical'
-										defaultSize={'27%'}
-										minSize={300}
-										maxSize={window.innerWidth / 4}
+										defaultSize={isWidthUp('md', this.props.width) ? '27%' : 0}
+										minSize={isWidthUp('md', this.props.width) ? 300 : 0}
+										maxSize={isWidthUp('md', this.props.width) ? window.innerWidth / 4 : 0}
+										allowResize={isWidthUp('md', this.props.width)}
 									>
 										<div
 											style={{
@@ -433,4 +466,4 @@ class Chat extends Component<IChatProps, IChatState> {
 
 const TypedChatStyles: any = ChatStyles;
 const TypeChatBox: any = Chat;
-export default withStyles(TypedChatStyles)(withTranslation()(TypeChatBox));
+export default withWidth()(withStyles(TypedChatStyles)(withTranslation()(TypeChatBox)));

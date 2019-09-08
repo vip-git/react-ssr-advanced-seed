@@ -36,11 +36,13 @@ export interface IChatProps {
 		dateReceived: string;
 		input: string;
 	};
+	width: any;
 	githubUserData?: any;
 	groupId?: number;
 	title?: string;
 	chatData?: any;
 	userData?: any;
+	groupData?: any;
 	submitChat?: (payload: any) => void;
 	readUsersAndChat?: () => void;
 	SharedComponent?: ReactType;
@@ -81,6 +83,7 @@ export interface IChatState {
 export interface IContact {
 	id: number;
 	githubId: string;
+	bio: string;
 	avatar: string;
 	name: string;
 	status: string;

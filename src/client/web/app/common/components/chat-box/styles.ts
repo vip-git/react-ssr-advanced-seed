@@ -5,7 +5,7 @@ import { Theme } from '@material-ui/core/styles';
  * makeStyles((theme: Theme) => createStyles({ *** }));
  */
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const ChatStyles = (theme: Theme) => ({
   root: {
@@ -34,6 +34,10 @@ const ChatStyles = (theme: Theme) => ({
   drawerPaper: {
     position: 'relative',
     overflow: 'auto',
+    [theme.breakpoints.down('md')]: {
+      width: drawerWidth,
+      maxWidth: drawerWidth,
+    },
     height: '100%',
   },
   modal: {

@@ -5,6 +5,16 @@
  */
 
 /* tslint:disable */
+export enum AccessType {
+    public = "public",
+    private = "private"
+}
+
+export enum GroupType {
+    personal = "personal",
+    group = "group"
+}
+
 export class ChatFindOptions {
     select?: string[];
     relations?: string[];
@@ -49,6 +59,8 @@ export class InputGroup {
     groupName?: string;
     groupImage?: string;
     groupDescription?: string;
+    groupType?: GroupType;
+    accessType?: AccessType;
     date?: string;
 }
 
@@ -96,6 +108,8 @@ export class Group {
     ownerId?: number;
     groupName?: string;
     groupDescription?: string;
+    groupType?: GroupType;
+    accessType?: AccessType;
     groupImage?: string;
     date?: string;
     groupMembers?: GroupMember[];
@@ -119,9 +133,9 @@ export abstract class IMutation {
 
     abstract updateGroupMember(id: string, memberId?: number, groupId?: number, date?: string): GroupMember | Promise<GroupMember>;
 
-    abstract createGroup(ownerId: string, groupName?: string, groupDescription?: string, groupImage?: string, date?: string): Group | Promise<Group>;
+    abstract createGroup(ownerId: string, groupName?: string, groupDescription?: string, groupImage?: string, groupType?: GroupType, accessType?: AccessType, date?: string): Group | Promise<Group>;
 
-    abstract updateGroup(id: string, ownerId?: string, groupName?: string, groupDescription?: string, groupImage?: string, date?: string): Group | Promise<Group>;
+    abstract updateGroup(id: string, ownerId?: string, groupName?: string, groupDescription?: string, groupType?: GroupType, accessType?: AccessType, groupImage?: string, date?: string): Group | Promise<Group>;
 
     abstract createProfile(githubUid?: number, githubId?: string, lastTokenWeb?: string, lastTokenMobile?: string, name?: string, email?: string, avatarUrl?: string, bio?: string, location?: string, createdAt?: string, updatedAt?: string): Profile | Promise<Profile>;
 
