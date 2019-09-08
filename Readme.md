@@ -12,6 +12,9 @@
 
 - [Node.js 8.0+](http://nodejs.org)
 
+### Generic Architecture
+![Generic UI Architecture](./readme-arch/generic-ui-arch.png)
+
 ### Getting Started
 
 ```
