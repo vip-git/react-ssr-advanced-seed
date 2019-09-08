@@ -16,6 +16,7 @@ const lernaPackages = {
 	},
 	rules: resolveApp('src/client/shared/rules'),
 	services: resolveApp('src/client/shared/services'),
+	i18n: resolveApp('src/client/shared/i18n'),
 	state: resolveApp('src/client/shared/state/containers'),
 	config: resolveApp('src/client/shared/config'),
 	assets: resolveApp('src/client/shared/assets'),
