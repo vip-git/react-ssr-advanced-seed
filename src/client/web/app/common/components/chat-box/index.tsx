@@ -35,11 +35,12 @@ const {
 	classNames,
 	distanceInWordsToNow,
 	i18next,
+	SplitPane,
 	withTranslation,
 	reject,
 	find
 } = ChatBoxModel.libraries;
-const { Wrapper, OptionsBar, ModalForm } = ChatBoxModel.components;
+const { Wrapper, OptionsBar, ModalForm, Tabs } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
 
 class Chat extends Component<IChatProps, IChatState> {
@@ -179,10 +180,10 @@ class Chat extends Component<IChatProps, IChatState> {
 		const menu = (
 			<List
 				subheader={(
-<ListSubheader disableSticky>
+					<ListSubheader disableSticky>
 						{t('chatbox-previous-chat')}
-</ListSubheader>
-)}
+					</ListSubheader>
+				)}
 			>
 				{userData.map((contact: IContact, index) => (
 					<ListItem key={`ListItem-${contact.id}`} button>
@@ -193,6 +194,7 @@ class Chat extends Component<IChatProps, IChatState> {
 						/>
 					</ListItem>
 				))}
+				<Tabs />
 			</List>
 		);
 		this.scrollToBottomChat();
@@ -286,112 +288,114 @@ class Chat extends Component<IChatProps, IChatState> {
 									</Toolbar>
 								</AppBar>
 								<div className={classes.wrapper}>
-									<Hidden smDown>
-										<Drawer
-											variant='permanent'
-											ModalProps={{
-												keepMounted: false,
-												className: classes.modal,
-												BackdropProps: {
-													className: classes.backdrop
-												},
-												onBackdropClick: this.handleDrawerToggle
-											}}
-											classes={{
-												paper: classes.drawerPaper
-											}}
-										>
-											{menu}
-											<SharedComponent />
-										</Drawer>
-									</Hidden>
-									<Hidden mdUp>
-										<Drawer
-											variant='temporary'
-											open={opened}
-											ModalProps={{
-												keepMounted: false,
-												className: classes.modal,
-												BackdropProps: {
-													className: classes.backdrop
-												},
-												onBackdropClick: this.handleDrawerToggle
-											}}
-											classes={{
-												paper: classes.drawerPaper
-											}}
-										>
-											{menu}
-										</Drawer>
-									</Hidden>
-									<main className={classes.main}>
-										<div id={'chats'} className={classes.content}>
-											{chats &&
-												chats.map((chat: IChat, index) => (
-													<div
-														key={`ChatItem-${chat.id}`}
-														className={classNames(
-															classes.conversation,
-															chat.ownerId === githubUserData.id
-																? classes.conversationSent
-																: classes.conversationReceived
-														)}
-													>
-														<Avatar
-															alt=''
-															src={chat.owner.avatarUrl}
-															style={{
-																marginRight: 10,
-																display:
-																	chat.ownerId === githubUserData.id
-																		? 'none'
-																		: 'block'
-															}}
-														/>
+									<SplitPane split='vertical' minSize={50} defaultSize={100}>
+										<Hidden smDown>
+											<Drawer
+												variant='permanent'
+												ModalProps={{
+													keepMounted: false,
+													className: classes.modal,
+													BackdropProps: {
+														className: classes.backdrop
+													},
+													onBackdropClick: this.handleDrawerToggle
+												}}
+												classes={{
+													paper: classes.drawerPaper
+												}}
+											>
+												{menu}
+												<SharedComponent />
+											</Drawer>
+										</Hidden>
+										<Hidden mdUp>
+											<Drawer
+												variant='temporary'
+												open={opened}
+												ModalProps={{
+													keepMounted: false,
+													className: classes.modal,
+													BackdropProps: {
+														className: classes.backdrop
+													},
+													onBackdropClick: this.handleDrawerToggle
+												}}
+												classes={{
+													paper: classes.drawerPaper
+												}}
+											>
+												{menu}
+											</Drawer>
+										</Hidden>
+										<main className={classes.main}>
+											<div id={'chats'} className={classes.content}>
+												{chats &&
+													chats.map((chat: IChat, index) => (
 														<div
+															key={`ChatItem-${chat.id}`}
 															className={classNames(
-																classes.body,
+																classes.conversation,
 																chat.ownerId === githubUserData.id
-																	? classes.bodySent
-																	: classes.bodyReceived
+																	? classes.conversationSent
+																	: classes.conversationReceived
 															)}
 														>
-															<Typography color='inherit'>
-																{chat.message}
-															</Typography>
-															<Typography
-																variant='caption'
+															<Avatar
+																alt=''
+																src={chat.owner.avatarUrl}
+																style={{
+																	marginRight: 10,
+																	display:
+																		chat.ownerId === githubUserData.id
+																			? 'none'
+																			: 'block'
+																}}
+															/>
+															<div
 																className={classNames(
-																	classes.date,
+																	classes.body,
 																	chat.ownerId === githubUserData.id
-																		? classes.dateSent
-																		: classes.dateReceived
+																		? classes.bodySent
+																		: classes.bodyReceived
 																)}
 															>
-																{' '}
-																{distanceInWordsToNow(chat.date)}
-															</Typography>
+																<Typography color='inherit'>
+																	{chat.message}
+																</Typography>
+																<Typography
+																	variant='caption'
+																	className={classNames(
+																		classes.date,
+																		chat.ownerId === githubUserData.id
+																			? classes.dateSent
+																			: classes.dateReceived
+																	)}
+																>
+																	{' '}
+																	{distanceInWordsToNow(chat.date)}
+																</Typography>
+															</div>
+															<Avatar
+																alt=''
+																src={githubUserData.avatar_url}
+																style={{
+																	float: 'right',
+																	order: 2,
+																	marginLeft: 10,
+																	top: 25,
+																	display:
+																		chat.ownerId === githubUserData.id
+																			? 'block'
+																			: 'none'
+																}}
+															/>
 														</div>
-														<Avatar
-															alt=''
-															src={githubUserData.avatar_url}
-															style={{
-																float: 'right',
-																order: 2,
-																marginLeft: 10,
-																top: 25,
-																display:
-																	chat.ownerId === githubUserData.id
-																		? 'block'
-																		: 'none'
-															}}
-														/>
-													</div>
-												))}
-										</div>
-										<Divider />
-										{this.renderSubmitChatBox()}
-									</main>
+													))}
+											</div>
+											<Divider />
+											{this.renderSubmitChatBox()}
+										</main>
+									</SplitPane>
 								</div>
 							</div>
 						</Card>

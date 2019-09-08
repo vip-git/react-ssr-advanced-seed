@@ -86,6 +86,7 @@
 		"react-apollo": "2.5.8",
 		"react-redux": "7.1.0",
 		"react-router": "5.0.1",
+		"react-split-pane": "^0.1.87",
 		"redux": "4.0.1",
 		"redux-logger": "3.0.6",
 		"redux-observable": "1.1.0",

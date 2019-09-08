@@ -73,6 +73,8 @@ export interface IChat {
 
 export interface IChatState {
 	opened: boolean;
+	showModalForm: boolean;
+	modalHandleClose: () => void;
 	currentChat: string;
 }
 

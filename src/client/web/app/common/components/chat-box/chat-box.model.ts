@@ -7,6 +7,7 @@ import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import JWTDecode from 'jwt-decode';
 import i18next from 'i18next';
 import { withTranslation } from 'react-i18next';
+import SplitPane from 'react-split-pane';
 
 // Material UI
 import { withStyles } from '@material-ui/styles';
@@ -33,6 +34,7 @@ import SendIcon from '@material-ui/icons/Send';
 import Wrapper from '@omega-web-components/wrapper';
 import OptionsBar from '../options-bar'; // @omega-web-components/options-bar
 import ModalForm from '../modal-form'; // @omega-web-components/modal-form
+import Tabs from '../tabs'; // @omega-web-components/tabs
 import ChatStyles from './styles';
 
 export const ChatBoxModel = {
@@ -44,6 +46,7 @@ export const ChatBoxModel = {
     distanceInWordsToNow,
     JWTDecode,
     i18next,
+    SplitPane,
     withTranslation,
     reject,
     find
@@ -60,6 +63,7 @@ export const ChatBoxModel = {
     Wrapper,
     OptionsBar,
     ModalForm,
+    Tabs
   },
   uiFrameworkComponents: {
     withStyles,
