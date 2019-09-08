@@ -60,10 +60,16 @@ export const ChatBoxModel = {
   },
   i18nKeys: {
     'en-US': {
-      'chatbox-previous-chat': 'All Users'
+      'chatbox-all-users': 'All Users',
+      'chatbox-all-groups': 'All Groups',
     },
     'de-DE': {
-      'chatbox-previous-chat': 'Alle Nutzer'
+      'chatbox-all-users': 'Alle Nutzer',
+      'chatbox-all-groups': 'Alle Gruppen',
+    },
+    'fr-FR': {
+      'chatbox-all-users': 'Tous les utilisateurs',
+      'chatbox-all-groups': 'Tous les groupes',
     }
   },
   components: {

@@ -1,0 +1,9 @@
+{
+	"name": "@omega-core/i18n",
+	"version": "0.4.13",
+	"scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
+	"main": "./IntlProvider.tsx",
+	"dependencies": {}
+}

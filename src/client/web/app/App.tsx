@@ -92,6 +92,9 @@ class App extends React.PureComponent<any, any> {
 						top: 26
 					}}
 				>
+					<button value='fr-FR' onClick={this.setLanguage}>
+						French
+					</button>
 					<button value='de-DE' onClick={this.setLanguage}>
 						Deutsch
 					</button>

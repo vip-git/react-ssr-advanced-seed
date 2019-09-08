@@ -12,7 +12,7 @@ import {
 // Internal
 import { ThemeProvider } from '@material-ui/styles';
 import routes from './app/routes';
-import IntlProvider from './app/common/i18n/IntlProvider';
+import IntlProvider from '../shared/i18n/IntlProvider';
 import { configureStore } from '../shared/state';
 import theme from './app/common/styles';
 

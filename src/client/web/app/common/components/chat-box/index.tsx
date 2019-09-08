@@ -57,6 +57,7 @@ class Chat extends Component<IChatProps, IChatState> {
 	};
 
 	componentDidMount() {
+		const { i18nKeys } = ChatBoxModel;
 		i18next.addResourceBundle(
 			'en-US',
 			'translation',
@@ -66,6 +67,11 @@ class Chat extends Component<IChatProps, IChatState> {
 			'de-DE',
 			'translation',
 			ChatBoxModel.i18nKeys['de-DE']
+		);
+		i18next.addResourceBundle(
+			'fr-FR',
+			'translation',
+			ChatBoxModel.i18nKeys['fr-FR']
 		);
 		this.props.readUsersAndChat();
 	}
@@ -188,7 +194,7 @@ class Chat extends Component<IChatProps, IChatState> {
 				tabs={[
 					{
 						icon: <AccountCircleIcon />,
-						tabName: t('chatbox-previous-chat'),
+						tabName: t('chatbox-all-users'),
 						tabContent: () => (
 							<List>
 								{userData.map((contact: IContact, index) => (
@@ -209,7 +215,7 @@ class Chat extends Component<IChatProps, IChatState> {
 					},
 					{
 						icon: <GroupWorkIcon />,
-						tabName: 'Groups',
+						tabName: t('chatbox-all-groups'),
 						tabContent: () => (
 							<List>
 								{groupData.map((groupVal: any, index) => (
