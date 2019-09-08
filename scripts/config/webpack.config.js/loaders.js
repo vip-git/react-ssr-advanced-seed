@@ -42,50 +42,52 @@ const babelLoader = {
 };
 
 const cssLoaderClient = {
-  test: /\.(css|scss)$/,
-  exclude: /node_modules\/(?!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
-  use: [
-    'css-hot-loader',
-    MiniCssExtractPlugin.loader,
-    {
-      loader: 'css-loader',
-      options: {
-        camelCase: true,
-        modules: true,
-        importLoaders: 1,
-        sourceMap: true,
-        localIdentName: '[name]__[local]--[hash:base64:5]',
-      },
-    },
-    {
-      loader: 'postcss-loader',
-      options: {
-        sourceMap: true,
-      },
-    },
-  ],
+	test: /\.(css|scss)$/,
+	exclude: /node_modules\/(?!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
+	use: [
+		'css-hot-loader',
+		MiniCssExtractPlugin.loader,
+		{
+			loader: 'css-loader',
+			options: {
+				localsConvention: 'camelCase',
+				modules: {
+					localIdentName: '[name]__[local]--[hash:base64:5]'
+				},
+				importLoaders: 1,
+				sourceMap: true
+			}
+		},
+		{
+			loader: 'postcss-loader',
+			options: {
+				sourceMap: true
+			}
+		}
+	]
 };
 
 const cssLoaderServer = {
-  test: /\.css$/,
-  exclude: /node_modules\/(?!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
-  use: [
-    {
-      loader: 'css-loader/locals',
-      options: {
-        camelCase: true,
-        importLoaders: 1,
-        modules: true,
-        localIdentName: '[name]__[local]--[hash:base64:5]',
-      },
-    },
-    {
-      loader: 'postcss-loader',
-      options: {
-        sourceMap: true,
-      },
-    },
-  ],
+	test: /\.css$/,
+	exclude: /node_modules\/(?!(@omega-web-components|@omega-shared-components|@omega-core|@omega-state-machines|@omega-web-containers)\/).*/,
+	use: [
+		{
+			loader: 'css-loader/locals',
+			options: {
+				localsConvention: 'camelCase',
+				importLoaders: 1,
+				modules: {
+					localIdentName: '[name]__[local]--[hash:base64:5]'
+				}
+			}
+		},
+		{
+			loader: 'postcss-loader',
+			options: {
+				sourceMap: true
+			}
+		}
+	]
 };
 
 const urlLoaderClient = {

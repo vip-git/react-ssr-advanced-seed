@@ -7,6 +7,8 @@ import { ChatBoxModel } from './chat-box.model';
 // Interfaces
 import { IChatProps, IChatState, IContact, IChat } from './types';
 
+import './style.scss';
+
 // Internals
 const {
 	withStyles,
@@ -288,113 +290,136 @@ class Chat extends Component<IChatProps, IChatState> {
 									</Toolbar>
 								</AppBar>
 								<div className={classes.wrapper}>
-									<SplitPane split='vertical' minSize={50} defaultSize={100}>
-										<Hidden smDown>
-											<Drawer
-												variant='permanent'
-												ModalProps={{
-													keepMounted: false,
-													className: classes.modal,
-													BackdropProps: {
-														className: classes.backdrop
-													},
-													onBackdropClick: this.handleDrawerToggle
-												}}
-												classes={{
-													paper: classes.drawerPaper
-												}}
-											>
-												{menu}
-												<SharedComponent />
-											</Drawer>
-										</Hidden>
-										<Hidden mdUp>
-											<Drawer
-												variant='temporary'
-												open={opened}
-												ModalProps={{
-													keepMounted: false,
-													className: classes.modal,
-													BackdropProps: {
-														className: classes.backdrop
-													},
-													onBackdropClick: this.handleDrawerToggle
-												}}
-												classes={{
-													paper: classes.drawerPaper
-												}}
-											>
-												{menu}
-											</Drawer>
-										</Hidden>
-										<main className={classes.main}>
-											<div id={'chats'} className={classes.content}>
-												{chats &&
-													chats.map((chat: IChat, index) => (
-														<div
-															key={`ChatItem-${chat.id}`}
-															className={classNames(
-																classes.conversation,
-																chat.ownerId === githubUserData.id
-																	? classes.conversationSent
-																	: classes.conversationReceived
-															)}
-														>
-															<Avatar
-																alt=''
-																src={chat.owner.avatarUrl}
-																style={{
-																	marginRight: 10,
-																	display:
-																		chat.ownerId === githubUserData.id
-																			? 'none'
-																			: 'block'
-																}}
-															/>
+									<SplitPane
+										split='vertical'
+										defaultSize={'27%'}
+										minSize={300}
+										maxSize={window.innerWidth / 4}
+									>
+										<div
+											style={{
+												height: '100%'
+											}}
+										>
+											<Hidden smDown>
+												<Drawer
+													variant='permanent'
+													ModalProps={{
+														keepMounted: false,
+														className: classes.modal,
+														BackdropProps: {
+															className: classes.backdrop
+														},
+														onBackdropClick: this.handleDrawerToggle
+													}}
+													classes={{
+														paper: classes.drawerPaper
+													}}
+													style={{
+														height: '100%'
+													}}
+												>
+													{menu}
+													<SharedComponent />
+												</Drawer>
+											</Hidden>
+											<Hidden mdUp>
+												<Drawer
+													variant='temporary'
+													open={opened}
+													ModalProps={{
+														keepMounted: false,
+														className: classes.modal,
+														BackdropProps: {
+															className: classes.backdrop
+														},
+														onBackdropClick: this.handleDrawerToggle
+													}}
+													classes={{
+														paper: classes.drawerPaper
+													}}
+													style={{
+														height: '100%'
+													}}
+												>
+													{menu}
+												</Drawer>
+											</Hidden>
+										</div>
+										<div
+											style={{
+												height: '100%'
+											}}
+										>
+											<main className={classes.main}>
+												<div id={'chats'} className={classes.content}>
+													{chats &&
+														chats.map((chat: IChat, index) => (
 															<div
+																key={`ChatItem-${chat.id}`}
 																className={classNames(
-																	classes.body,
+																	classes.conversation,
 																	chat.ownerId === githubUserData.id
-																		? classes.bodySent
-																		: classes.bodyReceived
+																		? classes.conversationSent
+																		: classes.conversationReceived
 																)}
 															>
-																<Typography color='inherit'>
-																	{chat.message}
-																</Typography>
-																<Typography
-																	variant='caption'
+																<Avatar
+																	alt=''
+																	src={chat.owner.avatarUrl}
+																	style={{
+																		marginRight: 10,
+																		display:
+																			chat.ownerId === githubUserData.id
+																				? 'none'
+																				: 'block'
+																	}}
+																/>
+																<div
 																	className={classNames(
-																		classes.date,
+																		classes.body,
 																		chat.ownerId === githubUserData.id
-																			? classes.dateSent
-																			: classes.dateReceived
+																			? classes.bodySent
+																			: classes.bodyReceived
 																	)}
 																>
-																	{' '}
-																	{distanceInWordsToNow(chat.date)}
-																</Typography>
+																	<Typography color='inherit'>
+																		{chat.message}
+																	</Typography>
+																	<Typography
+																		variant='caption'
+																		className={classNames(
+																			classes.date,
+																			chat.ownerId === githubUserData.id
+																				? classes.dateSent
+																				: classes.dateReceived
+																		)}
+																	>
+																		{' '}
+																		{distanceInWordsToNow(chat.date)}
+																	</Typography>
+																</div>
+																<Avatar
+																	alt=''
+																	src={githubUserData.avatar_url}
+																	style={{
+																		float: 'right',
+																		order: 2,
+																		marginLeft: 10,
+																		top: 25,
+																		display:
+																			chat.ownerId === githubUserData.id
+																				? 'block'
+																				: 'none'
+																	}}
+																/>
 															</div>
-															<Avatar
-																alt=''
-																src={githubUserData.avatar_url}
-																style={{
-																	float: 'right',
-																	order: 2,
-																	marginLeft: 10,
-																	top: 25,
-																	display:
-																		chat.ownerId === githubUserData.id
-																			? 'block'
-																			: 'none'
-																}}
-															/>
-														</div>
-													))}
-											</div>
-											<Divider />
-											{this.renderSubmitChatBox()}
-										</main>
+														))}
+												</div>
+												<Divider />
+												{this.renderSubmitChatBox()}
+											</main>
+										</div>
 									</SplitPane>
 								</div>
 							</div>

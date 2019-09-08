@@ -33,8 +33,6 @@ const ChatStyles = (theme: Theme) => ({
   },
   drawerPaper: {
     position: 'relative',
-    width: drawerWidth,
-    maxWidth: drawerWidth,
     overflow: 'auto',
     height: '100%',
   },
@@ -86,9 +84,7 @@ const ChatStyles = (theme: Theme) => ({
   },
   main: {
     flexGrow: 1,
-    [theme.breakpoints.up('md')]: {
-      width: 'calc(100% - 240px)',
-    },
+    height: '100%'
   },
   content: {
     flexGrow: 1,
