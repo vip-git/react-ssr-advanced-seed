@@ -5,13 +5,23 @@ import {
 	PrimaryGeneratedColumn,
 	OneToMany
 } from 'typeorm';
-import { IsString, IsInt } from 'class-validator';
+import { IsString, IsInt, IsEnum } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
 
 // Model
 import { GroupMemberModel } from '../../group-member/shared/group-member.model';
 import { ChatModel } from '../../chat/shared/chat.model';
 
+
+enum GroupType {
+	Personal = 'personal',
+	Group = 'group'
+}
+
+enum AccessType {
+	Public = 'public',
+	Private = 'private'
+}
 export interface IGroup {
 	id: number;
 	ownerId: number;
@@ -19,6 +29,8 @@ export interface IGroup {
 	groupMembers: GroupMemberModel[];
 	chats: ChatModel[];
 	groupDescription: string;
+	groupType: GroupType;
+	accessType: AccessType;
 	groupImage: string;
 	date: Date;
 }
@@ -56,6 +68,22 @@ export class GroupModel implements IGroup {
 	@ApiModelProperty()
 	@IsString()
 	groupDescription: string;
+
+	@Column({
+		type: "enum",
+		enum: GroupType,
+		default: GroupType.Group,
+	})
+	@ApiModelProperty()
+	groupType: GroupType;
+
+	@Column({
+		type: "enum",
+		enum: AccessType,
+		default: AccessType.Public,
+	})
+	@ApiModelProperty()
+	accessType: AccessType;
 
 	@Column('text')
 	@ApiModelProperty()

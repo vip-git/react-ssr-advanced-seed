@@ -27,11 +27,12 @@ import Hidden from '@material-ui/core/Hidden';
 import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
 import SendIcon from '@material-ui/icons/Send';
 
 // Component
 import Wrapper from '@omega-web-components/wrapper';
+import OptionsBar from '../options-bar'; // @omega-web-components/options-bar
+import ModalForm from '../modal-form'; // @omega-web-components/modal-form
 import ChatStyles from './styles';
 
 export const ChatBoxModel = {
@@ -57,6 +58,8 @@ export const ChatBoxModel = {
   },
   components: {
     Wrapper,
+    OptionsBar,
+    ModalForm,
   },
   uiFrameworkComponents: {
     withStyles,
@@ -77,7 +80,6 @@ export const ChatBoxModel = {
     Button,
     IconButton,
     MenuIcon,
-    MoreVertIcon,
     SendIcon,
   },
   styles: {

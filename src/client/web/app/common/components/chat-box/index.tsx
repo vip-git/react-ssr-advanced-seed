@@ -1,6 +1,5 @@
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
-/* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable react/state-in-constructor */
 // Model
 import { ChatBoxModel } from './chat-box.model';
@@ -28,7 +27,6 @@ const {
 	Button,
 	IconButton,
 	MenuIcon,
-	MoreVertIcon,
 	SendIcon
 } = ChatBoxModel.uiFrameworkComponents;
 const {
@@ -41,13 +39,15 @@ const {
 	reject,
 	find
 } = ChatBoxModel.libraries;
-const { Wrapper } = ChatBoxModel.components;
+const { Wrapper, OptionsBar, ModalForm } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
 
 class Chat extends Component<IChatProps, IChatState> {
 	state = {
 		opened: false,
-		currentChat: ''
+		currentChat: '',
+		modalHandleClose: () => this.setState({ showModalForm: false }),
+		showModalForm: false
 	};
 
 	componentDidMount() {
@@ -71,7 +71,8 @@ class Chat extends Component<IChatProps, IChatState> {
 	scrollToBottomChat = () => {
 		if (typeof window !== 'undefined') {
 			setTimeout(() => {
-				const objDiv = typeof document !== 'undefined' && document.getElementById('chats');
+				const objDiv =
+					typeof document !== 'undefined' && document.getElementById('chats');
 				objDiv.scrollTop = objDiv.scrollHeight;
 			}, 1);
 		}
@@ -98,9 +99,7 @@ class Chat extends Component<IChatProps, IChatState> {
 	renderSubmitChatBox = () => {
 		const {
 			classes,
-			chatData: {
-				groupMembers,
-			},
+			chatData: { groupMembers },
 			githubUserData
 		} = this.props;
 		const groupMemberData = find(groupMembers, [
@@ -142,7 +141,7 @@ class Chat extends Component<IChatProps, IChatState> {
 				</Grid>
 			</div>
 		);
-	}
+	};
 
 	render() {
 		const {
@@ -180,15 +179,18 @@ class Chat extends Component<IChatProps, IChatState> {
 		const menu = (
 			<List
 				subheader={(
-					<ListSubheader disableSticky>
+<ListSubheader disableSticky>
 						{t('chatbox-previous-chat')}
-					</ListSubheader>
-				)}
+</ListSubheader>
+)}
 			>
 				{userData.map((contact: IContact, index) => (
 					<ListItem key={`ListItem-${contact.id}`} button>
 						<Avatar alt='' src={contact.avatar} className={classes.avatar} />
-						<ListItemText primary={contact.name || contact.githubId} secondary={contact.status} />
+						<ListItemText
+							primary={contact.name || contact.githubId}
+							secondary={contact.status}
+						/>
 					</ListItem>
 				))}
 			</List>
@@ -261,9 +263,26 @@ class Chat extends Component<IChatProps, IChatState> {
 											</ListItem>
 										</List>
 										<span className='flexSpacer' />
-										<IconButton color='inherit'>
-											<MoreVertIcon />
-										</IconButton>
+										<OptionsBar
+											menuItems={[
+												{
+													menuName: 'Create Group',
+													callback: () => this.setState({ showModalForm: true })
+												},
+												{
+													menuName: 'Settings',
+													callback: () => console.log('called for settings')
+												},
+												{
+													menuName: 'Logout',
+													callback: () => console.log('called for logout')
+												}
+											]}
+										/>
+										<ModalForm
+											open={this.state.showModalForm}
+											handleClose={this.state.modalHandleClose}
+										/>
 									</Toolbar>
 								</AppBar>
 								<div className={classes.wrapper}>
@@ -371,7 +390,7 @@ class Chat extends Component<IChatProps, IChatState> {
 												))}
 										</div>
 										<Divider />
-										{ this.renderSubmitChatBox() }
+										{this.renderSubmitChatBox()}
 									</main>
 								</div>
 							</div>
