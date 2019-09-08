@@ -1,5 +1,5 @@
 // Library
-import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, UseGuards, UseInterceptors } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/auth.guard';
 import {
 	ApiUseTags,
@@ -8,10 +8,14 @@ import {
 	ApiOperation
 } from '@nestjs/swagger';
 
+// Interceptors
+import { RulesInterceptor } from '../../../common/interceptors/rules.interceptor';
+
 // Internal
 import { GroupModel, GroupService } from '../index';
 
 @UseGuards(JwtAuthGuard)
+@UseInterceptors(RulesInterceptor)
 @ApiBearerAuth()
 @ApiUseTags('group')
 @Controller('group')

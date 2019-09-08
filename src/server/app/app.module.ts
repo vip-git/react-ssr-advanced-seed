@@ -3,7 +3,7 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ChatModule, ChatModel } from './modules/chat/chat.module';
 import { AuthModule } from './modules/auth/auth.module';
-import { TvMazeService } from './services/tvmaze.service';
+import { TvMazeService } from './common/services/tvmaze.service';
 import { ProfileModule, ProfileModel } from './modules/profile/profile.module';
 import { GroupModule, GroupModel } from './modules/group/group.module';
 import { GroupMemberModule, GroupMemberModel } from './modules/group-member/group-member.module';

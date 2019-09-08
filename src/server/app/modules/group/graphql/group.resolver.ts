@@ -1,7 +1,10 @@
 // Library
-import { UseGuards } from '@nestjs/common';
+import { UseGuards, UseInterceptors } from '@nestjs/common';
 import { Query, Mutation, Resolver, Subscription, Args } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
+
+// Interceptors
+import { RulesInterceptor } from '../../../common/interceptors/rules.interceptor';
 
 // Internal
 import { IGroup } from '../shared/group.model';
@@ -11,6 +14,7 @@ import { GroupGuard } from './group.guard';
 const pubSub = new PubSub();
 
 @UseGuards(GroupGuard)
+@UseInterceptors(RulesInterceptor)
 @Resolver('Group')
 export class GroupResolver {
 	constructor(private readonly groupService: GroupService) {}
