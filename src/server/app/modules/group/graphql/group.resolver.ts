@@ -14,7 +14,7 @@ import { GroupGuard } from './group.guard';
 const pubSub = new PubSub();
 
 @UseGuards(GroupGuard)
-@UseInterceptors(RulesInterceptor)
+// @UseInterceptors(RulesInterceptor)
 @Resolver('Group')
 export class GroupResolver {
 	constructor(private readonly groupService: GroupService) {}
