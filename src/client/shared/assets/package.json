@@ -1,6 +1,6 @@
 {
   "name": "@omega-core/assets",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"
   },

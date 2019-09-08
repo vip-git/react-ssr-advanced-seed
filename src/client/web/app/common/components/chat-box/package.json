@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/chat-box",
-  "version": "0.4.11",
+  "version": "0.4.12",
   "main": "./index.tsx",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"
@@ -15,7 +15,10 @@
     "@material-ui/icons": "4.2.1",
     "@omega-core/assets": "^0.4.0",
     "@omega-web-components/wrapper": "^0.4.0",
-		"react-split-pane": "0.1.87",
+    "@omega-web-components/options-bar": "^0.4.0",
+    "@omega-web-components/modal-form": "^0.4.0",
+    "@omega-web-components/tabs": "^0.4.0",
+    "react-split-pane": "0.1.87",
     "classnames": "2.2.6",
     "date-fns": "1.30.1",
     "prop-types": "15.7.2",

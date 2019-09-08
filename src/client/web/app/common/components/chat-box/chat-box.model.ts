@@ -32,9 +32,9 @@ import SendIcon from '@material-ui/icons/Send';
 
 // Component
 import Wrapper from '@omega-web-components/wrapper';
-import OptionsBar from '../options-bar'; // @omega-web-components/options-bar
-import ModalForm from '../modal-form'; // @omega-web-components/modal-form
-import Tabs from '../tabs'; // @omega-web-components/tabs
+import OptionsBar from '@omega-web-components/options-bar'; // @omega-web-components/options-bar
+import ModalForm from '@omega-web-components/modal-form'; // @omega-web-components/modal-form
+import Tabs from '@omega-web-components/tabs'; // @omega-web-components/tabs
 import ChatStyles from './styles';
 
 export const ChatBoxModel = {
