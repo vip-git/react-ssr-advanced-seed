@@ -1,13 +1,13 @@
 // Library
 import React, { Component } from 'react';
 import { reject, find } from 'lodash';
+import SplitPane from 'react-split-pane';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import JWTDecode from 'jwt-decode';
 import i18next from 'i18next';
 import { withTranslation } from 'react-i18next';
-import SplitPane from 'react-split-pane';
 
 // Material UI
 import { withStyles } from '@material-ui/styles';
