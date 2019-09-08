@@ -10,16 +10,18 @@ import { AuthController } from './auth.controller';
 import { GithubStrategy } from './github.strategy';
 import { ProfileService } from '../profile/shared/profile.service';
 import { ProfileModel } from '../profile/shared/profile.model';
+import { GroupMemberService } from '../group-member/shared/group-member.service';
+import { GroupMemberModel } from '../group-member/shared/group-member.model';
 
 @Module({
 	imports: [
-		TypeOrmModule.forFeature([ProfileModel]),
+		TypeOrmModule.forFeature([ProfileModel, GroupMemberModel]),
 		PassportModule.register({ defaultStrategy: 'jwt' }), JwtModule.register({
 		secret: 'secretKey',
 		signOptions: { expiresIn: '60s' },
 	})],
 	controllers: [AuthController],
-	providers: [AuthService, JwtStrategy, GithubStrategy, ProfileService]
+	providers: [AuthService, JwtStrategy, GithubStrategy, ProfileService, GroupMemberService]
 })
 export class AuthModule implements NestModule {
 	configure(consumer: MiddlewareConsumer) {

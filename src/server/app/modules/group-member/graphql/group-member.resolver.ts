@@ -4,7 +4,7 @@ import { Query, Mutation, Resolver, Subscription } from '@nestjs/graphql';
 import { PubSub } from 'graphql-subscriptions';
 
 // Internal
-import { IGroupMember } from '../shared/group-member.model';
+import { IGroupMember, GroupMemberModel } from '../shared/group-member.model';
 import { GroupMemberService } from '../shared/group-member.service';
 import { GroupMemberGuard } from './group-member.guard';
 
@@ -34,7 +34,7 @@ async findOneById(obj, args, context, info): Promise<IGroupMember> {
     }
 
     @Mutation('updateGroupMember')
-    async update(obj, args: IGroupMember, context, info): Promise<IGroupMember> {
+    async update(obj, args: GroupMemberModel, context, info): Promise<IGroupMember> {
         const { id } = args;
         const updatedGroupMember = await this.GroupMemberService.update(id, args);
         pubSub.publish('GroupMemberRecieved', { GroupMemberRecieved: updatedGroupMember });

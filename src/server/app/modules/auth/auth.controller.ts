@@ -3,16 +3,19 @@ import { Controller, Get, Req, Res } from '@nestjs/common';
 
 // Models
 import { IProfile } from '../profile/shared/profile.model';
+import { IGroupMember } from '../group-member/shared/group-member.model';
 
 // Services
 import { AuthService } from './auth.service';
 import { ProfileService } from '../profile/shared/profile.service';
+import { GroupMemberService } from '../group-member/shared/group-member.service';
 
 @Controller('auth')
 export class AuthController {
 	constructor(
 		private readonly authService: AuthService,
 		private readonly profileService: ProfileService, 
+		private readonly groupMemberService: GroupMemberService,
 	) {}
 
 	@Get('callback')
@@ -34,7 +37,13 @@ export class AuthController {
 			createdAt: new Date(),
 			updatedAt: new Date(),
 		};
-		await this.profileService.create(createUserPayload);
+		const userProfile = await this.profileService.create(createUserPayload);
+		const groupMemberPayload: IGroupMember = {
+			memberId: userProfile.id,
+			groupId: 2,
+			date: new Date(),
+		};
+		await this.groupMemberService.create(groupMemberPayload);
 		return response.redirect(303, `${process.env.FRONT_END_HOST}/?accessToken=${tokenObj.accessToken}&idToken=${tokenObj.idToken}`);
 	}
 
