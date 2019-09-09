@@ -1,6 +1,6 @@
 {
 	"name": "@omega-web-containers/chat",
-	"version": "0.4.14",
+	"version": "0.4.15",
 	"main": "./index.tsx",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
