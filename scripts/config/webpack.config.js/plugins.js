@@ -3,6 +3,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const WorkboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 
 const env = require('../env')();
@@ -62,7 +63,13 @@ const client = [
 				: '[id].[contenthash].css'
 	}),
 	new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-	new ManifestPlugin({ fileName: 'manifest.json' })
+  new ManifestPlugin({ fileName: 'manifest.json' }),
+  new WorkboxPlugin.GenerateSW({
+    // these options encourage the ServiceWorkers to get in there fast
+    // and not allow any straggling "old" SWs to hang around
+    clientsClaim: true,
+    skipWaiting: true
+  })
 ];
 
 if (process.env.NODE_ENV === 'production') {
