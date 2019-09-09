@@ -57,6 +57,12 @@ class App extends React.PureComponent<any, any> {
 				console.log('error', error)
 			}
 		}
+
+		/* Only register a service worker if it's supported */
+		if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+			const serviceWorker = require('./common/service-worker');
+			navigator.serviceWorker.register(serviceWorker);
+		}
 	}
 
 	setLanguage = (e: any) => {
