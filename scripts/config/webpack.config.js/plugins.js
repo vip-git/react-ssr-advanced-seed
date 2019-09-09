@@ -3,7 +3,6 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const WorkboxPlugin = require('workbox-webpack-plugin');
 const path = require('path');
 
 const env = require('../env')();
@@ -34,9 +33,15 @@ const client = [
 				__dirname,
 				'../../../src/client/shared/assets/images/icons'
 			),
+			to: path.resolve(__dirname, '../../../docker/frontend/prod/build/client')
+		}
+	]),
+	new CopyWebpackPlugin([
+		{
+			from: path.resolve(__dirname, '../../../manifest.json'),
 			to: path.resolve(
 				__dirname,
-				'../../../docker/frontend/prod/build/client/static'
+				'../../../docker/frontend/prod/build/client/manifest.json'
 			)
 		}
 	]),
@@ -44,11 +49,11 @@ const client = [
 		{
 			from: path.resolve(
 				__dirname,
-				'../../../manifest.json'
+				'../../../src/client/shared/assets/service-worker.js'
 			),
 			to: path.resolve(
 				__dirname,
-				'../../../docker/frontend/prod/build/client/static/manifest.json'
+				'../../../docker/frontend/prod/build/client/service-worker.js'
 			)
 		}
 	]),
@@ -63,13 +68,7 @@ const client = [
 				: '[id].[contenthash].css'
 	}),
 	new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/),
-  new ManifestPlugin({ fileName: 'manifest.json' }),
-  new WorkboxPlugin.GenerateSW({
-    // these options encourage the ServiceWorkers to get in there fast
-    // and not allow any straggling "old" SWs to hang around
-    clientsClaim: true,
-    skipWaiting: true
-  })
+	new ManifestPlugin({ fileName: 'manifest.json' })
 ];
 
 if (process.env.NODE_ENV === 'production') {

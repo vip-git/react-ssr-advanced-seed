@@ -38,6 +38,7 @@ export default class HTML extends React.Component<PropsT> {
 					{css.map(href => (
 						<link key={href} rel='stylesheet' href={href} />
 					))}
+					<link rel='manifest' href='/manifest.json' />
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `window.__PRELOADED_STATE__ = ${JSON.parse(

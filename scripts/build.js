@@ -28,7 +28,7 @@ const generateStaticHTML = async () => {
             fs.writeFileSync(`${paths.clientBuild}/index.html`, pageContent);
             await browser.close();
             process.exit();
-        }, 1500);
+        }, 5500);
     });
 
     script.on('quit', () => {
