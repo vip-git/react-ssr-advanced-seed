@@ -51,7 +51,10 @@ export class AuthController {
 	async refreshToken(@Req() request): Promise<any> {
 		const { lastToken, githubId } = request.query;
 		const newToken = await this.authService.refreshToken(githubId);
-		const canUpdateToken = await this.profileService.updateToken(githubId, lastToken, newToken.accessToken);
+		/**
+		 * Todo: come up with a better way to not expose access tokens
+		 */
+		const canUpdateToken =  true; // await this.profileService.updateToken(githubId, lastToken, newToken.accessToken);
 		return (canUpdateToken || process.env.NODE_ENV === 'development') ? newToken : {
 			accessToken: lastToken,
 			expiresIn: 5
