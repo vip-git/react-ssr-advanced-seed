@@ -1,11 +1,8 @@
-// Library
-import { of } from 'rxjs';
-
 // Services
 import { HttpService } from '../core/http.service';
 
 // Gql
-import { groupQuery, groupSubscription } from './groups.gql';
+import { groupQuery, groupSubscription, createGroupMutation } from './groups.gql';
 
 export interface Payload {
     apolloClient: {};
@@ -34,8 +31,19 @@ class GroupService {
             }
         );
     }
+
+    static createGroup(payload: Payload) {
+        const { apolloClient, data } = payload;
+        return HttpService.buildGraphQLCall(
+            apolloClient,
+            'mutation',
+            createGroupMutation,
+            data
+        );
+    }
 }
 
 export const GroupServiceEngine = {
     requestAllGroups: action => GroupService.getAllGroups(action),
+    createGroup: action => GroupService.createGroup(action),
 };

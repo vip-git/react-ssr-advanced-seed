@@ -15,7 +15,7 @@ export const groupQuery = gql`
 	}
 `;
 
-export const createChatMutation = gql`
+export const createGroupMutation = gql`
 	mutation createChatMutation(
 		$message: String
 		$groupId: Int

@@ -243,6 +243,89 @@ class ChatEffect {
 			)
 		);
 	};
+
+	/**
+	 * POST create group epic
+	 * @param action$
+	 * @returns {any|*|Observable}
+	 */
+	static createGroup = (action$: any) => {
+		let componentCallBack = () => { };
+		return action$.pipe(
+			ofType(ChatReduxModel.actionTypes.CREATE_GROUP),
+			flatMap((action: IAction) => {
+				const {
+					payload: { apolloClient, data, callBack }
+				} = action;
+				componentCallBack = () => callBack();
+				return ChatReduxModel.services.requestCreateChat({
+					apolloClient,
+					data
+				});
+			}),
+			map(() => {
+				componentCallBack();
+				return {
+					type: 'GROUP_CREATED_END',
+					payload: {}
+				};
+			})
+		);
+	};
+
+	/**
+	 * DELETE remove group epic
+	 * @param action$
+	 * @returns {any|*|Observable}
+	 */
+	static deleteGroup = (action$: any) => {
+		const getPayload = {
+			chatId: null,
+			token: null
+		};
+		let chatSn = '';
+		return action$.pipe(
+			ofType(ChatReduxModel.actionTypes.DELETE_GROUP),
+			switchMap((action: IAction) => {
+				getPayload.chatId = action.payload.chatId;
+				getPayload.token = action.payload.token;
+				chatSn = action.payload.chatSn;
+				return ChatReduxModel.services.requestRemoveChat(action.payload);
+			}),
+			mergeMap(() =>
+				concat(
+					of(ChatReduxModel.actions.reducer.processRemoveChat(chatSn)),
+					of(ChatReduxModel.actions.effects.readAllChats(getPayload))
+				)
+			)
+		);
+	};
+
+	/**
+	 * PUT edit group epic
+	 * @param action$
+	 * @returns {any|*|Observable}
+	 */
+	static editGroup = (action$: any) => {
+		const getPayload = {
+			chatId: null,
+			token: null
+		};
+		return action$.pipe(
+			ofType(ChatReduxModel.actionTypes.UPDATE_GROUP),
+			switchMap((action: IAction) => {
+				getPayload.chatId = action.payload.chatId;
+				getPayload.token = action.payload.token;
+				return ChatReduxModel.services.requestEditChat(action.payload);
+			}),
+			mergeMap(data =>
+				concat(
+					of(ChatReduxModel.actions.reducer.processAllChats(data)),
+					of(ChatReduxModel.actions.effects.readAllChats(getPayload))
+				)
+			)
+		);
+	};
 }
 
 export const ChatEffectsEngine = {
@@ -252,5 +335,9 @@ export const ChatEffectsEngine = {
 	$readAllUsersAndChats: ChatEffect.readAllUsersAndChats,
 	$createChat: ChatEffect.createChat,
 	$deleteChat: ChatEffect.deleteChat,
-	$editChat: ChatEffect.editChat
+	$editChat: ChatEffect.editChat,
+	// Group
+	$createGroup: ChatEffect.createGroup,
+	$deleteGroup: ChatEffect.deleteGroup,
+	$editGroup: ChatEffect.editGroup
 };
