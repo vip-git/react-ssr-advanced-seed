@@ -16,23 +16,29 @@ export const groupQuery = gql`
 `;
 
 export const createGroupMutation = gql`
-	mutation createChatMutation(
-		$message: String
-		$groupId: Int
-		$ownerId: Int
+	mutation createGroupMutation(
+		$groupName: String
+		$groupImage: String
+		$groupDescription: String
+		$groupType: String
+		$accessType: String
 		$date: String
 	) {
-		createChat(
-			message: $message
-			groupId: $groupId
-			ownerId: $ownerId
+		createGroup(
+			groupName: $groupName
+			groupImage: $groupImage
+			groupDescription: $groupDescription
+			groupType: $groupType
+			accessType: $accessType
 			date: $date
 		) {
 			id
-			groupId
-			message
-			ownerId
-			date
+			groupName
+            groupImage
+            groupDescription
+            groupType
+            accessType
+            date
 		}
 	}
 `;
@@ -40,23 +46,29 @@ export const createGroupMutation = gql`
 export const updateChatMutation = gql`
 	mutation updateChatMutation(
 		$id: Int
-		$message: String
-		$groupId: Int
-		$ownerId: Int
+		$groupName: String
+		$groupImage: String
+		$groupDescription: String
+		$groupType: String
+		$accessType: String
 		$date: String
 	) {
 		updateChat(
 			id: $id
-			message: $message
-			groupId: $groupId
-			ownerId: $ownerId
+			groupName: $groupName
+			groupImage: $groupImage
+			groupDescription: $groupDescription
+			groupType: $groupType
+			accessType: $accessType
 			date: $date
 		) {
 			id
-			groupId
-			message
-			ownerId
-			date
+			groupName
+            groupImage
+            groupDescription
+            groupType
+            accessType
+            date
 		}
 	}
 `;
