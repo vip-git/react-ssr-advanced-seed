@@ -43,8 +43,8 @@ export const createGroupMutation = gql`
 	}
 `;
 
-export const updateChatMutation = gql`
-	mutation updateChatMutation(
+export const updateGroupMutation = gql`
+	mutation updateGroupMutation(
 		$id: Int
 		$groupName: String
 		$groupImage: String
@@ -53,7 +53,7 @@ export const updateChatMutation = gql`
 		$accessType: String
 		$date: String
 	) {
-		updateChat(
+		updateGroup(
 			id: $id
 			groupName: $groupName
 			groupImage: $groupImage
@@ -69,6 +69,18 @@ export const updateChatMutation = gql`
             groupType
             accessType
             date
+		}
+	}
+`;
+
+export const removeGroupMutation = gql`
+	mutation removeGroupMutation(
+		$id: Int
+	) {
+		removeGroup(
+			id: $id
+		) {
+			id
 		}
 	}
 `;

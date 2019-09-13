@@ -2,7 +2,13 @@
 import { HttpService } from '../core/http.service';
 
 // Gql
-import { groupQuery, groupSubscription, createGroupMutation } from './groups.gql';
+import { 
+    groupQuery, 
+    groupSubscription, 
+    createGroupMutation,
+    updateGroupMutation,
+    removeGroupMutation
+} from './groups.gql';
 
 export interface Payload {
     apolloClient: {};
@@ -41,9 +47,31 @@ class GroupService {
             data
         );
     }
+
+    static updateGroup(payload: Payload) {
+        const { apolloClient, data } = payload;
+        return HttpService.buildGraphQLCall(
+            apolloClient,
+            'mutation',
+            updateGroupMutation,
+            data
+        );
+    }
+
+    static removeGroup(payload: Payload) {
+        const { apolloClient, data } = payload;
+        return HttpService.buildGraphQLCall(
+            apolloClient,
+            'mutation',
+            removeGroupMutation,
+            data
+        );
+    }
 }
 
 export const GroupServiceEngine = {
     requestAllGroups: action => GroupService.getAllGroups(action),
     createGroup: action => GroupService.createGroup(action),
+    updateGroup: action => GroupService.updateGroup(action),
+    removeGroup: action => GroupService.removeGroup(action),
 };
