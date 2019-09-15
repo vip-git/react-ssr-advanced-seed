@@ -280,22 +280,22 @@ class ChatEffect {
 	 */
 	static deleteGroup = (action$: any) => {
 		const getPayload = {
-			chatId: null,
+			groupId: null,
 			token: null
 		};
 		let chatSn = '';
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.DELETE_GROUP),
 			switchMap((action: IAction) => {
-				getPayload.chatId = action.payload.chatId;
+				getPayload.groupId = action.payload.groupId;
 				getPayload.token = action.payload.token;
 				chatSn = action.payload.chatSn;
-				return ChatReduxModel.services.requestRemoveChat(action.payload);
+				return ChatReduxModel.services.removeGroup(action.payload);
 			}),
 			mergeMap(() =>
 				concat(
-					of(ChatReduxModel.actions.reducer.processRemoveChat(chatSn)),
-					of(ChatReduxModel.actions.effects.readAllChats(getPayload))
+					of(ChatReduxModel.actions.reducer.processRemoveGroup(chatSn)),
+					of(ChatReduxModel.actions.effects.readAllGroups(getPayload))
 				)
 			)
 		);
@@ -308,20 +308,20 @@ class ChatEffect {
 	 */
 	static editGroup = (action$: any) => {
 		const getPayload = {
-			chatId: null,
+			groupId: null,
 			token: null
 		};
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.UPDATE_GROUP),
 			switchMap((action: IAction) => {
-				getPayload.chatId = action.payload.chatId;
+				getPayload.groupId = action.payload.groupId;
 				getPayload.token = action.payload.token;
-				return ChatReduxModel.services.requestEditChat(action.payload);
+				return ChatReduxModel.services.updateGroup(action.payload);
 			}),
 			mergeMap(data =>
 				concat(
-					of(ChatReduxModel.actions.reducer.processAllChats(data)),
-					of(ChatReduxModel.actions.effects.readAllChats(getPayload))
+					of(ChatReduxModel.actions.reducer.processAllGroups(data)),
+					of(ChatReduxModel.actions.effects.readAllGroups(getPayload))
 				)
 			)
 		);

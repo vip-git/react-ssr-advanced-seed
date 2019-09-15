@@ -5,7 +5,12 @@ import { of } from 'rxjs';
 import { HttpService } from '../core/http.service';
 
 // Gql
-import { chatQuery, createChatMutation, chatSubscription } from './chat.gql';
+import { 
+	chatQuery,
+	createChatMutation,
+	updateChatMutation,
+	chatSubscription
+} from './chat.gql';
 
 export interface Payload {
 	apolloClient: {};
@@ -21,7 +26,13 @@ class ChatService {
 	}
 
 	static getChatsRest(payload: Payload) {
-		return HttpService.buildRestApiCall('api', 'GET', '/chats', payload.accessToken, {})
+		return HttpService.buildRestApiCall(
+			'api',
+			'GET',
+			'/chats',
+			payload.accessToken,
+			{}
+		);
 	}
 
 	static getAllChats(payload: Payload) {
@@ -36,7 +47,7 @@ class ChatService {
 				if (!subscriptionData.data) return prev;
 				const { chatRecieved } = subscriptionData.data;
 				prev.getGroup[0].chats.push(chatRecieved);
-				return { ...prev};
+				return { ...prev };
 			}
 		);
 	}
@@ -56,9 +67,14 @@ class ChatService {
 		return of('test');
 	}
 
-	static editChat(chatId: any) {
-		// console.log('i was called to edit');
-		return of('test');
+	static editChat(payload: any) {
+		const { apolloClient, data } = payload;
+		return HttpService.buildGraphQLCall(
+			apolloClient,
+			'mutation',
+			updateChatMutation,
+			data
+		);
 	}
 }
 
@@ -67,5 +83,5 @@ export const ChatServiceEngine = {
 	requestAllChatsRest: action => ChatService.getChatsRest(action),
 	requestCreateChat: (payload: any) => ChatService.createChat(payload),
 	requestRemoveChat: (chatId: any) => ChatService.removeChat(chatId),
-	requestEditChat: (chatId: any) => ChatService.editChat(chatId)
+	requestEditChat: (payload: any) => ChatService.editChat(payload)
 };
