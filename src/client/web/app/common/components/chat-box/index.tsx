@@ -48,12 +48,14 @@ const {
 const { Wrapper, OptionsBar, ModalForm, Tabs } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
 
+type iModalForm = 'createGroupForm' | 'settingsForm';
+
 class Chat extends Component<IChatProps, IChatState> {
 	state = {
 		opened: false,
 		currentChat: '',
-		modalHandleClose: () => this.setState({ showModalForm: false }),
-		showModalForm: false
+		createGroupForm: false,
+		settingsForm: false,
 	};
 
 	componentDidMount() {
@@ -89,6 +91,10 @@ class Chat extends Component<IChatProps, IChatState> {
 			}, 1);
 		}
 	};
+
+	modalOpen = (modalForm: iModalForm) => this.setState({ [modalForm]: true });
+
+	modalHandleClose = (modalForm: iModalForm) => this.setState({ [modalForm]: false });
 
 	sendChat = () =>
 		this.state.currentChat !== '' &&
@@ -309,11 +315,11 @@ class Chat extends Component<IChatProps, IChatState> {
 											menuItems={[
 												{
 													menuName: 'Create Group',
-													callback: () => this.setState({ showModalForm: true })
+													callback: () => this.modalOpen('createGroupForm')
 												},
 												{
 													menuName: 'Settings',
-													callback: () => console.log('called for settings')
+													callback: () => this.modalOpen('settingsForm')
 												},
 												{
 													menuName: 'Logout',
@@ -322,25 +328,45 @@ class Chat extends Component<IChatProps, IChatState> {
 											]}
 										/>
 										<ModalForm
-											open={this.state.showModalForm}
+											open={this.state.createGroupForm}
 											modalTitle={t('create-group-title')}
 											modalDescription={t('create-group-description')}
 											modalContent={() => {
-												return (
-													<div> Some Info here </div>
-												);
+												return <div> Some Info here </div>;
 											}}
 											modalActions={() => {
 												return (
 													<Button
 														color='primary'
-														onClick={this.state.modalHandleClose}
+														onClick={() =>
+															this.modalHandleClose('createGroupForm')}
 													>
 														Create
 													</Button>
 												);
 											}}
-											handleClose={this.state.modalHandleClose}
+											handleClose={() =>
+												this.modalHandleClose('createGroupForm')}
+										/>
+										<ModalForm
+											open={this.state.settingsForm}
+											modalTitle={t('settings-title')}
+											modalDescription={t('settings-description')}
+											modalContent={() => {
+												return <div> Some Info here </div>;
+											}}
+											modalActions={() => {
+												return (
+													<Button
+														color='primary'
+														onClick={() =>
+															this.modalHandleClose('settingsForm')}
+													>
+														Create
+													</Button>
+												);
+											}}
+											handleClose={() => this.modalHandleClose('settingsForm')}
 										/>
 									</Toolbar>
 								</AppBar>

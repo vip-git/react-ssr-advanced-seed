@@ -74,10 +74,10 @@ export interface IChat {
 
 
 export interface IChatState {
-	opened: boolean;
-	showModalForm: boolean;
-	modalHandleClose: () => void;
-	currentChat: string;
+	opened?: boolean;
+	createGroupForm?: boolean;
+	settingsForm?: boolean;
+	currentChat?: string;
 }
 
 export interface IContact {

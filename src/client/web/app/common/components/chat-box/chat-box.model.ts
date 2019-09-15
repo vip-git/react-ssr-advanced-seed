@@ -64,6 +64,8 @@ export const ChatBoxModel = {
       'chatbox-all-groups': 'All Groups',
       'create-group-title': 'Create Group',
       'create-group-description': 'Create a group so you can add your friends for a quick chat.',
+      'settings-title': 'Settings',
+      'settings-description': 'Manage your settings',
     },
     'de-DE': {
       'chatbox-all-users': 'Alle Nutzer',
