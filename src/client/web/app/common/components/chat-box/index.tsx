@@ -323,6 +323,23 @@ class Chat extends Component<IChatProps, IChatState> {
 										/>
 										<ModalForm
 											open={this.state.showModalForm}
+											modalTitle={t('create-group-title')}
+											modalDescription={t('create-group-description')}
+											modalContent={() => {
+												return (
+													<div> Some Info here </div>
+												);
+											}}
+											modalActions={() => {
+												return (
+													<Button
+														color='primary'
+														onClick={this.state.modalHandleClose}
+													>
+														Create
+													</Button>
+												);
+											}}
 											handleClose={this.state.modalHandleClose}
 										/>
 									</Toolbar>
@@ -332,7 +349,11 @@ class Chat extends Component<IChatProps, IChatState> {
 										split='vertical'
 										defaultSize={isWidthUp('md', this.props.width) ? '27%' : 0}
 										minSize={isWidthUp('md', this.props.width) ? 300 : 0}
-										maxSize={isWidthUp('md', this.props.width) ? window.innerWidth / 4 : 0}
+										maxSize={
+											isWidthUp('md', this.props.width)
+												? window.innerWidth / 4
+												: 0
+										}
 										allowResize={isWidthUp('md', this.props.width)}
 									>
 										<div

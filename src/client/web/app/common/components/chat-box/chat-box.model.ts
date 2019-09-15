@@ -62,14 +62,22 @@ export const ChatBoxModel = {
     'en-US': {
       'chatbox-all-users': 'All Users',
       'chatbox-all-groups': 'All Groups',
+      'create-group-title': 'Create Group',
+      'create-group-description': 'Create a group so you can add your friends for a quick chat.',
     },
     'de-DE': {
       'chatbox-all-users': 'Alle Nutzer',
       'chatbox-all-groups': 'Alle Gruppen',
+      'create-group': 'Gruppe Erstellen',
+      'create-group-title': 'Create Group',
+      'create-group-description': 'Create a group so you can add your friends for a quick chat.',
     },
     'fr-FR': {
       'chatbox-all-users': 'Tous les utilisateurs',
       'chatbox-all-groups': 'Tous les groupes',
+      'create-group': 'Créer un Groupe',
+      'create-group-title': 'Create Group',
+      'create-group-description': 'Create a group so you can add your friends for a quick chat.',
     }
   },
   components: {

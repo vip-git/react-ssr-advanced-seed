@@ -25,7 +25,7 @@ export default function OptionsBar(props: Options) {
 	}
 
 	function handleClose(callback: () => void) {
-		if (callback) {
+		if (callback && typeof callback === 'function') {
 			callback();
 		}
 		setAnchorEl(null);

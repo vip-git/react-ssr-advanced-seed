@@ -11,7 +11,14 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 export default function FormDialog(props) {
-    const { open , handleClose } = props;
+    const {
+			open,
+			handleClose,
+			modalTitle,
+			modalDescription,
+			modalContent,
+			modalActions
+		} = props;
 	return (
 		<div>
 			<Dialog
@@ -19,28 +26,15 @@ export default function FormDialog(props) {
 				onClose={handleClose}
 				aria-labelledby='form-dialog-title'
 			>
-				<DialogTitle id='form-dialog-title'>Subscribe</DialogTitle>
+				<DialogTitle id='form-dialog-title'>{modalTitle}</DialogTitle>
 				<DialogContent>
-					<DialogContentText>
-						To subscribe to this website, please enter your email address here.
-						We will send updates occasionally.
+					<DialogContentText> 
+						{ modalDescription } 
 					</DialogContentText>
-					<TextField
-						autoFocus
-						margin='dense'
-						id='name'
-						label='Email Address'
-						type='email'
-						fullWidth
-					/>
+					{ modalContent() }
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose} color='primary'>
-						Cancel
-					</Button>
-					<Button onClick={handleClose} color='primary'>
-						Subscribe
-					</Button>
+					{ modalActions() }
 				</DialogActions>
 			</Dialog>
 		</div>
