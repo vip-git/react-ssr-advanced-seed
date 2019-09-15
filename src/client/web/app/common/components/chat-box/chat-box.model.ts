@@ -39,9 +39,11 @@ import {
 
 // Component
 import Wrapper from '@omega-web-components/wrapper';
-import OptionsBar from '@omega-web-components/options-bar'; // @omega-web-components/options-bar
-import ModalForm from '@omega-web-components/modal-form'; // @omega-web-components/modal-form
-import Tabs from '@omega-web-components/tabs'; // @omega-web-components/tabs
+import OptionsBar from '@omega-web-components/options-bar'; 
+import ModalForm from '@omega-web-components/modal-form'; 
+import Tabs from '@omega-web-components/tabs'; 
+import SettingsForm from '../settings'; // @omega-web-components/settings 
+import CreateGroupForm from '../create-group'; // @omega-web-components/create-group 
 import ChatStyles from './styles';
 
 export const ChatBoxModel = {
@@ -86,7 +88,9 @@ export const ChatBoxModel = {
     Wrapper,
     OptionsBar,
     ModalForm,
-    Tabs
+    Tabs,
+    SettingsForm,
+    CreateGroupForm
   },
   uiFrameworkComponents: {
     withWidth,

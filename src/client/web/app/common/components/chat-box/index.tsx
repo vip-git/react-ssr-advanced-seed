@@ -45,7 +45,7 @@ const {
 	reject,
 	find
 } = ChatBoxModel.libraries;
-const { Wrapper, OptionsBar, ModalForm, Tabs } = ChatBoxModel.components;
+const { Wrapper, OptionsBar, ModalForm, Tabs, CreateGroupForm, SettingsForm } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
 
 type iModalForm = 'createGroupForm' | 'settingsForm';
@@ -331,9 +331,7 @@ class Chat extends Component<IChatProps, IChatState> {
 											open={this.state.createGroupForm}
 											modalTitle={t('create-group-title')}
 											modalDescription={t('create-group-description')}
-											modalContent={() => {
-												return <div> Some Info here </div>;
-											}}
+											modalContent={() => <CreateGroupForm />}
 											modalActions={() => {
 												return (
 													<Button
@@ -352,9 +350,7 @@ class Chat extends Component<IChatProps, IChatState> {
 											open={this.state.settingsForm}
 											modalTitle={t('settings-title')}
 											modalDescription={t('settings-description')}
-											modalContent={() => {
-												return <div> Some Info here </div>;
-											}}
+											modalContent={() => <SettingsForm />}
 											modalActions={() => {
 												return (
 													<Button

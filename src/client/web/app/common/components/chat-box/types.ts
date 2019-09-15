@@ -19,6 +19,8 @@ export interface IChatProps {
 		appBar: string;
 		toolBar: string;
 		headerLeft: string;
+		textField: string;
+		container: string;
 		wrapper: string;
 		modal: string;
 		backdrop: string;
