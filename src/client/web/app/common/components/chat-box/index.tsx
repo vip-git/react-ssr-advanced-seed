@@ -87,7 +87,9 @@ class Chat extends Component<IChatProps, IChatState> {
 			setTimeout(() => {
 				const objDiv =
 					typeof document !== 'undefined' && document.getElementById('chats');
-				objDiv.scrollTop = objDiv.scrollHeight;
+					if (objDiv && objDiv.scrollHeight) {
+						objDiv.scrollTop = objDiv.scrollHeight;
+					}
 			}, 1);
 		}
 	};

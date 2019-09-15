@@ -117,43 +117,37 @@ const initialFormData = {
 	telephone: ''
 };
 
-export default function TextFields() {
-	// const classes = useStyles({});
-	// const [values, setValues] = React.useState<State>({
-	// 	name: 'Cat in the Hat',
-	// 	age: '',
-	// 	multiline: 'Controlled',
-	// 	currency: 'EUR'
-	// });
-
-	const onSubmit = (value, callback) => {
+export default class CreateGroupForm extends React.Component {
+    onSubmit = (value, callback) => {
         console.log('onSubmit: %s', JSON.stringify(value)); // eslint-disable-line no-console
         setTimeout(() => callback && callback(), 2000); // just an example in real world can be your XHR call
     }
 
-    const onCancel = () => {
+    onCancel = () => {
         console.log('on reset being called');
     }
 
-    const onFormChanged = ({ formData }) => {
+    onFormChanged = ({ formData }) => {
         console.log('onFormChanged: ',formData); // eslint-disable-line no-console
     }
 
-    const onUpload = (value) => {
+    onUpload = (value) => {
         console.log('onUpload: ', value); // eslint-disable-line no-console
     }
 
-    return (
-			<MaterialJsonSchemaForm
-				schema={schema}
-				uiSchema={uiSchema}
-				formData={initialFormData}
-				onCancel={onCancel}
-				onSubmit={onSubmit}
-				onUpload={onUpload}
-				onChange={onFormChanged}
-				submitOnEnter
-				activityIndicatorEnabled
-			/>
-		);
+    render() {
+        return (
+             <MaterialJsonSchemaForm
+                  schema={schema}
+                  uiSchema={uiSchema}
+                  formData={initialFormData}
+                  onCancel={this.onCancel}
+                  onSubmit={this.onSubmit}
+                  onUpload={this.onUpload}
+                  onChange={this.onFormChanged}
+                  submitOnEnter
+                  activityIndicatorEnabled
+             />
+        );
+    }
 }
