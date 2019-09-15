@@ -18,6 +18,8 @@
     "@omega-web-components/options-bar": "^0.4.0",
     "@omega-web-components/modal-form": "^0.4.0",
     "@omega-web-components/tabs": "^0.4.0",
+    "@omega-web-components/create-group": "^0.4.0",
+    "@omega-web-components/settings": "^0.4.0",
     "react-split-pane": "0.1.87",
     "classnames": "2.2.6",
     "date-fns": "1.30.1",
