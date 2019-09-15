@@ -1,12 +1,12 @@
 {
-  "name": "@omega-web-components/create-group",
+  "name": "@omega-web-components/material-form",
   "version": "0.4.16",
   "main": "./index.tsx",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"
   },
   "dependencies": {
-    "@omega-web-components/material-form": "^0.4.0"
+		"react-jsonschema-form-material-ui": "2.0.9"
   },
   "author": "",
   "license": "ISC",
