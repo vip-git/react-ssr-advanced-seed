@@ -42,7 +42,7 @@ import Wrapper from '@omega-web-components/wrapper';
 import OptionsBar from '@omega-web-components/options-bar'; 
 import ModalForm from '@omega-web-components/modal-form'; 
 import Tabs from '@omega-web-components/tabs'; 
-import SettingsForm from '@omega-web-components/settings ';
+import SettingsForm from '@omega-web-components/settings';
 import CreateGroupForm from '@omega-web-components/create-group';
 import ChatStyles from './styles';
 
