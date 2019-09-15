@@ -346,6 +346,7 @@ class Chat extends Component<IChatProps, IChatState> {
 														</Button>
 														<Button
 															color='primary'
+															variant={'contained'}
 															onClick={() =>
 																this.modalHandleClose('createGroupForm')}
 														>

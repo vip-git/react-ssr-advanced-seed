@@ -13,14 +13,14 @@ export default function CreatGroupForm(props) {
                 type: 'string',
                 title: 'Group Name'
             },
-            groupDescription: {
-                type: 'string',
-                title: 'Group Description'
-            },
             groupMembers: {
                 type: 'string',
                 title: 'Group Members',
                 enum: ['Yes', 'No']
+            },
+            groupDescription: {
+                type: 'string',
+                title: 'Group Description'
             },
         }
     };
