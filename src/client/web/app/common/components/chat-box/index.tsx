@@ -334,13 +334,22 @@ class Chat extends Component<IChatProps, IChatState> {
 											modalContent={() => <CreateGroupForm />}
 											modalActions={() => {
 												return (
-													<Button
-														color='primary'
-														onClick={() =>
-															this.modalHandleClose('createGroupForm')}
-													>
-														Create
-													</Button>
+													<>
+														<Button
+															color='primary'
+															onClick={() =>
+																this.modalHandleClose('createGroupForm')}
+														>
+															Cancel
+														</Button>
+														<Button
+															color='primary'
+															onClick={() =>
+																this.modalHandleClose('createGroupForm')}
+														>
+															Create
+														</Button>
+													</>
 												);
 											}}
 											handleClose={() =>
