@@ -5,116 +5,40 @@ import MaterialForm from '@omega-web-components/material-form';
 export default function CreatGroupForm(props) {
     // Internals
     const schema = {
-        title: 'A registration form',
-        description: 'A simple form example.',
+        title: '',
         type: 'object',
-        required: ['firstName', 'lastName'],
+        required: ['groupName', 'groupDescription'],
         properties: {
-            firstName: {
+            groupName: {
                 type: 'string',
-                title: 'First name'
+                title: 'Group Name'
             },
-            lastName: {
+            groupDescription: {
                 type: 'string',
-                title: 'Last name'
+                title: 'Group Description'
             },
-            age: {
-                type: 'integer',
-                title: 'Age'
-            },
-            upload: {
-                type: 'upload',
-                title: 'Please upload your file'
-            },
-            creatableSelectTest: {
+            groupMembers: {
                 type: 'string',
-                title: 'Example creatable select',
-                enum: ['test', 'teete', 'etetet']
-            },
-            select: {
-                type: 'string',
-                title: 'Example select',
+                title: 'Group Members',
                 enum: ['Yes', 'No']
             },
-            selectTest: {
-                type: 'string',
-                title: 'Example Multi Select',
-                enum: ['Yes', 'No']
-            },
-            bio: {
-                type: 'string',
-                title: 'Bio'
-            },
-            date: {
-                type: 'material-date',
-                title: 'Date'
-            },
-            password: {
-                type: 'string',
-                title: 'Password',
-                minLength: 3
-            },
-            telephone: {
-                type: 'string',
-                title: 'Telephone',
-                minLength: 10
-            }
         }
     };
 
     const uiSchema = {
-        firstName: {
+        groupName: {
             'ui:autofocus': true,
             'ui:emptyValue': ''
         },
-        age: {
-            'ui:widget': 'updown',
-            'ui:title': 'Age of person',
-            'ui:description': '(earthian year)'
+        groupDescription: {
+            'ui:widget': 'textarea'
         },
-        upload: {
-            'ui:widget': 'outlined',
-            'ui:accept': 'image/*',
-            'ui:isMulti': true,
-            'ui:buttonTitle': 'Upload',
-            'ui:icon': 'add_circle'
-        },
-        bio: {
-            'ui:widget': 'textarea',
-            'ui:options': 'rich-text-editor'
-        },
-        password: {
-            'ui:widget': 'password',
-            'ui:help': 'Hint: Make it strong!'
-        },
-        date: {
-            'ui:activeCompColor': 'red',
-            'ui:widget': 'alt-datetime'
-        },
-        selectTest: {
+        groupMembers: {
             'ui:widget': 'material-multiselect'
         },
-        creatableSelectTest: {
-            'ui:widget': 'creatable-select'
-        },
-        telephone: {
-            'ui:options': {
-                inputType: 'tel'
-            }
-        }
     };
 
     const initialFormData = {
-        firstName: 'Chuck',
-        lastName: 'Norris',
-        age: 75,
-        upload: '',
-        bio: '<p><u>ads</u></p>',
-        password: 'noneed',
-        creatableSelectTest:
-            '[{"label":"hello","value":"hello"},{"label":"yes","value":"yes"}]',
-        selectTest: '[{"value":"Yes","label":"Yes"},{"value":"No","label":"No"}]',
-        telephone: ''
     };
 
     return (

@@ -2,6 +2,8 @@
 import React from 'react';
 import MaterialJsonSchemaForm from 'react-jsonschema-form-material-ui';
 
+import './style.scss';
+
 export default class MaterialForm extends React.Component<any, any> {
 	onSubmit = (value, callback) => {
 		console.log('onSubmit: %s', JSON.stringify(value)); // eslint-disable-line no-console
@@ -23,17 +25,19 @@ export default class MaterialForm extends React.Component<any, any> {
 	render() {
         const { schema, uiSchema, formData } = this.props;
 		return (
-			<MaterialJsonSchemaForm
-				schema={schema}
-				uiSchema={uiSchema}
-				formData={formData}
-				onCancel={this.onCancel}
-				onSubmit={this.onSubmit}
-				onUpload={this.onUpload}
-				onChange={this.onFormChanged}
-				submitOnEnter
-				activityIndicatorEnabled
-			/>
+			<div id={'materialForm'}>
+				<MaterialJsonSchemaForm
+					schema={schema}
+					uiSchema={uiSchema}
+					formData={formData}
+					onCancel={this.onCancel}
+					onSubmit={this.onSubmit}
+					onUpload={this.onUpload}
+					onChange={this.onFormChanged}
+					submitOnEnter
+					activityIndicatorEnabled
+				/>
+			</div>
 		);
 	}
 }
