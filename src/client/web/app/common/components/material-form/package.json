@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/material-form",
-  "version": "0.4.17",
+  "version": "0.4.18",
   "main": "./index.tsx",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"
