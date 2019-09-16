@@ -7,7 +7,6 @@ export default function CreatGroupForm(props) {
     const schema = {
         title: '',
         type: 'object',
-        required: ['groupName', 'groupDescription'],
         properties: {
             groupName: {
                 type: 'string',
@@ -27,8 +26,7 @@ export default function CreatGroupForm(props) {
 
     const uiSchema = {
         groupName: {
-            'ui:autofocus': true,
-            'ui:emptyValue': ''
+           
         },
         groupDescription: {
             'ui:widget': 'textarea'

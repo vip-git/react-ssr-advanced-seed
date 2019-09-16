@@ -6,7 +6,7 @@
     "deploy": "npm version patch && npm publish --access public"
   },
   "dependencies": {
-    "react-jsonschema-form-material-ui": "2.0.9"
+    "react-jsonschema-form-material-ui": "2.0.10"
   },
   "author": "",
   "license": "ISC",
