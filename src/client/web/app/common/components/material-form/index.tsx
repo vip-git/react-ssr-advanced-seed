@@ -34,6 +34,8 @@ export default class MaterialForm extends React.Component<any, any> {
 					onSubmit={this.onSubmit}
 					onUpload={this.onUpload}
 					onChange={this.onFormChanged}
+					submitValue={'Save'}
+					prefixId={'react-ssr'}
 					submitOnEnter
 					activityIndicatorEnabled
 				/>

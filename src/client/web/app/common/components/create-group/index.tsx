@@ -9,8 +9,8 @@ export default function CreatGroupForm(props) {
         type: 'object',
         properties: {
             groupName: {
-                type: 'string',
-                title: 'Group Name'
+                title: 'Group Name',
+                type: 'string'
             },
             groupMembers: {
                 type: 'string',
@@ -26,7 +26,7 @@ export default function CreatGroupForm(props) {
 
     const uiSchema = {
         groupName: {
-           
+           'ui:title': 'Group Name'
         },
         groupDescription: {
             'ui:widget': 'textarea'

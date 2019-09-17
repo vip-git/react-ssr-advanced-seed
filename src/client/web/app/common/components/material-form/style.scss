@@ -7,6 +7,11 @@
         padding: 0;
         margin: 0;
         margin-left: -15px;
+        > div {
+            > div:first-child {
+                margin-top: 0px;
+            }
+        } 
         + div {
             display: none;
         }

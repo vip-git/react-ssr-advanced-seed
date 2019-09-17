@@ -28,7 +28,7 @@ export default function FormDialog(props) {
 			>
 				<DialogTitle id='form-dialog-title'>{modalTitle}</DialogTitle>
 				<DialogContent>
-					<DialogContentText> 
+					<DialogContentText style={{ marginBottom: 0 }}> 
 						{ modalDescription } 
 					</DialogContentText>
 					{ modalContent() }
