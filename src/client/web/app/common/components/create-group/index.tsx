@@ -3,6 +3,7 @@ import React from 'react';
 import MaterialForm from '@omega-web-components/material-form';
 
 export default function CreatGroupForm(props) {
+    const { onSubmit } = props;
     // Internals
     const schema = {
         title: '',
@@ -44,6 +45,7 @@ export default function CreatGroupForm(props) {
             schema={schema}
             uiSchema={uiSchema}
             formData={initialFormData}
+            onSubmit={onSubmit}
             submitOnEnter
             activityIndicatorEnabled
         />

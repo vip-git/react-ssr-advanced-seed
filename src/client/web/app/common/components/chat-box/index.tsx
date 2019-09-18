@@ -1,3 +1,6 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
 /* eslint-disable react/no-access-state-in-setstate */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable react/state-in-constructor */
@@ -55,7 +58,7 @@ class Chat extends Component<IChatProps, IChatState> {
 		opened: false,
 		currentChat: '',
 		createGroupForm: false,
-		settingsForm: false,
+		settingsForm: false
 	};
 
 	componentDidMount() {
@@ -87,16 +90,17 @@ class Chat extends Component<IChatProps, IChatState> {
 			setTimeout(() => {
 				const objDiv =
 					typeof document !== 'undefined' && document.getElementById('chats');
-					if (objDiv && objDiv.scrollHeight) {
-						objDiv.scrollTop = objDiv.scrollHeight;
-					}
+				if (objDiv && objDiv.scrollHeight) {
+					objDiv.scrollTop = objDiv.scrollHeight;
+				}
 			}, 1);
 		}
 	};
 
 	modalOpen = (modalForm: iModalForm) => this.setState({ [modalForm]: true });
 
-	modalHandleClose = (modalForm: iModalForm) => this.setState({ [modalForm]: false });
+	modalHandleClose = (modalForm: iModalForm) =>
+		this.setState({ [modalForm]: false });
 
 	sendChat = () =>
 		this.state.currentChat !== '' &&
@@ -114,6 +118,11 @@ class Chat extends Component<IChatProps, IChatState> {
 		if (e.key === 'Enter') {
 			this.sendChat();
 		}
+	};
+
+	handleCreateGroup = (value, callback) => {
+		console.log('onSubmit: %s', JSON.stringify(value)); // eslint-disable-line no-console
+		setTimeout(() => callback && callback(), 2000); // just an example in real world can be your XHR call
 	};
 
 	renderSubmitChatBox = () => {
@@ -333,7 +342,9 @@ class Chat extends Component<IChatProps, IChatState> {
 											open={this.state.createGroupForm}
 											modalTitle={t('create-group-title')}
 											modalDescription={t('create-group-description')}
-											modalContent={() => <CreateGroupForm />}
+											modalContent={() => (
+												<CreateGroupForm onSubmit={this.handleCreateGroup} />
+											)}
 											modalActions={() => {
 												return (
 													<>
@@ -347,8 +358,13 @@ class Chat extends Component<IChatProps, IChatState> {
 														<Button
 															color='primary'
 															variant={'contained'}
-															onClick={() =>
-																this.modalHandleClose('createGroupForm')}
+															onClick={() => {
+																const createGroupButton: any = document.querySelector(
+																									'#materialForm > div > fieldset + div > button + button'
+																								);
+																createGroupButton && createGroupButton.click();
+																this.modalHandleClose('createGroupForm');
+															}}
 														>
 															Create
 														</Button>
