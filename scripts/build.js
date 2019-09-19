@@ -21,13 +21,17 @@ const generateStaticHTML = async () => {
         // Only needed inside docker
         // {executablePath: '/usr/bin/chromium-browser', args: ['--no-sandbox', '--headless', '--disable-gpu']}
         setTimeout(async function() {
-            const browser = await puppeteer.launch();
-            const page = await browser.newPage();
-            await page.goto(`http://localhost:${process.env.PORT}`);
-            const pageContent = await page.content();
-            fs.writeFileSync(`${paths.clientBuild}/index.html`, pageContent);
-            await browser.close();
-            process.exit();
+            try {
+                const browser = await puppeteer.launch();
+                const page = await browser.newPage();
+                await page.goto(`http://localhost:${process.env.PORT}`);
+                const pageContent = await page.content();
+                fs.writeFileSync(`${paths.clientBuild}/index.html`, pageContent);
+                await browser.close();
+                process.exit();
+            } catch(err) {
+                console.log('Build was not successful');
+            }
         }, 5500);
     });
 
