@@ -31,6 +31,8 @@ const generateStaticHTML = async () => {
                 process.exit();
             } catch(err) {
                 console.log('Build was not successful');
+                console.log(err);
+                process.exit(1);
             }
         }, 5500);
     });
