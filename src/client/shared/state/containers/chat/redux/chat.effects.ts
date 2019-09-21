@@ -69,7 +69,8 @@ class ChatEffect {
 					const {
 						data: { getGroup }
 					} = chatResponse;
-					const { chats, groupMembers, groupName, groupDescription, groupImage } = getGroup[0];
+					const { chats, groupMembers, groupName, groupDescription, groupImage, groupType,
+						accessType, member } = getGroup[0];
 					const finalData = Array.isArray(chats)
 						? chats.map((val: IChat) => {
 								// eslint-disable-next-line no-param-reassign
@@ -80,6 +81,9 @@ class ChatEffect {
 					return ChatReduxModel.actions.reducer.processAllChats({
 						groupName,
 						groupDescription,
+						groupType,
+						member,
+						accessType,
 						groupImage,
 						chats: finalData,
 						groupMembers
@@ -250,21 +254,22 @@ class ChatEffect {
 	 * @returns {any|*|Observable}
 	 */
 	static createGroup = (action$: any) => {
-		let componentCallBack = () => { };
+		let componentCallBack: any = () => { };
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.CREATE_GROUP),
 			flatMap((action: IAction) => {
 				const {
 					payload: { apolloClient, data, callBack }
 				} = action;
-				componentCallBack = () => callBack();
+				componentCallBack = (id) => callBack(id);
 				return ChatReduxModel.services.createGroup({
 					apolloClient,
 					data
 				});
 			}),
-			map(() => {
-				componentCallBack();
+			map((group: any) => {
+				const { data: { createGroup: { id } } } = group;
+				componentCallBack(id);
 				return {
 					type: 'GROUP_CREATED_END',
 					payload: {}

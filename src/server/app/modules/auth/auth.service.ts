@@ -46,7 +46,7 @@ export class AuthService {
 		});
 		const time = new Date().getTime();
 		const expiresIn = process.env.NODE_ENV === 'development' ? 555 : 5;
-		const idToken = jwt.sign(getUserInfo.data, access_token, { expiresIn });
+		const idToken = { data: getUserInfo.data, access_token, expiresIn};
 		const accessToken = jwt.sign({
 			time
 		}, JWT_SECRET, { expiresIn });

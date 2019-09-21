@@ -26,3 +26,9 @@ type GroupMember {
 	groupId: Int
 	date: String
 }
+
+input InputGroupMember {
+	memberId: Int
+	groupId: Int
+	date: String
+}

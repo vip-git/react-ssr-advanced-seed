@@ -39,6 +39,36 @@ class ChatContainer extends Component<any, any> {
 									data: payload.variables,
 									callBack: () => payload.callBack()
 								})}
+							onSelectContact={(groupId: Number) =>
+								dispatchReadAllUsersAndChats({
+									apolloClient,
+									data: {
+										chatPayload: {
+											filters: {
+												where: {
+													id: groupId
+												}
+											}
+										},
+										groupPayload: {
+											filters: {
+												take: 100,
+												where: {
+													accessType: 'public',
+													groupType: 'group'
+												}
+											}
+										},
+										profilePayload: {
+											filters: {
+												not: {
+													githubId: githubUserData.login
+												}
+											}
+										}
+									},
+									idToken
+								})}
 							onSelectGroup={(groupId: Number) =>
 								dispatchReadAllUsersAndChats({
 									apolloClient,
@@ -52,9 +82,10 @@ class ChatContainer extends Component<any, any> {
 										},
 										groupPayload: {
 											filters: {
-												take: 10,
+												take: 100,
 												where: {
-													accessType: 'public'
+													accessType: 'public',
+													groupType: 'group'
 												}
 											}
 										},
@@ -81,9 +112,10 @@ class ChatContainer extends Component<any, any> {
 										},
 										groupPayload: {
 											filters: {
-												take: 10,
+												take: 100,
 												where: {
-													accessType: 'public'
+													accessType: 'public',
+													groupType: 'group'
 												}
 											}
 										},
@@ -101,7 +133,7 @@ class ChatContainer extends Component<any, any> {
 								dispatchCreateGroup({
 									apolloClient,
 									data: payload.variables,
-									callBack: () => payload.callBack()
+									callBack: id => payload.callBack(id)
 								})}
 							githubUserData={githubUserData}
 							groupId={2}

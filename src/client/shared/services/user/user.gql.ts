@@ -6,6 +6,7 @@ export const userQuery = gql`
         getProfile(filters: $filters) {
             id
             githubId
+            githubUid,
             name
             bio
             avatar: avatarUrl
@@ -20,6 +21,7 @@ export const userSubscription = gql`
 		profileRecieved {
 			id
             githubId
+            githubUid,
             name
             bio
             avatar: avatarUrl

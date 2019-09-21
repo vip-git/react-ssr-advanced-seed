@@ -18,18 +18,22 @@ export const groupQuery = gql`
 export const createGroupMutation = gql`
 	mutation createGroupMutation(
 		$ownerId: ID!
+		$memberId: Int
 		$groupName: String
 		$groupImage: String
 		$groupDescription: String
 		$groupType: GroupType
+		$groupMembers: [InputGroupMember]
 		$accessType: AccessType
 		$date: String
 	) {
 		createGroup(
 			ownerId: $ownerId
+			memberId: $memberId
 			groupName: $groupName
 			groupImage: $groupImage
 			groupDescription: $groupDescription
+			groupMembers: $groupMembers
 			groupType: $groupType
 			accessType: $accessType
 			date: $date
@@ -49,6 +53,7 @@ export const updateGroupMutation = gql`
 	mutation updateGroupMutation(
 		$id: Int
 		$ownerId: ID!
+		$memberId: Int
 		$groupName: String
 		$groupImage: String
 		$groupDescription: String
@@ -58,6 +63,7 @@ export const updateGroupMutation = gql`
 	) {
 		updateGroup(
 			id: $id
+			memberId: $memberId
 			groupName: $groupName
 			groupImage: $groupImage
 			groupDescription: $groupDescription

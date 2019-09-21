@@ -7,7 +7,19 @@ export const chatQuery = gql`
 			id
 			groupName
 			groupDescription
+			groupType
+			accessType
         	groupImage
+			member {
+				id
+				email
+				githubUid
+				githubId
+				name
+				bio
+				avatarUrl
+				location
+			}
 			groupMembers {
 				id
 				member {

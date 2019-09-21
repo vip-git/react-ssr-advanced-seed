@@ -34,7 +34,9 @@ export class GroupResolver {
 	@Mutation('createGroup')
 	async create(obj, args: IGroup, context, info): Promise<IGroup> {
 		const createdGroup = await this.groupService.create(args);
-		pubSub.publish('groupRecieved', { groupRecieved: createdGroup });
+		if (args.groupType === 'group') {
+			pubSub.publish('groupRecieved', { groupRecieved: createdGroup });
+		}
 		return createdGroup;
 	}
 

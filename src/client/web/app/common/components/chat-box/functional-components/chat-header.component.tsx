@@ -35,7 +35,8 @@ interface ChatHeaderProps {
     oppositeUserName: string;
     oppositeDescription: string;
     githubUserData: any;
-    currentUsername: string;
+	currentUsername: string;
+	ownerRealId: Number;
     createGroupForm: boolean;
 	settingsForm: boolean;
 	groupMembers: Array<string>;
@@ -57,6 +58,7 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 					modalHandleClose,
 					handleCreateGroup,
 					groupMembers,
+					ownerRealId,
 					modalOpen,
 					t
 				}) => (
@@ -124,6 +126,7 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 									<CreateGroupForm
 										groupMembers={groupMembers}
 										ownerId={githubUserData.id}
+										ownerRealId={ownerRealId}
 										onSubmit={handleCreateGroup}
 										closeForm={() => modalHandleClose('createGroupForm')}
 									/>

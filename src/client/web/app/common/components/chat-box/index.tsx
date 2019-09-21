@@ -120,13 +120,19 @@ class Chat extends Component<IChatProps, IChatState> {
 	renderSubmitChatBox = () => {
 		const {
 			classes,
-			chatData: { groupMembers },
+			chatData: { groupMembers, member, groupType },
 			githubUserData
 		} = this.props;
-		const groupMemberData = find(groupMembers, [
-			'member.githubUid',
-			githubUserData.id
-		]);
+		let groupMemberData = false;
+		if (groupType === 'group'){
+			groupMemberData = find(groupMembers, [
+				'member.githubUid',
+				githubUserData.id
+			]);
+		}
+ 		else {	
+			groupMemberData = member && member.id && true;
+		}
 		return groupMemberData ? (
 			<div className='px-2'>
 				<Grid container spacing={0} justify={'center'} alignItems={'center'}>
@@ -165,7 +171,16 @@ class Chat extends Component<IChatProps, IChatState> {
 	};
 
 	renderTabs = () => {
-		const { classes, userData, groupData, t, onSelectGroup } = this.props;
+		const {
+			classes,
+			userData,
+			groupData,
+			t,
+			onSelectGroup,
+			onSelectContact,
+			githubUserData,
+			submitCreateGroup
+		} = this.props;
 		return (
 			<Tabs
 				tabs={[
@@ -181,6 +196,25 @@ class Chat extends Component<IChatProps, IChatState> {
 										}}
 										key={`ListItem-${contact.id}`}
 										button
+										onClick={() =>
+											submitCreateGroup({
+												variables: {
+													ownerId: githubUserData.id,
+													memberId: contact.githubUid,
+													groupName: `${githubUserData.name ||
+														githubUserData.login} (${
+														githubUserData.realId
+													}) - ${contact.name || contact.githubId} (${
+														contact.id
+													})`,
+													groupDescription: 'private group',
+													groupImage: 'none',
+													groupType: 'personal',
+													accessType: 'private',
+													date: new Date()
+												},
+												callBack: groupId => onSelectContact(groupId)
+											})}
 									>
 										<Avatar
 											alt=''
@@ -236,7 +270,8 @@ class Chat extends Component<IChatProps, IChatState> {
 			classes,
 			chatData: {
 				chats,
-				groupMembers,
+				member,
+				groupType,
 				groupName,
 				groupDescription,
 				groupImage
@@ -246,7 +281,7 @@ class Chat extends Component<IChatProps, IChatState> {
 			SharedComponent,
 			t,
 			githubUserData,
-			title,
+			title
 		} = this.props;
 		const { opened } = this.state;
 		const currentUsername =
@@ -254,18 +289,13 @@ class Chat extends Component<IChatProps, IChatState> {
 				? githubUserData.name
 				: (githubUserData.name && githubUserData.name.split(' ')[0]) ||
 				  githubUserData.login;
-		const groupMemberData = reject(groupMembers, [
-			'member.githubUid',
-			githubUserData.id
-		]);
-		const oppositeAvatarUrl =
-			groupMemberData.length === 1
-				? groupMemberData[0].member.avatarUrl
-				: groupImage;
+		const oppositeAvatarUrl = groupType === 'personal'
+			? member.avatarUrl
+			: groupImage;
 		const oppositeUserName =
-			groupMemberData.length === 1 ? groupMemberData[0].member.name : groupName;
+			groupType === 'personal' ? member.name || member.githubId : groupName;
 		const oppositeDescription =
-			groupMemberData.length === 1 ? 'Online' : groupDescription;
+			groupType === 'personal' ? 'Online' : groupDescription;
 		const SideBarConent = this.renderTabs();
 		const createGroupMembers = userData.map(val =>
 			val.name
@@ -300,6 +330,7 @@ class Chat extends Component<IChatProps, IChatState> {
 									modalHandleClose={this.modalHandleClose}
 									handleDrawerToggle={this.handleDrawerToggle}
 									groupMembers={createGroupMembers}
+									ownerRealId={githubUserData.realId}
 								/>
 								<div className={classes.wrapper}>
 									<SplitPane

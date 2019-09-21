@@ -1,4 +1,5 @@
 // Library
+import * as jwt from 'jsonwebtoken';
 import { Controller, Get, Req, Res } from '@nestjs/common';
 
 // Models
@@ -44,7 +45,9 @@ export class AuthController {
 			date: new Date(),
 		};
 		await this.groupMemberService.create(groupMemberPayload);
-		return response.redirect(303, `${process.env.FRONT_END_HOST}/?accessToken=${tokenObj.accessToken}&idToken=${tokenObj.idToken}`);
+		const { data, access_token, expiresIn } = tokenObj.idToken;
+		const idToken = jwt.sign({ ...data, realId: userProfile.id}, access_token, { expiresIn });
+		return response.redirect(303, `${process.env.FRONT_END_HOST}/?accessToken=${tokenObj.accessToken}&idToken=${idToken}&realId=${tokenObj.realId}`);
 	}
 
 	@Get('refresh')

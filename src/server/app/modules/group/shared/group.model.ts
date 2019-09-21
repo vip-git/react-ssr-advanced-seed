@@ -3,7 +3,7 @@ import {
 	Entity,
 	Column,
 	PrimaryGeneratedColumn,
-	OneToMany
+	OneToMany, ManyToOne, JoinColumn
 } from 'typeorm';
 import { IsString, IsInt, IsEnum } from 'class-validator';
 import { ApiModelProperty } from '@nestjs/swagger';
@@ -11,6 +11,7 @@ import { ApiModelProperty } from '@nestjs/swagger';
 // Model
 import { GroupMemberModel } from '../../group-member/shared/group-member.model';
 import { ChatModel } from '../../chat/shared/chat.model';
+import { ProfileModel } from '../../profile/shared/profile.model';
 
 
 enum GroupType {
@@ -25,6 +26,8 @@ enum AccessType {
 export interface IGroup {
 	id: number;
 	ownerId: number;
+	memberId?: number;
+	member?: ProfileModel;
 	groupName: string;
 	groupMembers: GroupMemberModel[];
 	chats: ChatModel[];
@@ -46,6 +49,20 @@ export class GroupModel implements IGroup {
 	@ApiModelProperty()
 	@IsInt()
 	ownerId: number;
+
+	@Column('int', {
+		default: 0
+	})
+	@ApiModelProperty()
+	@IsInt()
+	memberId: number;
+
+	@ManyToOne(type => ProfileModel, profile => profile.githubUid, {
+		eager: true,
+		cascade: false
+	})
+	@JoinColumn({ name: 'memberId', referencedColumnName: 'githubUid' })
+	member: ProfileModel;
 
 	@Column({ length: 500 })
 	@ApiModelProperty()

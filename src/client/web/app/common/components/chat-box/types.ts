@@ -20,7 +20,7 @@ export interface ICreateGroupPayload {
 		accessType: 'public' | 'private';
 		date: String;
 	};
-	callBack: () => void;
+	callBack: (id: any) => void;
 }
 
 export interface IChatProps {
@@ -58,7 +58,9 @@ export interface IChatProps {
 	chatData?: any;
 	userData?: any;
 	groupData?: any;
+	onSelectContact: (groupId: Number) => void;
 	onSelectGroup?: (groupId: Number) => void;
+	submitCreateGroup: (payload: any) => void;
 	submitChat?: (payload: any) => void;
 	readUsersAndChat?: () => void;
 	SharedComponent?: ReactType;
@@ -98,6 +100,7 @@ export interface IChatState {
 
 export interface IContact {
 	id: number;
+	githubUid: number;
 	githubId: string;
 	bio: string;
 	avatar: string;

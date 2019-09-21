@@ -3,7 +3,7 @@ import React from 'react';
 import MaterialForm from '@omega-web-components/material-form';
 
 export default function CreatGroupForm(props) {
-    const { groupMembers, onSubmit, closeForm, ownerId } = props;
+    const { groupMembers, onSubmit, closeForm, ownerId, ownerRealId } = props;
     // Internals
     const schema = {
         title: '',
@@ -46,13 +46,29 @@ export default function CreatGroupForm(props) {
 
 
 	const handleCreateGroup = (value) => {
-		console.log('onSubmit: %s', JSON.stringify(value)); // eslint-disable-line no-console
+        console.log('onSubmit:', value); // eslint-disable-line no-console
+        let selectedGroupMembers = [];
+        try {
+            selectedGroupMembers = JSON.parse(value.formData.groupMembers).map(
+							val => ({ memberId: val.value })
+                        );
+            selectedGroupMembers.push({
+                memberId: ownerRealId
+            });
+        }
+        catch(err) { 
+            selectedGroupMembers.push({
+                memberId: ownerRealId
+            });
+        }
 		onSubmit({
 			variables: {
 				...value.formData,
-				ownerId,
+                ownerId,
+                memberId: 0,
 				groupType: 'group',
 				accessType: 'public',
+				groupMembers: selectedGroupMembers,
 				date: new Date()
 			},
 			callBack: () => closeForm()

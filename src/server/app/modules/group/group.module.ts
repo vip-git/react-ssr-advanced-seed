@@ -11,9 +11,10 @@ import { GroupResolver } from './graphql/group.resolver';
 // Shared
 import { GroupService } from './shared/group.service';
 import { GroupModel } from './shared/group.model';
+import { GroupMemberModel } from '../group-member/shared/group-member.model';
 
 @Module({
-    imports: [TypeOrmModule.forFeature([GroupModel])],
+    imports: [TypeOrmModule.forFeature([GroupModel, GroupMemberModel])],
     controllers: [GroupController],
     providers: [GroupService, GroupResolver]
 })
