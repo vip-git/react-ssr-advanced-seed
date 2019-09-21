@@ -274,7 +274,9 @@ class Chat extends Component<IChatProps, IChatState> {
 			groupMemberData.length === 1 ? 'Online' : groupDescription;
 		const SideBarConent = this.renderTabs();
 		const createGroupMembers = userData.map(val =>
-			val.name ? `${val.name} (${val.githubId})` : val.githubId
+			val.name
+				? { value: `${val.name} (${val.githubId})`, key: val.id }
+				: { value: val.githubId, key: val.id }
 		);
 		this.scrollToBottomChat();
 		return (
