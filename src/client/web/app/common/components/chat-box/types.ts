@@ -58,6 +58,7 @@ export interface IChatProps {
 	chatData?: any;
 	userData?: any;
 	groupData?: any;
+	onSelectGroup?: (groupId: Number) => void;
 	submitChat?: (payload: any) => void;
 	readUsersAndChat?: () => void;
 	SharedComponent?: ReactType;

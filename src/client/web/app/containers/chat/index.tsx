@@ -39,6 +39,35 @@ class ChatContainer extends Component<any, any> {
 									data: payload.variables,
 									callBack: () => payload.callBack()
 								})}
+							onSelectGroup={(groupId: Number) =>
+								dispatchReadAllUsersAndChats({
+									apolloClient,
+									data: {
+										chatPayload: {
+											filters: {
+												where: {
+													id: groupId
+												}
+											}
+										},
+										groupPayload: {
+											filters: {
+												take: 10,
+												where: {
+													accessType: 'public'
+												}
+											}
+										},
+										profilePayload: {
+											filters: {
+												not: {
+													githubId: githubUserData.login
+												}
+											}
+										}
+									},
+									idToken
+								})}
 							readUsersAndChat={() =>
 								dispatchReadAllUsersAndChats({
 									apolloClient,

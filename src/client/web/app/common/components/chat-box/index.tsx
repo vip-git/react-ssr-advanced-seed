@@ -165,12 +165,7 @@ class Chat extends Component<IChatProps, IChatState> {
 	};
 
 	renderTabs = () => {
-		const {
-			classes,
-			userData,
-			groupData,
-			t,
-		} = this.props;
+		const { classes, userData, groupData, t, onSelectGroup } = this.props;
 		return (
 			<Tabs
 				tabs={[
@@ -205,7 +200,9 @@ class Chat extends Component<IChatProps, IChatState> {
 						icon: <GroupWorkIcon />,
 						tabName: t('chatbox-all-groups'),
 						tabContent: () => (
-							<List style={{ paddingTop: 0, maxHeight: 300, overflow: 'scroll' }}>
+							<List
+								style={{ paddingTop: 0, maxHeight: 300, overflow: 'scroll' }}
+							>
 								{groupData.map((groupVal: any, index) => (
 									<ListItem
 										style={{
@@ -213,6 +210,7 @@ class Chat extends Component<IChatProps, IChatState> {
 										}}
 										key={`ListItem-${groupVal.id}`}
 										button
+										onClick={() => onSelectGroup(groupVal.id)}
 									>
 										<Avatar
 											alt=''
