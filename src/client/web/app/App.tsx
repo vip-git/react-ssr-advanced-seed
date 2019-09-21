@@ -112,13 +112,13 @@ class App extends React.PureComponent<any, any> {
 					id={'footer'}
 					style={{
 						textAlign: 'center',
-						fontFamily: 'san-serif',
-						marginTop: 15,
+						fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+						marginTop: 15
 					}}
 				>
 					Version - 
-						{' '}
-						{ process.env.APP_VERSION || '0.0.1'}
+					{' '}
+					{process.env.APP_VERSION || '0.0.1'}
 				</div>
 			</div>
 		);
