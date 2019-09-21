@@ -3,7 +3,7 @@ import React from 'react';
 import MaterialForm from '@omega-web-components/material-form';
 
 export default function CreatGroupForm(props) {
-    const { onSubmit } = props;
+    const { onSubmit, groupMembers } = props;
     // Internals
     const schema = {
         title: '',
@@ -16,7 +16,7 @@ export default function CreatGroupForm(props) {
             groupMembers: {
                 type: 'string',
                 title: 'Group Members',
-                enum: ['Yes', 'No']
+                enum: groupMembers
             },
             groupDescription: {
                 type: 'string',

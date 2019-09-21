@@ -37,7 +37,8 @@ interface ChatHeaderProps {
     githubUserData: any;
     currentUsername: string;
     createGroupForm: boolean;
-    settingsForm: boolean;
+	settingsForm: boolean;
+	groupMembers: Array<string>;
     handleCreateGroup: (value: any, callback: () => void) => void;
     modalOpen: (stateName: string) => void;
     modalHandleClose: (stateName: string) => void;
@@ -54,7 +55,8 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 					createGroupForm,
 					settingsForm,
                     modalHandleClose,
-                    handleCreateGroup,
+					handleCreateGroup,
+					groupMembers,
                     modalOpen,
                     t
 				}) => (
@@ -119,7 +121,10 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 								modalTitle={t('create-group-title')}
 								modalDescription={t('create-group-description')}
 								modalContent={() => (
-									<CreateGroupForm onSubmit={handleCreateGroup} />
+									<CreateGroupForm 
+										onSubmit={handleCreateGroup} 
+										groupMembers={groupMembers} 
+									/>
 								)}
 								modalActions={() => {
 									return (

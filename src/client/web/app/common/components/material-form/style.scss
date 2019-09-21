@@ -8,6 +8,7 @@
         margin: 0;
         margin-left: -15px;
         > div {
+            flex-grow: 1;
             > div:first-child {
                 margin-top: 0px;
             }

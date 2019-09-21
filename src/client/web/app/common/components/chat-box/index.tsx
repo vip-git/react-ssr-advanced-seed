@@ -248,6 +248,7 @@ class Chat extends Component<IChatProps, IChatState> {
 				groupDescription,
 				groupImage
 			},
+			userData,
 			SharedComponent,
 			t,
 			githubUserData,
@@ -272,6 +273,9 @@ class Chat extends Component<IChatProps, IChatState> {
 		const oppositeDescription =
 			groupMemberData.length === 1 ? 'Online' : groupDescription;
 		const SideBarConent = this.renderTabs();
+		const createGroupMembers = userData.map(val =>
+			val.name ? `${val.name} (${val.githubId})` : val.githubId
+		);
 		this.scrollToBottomChat();
 		return (
 			<Wrapper padding={false}>
@@ -299,6 +303,7 @@ class Chat extends Component<IChatProps, IChatState> {
 									settingsForm={this.state.settingsForm}
 									modalHandleClose={this.modalHandleClose}
 									handleDrawerToggle={this.handleDrawerToggle}
+									groupMembers={createGroupMembers}
 								/>
 								<div className={classes.wrapper}>
 									<SplitPane
