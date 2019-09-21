@@ -169,42 +169,14 @@ class Chat extends Component<IChatProps, IChatState> {
 		);
 	};
 
-	render() {
+	renderTabs = () => {
 		const {
 			classes,
-			chatData: {
-				chats,
-				groupMembers,
-				groupName,
-				groupDescription,
-				groupImage
-			},
 			userData,
 			groupData,
-			SharedComponent,
 			t,
-			githubUserData,
-			title,
 		} = this.props;
-		const { opened } = this.state;
-		const currentUsername =
-			githubUserData.name && githubUserData.name.indexOf(' ') === -1
-				? githubUserData.name
-				: (githubUserData.name && githubUserData.name.split(' ')[0]) ||
-				  githubUserData.login;
-		const groupMemberData = reject(groupMembers, [
-			'member.githubUid',
-			githubUserData.id
-		]);
-		const oppositeAvatarUrl =
-			groupMemberData.length === 1
-				? groupMemberData[0].member.avatarUrl
-				: groupImage;
-		const oppositeUserName =
-			groupMemberData.length === 1 ? groupMemberData[0].member.name : groupName;
-		const oppositeDescription =
-			groupMemberData.length === 1 ? 'Online' : groupDescription;
-		const menu = (
+		return (
 			<Tabs
 				tabs={[
 					{
@@ -264,6 +236,42 @@ class Chat extends Component<IChatProps, IChatState> {
 				]}
 			/>
 		);
+	}
+
+	render() {
+		const {
+			classes,
+			chatData: {
+				chats,
+				groupMembers,
+				groupName,
+				groupDescription,
+				groupImage
+			},
+			SharedComponent,
+			t,
+			githubUserData,
+			title,
+		} = this.props;
+		const { opened } = this.state;
+		const currentUsername =
+			githubUserData.name && githubUserData.name.indexOf(' ') === -1
+				? githubUserData.name
+				: (githubUserData.name && githubUserData.name.split(' ')[0]) ||
+				  githubUserData.login;
+		const groupMemberData = reject(groupMembers, [
+			'member.githubUid',
+			githubUserData.id
+		]);
+		const oppositeAvatarUrl =
+			groupMemberData.length === 1
+				? groupMemberData[0].member.avatarUrl
+				: groupImage;
+		const oppositeUserName =
+			groupMemberData.length === 1 ? groupMemberData[0].member.name : groupName;
+		const oppositeDescription =
+			groupMemberData.length === 1 ? 'Online' : groupDescription;
+		const SideBarConent = this.renderTabs();
 		this.scrollToBottomChat();
 		return (
 			<Wrapper padding={false}>
@@ -306,7 +314,7 @@ class Chat extends Component<IChatProps, IChatState> {
 									>
 										<ChatSideBarComponent
 											classes={classes}
-											menu={menu}
+											content={SideBarConent}
 											SharedComponent={SharedComponent}
 											handleDrawerToggle={this.handleDrawerToggle}
 											opened={opened}

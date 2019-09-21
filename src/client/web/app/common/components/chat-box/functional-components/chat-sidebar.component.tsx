@@ -1,4 +1,3 @@
-
 // Model
 import { ChatBoxModel } from '../chat-box.model';
 
@@ -17,15 +16,17 @@ interface ChatSideBarProps {
     t?: any;
     handleDrawerToggle: () => void;
     SharedComponent: React.ElementType<any>;
-    menu: any;
+    content: React.ReactNode;
     opened: boolean;
 }
 
-export const ChatSideBarComponent: React.FunctionComponent<ChatSideBarProps> = ({
+export const ChatSideBarComponent: React.FunctionComponent<
+					ChatSideBarProps
+				> = ({
 					classes,
 					handleDrawerToggle,
 					SharedComponent,
-					menu,
+					content,
 					opened
 				}) => (
 					<div
@@ -51,7 +52,7 @@ export const ChatSideBarComponent: React.FunctionComponent<ChatSideBarProps> = (
 									height: '100%'
 								}}
 							>
-								{menu}
+								{content}
 								<SharedComponent />
 							</Drawer>
 						</Hidden>
@@ -74,7 +75,7 @@ export const ChatSideBarComponent: React.FunctionComponent<ChatSideBarProps> = (
 									height: '100%'
 								}}
 							>
-								{menu}
+								{content}
 							</Drawer>
 						</Hidden>
 					</div>
