@@ -8,31 +8,30 @@
 import { ChatBoxModel } from './chat-box.model';
 
 // Interfaces
-import { IChatProps, IChatState, IContact, IChat } from './types';
+import { IChatProps, IChatState, IContact } from './types';
 
 import './style.scss';
+
+// Internal Components
+import { AppHeaderComponent } from './functional-components/app-header.component';
+import { ChatHeaderComponent } from './functional-components/chat-header.component';
+import { ChatSideBarComponent } from './functional-components/chat-sidebar.component';
+import { ChatMainComponent } from './functional-components/chat-main.component';
 
 // Internals
 const {
 	withWidth,
 	isWidthUp,
 	withStyles,
-	AppBar,
-	Toolbar,
 	Grid,
 	Card,
 	Typography,
-	Drawer,
 	List,
 	ListItem,
 	ListItemText,
 	Avatar,
-	Divider,
 	TextField,
-	Hidden,
 	Button,
-	IconButton,
-	MenuIcon,
 	SendIcon,
 	AccountCircleIcon,
 	GroupWorkIcon
@@ -40,15 +39,13 @@ const {
 const {
 	React,
 	Component,
-	classNames,
-	distanceInWordsToNow,
 	i18next,
 	SplitPane,
 	withTranslation,
 	reject,
 	find
 } = ChatBoxModel.libraries;
-const { Wrapper, OptionsBar, ModalForm, Tabs, CreateGroupForm, SettingsForm } = ChatBoxModel.components;
+const { Wrapper, Tabs } = ChatBoxModel.components;
 const { ChatStyles } = ChatBoxModel.styles;
 
 type iModalForm = 'createGroupForm' | 'settingsForm';
@@ -186,7 +183,8 @@ class Chat extends Component<IChatProps, IChatState> {
 			groupData,
 			SharedComponent,
 			t,
-			githubUserData
+			githubUserData,
+			title,
 		} = this.props;
 		const { opened } = this.state;
 		const currentUsername =
@@ -269,19 +267,7 @@ class Chat extends Component<IChatProps, IChatState> {
 		this.scrollToBottomChat();
 		return (
 			<Wrapper padding={false}>
-				<AppBar position='static'>
-					<Toolbar>
-						<Typography
-							variant='h6'
-							color='inherit'
-							style={{ margin: '0 auto' }}
-						>
-							{this.props.title}
-						</Typography>
-					</Toolbar>
-					<Toolbar />
-				</AppBar>
-
+				<AppHeaderComponent title={title} />
 				<Grid
 					container
 					spacing={0}
@@ -291,121 +277,21 @@ class Chat extends Component<IChatProps, IChatState> {
 					<Grid item xs={11} sm={11} md={10} lg={9}>
 						<Card>
 							<div className={classes.root}>
-								<AppBar
-									position='absolute'
-									className={classes.appBar}
-									color='default'
-								>
-									<Toolbar className={classes.toolBar}>
-										<Hidden mdUp>
-											<IconButton
-												color='inherit'
-												aria-label='open drawer'
-												onClick={() => this.handleDrawerToggle()}
-											>
-												<MenuIcon />
-											</IconButton>
-										</Hidden>
-										<div
-											className={classes.headerLeft}
-											style={{ width: '100%', maxWidth: '100%' }}
-										>
-											<Avatar
-												alt=''
-												src={oppositeAvatarUrl}
-												className={classes.avatar}
-											/>
-											<ListItemText
-												primary={oppositeUserName}
-												secondary={oppositeDescription}
-											/>
-										</div>
-										<List dense>
-											<ListItem>
-												<Avatar
-													alt=''
-													src={githubUserData.avatar_url}
-													className={classes.avatar}
-												/>
-												<ListItemText
-													primary={currentUsername}
-													secondary='Online'
-												/>
-											</ListItem>
-										</List>
-										<span className='flexSpacer' />
-										<OptionsBar
-											menuItems={[
-												{
-													menuName: 'Create Group',
-													callback: () => this.modalOpen('createGroupForm')
-												},
-												{
-													menuName: 'Settings',
-													callback: () => this.modalOpen('settingsForm')
-												},
-												{
-													menuName: 'Logout',
-													callback: () => console.log('called for logout')
-												}
-											]}
-										/>
-										<ModalForm
-											open={this.state.createGroupForm}
-											modalTitle={t('create-group-title')}
-											modalDescription={t('create-group-description')}
-											modalContent={() => (
-												<CreateGroupForm onSubmit={this.handleCreateGroup} />
-											)}
-											modalActions={() => {
-												return (
-													<>
-														<Button
-															color='primary'
-															onClick={() =>
-																this.modalHandleClose('createGroupForm')}
-														>
-															Cancel
-														</Button>
-														<Button
-															color='primary'
-															variant={'contained'}
-															onClick={() => {
-																const createGroupButton: any = document.querySelector(
-																									'#materialForm > div > fieldset + div > button + button'
-																								);
-																createGroupButton && createGroupButton.click();
-																this.modalHandleClose('createGroupForm');
-															}}
-														>
-															Create
-														</Button>
-													</>
-												);
-											}}
-											handleClose={() =>
-												this.modalHandleClose('createGroupForm')}
-										/>
-										<ModalForm
-											open={this.state.settingsForm}
-											modalTitle={t('settings-title')}
-											modalDescription={t('settings-description')}
-											modalContent={() => <SettingsForm />}
-											modalActions={() => {
-												return (
-													<Button
-														color='primary'
-														onClick={() =>
-															this.modalHandleClose('settingsForm')}
-													>
-														Create
-													</Button>
-												);
-											}}
-											handleClose={() => this.modalHandleClose('settingsForm')}
-										/>
-									</Toolbar>
-								</AppBar>
+								<ChatHeaderComponent
+									classes={classes}
+									t={t}
+									handleCreateGroup={this.handleCreateGroup}
+									modalOpen={this.modalOpen}
+									currentUsername={currentUsername}
+									githubUserData={githubUserData}
+									oppositeAvatarUrl={oppositeAvatarUrl}
+									oppositeDescription={oppositeDescription}
+									oppositeUserName={oppositeUserName}
+									createGroupForm={this.state.createGroupForm}
+									settingsForm={this.state.settingsForm}
+									modalHandleClose={this.modalHandleClose}
+									handleDrawerToggle={this.handleDrawerToggle}
+								/>
 								<div className={classes.wrapper}>
 									<SplitPane
 										split='vertical'
@@ -418,130 +304,20 @@ class Chat extends Component<IChatProps, IChatState> {
 										}
 										allowResize={isWidthUp('md', this.props.width)}
 									>
-										<div
-											style={{
-												height: '100%'
-											}}
-										>
-											<Hidden smDown>
-												<Drawer
-													variant='permanent'
-													ModalProps={{
-														keepMounted: false,
-														className: classes.modal,
-														BackdropProps: {
-															className: classes.backdrop
-														},
-														onBackdropClick: this.handleDrawerToggle
-													}}
-													classes={{
-														paper: classes.drawerPaper
-													}}
-													style={{
-														height: '100%'
-													}}
-												>
-													{menu}
-													<SharedComponent />
-												</Drawer>
-											</Hidden>
-											<Hidden mdUp>
-												<Drawer
-													variant='temporary'
-													open={opened}
-													ModalProps={{
-														keepMounted: false,
-														className: classes.modal,
-														BackdropProps: {
-															className: classes.backdrop
-														},
-														onBackdropClick: this.handleDrawerToggle
-													}}
-													classes={{
-														paper: classes.drawerPaper
-													}}
-													style={{
-														height: '100%'
-													}}
-												>
-													{menu}
-												</Drawer>
-											</Hidden>
-										</div>
-										<div
-											style={{
-												height: '100%'
-											}}
-										>
-											<main className={classes.main}>
-												<div id={'chats'} className={classes.content}>
-													{chats &&
-														chats.map((chat: IChat, index) => (
-															<div
-																key={`ChatItem-${chat.id}`}
-																className={classNames(
-																	classes.conversation,
-																	chat.ownerId === githubUserData.id
-																		? classes.conversationSent
-																		: classes.conversationReceived
-																)}
-															>
-																<Avatar
-																	alt=''
-																	src={chat.owner.avatarUrl}
-																	style={{
-																		marginRight: 10,
-																		display:
-																			chat.ownerId === githubUserData.id
-																				? 'none'
-																				: 'block'
-																	}}
-																/>
-																<div
-																	className={classNames(
-																		classes.body,
-																		chat.ownerId === githubUserData.id
-																			? classes.bodySent
-																			: classes.bodyReceived
-																	)}
-																>
-																	<Typography color='inherit'>
-																		{chat.message}
-																	</Typography>
-																	<Typography
-																		variant='caption'
-																		className={classNames(
-																			classes.date,
-																			chat.ownerId === githubUserData.id
-																				? classes.dateSent
-																				: classes.dateReceived
-																		)}
-																	>
-																		{' '}
-																		{distanceInWordsToNow(chat.date)}
-																	</Typography>
-																</div>
-																<Avatar
-																	alt=''
-																	src={githubUserData.avatar_url}
-																	style={{
-																		float: 'right',
-																		order: 2,
-																		marginLeft: 10,
-																		top: 25,
-																		display:
-																			chat.ownerId === githubUserData.id
-																				? 'block'
-																				: 'none'
-																	}}
-																/>
-															</div>
-														))}
-												</div>
-												<Divider />
-												{this.renderSubmitChatBox()}
-											</main>
-										</div>
+										<ChatSideBarComponent
+											classes={classes}
+											menu={menu}
+											SharedComponent={SharedComponent}
+											handleDrawerToggle={this.handleDrawerToggle}
+											opened={opened}
+										/>
+										<ChatMainComponent
+											chats={chats}
+											classes={classes}
+											githubUserData={githubUserData}
+											t={t}
+											renderSubmitChatBox={this.renderSubmitChatBox}
+										/>
 									</SplitPane>
 								</div>
 							</div>
