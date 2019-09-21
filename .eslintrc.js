@@ -22,6 +22,8 @@ module.exports = {
 		project: './tsconfig.json'
 	},
 	rules: {
+		'@typescript-eslint/no-var-requires': 'off',
+		'global-require': 'off',
 		'no-trailing-spaces': 'off',
 		'import/prefer-default-export': 'off',
 		'react/jsx-indent': 'off',

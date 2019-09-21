@@ -69,13 +69,11 @@ interface ILoginProps {
 
 class LoginDialog extends React.Component<ILoginProps, {}> {
   render() {
-    const { show, handleLoginClick } = this.props;
+	const { show, handleLoginClick } = this.props;
+	const githubLogo = require('./img/github-logo.svg');
     return (
 			<div>
-				<Dialog
-					aria-labelledby='customized-dialog-title'
-					open={show || false}
-				>
+				<Dialog aria-labelledby='customized-dialog-title' open={show || false}>
 					<LoginTitle id='customized-Login-title'>
 						Welcome to React-SSR-Advanced Seed Demo
 					</LoginTitle>
@@ -102,6 +100,14 @@ class LoginDialog extends React.Component<ILoginProps, {}> {
 							}}
 							onClick={handleLoginClick}
 						>
+							<img
+								alt={'Github Logo'}
+								src={githubLogo}
+								style={{
+									width: 25,
+									marginRight: 12
+								}}
+							/>
 							Login with Github
 						</Button>
 					</DialogContent>

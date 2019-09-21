@@ -213,9 +213,15 @@ class Chat extends Component<IChatProps, IChatState> {
 						icon: <AccountCircleIcon />,
 						tabName: t('chatbox-all-users'),
 						tabContent: () => (
-							<List>
+							<List style={{ paddingTop: 0 }}>
 								{userData.map((contact: IContact, index) => (
-									<ListItem key={`ListItem-${contact.id}`} button>
+									<ListItem
+										style={{
+											borderBottom: 'solid 1px #e0e0e0'
+										}}
+										key={`ListItem-${contact.id}`}
+										button
+									>
 										<Avatar
 											alt=''
 											src={contact.avatar}
@@ -234,9 +240,15 @@ class Chat extends Component<IChatProps, IChatState> {
 						icon: <GroupWorkIcon />,
 						tabName: t('chatbox-all-groups'),
 						tabContent: () => (
-							<List>
+							<List style={{ paddingTop: 0 }}>
 								{groupData.map((groupVal: any, index) => (
-									<ListItem key={`ListItem-${groupVal.id}`} button>
+									<ListItem
+										style={{
+											borderBottom: 'solid 1px #e0e0e0'
+										}}
+										key={`ListItem-${groupVal.id}`}
+										button
+									>
 										<Avatar
 											alt=''
 											src={groupVal.groupImage}
