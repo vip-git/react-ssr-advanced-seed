@@ -108,18 +108,31 @@ class App extends React.PureComponent<any, any> {
 					</button>
 				</div>
 				<Chat title={t('i18n-example')} idToken={idToken} />
+				<div
+					id={'footer'}
+					style={{
+						textAlign: 'center',
+						fontFamily: 'san-serif',
+						marginTop: 15,
+					}}
+				>
+					Version - 
+						{' '}
+						{ process.env.APP_VERSION || '0.0.1'}
+				</div>
 			</div>
 		);
 	}
 
 	renderAppScreen = () => {
+		const TypedHelmet: any = Helmet;
 		return (
 			<FadeIn>
-				<Helmet
+				<TypedHelmet
 					defaultTitle='React Redux SSR Advanced Seed'
 					titleTemplate='%s – React Redux SSR Advanced Seed'
 				/>
-				{ this.renderChat() }
+				{this.renderChat()}
 			</FadeIn>
 		);
 	};
