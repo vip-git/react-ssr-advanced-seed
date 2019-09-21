@@ -10,6 +10,19 @@ export interface ICreateChatPayload {
 	callBack: () => void;
 }
 
+export interface ICreateGroupPayload {
+	variables: {
+		ownerId: Number;
+		groupName: string;
+		groupDescription: string;
+		groupImage: string;
+		groupType: 'group';
+		accessType: 'public' | 'private';
+		date: String;
+	};
+	callBack: () => void;
+}
+
 export interface IChatProps {
 	classes?: {
 		avatar: string;

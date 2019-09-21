@@ -1,6 +1,9 @@
 /* eslint-disable react/jsx-fragments */
 // Types
-import { ICreateChatPayload } from '@omega-web-components/chat-box/types';
+import {
+	ICreateChatPayload,
+	ICreateGroupPayload
+} from '@omega-web-components/chat-box/types';
 
 // Internal
 import { ChatModel } from './chat.model';
@@ -14,7 +17,11 @@ class ChatContainer extends Component<any, any> {
 	};
 
 	render() {
-		const { dispatchReadAllUsersAndChats, dispatchCreateChat } = this.props;
+		const {
+			dispatchReadAllUsersAndChats,
+			dispatchCreateChat,
+			dispatchCreateGroup
+		} = this.props;
 		const { ChatComponent, ContentComponent } = ChatModel.components;
 		const { chats, title, idToken } = this.props;
 		const { chatData, userData, groupData, error } = chats;
@@ -60,6 +67,12 @@ class ChatContainer extends Component<any, any> {
 										}
 									},
 									idToken
+								})}
+							submitCreateGroup={(payload: ICreateGroupPayload) =>
+								dispatchCreateGroup({
+									apolloClient,
+									data: payload.variables,
+									callBack: () => payload.callBack()
 								})}
 							githubUserData={githubUserData}
 							groupId={2}

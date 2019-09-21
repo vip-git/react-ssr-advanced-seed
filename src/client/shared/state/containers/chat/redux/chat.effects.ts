@@ -258,7 +258,7 @@ class ChatEffect {
 					payload: { apolloClient, data, callBack }
 				} = action;
 				componentCallBack = () => callBack();
-				return ChatReduxModel.services.requestCreateChat({
+				return ChatReduxModel.services.createGroup({
 					apolloClient,
 					data
 				});

@@ -39,7 +39,7 @@ interface ChatHeaderProps {
     createGroupForm: boolean;
 	settingsForm: boolean;
 	groupMembers: Array<string>;
-    handleCreateGroup: (value: any, callback: () => void) => void;
+	handleCreateGroup: (payload: any) => void;
     modalOpen: (stateName: string) => void;
     modalHandleClose: (stateName: string) => void;
 }
@@ -54,11 +54,11 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 					currentUsername,
 					createGroupForm,
 					settingsForm,
-                    modalHandleClose,
+					modalHandleClose,
 					handleCreateGroup,
 					groupMembers,
-                    modalOpen,
-                    t
+					modalOpen,
+					t
 				}) => (
 					<AppBar
 						position='absolute'
@@ -121,9 +121,11 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 								modalTitle={t('create-group-title')}
 								modalDescription={t('create-group-description')}
 								modalContent={() => (
-									<CreateGroupForm 
-										onSubmit={handleCreateGroup} 
-										groupMembers={groupMembers} 
+									<CreateGroupForm
+										groupMembers={groupMembers}
+										ownerId={githubUserData.id}
+										onSubmit={handleCreateGroup}
+										closeForm={() => modalHandleClose('createGroupForm')}
 									/>
 								)}
 								modalActions={() => {
@@ -139,15 +141,14 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 												color='primary'
 												variant={'contained'}
 												onClick={() => {
-                                                    if (typeof document !== 'undefined') {
-                                                        const createGroupButton: any = document.querySelector(
-                                                            '#materialForm > div > fieldset + div > button + button'
-                                                        );
-                                                        if (createGroupButton) {
-                                                            createGroupButton.click();
-                                                        }
-                                                    }
-													modalHandleClose('createGroupForm');
+													if (typeof document !== 'undefined') {
+														const createGroupButton: any = document.querySelector(
+															'#materialForm > div > fieldset + div > button + button'
+														);
+														if (createGroupButton) {
+															createGroupButton.click();
+														}
+													}
 												}}
 											>
 												Create

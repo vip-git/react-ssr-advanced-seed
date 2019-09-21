@@ -8,7 +8,7 @@ import {
     createGroupMutation,
     updateGroupMutation,
     removeGroupMutation
-} from './groups.gql';
+} from './group.gql';
 
 export interface Payload {
     apolloClient: {};
@@ -32,7 +32,7 @@ class GroupService {
                 // Perform updates on previousResult with subscriptionData
                 if (!subscriptionData.data) return prev;
                 const { groupRecieved } = subscriptionData.data;
-                prev.getGroup[0].groups.push(groupRecieved);
+                prev.getGroup.push(groupRecieved);
                 return { ...prev };
             }
         );

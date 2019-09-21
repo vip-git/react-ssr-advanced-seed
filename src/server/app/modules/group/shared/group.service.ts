@@ -33,6 +33,7 @@ export class GroupService {
 	async create(groupPayload: GroupModel): Promise<GroupModel> {
 		const group = new GroupModel();
 		group.ownerId = groupPayload.ownerId;
+		group.groupImage = groupPayload.groupImage;
 		group.groupName = groupPayload.groupName;
 		group.date = groupPayload.date;
 		group.groupDescription = groupPayload.groupDescription;

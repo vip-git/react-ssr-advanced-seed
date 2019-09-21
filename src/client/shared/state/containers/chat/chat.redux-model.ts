@@ -1,7 +1,7 @@
 // Service
 import { ChatServiceEngine } from '@omega-core/services/chat';
 import { UserServiceEngine } from '@omega-core/services/user';
-import { GroupServiceEngine } from '@omega-core/services/groups';
+import { GroupServiceEngine } from '@omega-core/services/group';
 
 // Rules
 import { ChatRulesEngine } from '@omega-core/rules/chat.rules';
@@ -44,7 +44,9 @@ export const ChatReduxModel = {
 		dispatchEditChat: (payload: any) =>
 			dispatch(ChatReduxModel.actions.effects.editChat(payload)),
 		dispatchProcessErrorChatResponse: (payload: any) =>
-			dispatch(ChatReduxModel.actions.reducer.processErrorChatResponse(payload))
+			dispatch(ChatReduxModel.actions.reducer.processErrorChatResponse(payload)),
+		dispatchCreateGroup: (payload: any) =>
+			dispatch(ChatReduxModel.actions.effects.createGroup(payload)),
 	}),
 	reduxState: (state: any) => ({
 		chats: getChatState(state),

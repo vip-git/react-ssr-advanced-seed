@@ -117,11 +117,6 @@ class Chat extends Component<IChatProps, IChatState> {
 		}
 	};
 
-	handleCreateGroup = (value, callback) => {
-		console.log('onSubmit: %s', JSON.stringify(value)); // eslint-disable-line no-console
-		setTimeout(() => callback && callback(), 2000); // just an example in real world can be your XHR call
-	};
-
 	renderSubmitChatBox = () => {
 		const {
 			classes,
@@ -210,7 +205,7 @@ class Chat extends Component<IChatProps, IChatState> {
 						icon: <GroupWorkIcon />,
 						tabName: t('chatbox-all-groups'),
 						tabContent: () => (
-							<List style={{ paddingTop: 0 }}>
+							<List style={{ paddingTop: 0, maxHeight: 300, overflow: 'scroll' }}>
 								{groupData.map((groupVal: any, index) => (
 									<ListItem
 										style={{
@@ -248,6 +243,7 @@ class Chat extends Component<IChatProps, IChatState> {
 				groupDescription,
 				groupImage
 			},
+			submitCreateGroup,
 			userData,
 			SharedComponent,
 			t,
@@ -294,7 +290,7 @@ class Chat extends Component<IChatProps, IChatState> {
 								<ChatHeaderComponent
 									classes={classes}
 									t={t}
-									handleCreateGroup={this.handleCreateGroup}
+									handleCreateGroup={submitCreateGroup}
 									modalOpen={this.modalOpen}
 									currentUsername={currentUsername}
 									githubUserData={githubUserData}

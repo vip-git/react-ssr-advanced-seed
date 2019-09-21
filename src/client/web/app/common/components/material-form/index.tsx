@@ -10,7 +10,8 @@ export default class MaterialForm extends React.Component<any, any> {
 	};
 
 	onFormChanged = ({ formData }) => {
-		console.log('onFormChanged: ', formData); // eslint-disable-line no-console
+		// console.log('onFormChanged: ', formData); // eslint-disable-line no-console
+		return formData;
 	};
 
 	onUpload = value => {

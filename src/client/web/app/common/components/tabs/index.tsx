@@ -13,7 +13,8 @@ import Box from '@material-ui/core/Box';
 const useStyles = makeStyles({
 	root: {
 		flexGrow: 1,
-		maxWidth: 500
+		maxWidth: 500,
+		maxHeight: 380
 	}
 });
 
