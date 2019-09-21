@@ -69,7 +69,7 @@ class ChatEffect {
 					const {
 						data: { getGroup }
 					} = chatResponse;
-					const { chats, groupMembers, groupName, groupDescription, groupImage, groupType,
+					const { id, chats, groupMembers, groupName, groupDescription, groupImage, groupType,
 						accessType, member } = getGroup[0];
 					const finalData = Array.isArray(chats)
 						? chats.map((val: IChat) => {
@@ -79,6 +79,7 @@ class ChatEffect {
 						  })
 						: [];
 					return ChatReduxModel.actions.reducer.processAllChats({
+						id,
 						groupName,
 						groupDescription,
 						groupType,

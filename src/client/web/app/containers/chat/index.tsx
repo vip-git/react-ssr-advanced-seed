@@ -136,7 +136,7 @@ class ChatContainer extends Component<any, any> {
 									callBack: id => payload.callBack(id)
 								})}
 							githubUserData={githubUserData}
-							groupId={2}
+							groupId={chatData.id || 2}
 							title={title}
 							chatData={chatData}
 							userData={userData}
