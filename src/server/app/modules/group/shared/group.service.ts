@@ -42,7 +42,12 @@ export class GroupService {
 				memberId: groupPayload.memberId,
 				ownerId: groupPayload.ownerId,
 			});
-			existingGroup = doesGroupExist && doesGroupExist.length && doesGroupExist[0];
+			const doesGroupExist1 = await this.groupRepository.find({
+				memberId: groupPayload.ownerId,
+				ownerId: groupPayload.memberId,
+			});
+			existingGroup = doesGroupExist && doesGroupExist.length && doesGroupExist[0] || 
+							doesGroupExist1 && doesGroupExist1.length && doesGroupExist1[0];
 		}
 		if (!existingGroup) {
 			const group = new GroupModel();
