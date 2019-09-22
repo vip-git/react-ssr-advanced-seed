@@ -10,10 +10,10 @@ import { ProfileModel } from '../../profile/shared/profile.model';
 export interface IChat {
 	id: number;
 	groupId: number;
-	group: GroupModel;
+	group?: GroupModel;
 	message: string;
 	ownerId: number;
-	owner: ProfileModel;
+	owner?: ProfileModel;
 	date: Date;
 }
 

@@ -23,6 +23,8 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 		const chatBoxComponent = shallow(
 			<ThemeProvider theme={theme}>
 				<ChatBoxComponent
+					onSelectContact={(groupId: Number) => groupId}
+					submitCreateGroup={() => {}}
 					sharedComponent={() => <ContentComponent />}
 					title={'Test Me'}
 					readUsersAndChat={() => {}}
@@ -34,7 +36,9 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 		);
 
 		// Interaction demo
-		expect(chatBoxComponent.text()).toEqual('');
+		expect(chatBoxComponent.text()).toEqual(
+			'<WithWidth(WithStyles(withI18nextTranslation(Chat))) />'
+		);
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();
@@ -43,6 +47,8 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 		const chatBoxComponent = mount(
 			<ThemeProvider theme={theme}>
 				<ChatBoxComponent
+					onSelectContact={(groupId: Number) => groupId}
+					submitCreateGroup={() => {}}
 					sharedComponent={() => <ContentComponent />}
 					title={'Test Me'}
 					readUsersAndChat={() => {}}

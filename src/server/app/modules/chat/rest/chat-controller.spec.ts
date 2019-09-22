@@ -18,7 +18,7 @@ describe('ChatsController', () => {
 	});
 
 	describe('findAll', () => {
-		it('should return an array of cats', async () => {
+		it('should return an array of chats', async () => {
 			const allChats = await chatsController.findAll();
 			expect(allChats).toBeDefined();
 			expect(allChats).toEqual([]);
@@ -31,7 +31,7 @@ describe('ChatsController', () => {
 				id: 1,
 				groupId: 2,
 				message: 'test',
-				type: 'sent',
+				ownerId: 3,
 				date: new Date()
 			};
 			const createChat = await chatsController.create(mockedChatData);

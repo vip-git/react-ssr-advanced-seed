@@ -18,7 +18,7 @@ describe('OptionsBarComponent <OptionsBar />', () => {
 		);
 
 		// Interaction demo
-		expect(optionsBarComponent.text()).toEqual('');
+		expect(optionsBarComponent.text()).toEqual('<OptionsBar />');
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();

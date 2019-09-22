@@ -18,7 +18,7 @@ describe('Settings <SettingsComponent />', () => {
 		);
 
 		// Interaction demo
-		expect(settingsComponent.text()).toEqual('');
+		expect(settingsComponent.text()).toEqual('<TextFields />');
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();

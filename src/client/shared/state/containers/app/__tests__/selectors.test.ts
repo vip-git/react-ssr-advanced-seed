@@ -7,6 +7,7 @@ const state = {
 
 describe('App Selectors', () => {
   it('gets the locale', () => {
-    expect(getLocale(state)).toMatch('en-US');
+    const expectedState = { 'idToken': '', 'locale': 'en-US' };
+    expect(getLocale(state)).toStrictEqual(expectedState);
   });
 });

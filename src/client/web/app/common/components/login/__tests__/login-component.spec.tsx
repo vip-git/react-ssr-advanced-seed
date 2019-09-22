@@ -1,4 +1,5 @@
 // Library
+import 'jsdom-global/register';
 import * as React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { shallow, mount } from 'enzyme';
@@ -7,35 +8,35 @@ import { shallow, mount } from 'enzyme';
 import theme from '../../../styles';
 
 // Web
-import DialogComponent from '../index';
+import LoginDialog from '../index';
 
-describe('DialogComponent <DialogComponent />', () => {
+describe('DialogComponent <LoginDialog />', () => {
 	it('Dialog Component renders correctly', () => {
 		const dialogComponent = shallow(
 			<ThemeProvider theme={theme}>
-				<DialogComponent
+				<LoginDialog
 					show={false}
 					content={'test'}
 					title={'test'}
-					handleClose={() => {}}
+					handleLoginClick={() => {}}
 				/>
 			</ThemeProvider>
 		);
 
 		// Interaction demo
-		expect(dialogComponent.text()).toEqual('<CustomizedDialogs />');
+		expect(dialogComponent.text()).toEqual('<LoginDialog />');
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();
 	});
-	it('Dialog Component renders correctly when props are true', () => {
+	it('LoginDialog Component renders correctly when props are true', () => {
 		const dialogComponent = mount(
 			<ThemeProvider theme={theme}>
-				<DialogComponent
-					show={true}
+				<LoginDialog
+					show
 					content={'test'}
 					title={'test'}
-					handleClose={() => {}}
+					handleLoginClick={() => {}}
 				/>
 			</ThemeProvider>
 		);

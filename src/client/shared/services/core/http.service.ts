@@ -33,16 +33,19 @@ const returnValidGraphQLOpertaion = (
 			});
 		case 'subscription':
 			const { query, document } = gql;
-			const watchQuery = apolloClient.watchQuery({
-				query,
-				variables
-			});
-			watchQuery.subscribeToMore({
-				document,
-				variables,
-				updateQuery
-			});
-			return watchQuery;
+			if (apolloClient) {
+				const watchQuery = apolloClient.watchQuery({
+					query,
+					variables
+				});
+				watchQuery.subscribeToMore({
+					document,
+					variables,
+					updateQuery
+				});
+				return watchQuery;
+			}
+			return {};
 	}
 };
 

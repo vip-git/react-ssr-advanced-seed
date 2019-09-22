@@ -4,7 +4,8 @@ import { ActionTypes } from '../actions';
 describe('App Reducer', () => {
 	it('can get Initial State', () => {
 		const initialState = {
-			locale: 'en-US'
+			'idToken': '',
+			'locale': 'en-US'
 		};
 		const state = reducer(undefined, {});
 		expect(state).toStrictEqual(initialState);
@@ -13,7 +14,8 @@ describe('App Reducer', () => {
 		expect(
 			reducer(initialState, { type: ActionTypes.SET_LOCALE, payload: 'de-DE' })
 		).toEqual({
-			locale: 'de-DE'
+			'idToken': '',
+			'locale': 'de-DE'
 		});
 	});
 });

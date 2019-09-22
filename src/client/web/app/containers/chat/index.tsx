@@ -26,7 +26,13 @@ class ChatContainer extends Component<any, any> {
 		const { chats, title, idToken } = this.props;
 		const { chatData, userData, groupData, error } = chats;
 		const ChatComponentTyped: any = ChatComponent;
-		const githubUserData: any = JWTDecode(idToken);
+		let githubUserData: any = {};
+		try {
+			githubUserData = JWTDecode(idToken);
+		}
+ 		catch(error) {
+			githubUserData = null;
+		}
 		return (
 			<ApolloConsumer>
 				{apolloClient => (

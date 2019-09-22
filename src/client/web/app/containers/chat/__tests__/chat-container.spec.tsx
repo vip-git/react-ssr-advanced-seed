@@ -1,17 +1,19 @@
 import React from 'react';
+import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import { mount } from 'enzyme';
 
 // Theme
-import theme from '../../../common/styles';
 
 // Internal
+import { apolloClient } from '@omega-core/utils/apollo-client-ssr.engine';
 import ChatComponent from '@omega-web-components/chat-box';
 import ChatContainer from '@omega-web-containers/chat';
 
 // Redux Model
 import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
+import theme from '../../../common/styles';
 
 interface IState {
 	chats: {
@@ -40,11 +42,13 @@ describe('container <ChatContainer />', () => {
 		});
 
 		wrapper = mount(
-			<ThemeProvider theme={theme}>
-				<Provider store={store}>
-					<ChatContainer />
-				</Provider>
-			</ThemeProvider>
+			<ApolloProvider client={apolloClient}>
+				<ThemeProvider theme={theme}>
+					<Provider store={store}>
+						<ChatContainer />
+					</Provider>
+				</ThemeProvider>
+			</ApolloProvider>
 		);
 		container = wrapper.find(ChatContainer);
 		component = container.find(ChatComponent);

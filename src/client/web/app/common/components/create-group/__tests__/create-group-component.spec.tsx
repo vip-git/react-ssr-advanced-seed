@@ -18,7 +18,7 @@ describe('CreateGroupComponent <CreateGroup />', () => {
 		);
 
 		// Interaction demo
-		expect(createGroupComponent.text()).toEqual('');
+		expect(createGroupComponent.text()).toEqual('<CreatGroupForm />');
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();

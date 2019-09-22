@@ -11,7 +11,8 @@ import ChatReducer from '../chat.reducer';
 describe('Chat Reducers', () => {
 	it('can get Initial State', () => {
 		const initialState = {
-			chats: {}
+			'app': undefined,
+			'chats': { },
 		};
 		const state = ChatReduxModel.reduxState(initialState);
 		expect(state).toStrictEqual(initialState);
@@ -56,7 +57,7 @@ describe('Chat Reducers', () => {
 			})
 		).toEqual({
 			...ChatReduxModel.attributes,
-			chatData: 1,
+			chatData: [mockedNewChatData],
 			chats: expectedResponse
 		});
 	});

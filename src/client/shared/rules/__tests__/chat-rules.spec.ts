@@ -14,12 +14,13 @@ describe('Chat Rules', () => {
 
   it('can validate error chat', () => {
     const isValidChatResponse = ChatRulesEngine.isValidChatResponse({});
-    const isErrorChatResponse = ChatRulesEngine.isValidChatResponse(null);
+    const isErrorChatResponse = ChatRulesEngine.isValidChatResponse({ error: [{ message: { error: 'Invalid Token', statusCode: 401 }}]});
     expect(isValidChatResponse).toStrictEqual({});
-    expect(isErrorChatResponse).toStrictEqual({
-      error: true,
-      title: 'Invalid Token',
-      message: 'Invalid Token - Please login',
-    });
+    expect(isErrorChatResponse).toStrictEqual({'error': [{
+      message: {
+        error: 'Invalid Token',
+        statusCode: 401
+      },
+    }]});
   });
 });

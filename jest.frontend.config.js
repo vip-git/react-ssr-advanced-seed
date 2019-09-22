@@ -40,7 +40,7 @@ module.exports = {
 		'<rootDir>/src/client/mobile',
 		'<rootDir>/src/client/shared/components/content/src/index.native.tsx'
 	],
-	testEnvironment: 'node',
+	testEnvironment: 'jsdom',
 	testURL: 'http://localhost',
 	transform: {
 		'^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
