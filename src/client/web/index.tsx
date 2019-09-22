@@ -11,8 +11,8 @@ import {
 
 // Internal
 import { ThemeProvider } from '@material-ui/styles';
+import IntlProvider from '@omega-core/i18n';
 import routes from './app/routes';
-import IntlProvider from '../shared/i18n/IntlProvider';
 import { configureStore } from '../shared/state';
 import theme from './app/common/styles';
 

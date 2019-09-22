@@ -1,8 +1,10 @@
 import React from 'react';
 import { createBrowserHistory as createHistory } from 'history';
+import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
-import IntlProvider from '../common/i18n/IntlProvider';
+import IntlProvider from '@omega-core/i18n';
+import { apolloClient } from '@omega-core/utils/apollo-client-ssr.engine';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { mount } from 'enzyme';
 
@@ -88,15 +90,17 @@ describe('app <App />', () => {
 		});
 
 		wrapper = mount(
-			<ThemeProvider theme={theme}>
-				<Provider store={store}>
-					<Router history={browserHistory}>
-						<IntlProvider>
-							<App />
-						</IntlProvider>
-					</Router>
-				</Provider>
-			</ThemeProvider>
+			<ApolloProvider client={apolloClient}>
+				<ThemeProvider theme={theme}>
+					<Provider store={store}>
+						<Router history={browserHistory}>
+							<IntlProvider>
+								<App />
+							</IntlProvider>
+						</Router>
+					</Provider>
+				</ThemeProvider>
+			</ApolloProvider>
 		);
 		app = wrapper.find(App);
 		container = app.find(ChatContainer);

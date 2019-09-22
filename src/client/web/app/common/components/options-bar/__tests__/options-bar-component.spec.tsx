@@ -13,7 +13,7 @@ describe('OptionsBarComponent <OptionsBar />', () => {
 	it('OptionsBar Component renders correctly', () => {
 		const optionsBarComponent = shallow(
 			<ThemeProvider theme={theme}>
-				<OptionsBarComponent />
+				<OptionsBarComponent menuItems={[]} />
 			</ThemeProvider>
 		);
 

@@ -7,7 +7,7 @@ import { shallow } from 'enzyme';
 import theme from '../../../styles';
 
 // Web
-import OptionsBarComponent from '../index';
+import TabsComponent from '../index';
 
 describe('TabsComponent <TabsBar />', () => {
 	it('TabsBar Component renders correctly', () => {
@@ -18,7 +18,7 @@ describe('TabsComponent <TabsBar />', () => {
 		);
 
 		// Interaction demo
-		expect(tabsComponent.text()).toEqual('');
+		expect(tabsComponent.text()).toEqual('<IconLabelTabs />');
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();
