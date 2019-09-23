@@ -5,7 +5,7 @@ import { INestApplication } from '@nestjs/common';
 import { dbConnection } from './__mocks__/db-connection.mock';
 
 // Shared
-import { ChatsService } from './shared/chat.service';
+import { ChatService } from './shared/chat.service';
 
 const request = require('supertest');
 
@@ -15,7 +15,7 @@ describe('Chats e2e test', () => {
 
 	beforeAll(async () => {
 		const module = await dbConnection
-			.overrideProvider(ChatsService)
+			.overrideProvider(ChatService)
 			.useValue(catsService)
 			.compile();
 
