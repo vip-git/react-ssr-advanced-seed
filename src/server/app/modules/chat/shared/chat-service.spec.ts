@@ -53,7 +53,7 @@ describe('ChatsService', () => {
 	});
 
 	describe('update', () => {
-		it('should return an array of cats', async () => {
+		it('should return an array of chat', async () => {
 			const mockedChatData: IChat = {
 				id: 1,
 				groupId: 2,
@@ -70,7 +70,7 @@ describe('ChatsService', () => {
 	});
 
 	describe('delete', () => {
-		it('should return an array of cats', async () => {
+		it('should return an array of chat', async () => {
 			const deletChat = await chatService.delete(1);
 			expect(deletChat).toBe(undefined);
 		});
