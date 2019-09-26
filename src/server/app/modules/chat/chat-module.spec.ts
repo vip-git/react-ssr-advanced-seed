@@ -23,9 +23,9 @@ describe('Chats e2e test', () => {
 		await app.init();
 	});
 
-	it('/GET cats', () => {
+	it('/GET chats', () => {
 		return request(app.getHttpServer())
-			.get('/cats')
+			.get('/chats')
 			.expect(401)
 			.expect({
 				statusCode: 401,
