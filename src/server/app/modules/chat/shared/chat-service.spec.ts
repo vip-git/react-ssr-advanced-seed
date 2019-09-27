@@ -5,7 +5,7 @@ import {
 } from '../__mocks__/db-connection.mock';
 
 // Shared
-import { IChat } from './chat.model';
+// import { IChat } from './chat.model';
 import { ChatService } from './chat.service';
 
 describe('ChatsService', () => {
@@ -27,7 +27,7 @@ describe('ChatsService', () => {
 
 	describe('create', () => {
 		it('should be able to create chat', async () => {
-			const mockedChatData: IChat = {
+			const mockedChatData: any = {
 				id: 1,
 				groupId: 2,
 				message: 'test',
@@ -54,7 +54,7 @@ describe('ChatsService', () => {
 
 	describe('update', () => {
 		it('should return an array of chat', async () => {
-			const mockedChatData: IChat = {
+			const mockedChatData: any = {
 				id: 1,
 				groupId: 2,
 				message: 'test again',
