@@ -2,26 +2,26 @@
 import {
 	dbConnection,
 	dbClearConnection
-} from '../../__mocks__/db-connection.mock';
+} from '../../../../__mocks__/db-connection.mock';
 
 // Shared
-import { ChatResolvers } from '../chat.resolvers';
+import { ChatResolver } from '../chat.resolver';
 import { ChatService } from '../../shared/chat.service';
 
 describe('ChatResolvers', () => {
-	let catsResolver: ChatResolvers;
-	let catsService: ChatService;
+	let chatsResolver: ChatResolver;
+	let chatsService: ChatService;
 	beforeAll(async () => {
 		const clearConnection = await dbClearConnection.compile();
 		clearConnection.close();
 		const module = await dbConnection.compile();
-		catsService = module.get<ChatService>(ChatService);
-		catsResolver = new ChatResolvers(catsService);
+		chatsService = module.get<ChatService>(ChatService);
+		chatsResolver = new ChatResolver(chatsService);
 	});
 
 	describe('getChats', () => {
 		it('should return an array of cats', async () => {
-			const getChats = await catsResolver.getChats();
+			const getChats = await chatsResolver.getChats({});
 			expect(getChats).toBeDefined();
 			expect(getChats).toEqual([]);
 		});
@@ -36,7 +36,7 @@ describe('ChatResolvers', () => {
 				message: 'test',
 				date: new Date()
 			};
-			const createChat = await catsResolver.create(
+			const createChat = await chatsResolver.create(
 				null,
 				mockedChatData,
 				null,
@@ -48,14 +48,14 @@ describe('ChatResolvers', () => {
 			expect(createChat).toHaveProperty('message', 'test');
 		});
 		it('should be able to call catCreated', async () => {
-			const catCreated = await catsResolver.chatRecieved();
+			const catCreated = await chatsResolver.chatRecieved();
 			expect(catCreated).toBeDefined();
 		});
 	});
 
 	describe('findOneById', () => {
 		it('should return single chat', async () => {
-			const getSingleChat = await catsResolver.findOneById(
+			const getSingleChat = await chatsResolver.findOneById(
 				null,
 				{ id: 1 },
 				null,
