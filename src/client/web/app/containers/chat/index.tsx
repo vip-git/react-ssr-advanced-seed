@@ -24,13 +24,13 @@ class ChatContainer extends Component<any, any> {
 		} = this.props;
 		const { ChatComponent, ContentComponent } = ChatModel.components;
 		const { chats, title, idToken } = this.props;
-		const { chatData, userData, groupData, error } = chats;
+		const { chatData, userData, groupData } = chats;
 		const ChatComponentTyped: any = ChatComponent;
 		let githubUserData: any = {};
 		try {
 			githubUserData = JWTDecode(idToken);
 		}
- 		catch(error) {
+ 		catch(err) {
 			githubUserData = null;
 		}
 		return (
