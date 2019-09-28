@@ -5,15 +5,19 @@ import {
 } from '../../../__mocks__/db-connection.mock';
 
 // Shared
+import { IChat } from '../shared/chat.model';
+import { GroupService } from '../../group/shared/group.service';
 import { ChatsController } from './chat.controller';
 
 describe('ChatsController', () => {
 	let chatsController: ChatsController;
+	let groupService: GroupService;
 	beforeAll(async () => {
 		const clearConnection = await dbClearConnection.compile();
 		clearConnection.close();
 		const module = await dbConnection.compile();
 		chatsController = module.get<ChatsController>(ChatsController);
+		groupService = module.get<GroupService>(GroupService);
 	});
 
 	describe('findAll', () => {
@@ -26,18 +30,17 @@ describe('ChatsController', () => {
 
 	describe('create', () => {
 		it('should return created chat', async () => {
+			await groupService.createFirstGroup();
 			const mockedChatData: any = {
-				id: 1,
-				groupId: 2,
+				groupId: 1,
 				message: 'test',
-				ownerId: 3,
+				ownerId: 6302771,
 				date: new Date()
 			};
 			const createChat = await chatsController.create(mockedChatData);
 			expect(createChat).toBeDefined();
-			expect(createChat).toHaveProperty('groupId', 2);
+			expect(createChat).toHaveProperty('groupId', 1);
 			expect(createChat).toHaveProperty('message', 'test');
-			expect(createChat).toHaveProperty('type', 'sent');
 		});
 	});
 
@@ -45,9 +48,8 @@ describe('ChatsController', () => {
 		it('should return single', async () => {
 			const getSingleChat = await chatsController.findOne('1');
 			expect(getSingleChat).toBeDefined();
-			expect(getSingleChat).toHaveProperty('groupId', 2);
+			expect(getSingleChat).toHaveProperty('groupId', 1);
 			expect(getSingleChat).toHaveProperty('message', 'test');
-			expect(getSingleChat).toHaveProperty('type', 'sent');
 		});
 	});
 });

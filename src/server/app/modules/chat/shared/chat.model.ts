@@ -8,7 +8,7 @@ import { GroupModel } from '../../group/shared/group.model';
 import { ProfileModel } from '../../profile/shared/profile.model';
 
 export interface IChat {
-	id: number;
+	id?: number;
 	groupId: number;
 	group?: GroupModel;
 	message: string;

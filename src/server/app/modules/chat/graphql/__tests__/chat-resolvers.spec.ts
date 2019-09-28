@@ -7,20 +7,23 @@ import {
 // Shared
 import { ChatResolver } from '../chat.resolver';
 import { ChatService } from '../../shared/chat.service';
+import { GroupService } from '../../../group/shared/group.service';
 
 describe('ChatResolvers', () => {
 	let chatsResolver: ChatResolver;
 	let chatsService: ChatService;
+	let groupService: GroupService;
 	beforeAll(async () => {
 		const clearConnection = await dbClearConnection.compile();
 		clearConnection.close();
 		const module = await dbConnection.compile();
 		chatsService = module.get<ChatService>(ChatService);
 		chatsResolver = new ChatResolver(chatsService);
+		groupService = module.get<GroupService>(GroupService);
 	});
 
 	describe('getChats', () => {
-		it('should return an array of cats', async () => {
+		it('should return an array of Chats', async () => {
 			const getChats = await chatsResolver.getChats({});
 			expect(getChats).toBeDefined();
 			expect(getChats).toEqual([]);
@@ -29,11 +32,11 @@ describe('ChatResolvers', () => {
 
 	describe('create', () => {
 		it('should return created chat', async () => {
+			await groupService.createFirstGroup();
 			const mockedChatData = {
-				id: 1,
-				groupId: 2,
-				ownerId: 3,
+				groupId: 1,
 				message: 'test',
+				ownerId: 6302771,
 				date: new Date()
 			};
 			const createChat = await chatsResolver.create(
@@ -43,11 +46,11 @@ describe('ChatResolvers', () => {
 				null
 			);
 			expect(createChat).toBeDefined();
-			expect(createChat).toHaveProperty('groupId', 2);
-			expect(createChat).toHaveProperty('ownerId', 3);
+			expect(createChat).toHaveProperty('groupId', 1);
+			expect(createChat).toHaveProperty('ownerId', 6302771);
 			expect(createChat).toHaveProperty('message', 'test');
 		});
-		it('should be able to call catCreated', async () => {
+		it('should be able to call chatCreated', async () => {
 			const catCreated = await chatsResolver.chatRecieved();
 			expect(catCreated).toBeDefined();
 		});
@@ -62,8 +65,8 @@ describe('ChatResolvers', () => {
 				null
 			);
 			expect(getSingleChat).toBeDefined();
-			expect(getSingleChat).toHaveProperty('groupId', 2);
-			expect(getSingleChat).toHaveProperty('ownerId', 3);
+			expect(getSingleChat).toHaveProperty('groupId', 1);
+			expect(getSingleChat).toHaveProperty('ownerId', 6302771);
 			expect(getSingleChat).toHaveProperty('message', 'test');
 		});
 	});

@@ -135,4 +135,32 @@ private readonly profileRepository: Repository<ProfileModel>
             throw new NotFoundException();
         }
     }
+
+    async createFirstProfile(): Promise<ProfileModel> {
+        let profileObj: any = false;
+
+        const doesProfileExist = await this.profileRepository.find({
+            githubUid: 6302771,
+        });
+
+        const existingProfile = doesProfileExist && doesProfileExist.length && doesProfileExist[0];
+
+        if (!existingProfile) {
+            const profile: any = new ProfileModel();
+            profile.githubUid = 6302771;
+            profile.githubId = 'vip-git';
+            profile.lastTokenWeb = '';
+            profile.lastTokenMobile = '';
+            profile.name = 'Vipin Tanna';
+            profile.email = 'github@vipintanna.com';
+            profile.avatarUrl = 'https://avatars2.githubusercontent.com/u/6302771?s=400&u=205fa1c8e1d155f00c4e284a798923bc838f4d86&v=4';
+            profile.bio = 'Always curious to try!';
+            profile.location = '';
+            profile.createdAt = new Date();
+            profile.updatedAt = new Date();
+            profileObj = await this.profileRepository.save(profile);
+        }
+
+        return (existingProfile) ? existingProfile : profileObj;
+    }
 }

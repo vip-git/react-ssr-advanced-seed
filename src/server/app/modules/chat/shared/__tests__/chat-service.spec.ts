@@ -2,19 +2,22 @@
 import {
 	dbConnection,
 	dbClearConnection
-} from '../../../__mocks__/db-connection.mock';
+} from '../../../../__mocks__/db-connection.mock';
 
 // Shared
-// import { IChat } from './chat.model';
-import { ChatService } from './chat.service';
+import { IChat } from '../chat.model';
+import { ChatService } from '../chat.service';
+import { GroupService } from '../../../group/shared/group.service';
 
 describe('ChatsService', () => {
 	let chatService: ChatService;
+	let groupService: GroupService;
 	beforeAll(async () => {
 		const clearConnection = await dbClearConnection.compile();
 		clearConnection.close();
 		const module = await dbConnection.compile();
 		chatService = module.get<ChatService>(ChatService);
+		groupService = module.get<GroupService>(GroupService);
 	});
 
 	describe('findAll', () => {
@@ -27,18 +30,18 @@ describe('ChatsService', () => {
 
 	describe('create', () => {
 		it('should be able to create chat', async () => {
-			const mockedChatData: any = {
-				id: 1,
-				groupId: 2,
+			await groupService.createFirstGroup();
+			const mockedChatData: IChat = {
+				groupId: 1,
 				message: 'test',
-				ownerId: 1,
+				ownerId: 6302771,
 				date: new Date()
 			};
 			const createChat = await chatService.create(mockedChatData);
 			expect(createChat).toBeDefined();
-			expect(createChat).toHaveProperty('groupId', 2);
+			expect(createChat).toHaveProperty('groupId', 1);
 			expect(createChat).toHaveProperty('message', 'test');
-			expect(createChat).toHaveProperty('ownerId', 1);
+			expect(createChat).toHaveProperty('ownerId', 6302771);
 		});
 	});
 
@@ -46,9 +49,9 @@ describe('ChatsService', () => {
 		it('should return single chat', async () => {
 			const findOneChat = await chatService.findOneById(1);
 			expect(findOneChat).toBeDefined();
-			expect(findOneChat).toHaveProperty('groupId', 2);
+			expect(findOneChat).toHaveProperty('groupId', 1);
 			expect(findOneChat).toHaveProperty('message', 'test');
-			expect(findOneChat).toHaveProperty('ownerId', 1);
+			expect(findOneChat).toHaveProperty('ownerId', 6302771);
 		});
 	});
 
@@ -56,16 +59,16 @@ describe('ChatsService', () => {
 		it('should return an array of chat', async () => {
 			const mockedChatData: any = {
 				id: 1,
-				groupId: 2,
+				groupId: 1,
 				message: 'test again',
-				ownerId: 1,
+				ownerId: 6302771,
 				date: new Date()
 			};
 			const updateChat = await chatService.update(1, mockedChatData);
 			expect(updateChat).toBeDefined();
-			expect(updateChat).toHaveProperty('groupId', 2);
+			expect(updateChat).toHaveProperty('groupId', 1);
 			expect(updateChat).toHaveProperty('message', 'test again');
-			expect(updateChat).toHaveProperty('ownerId', 1);
+			expect(updateChat).toHaveProperty('ownerId', 6302771);
 		});
 	});
 

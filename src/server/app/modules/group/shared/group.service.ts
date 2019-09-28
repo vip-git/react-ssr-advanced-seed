@@ -12,6 +12,9 @@ import { Repository, Not, Like, In, Any } from 'typeorm';
 import { GroupModel, IGroup } from './group.model'; 
 import { GroupMemberModel, IGroupMember } from '../../group-member/shared/group-member.model';
 
+// Service
+import { ProfileService } from '../../profile/shared/profile.service';
+
 @Injectable()
 export class GroupService {
 	private readonly group: GroupModel[] = [];
@@ -22,6 +25,7 @@ export class GroupService {
 		private readonly groupRepository: Repository<GroupModel>,
 		@InjectRepository(GroupMemberModel)
 		private readonly groupMemberRepository: Repository<GroupMemberModel>,
+		private readonly profileService: ProfileService,
 	) {}
 
 	protected getId(paramId: any): number {
@@ -137,15 +141,18 @@ export class GroupService {
 
 	async createFirstGroup(): Promise<GroupModel> {
 		let groupObj: any = false;
+		const firstProfile = await this.profileService.createFirstProfile();
 		const doesGroupExist = await this.groupRepository.find({
-			ownerId: 6302771,
-			memberId: 6302771
+			ownerId: firstProfile.githubUid,
+			memberId: firstProfile.githubUid
 		});
+
 		const existingGroup = doesGroupExist && doesGroupExist.length && doesGroupExist[0];
+
 		if (!existingGroup) {
 			const group: any = new GroupModel();
-			group.ownerId = 6302771;
-			group.memberId = 6302771;
+			group.ownerId = firstProfile.githubUid;
+			group.memberId = firstProfile.githubUid;
 			group.groupImage = 'https://media.istockphoto.com/vectors/group-of-people-vector-id945386974?k=6&m=945386974&s=612x612&w=0&h=e97NHN3i78M6-fd-LsE6oZadGP3VRU6KoFNzkS6JPr0=';
 			group.groupType = 'group';
 			group.accessType = 'public';
