@@ -1,4 +1,4 @@
-import { GroupMemberGuard } from './group-member.guard';
+import { GroupMemberGuard } from '../group-member.guard';
 
 describe('GroupMemberGuard', () => {
   it('should be defined', () => {

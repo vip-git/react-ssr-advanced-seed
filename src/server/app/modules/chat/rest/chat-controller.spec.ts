@@ -5,7 +5,6 @@ import {
 } from '../../../__mocks__/db-connection.mock';
 
 // Shared
-import { IChat } from '../shared/chat.model';
 import { ChatsController } from './chat.controller';
 
 describe('ChatsController', () => {

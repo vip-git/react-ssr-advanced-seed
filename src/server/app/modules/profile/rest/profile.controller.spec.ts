@@ -1,18 +1,24 @@
-import { Test, TestingModule } from '@nestjs/testing';
+// dbConnection
+import {
+  dbConnection,
+  dbClearConnection
+} from '../../../__mocks__/db-connection.mock';
 import { ProfileController } from './profile.controller';
 
 describe('Profile Controller', () => {
-  let controller: ProfileController;
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [ProfileController],
-    }).compile();
-
-    controller = module.get<ProfileController>(ProfileController);
+  let profileController: ProfileController;
+  beforeAll(async () => {
+    const clearConnection = await dbClearConnection.compile();
+    clearConnection.close();
+    const module = await dbConnection.compile();
+    profileController = module.get<ProfileController>(ProfileController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('findAll', () => {
+    it('should return an array of profiles', async () => {
+      const allProfiles = await profileController.findAll();
+      expect(allProfiles).toBeDefined();
+      expect(allProfiles).toEqual([]);
+    });
   });
 });

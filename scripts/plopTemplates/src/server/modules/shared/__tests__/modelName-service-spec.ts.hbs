@@ -1,0 +1,24 @@
+// dbConnection
+import {
+  dbConnection,
+  dbClearConnection
+} from '../../../../__mocks__/db-connection.mock';
+import { {{pascalCase moduleName}}Service } from '../{{moduleName}}.service';
+
+describe('{{pascalCase moduleName}}Service', () => {
+  let {{moduleName}}Service: {{moduleName}}Service;
+  beforeAll(async () => {
+    const clearConnection = await dbClearConnection.compile();
+    clearConnection.close();
+    const module = await dbConnection.compile();
+    {{moduleName}}Service = module.get<{{pascalCase moduleName}}Service>({{pascalCase moduleName}}Service);
+  });
+
+  describe('findAll', () => {
+    it('should return an array of {{moduleName}}', async () => {
+      const findAll{{pascalCase moduleName}} = await {{moduleName}}Service.findAll({});
+      expect(findAll{{pascalCase moduleName}}).toBeDefined();
+      expect(findAll{{pascalCase moduleName}}).toEqual([]);
+    });
+  });
+});

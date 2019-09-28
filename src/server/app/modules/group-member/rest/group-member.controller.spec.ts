@@ -1,18 +1,24 @@
-import { Test, TestingModule } from '@nestjs/testing';
+// dbConnection
+import {
+  dbConnection,
+  dbClearConnection
+} from '../../../__mocks__/db-connection.mock';
 import { GroupMemberController } from './group-member.controller';
 
 describe('GroupMember Controller', () => {
-  let controller: GroupMemberController;
-
-  beforeEach(async () => {
-    const module: TestingModule = await Test.createTestingModule({
-      controllers: [GroupMemberController],
-    }).compile();
-
-    controller = module.get<GroupMemberController>(GroupMemberController);
+  let groupMemberController: GroupMemberController;
+  beforeAll(async () => {
+    const clearConnection = await dbClearConnection.compile();
+    clearConnection.close();
+    const module = await dbConnection.compile();
+    groupMemberController = module.get<GroupMemberController>(GroupMemberController);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  describe('findAll', () => {
+    it('should return an array of group members', async () => {
+      const allGroupMembers = await groupMemberController.findAll();
+      expect(allGroupMembers).toBeDefined();
+      expect(allGroupMembers).toEqual([]);
+    });
   });
 });

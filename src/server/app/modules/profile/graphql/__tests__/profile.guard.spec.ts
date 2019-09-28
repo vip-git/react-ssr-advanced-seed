@@ -1,4 +1,4 @@
-import { ProfileGuard } from './profile.guard';
+import { ProfileGuard } from '../profile.guard';
 
 describe('ProfileGuard', () => {
   it('should be defined', () => {

@@ -1,0 +1,29 @@
+// dbConnection
+import {
+	dbConnection,
+	dbClearConnection
+} from '../../__mocks__/db-connection.mock';
+
+// Shared
+import { {{pascalCase moduleName}}Resolvers } from '../{{moduleName}}.resolvers';
+import { {{pascalCase moduleName}}Service } from '../../shared/{{moduleName}}.service';
+
+describe('{{pascalCase moduleName}}Resolvers', () => {
+	let {{moduleName}}Resolver: {{pascalCase moduleName}}Resolvers;
+	let {{moduleName}}Service: {{pascalCase moduleName}}Service;
+	beforeAll(async () => {
+		const clearConnection = await dbClearConnection.compile();
+		clearConnection.close();
+		const module = await dbConnection.compile();
+		{{moduleName}}Service = module.get<{{pascalCase moduleName}}Service>({{pascalCase moduleName}}Service);
+		{{moduleName}}Resolver = new {{pascalCase moduleName}}Resolvers({{moduleName}}Service);
+	});
+
+	describe('get{{pascalCase moduleName}}', () => {
+		it('should return an array of {{moduleName}}', async () => {
+			const get{{pascalCase moduleName}} = await {{moduleName}}Resolver.get{{pascalCase moduleName}}();
+			expect(get{{pascalCase moduleName}}).toBeDefined();
+			expect(get{{pascalCase moduleName}}).toEqual([]);
+		});
+	});
+});

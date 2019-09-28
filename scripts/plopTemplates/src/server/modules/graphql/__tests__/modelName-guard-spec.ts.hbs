@@ -1,8 +1,8 @@
 // Scalar
 import { ExecutionContext } from '@nestjs/common';
-import { ChatsGuard } from '../cats.guard';
+import { {{pascalCase moduleName}}Guard } from '../{{moduleName}}.guard';
 
-describe('ChatsGuard', () => {
+describe('{{pascalCase moduleName}}Guard', () => {
 	it('should return true on activate ', async () => {
 		const mockExecutionContext: ExecutionContext = {
 			getClass: jest.fn(),

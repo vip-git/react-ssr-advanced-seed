@@ -1,0 +1,24 @@
+// dbConnection
+import {
+  dbConnection,
+  dbClearConnection
+} from '../../../__mocks__/db-connection.mock';
+import { {{pascalCase moduleName}}Controller } from './{{moduleName}}.controller';
+
+describe('{{pascalCase moduleName}} Controller', () => {
+  let {{moduleName}}Controller: {{pascalCase moduleName}}Controller;
+  beforeAll(async () => {
+    const clearConnection = await dbClearConnection.compile();
+    clearConnection.close();
+    const module = await dbConnection.compile();
+    {{moduleName}}Controller = module.get<{{pascalCase moduleName}}Controller>({{pascalCase moduleName}}Controller);
+  });
+
+  describe('findAll', () => {
+    it('should return an array of {{moduleName}}', async () => {
+      const allChats = await {{moduleName}}Controller.findAll();
+      expect(allChats).toBeDefined();
+      expect(allChats).toEqual([]);
+    });
+  });
+});
