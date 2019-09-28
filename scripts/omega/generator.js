@@ -639,9 +639,25 @@ module.exports = {
 						type: 'add',
 						force: true,
 						path:
+							'src/server/app/modules/{{moduleName}}/graphql/__tests__/{{moduleName}}-guard.spec.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/graphql/__tests__/modelName-guard-spec.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
 							'src/server/app/modules/{{moduleName}}/graphql/{{moduleName}}.resolver.ts',
 						templateFile:
 							'scripts/plopTemplates/src/server/modules/graphql/modelName-resolvers.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/graphql/__tests__/{{moduleName}}-resolvers.spec.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/graphql/__tests__/modelName-resolvers-spec.ts.hbs'
 					},
 					{
 						type: 'add',
@@ -655,9 +671,25 @@ module.exports = {
 						type: 'add',
 						force: true,
 						path:
+							'src/server/app/modules/{{moduleName}}/rest/{{moduleName}}.controller.spec.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/rest/modelName-controller-spec.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
 							'src/server/app/modules/{{moduleName}}/shared/{{moduleName}}.service.ts',
 						templateFile:
 							'scripts/plopTemplates/src/server/modules/shared/modelName-service.ts.hbs'
+					},
+					{
+						type: 'add',
+						force: true,
+						path:
+							'src/server/app/modules/{{moduleName}}/shared/__tests__/{{moduleName}}.service.spec.ts',
+						templateFile:
+							'scripts/plopTemplates/src/server/modules/shared/__tests__/modelName-service-spec.ts.hbs'
 					},
 					{
 						type: 'add',
