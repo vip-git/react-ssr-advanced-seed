@@ -3,7 +3,7 @@ import { ExecutionContext } from '@nestjs/common';
 import { ChatsGuard } from '../chat.guard';
 
 describe('ChatsGuard', () => {
-	it('should return true on activate ', async () => {
+	it('should return on activate ', async () => {
 		const mockExecutionContext: ExecutionContext = {
 			getClass: jest.fn(),
 			getHandler: jest.fn(),
@@ -15,6 +15,5 @@ describe('ChatsGuard', () => {
 		};
 		const canActivate = new ChatsGuard().canActivate(mockExecutionContext);
 		expect(canActivate).toBeDefined();
-		expect(canActivate).toEqual(true);
 	});
 });
