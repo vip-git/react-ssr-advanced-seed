@@ -1,5 +1,5 @@
 import React from 'react';
-import { ApolloProvider } from 'react-apollo';
+import { MockedProvider } from '@apollo/react-testing';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import { mount } from 'enzyme';
@@ -7,7 +7,6 @@ import { mount } from 'enzyme';
 // Theme
 
 // Internal
-import { apolloClient } from '@omega-core/utils/apollo-client-ssr.engine';
 import ChatComponent from '@omega-web-components/chat-box';
 import ChatContainer from '@omega-web-containers/chat';
 
@@ -29,6 +28,22 @@ const storeFake = (state: IState) => ({
 	getState: () => state
 });
 
+const mocks = [
+	{
+		request: {
+			query: GET_DOG_QUERY,
+			variables: {
+				name: 'Buck'
+			}
+		},
+		result: {
+			data: {
+				dog: { id: '1', name: 'Buck', breed: 'bulldog' }
+			}
+		}
+	}
+];
+
 describe('container <ChatContainer />', () => {
 	let wrapper;
 	let component;
@@ -42,13 +57,13 @@ describe('container <ChatContainer />', () => {
 		});
 
 		wrapper = mount(
-			<ApolloProvider client={apolloClient}>
+			<MockedProvider mocks={mocks} addTypename={false}>
 				<ThemeProvider theme={theme}>
 					<Provider store={store}>
 						<ChatContainer />
 					</Provider>
 				</ThemeProvider>
-			</ApolloProvider>
+			</MockedProvider>
 		);
 		container = wrapper.find(ChatContainer);
 		component = container.find(ChatComponent);
