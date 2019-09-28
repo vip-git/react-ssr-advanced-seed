@@ -9,14 +9,16 @@ import { IGroupMember } from '../group-member/shared/group-member.model';
 // Services
 import { AuthService } from './auth.service';
 import { ProfileService } from '../profile/shared/profile.service';
+import { GroupService } from '../group/shared/group.service';
 import { GroupMemberService } from '../group-member/shared/group-member.service';
 
 @Controller('auth')
 export class AuthController {
 	constructor(
 		private readonly authService: AuthService,
-		private readonly profileService: ProfileService, 
+		private readonly profileService: ProfileService,
 		private readonly groupMemberService: GroupMemberService,
+		private readonly groupService: GroupService,
 	) {}
 
 	@Get('callback')
@@ -39,9 +41,10 @@ export class AuthController {
 			updatedAt: new Date(),
 		};
 		const userProfile = await this.profileService.create(createUserPayload);
+		await this.groupService.createFirstGroup();
 		const groupMemberPayload: IGroupMember = {
 			memberId: userProfile.id,
-			groupId: 2,
+			groupId: 1,
 			date: new Date(),
 		};
 		await this.groupMemberService.create(groupMemberPayload);

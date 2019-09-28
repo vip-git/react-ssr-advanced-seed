@@ -135,6 +135,29 @@ export class GroupService {
 		return await this.findOneById(paramId);
 	}
 
+	async createFirstGroup(): Promise<GroupModel> {
+		let groupObj: any = false;
+		const doesGroupExist = await this.groupRepository.find({
+			ownerId: 6302771,
+			memberId: 6302771
+		});
+		const existingGroup = doesGroupExist && doesGroupExist.length && doesGroupExist[0];
+		if (!existingGroup) {
+			const group: any = new GroupModel();
+			group.ownerId = 6302771;
+			group.memberId = 6302771;
+			group.groupImage = 'https://media.istockphoto.com/vectors/group-of-people-vector-id945386974?k=6&m=945386974&s=612x612&w=0&h=e97NHN3i78M6-fd-LsE6oZadGP3VRU6KoFNzkS6JPr0=';
+			group.groupType = 'group';
+			group.accessType = 'public';
+			group.groupName = 'General';
+			group.date = new Date();
+			group.groupDescription = 'General Group';
+			groupObj = await this.groupRepository.save(group);
+		}
+
+		return (existingGroup) ? existingGroup : groupObj;
+	}
+
 	async delete(paramId: any): Promise<void> {
 		const id = this.getId(paramId);
 		try {
