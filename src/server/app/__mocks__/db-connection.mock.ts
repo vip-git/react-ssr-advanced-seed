@@ -37,7 +37,8 @@ import { GroupMemberResolver } from '../modules/group-member/graphql/group-membe
 // Internal
 const ModelArray = [ChatModel, ProfileModel, GroupModel, GroupMemberModel];
 const ControllerArray = [ChatsController, ProfileController, GroupController, GroupMemberController];
-const ServicesArray = [ChatService, ProfileService, GroupService, GroupMemberService, ChatResolver, ProfileResolver, GroupResolver, GroupMemberResolver];
+const ServicesArray = [ChatService, ProfileService, GroupService, GroupMemberService, 
+						ChatResolver, ProfileResolver, GroupResolver, GroupMemberResolver];
 
 export const dbConnection = Test.createTestingModule({
 	imports: [
