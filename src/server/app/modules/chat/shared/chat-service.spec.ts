@@ -2,7 +2,7 @@
 import {
 	dbConnection,
 	dbClearConnection
-} from '../__mocks__/db-connection.mock';
+} from '../../../__mocks__/db-connection.mock';
 
 // Shared
 // import { IChat } from './chat.model';

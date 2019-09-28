@@ -2,7 +2,7 @@
 import { INestApplication } from '@nestjs/common';
 
 // dbConnection
-import { dbConnection } from './__mocks__/db-connection.mock';
+import { dbConnection } from '../../__mocks__/db-connection.mock';
 
 // Shared
 import { ChatService } from './shared/chat.service';

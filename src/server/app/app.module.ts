@@ -1,20 +1,22 @@
-import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
-import { GraphQLModule } from '@nestjs/graphql';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { ChatModule, ChatModel } from './modules/chat/chat.module';
-import { AuthModule } from './modules/auth/auth.module';
-import { TvMazeService } from './common/services/tvmaze.service';
-import { ProfileModule, ProfileModel } from './modules/profile/profile.module';
-import { GroupModule, GroupModel } from './modules/group/group.module';
-import { GroupMemberModule, GroupMemberModel } from './modules/group-member/group-member.module';
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 /* eslint-disable @typescript-eslint/explicit-member-accessibility */
 // Library
+import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
+import { GraphQLModule } from '@nestjs/graphql';
+import { TypeOrmModule } from '@nestjs/typeorm';
 
 // Internal Modules 
-// External Services
+import { ChatModule, ChatModel } from './modules/chat/chat.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { ProfileModule, ProfileModel } from './modules/profile/profile.module';
+import { GroupModule, GroupModel } from './modules/group/group.module';
+import { GroupMemberModule, GroupMemberModel } from './modules/group-member/group-member.module';
 
+// External Services
+import { TvMazeService } from './common/services/tvmaze.service';
+
+// External Libs
 const proxy = require('express-http-proxy');
 const url = require('url');
 

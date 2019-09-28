@@ -1,6 +1,6 @@
 // Scalar
 import { ExecutionContext } from '@nestjs/common';
-import { ChatsGuard } from '../cats.guard';
+import { ChatsGuard } from '../chat.guard';
 
 describe('ChatsGuard', () => {
 	it('should return true on activate ', async () => {
