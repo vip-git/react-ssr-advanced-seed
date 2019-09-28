@@ -112,7 +112,7 @@ class ChatContainer extends Component<any, any> {
 										chatPayload: {
 											filters: {
 												where: {
-													id: 2
+													id: 1
 												}
 											}
 										},
@@ -142,7 +142,7 @@ class ChatContainer extends Component<any, any> {
 									callBack: id => payload.callBack(id)
 								})}
 							githubUserData={githubUserData}
-							groupId={chatData.id || 2}
+							groupId={chatData.id || 1}
 							title={title}
 							chatData={chatData}
 							userData={userData}
