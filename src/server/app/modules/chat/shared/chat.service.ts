@@ -9,7 +9,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Not, Like, In, Any } from 'typeorm';
 
 // Internal
-import { ChatModel } from './chat.model';
+import { ChatModel, IChat } from './chat.model';
 
 @Injectable()
 export class ChatService {
@@ -30,7 +30,7 @@ export class ChatService {
 		return id;
 	}
 
-	async create(chatPayload: ChatModel): Promise<ChatModel> {
+	async create(chatPayload: IChat): Promise<ChatModel> {
 		const chat = new ChatModel();
 		chat.groupId = chatPayload.groupId;
 		chat.message = chatPayload.message;
@@ -93,7 +93,7 @@ export class ChatService {
 		return await this.chatRepository.findOne(id, { cache: true });
 	}
 
-	async update(paramId: any, entity: ChatModel): Promise<ChatModel> {
+	async update(paramId: any, entity: IChat): Promise<ChatModel> {
 		await this.chatRepository.update(paramId, entity);
 		return await this.findOneById(paramId);
 	}
