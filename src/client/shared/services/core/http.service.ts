@@ -22,18 +22,18 @@ const returnValidGraphQLOpertaion = (
 ) => {
 	switch (type) {
 		case 'query':
-			return apolloClient.query({
+			return apolloClient && apolloClient.query && apolloClient.query({
 				query: gql,
 				variables
-			});
+			}) || {};
 		case 'mutation':
-			return apolloClient.mutate({
+			return apolloClient && apolloClient.mutate && apolloClient.mutate({
 				mutation: gql,
 				variables
-			});
+			}) || {};
 		case 'subscription':
 			const { query, document } = gql;
-			if (apolloClient) {
+			if (apolloClient && apolloClient.watchQuery) {
 				const watchQuery = apolloClient.watchQuery({
 					query,
 					variables
