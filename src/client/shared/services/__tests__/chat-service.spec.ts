@@ -1,23 +1,23 @@
 // internal
-import { apolloClient } from '@omega-core/utils/apollo-client.engine';
+// import { apolloClient } from '@omega-core/utils/apollo-client.engine';
 import { ChatServiceEngine } from '../chat';
 
 
 // Mocks
-import ChatMocks from '../mocks/chats';
+const apolloClientMock = {};
 
 describe('Chat Service', () => {
 	it('can get all chats', () => {
 		const allChats = ChatServiceEngine.requestAllChats({
-			apolloClient,
+			apolloClientMock,
 			data: {}
 		});
-		expect(allChats).toBe({});
+		expect(allChats).toStrictEqual({});
 	});
 
 	it('can create chat', () => {
 		const requestCreateChat = ChatServiceEngine.requestCreateChat({
-			apolloClient,
+			apolloClientMock,
 			data: {}
 		});
 		expect(requestCreateChat).toBeDefined();
@@ -25,7 +25,7 @@ describe('Chat Service', () => {
 
 	it('can update chat', () => {
 		const requestEditChat = ChatServiceEngine.requestEditChat({
-			apolloClient,
+			apolloClientMock,
 			data: {}
 		});
 		expect(requestEditChat).toBeDefined();
@@ -33,9 +33,9 @@ describe('Chat Service', () => {
 
 	it('can remove chats', () => {
 		const requestRemoveChat = ChatServiceEngine.requestRemoveChat({
-			apolloClient,
+			apolloClientMock,
 			data: {}
 		});
-		expect(requestRemoveChat).toBe(undefined);
+		expect(requestRemoveChat).toBeDefined();
 	});
 });

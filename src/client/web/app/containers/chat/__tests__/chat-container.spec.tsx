@@ -31,7 +31,7 @@ const storeFake = (state: IState) => ({
 const mocks = [
 	{
 		request: {
-			query: GET_DOG_QUERY,
+			query: 'GET_DOG_QUERY',
 			variables: {
 				name: 'Buck'
 			}

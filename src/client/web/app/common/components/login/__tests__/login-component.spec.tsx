@@ -33,7 +33,7 @@ describe('DialogComponent <LoginDialog />', () => {
 		const dialogComponent = mount(
 			<ThemeProvider theme={theme}>
 				<LoginDialog
-					show
+					show={false}
 					content={'test'}
 					title={'test'}
 					handleLoginClick={() => {}}

@@ -20,17 +20,22 @@ import ContentComponent from '../../../../../../shared/components/content';
 
 describe('ChatBoxComponent <ChatBoxComponent />', () => {
 	it('ChatBox Component renders correctly', () => {
+		const ChatComponentTyped: any = ChatBoxComponent;
 		const chatBoxComponent = shallow(
 			<ThemeProvider theme={theme}>
-				<ChatBoxComponent
-					onSelectContact={(groupId: Number) => groupId}
-					submitCreateGroup={() => {}}
-					sharedComponent={() => <ContentComponent />}
-					title={'Test Me'}
-					readUsersAndChat={() => {}}
+				<ChatComponentTyped
+					SharedComponent={() => {}}
 					submitChat={() => {}}
-					chatData={mockChats}
-					userData={mockContacts}
+					onSelectContact={() => {}}
+					onSelectGroup={() => {}}
+					readUsersAndChat={() => {}}
+					submitCreateGroup={() => {}}
+					githubUserData={{}}
+					groupId={1}
+					title={'title'}
+					chatData={{}}
+					userData={{}}
+					groupData={{}}
 				/>
 			</ThemeProvider>
 		);

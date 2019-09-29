@@ -2,11 +2,14 @@
 import { UserServiceEngine } from '../user';
 
 // Mocks
-import ContactMocks from '../mocks/contacts';
+const apolloClientMock = {};
 
 describe('User Service', () => {
   it('can get all users', () => {
-    const allUsers = UserServiceEngine.requestAllUsers({});
+    const allUsers = UserServiceEngine.requestAllUsers({
+      apolloClientMock,
+      data: {}
+    });
     expect(allUsers).toStrictEqual({});
   });
 });
