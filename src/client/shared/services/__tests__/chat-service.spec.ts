@@ -1,10 +1,10 @@
 // internal
-// import { apolloClient } from '@omega-core/utils/apollo-client.engine';
+import { createMockClient } from 'mock-apollo-client';
 import { ChatServiceEngine } from '../chat';
 
 
 // Mocks
-const apolloClientMock = {};
+const apolloClientMock = createMockClient();
 
 describe('Chat Service', () => {
 	it('can get all chats', () => {

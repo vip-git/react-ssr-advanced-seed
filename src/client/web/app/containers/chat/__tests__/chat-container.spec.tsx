@@ -1,5 +1,6 @@
 import React from 'react';
-import { MockedProvider } from '@apollo/react-testing';
+import { ApolloProvider } from 'react-apollo';
+import { createMockClient } from 'mock-apollo-client';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import { mount } from 'enzyme';
@@ -28,22 +29,6 @@ const storeFake = (state: IState) => ({
 	getState: () => state
 });
 
-const mocks = [
-	{
-		request: {
-			query: 'GET_DOG_QUERY',
-			variables: {
-				name: 'Buck'
-			}
-		},
-		result: {
-			data: {
-				dog: { id: '1', name: 'Buck', breed: 'bulldog' }
-			}
-		}
-	}
-];
-
 describe('container <ChatContainer />', () => {
 	let wrapper;
 	let component;
@@ -56,14 +41,16 @@ describe('container <ChatContainer />', () => {
 			chats: ChatReduxModel.attributes
 		});
 
+		const mockClient = createMockClient();
+
 		wrapper = mount(
-			<MockedProvider mocks={mocks} addTypename={false}>
+			<ApolloProvider client={mockClient}>
 				<ThemeProvider theme={theme}>
 					<Provider store={store}>
 						<ChatContainer />
 					</Provider>
 				</ThemeProvider>
-			</MockedProvider>
+			</ApolloProvider>
 		);
 		container = wrapper.find(ChatContainer);
 		component = container.find(ChatComponent);
@@ -76,10 +63,18 @@ describe('container <ChatContainer />', () => {
 
 	it('should map state to props', () => {
 		const expectedPropKeys = [
-			'sharedComponent',
+			'SharedComponent',
+			'submitChat',
+			'onSelectContact',
+			'onSelectGroup',
+			'readUsersAndChat',
+			'submitCreateGroup',
+			'githubUserData',
+			'groupId',
 			'title',
 			'chatData',
-			'userData'
+			'userData',
+			'groupData'
 		];
 
 		expect(Object.keys(component.props())).toEqual(
@@ -89,10 +84,18 @@ describe('container <ChatContainer />', () => {
 
 	it('should map dispatch to props', () => {
 		const expectedPropKeys = [
-			'sharedComponent',
+			'SharedComponent',
+			'submitChat',
+			'onSelectContact',
+			'onSelectGroup',
+			'readUsersAndChat',
+			'submitCreateGroup',
+			'githubUserData',
+			'groupId',
 			'title',
 			'chatData',
-			'userData'
+			'userData',
+			'groupData'
 		];
 
 		expect(Object.keys(component.props())).toEqual(
