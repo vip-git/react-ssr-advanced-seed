@@ -1,6 +1,5 @@
 // Library
-import 'jsdom-global/register';
-import * as React from 'react';
+import React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { shallow, mount } from 'enzyme';
 
