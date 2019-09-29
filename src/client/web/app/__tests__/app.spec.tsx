@@ -4,7 +4,6 @@ import { ApolloProvider } from 'react-apollo';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import IntlProvider from '@omega-core/i18n';
-import { apolloClient } from '@omega-core/utils/apollo-client-ssr.engine';
 import { ConnectedRouter as Router } from 'connected-react-router';
 import { mount } from 'enzyme';
 
@@ -90,7 +89,7 @@ describe('app <App />', () => {
 		});
 
 		wrapper = mount(
-			<ApolloProvider client={apolloClient}>
+			<ApolloProvider client={{}}>
 				<ThemeProvider theme={theme}>
 					<Provider store={store}>
 						<Router history={browserHistory}>
