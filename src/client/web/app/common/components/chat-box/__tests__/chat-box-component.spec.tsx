@@ -3,12 +3,6 @@ import * as React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
 import { shallow, mount } from 'enzyme';
 
-// mocks
-import {
-	mockChats,
-	mockContacts
-} from '../../../../../../shared/services/mocks/index';
-
 // Theme
 import theme from '../../../styles';
 
@@ -24,7 +18,7 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 		const chatBoxComponent = shallow(
 			<ThemeProvider theme={theme}>
 				<ChatComponentTyped
-					SharedComponent={() => {}}
+					sharedComponent={() => <ContentComponent />}
 					submitChat={() => {}}
 					onSelectContact={() => {}}
 					onSelectGroup={() => {}}
@@ -49,17 +43,22 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 		expect(shallow).toMatchSnapshot();
 	});
 	it('ChatBox Component renders correctly when props are true', () => {
+		const ChatComponentTyped: any = ChatBoxComponent;
 		const chatBoxComponent = mount(
 			<ThemeProvider theme={theme}>
-				<ChatBoxComponent
-					onSelectContact={(groupId: Number) => groupId}
-					submitCreateGroup={() => {}}
+				<ChatComponentTyped
 					sharedComponent={() => <ContentComponent />}
-					title={'Test Me'}
-					readUsersAndChat={() => {}}
 					submitChat={() => {}}
-					chatData={mockChats}
-					userData={mockContacts}
+					onSelectContact={() => {}}
+					onSelectGroup={() => {}}
+					readUsersAndChat={() => {}}
+					submitCreateGroup={() => {}}
+					githubUserData={{}}
+					groupId={1}
+					title={'title'}
+					chatData={{}}
+					userData={{}}
+					groupData={{}}
 				/>
 			</ThemeProvider>
 		);
