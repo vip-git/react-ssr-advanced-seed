@@ -29,10 +29,9 @@ export interface PropsT {
 
 class App extends React.PureComponent<any, any> {
 	componentDidMount() {
-		if (this.props && this.props.location) {
-			const idTokenObj = queryString.parse(
-				this.props.location.search
-			);
+		const { location } = this.props;
+		if (location) {
+			const idTokenObj = queryString.parse(this.props.location.search);
 			if (typeof window !== 'undefined' && idTokenObj && idTokenObj.idToken) {
 				const { dispatchSetToken } = this.props;
 				window.sessionStorage.setItem('token', JSON.stringify(idTokenObj));
@@ -44,18 +43,18 @@ class App extends React.PureComponent<any, any> {
 				dispatchSetToken(idTokenObj.idToken);
 				window.location.search = '';
 			}
-			else {
+ else {
 				try {
 					const { dispatchSetToken } = this.props;
 					const idTokenStorage =
 						window.sessionStorage.getItem('token') &&
 						JSON.parse(window.sessionStorage.getItem('token'));
-						if (idTokenStorage && idTokenStorage.idToken) {
-							dispatchSetToken(idTokenStorage.idToken);
-						}
+					if (idTokenStorage && idTokenStorage.idToken) {
+						dispatchSetToken(idTokenStorage.idToken);
+					}
 				}
-				catch(error) {
-					console.log('error', error)
+ catch (error) {
+					console.log('error', error);
 				}
 			}
 
