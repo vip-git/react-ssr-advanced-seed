@@ -1,7 +1,7 @@
 // Library
 import * as React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 // Theme
 import theme from '../../../styles';
@@ -22,5 +22,14 @@ describe('Settings <SettingsComponent />', () => {
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();
+	});
+	it('Settings Component mounts correctly', () => {
+		const settingsComponent = mount(
+			<ThemeProvider theme={theme}>
+				<SettingsComponent />
+			</ThemeProvider>
+		);
+
+		expect(settingsComponent.length).toBeTruthy();
 	});
 });

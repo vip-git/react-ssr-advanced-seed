@@ -1,5 +1,5 @@
 // internal
-import { UserServiceEngine } from '../user';
+import { UserServiceEngine } from '..';
 
 // Mocks
 const apolloClientMock = {};

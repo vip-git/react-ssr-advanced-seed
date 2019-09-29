@@ -42,7 +42,7 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();
 	});
-	it('ChatBox Component renders correctly when props are true', () => {
+	it('ChatBox Component mounts correctly when props are true', () => {
 		const ChatComponentTyped: any = ChatBoxComponent;
 		const chatBoxComponent = mount(
 			<ThemeProvider theme={theme}>

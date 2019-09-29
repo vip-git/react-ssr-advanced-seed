@@ -1,6 +1,6 @@
 // internal
 import { createMockClient } from 'mock-apollo-client';
-import { ChatServiceEngine } from '../chat';
+import { ChatServiceEngine } from '..';
 
 
 // Mocks

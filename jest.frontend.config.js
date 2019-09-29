@@ -38,7 +38,12 @@ module.exports = {
 		'<rootDir>/src/client/web/index.tsx',
 		// mobile - covered seperately
 		'<rootDir>/src/client/mobile',
-		'<rootDir>/src/client/shared/components/content/src/index.native.tsx'
+		'<rootDir>/src/client/shared/components/content/src/index.native.tsx',
+		// service workers
+		'<rootDir>/src/client/shared/assets/service-worker.js',
+		// Apollo client
+		'<rootDir>/src/client/shared/utils/apollo-client-ssr.engine.ts',
+		'<rootDir>/src/client/shared/utils/apollo-client.engine.ts'
 	],
 	testEnvironment: 'jsdom',
 	testURL: 'http://localhost',

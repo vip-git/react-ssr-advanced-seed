@@ -46,7 +46,6 @@ export default function CreatGroupForm(props) {
 
 
 	const handleCreateGroup = (value) => {
-        console.log('onSubmit:', value); // eslint-disable-line no-console
         let selectedGroupMembers = [];
         try {
             selectedGroupMembers = JSON.parse(value.formData.groupMembers).map(

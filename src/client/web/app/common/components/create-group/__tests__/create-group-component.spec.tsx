@@ -1,7 +1,7 @@
 // Library
 import * as React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 // Theme
 import theme from '../../../styles';
@@ -22,5 +22,15 @@ describe('CreateGroupComponent <CreateGroup />', () => {
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();
+	});
+	it('CreateGroup Component mount correctly', () => {
+		const createGroupComponent = mount(
+			<ThemeProvider theme={theme}>
+				<CreateGroupComponent />
+			</ThemeProvider>
+		);
+
+		// Interaction demo
+		expect(createGroupComponent.length).toBeTruthy();
 	});
 });

@@ -1,7 +1,7 @@
 // Library
 import * as React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import { shallow } from 'enzyme';
+import { shallow, mount } from 'enzyme';
 
 // Theme
 import theme from '../../../styles';
@@ -22,5 +22,15 @@ describe('WrapperComponent <WrapperComponent />', () => {
 
 		// Snapshot demo
 		expect(shallow).toMatchSnapshot();
+	});
+	it('Wrapper Component mounts correctly', () => {
+		const wrapperComponent = mount(
+			<ThemeProvider theme={theme}>
+				<WrapperComponent />
+			</ThemeProvider>
+		);
+
+		
+		expect(wrapperComponent.length).toBeTruthy();
 	});
 });
