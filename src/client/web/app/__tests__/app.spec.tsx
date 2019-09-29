@@ -1,6 +1,7 @@
 import React from 'react';
 import { createBrowserHistory as createHistory } from 'history';
 import { ApolloProvider } from 'react-apollo';
+import { createMockClient } from 'mock-apollo-client';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import IntlProvider from '@omega-core/i18n';
@@ -88,8 +89,10 @@ describe('app <App />', () => {
 			}
 		});
 
+		const mockClient = createMockClient();
+
 		wrapper = mount(
-			<ApolloProvider client={{}}>
+			<ApolloProvider client={mockClient}>
 				<ThemeProvider theme={theme}>
 					<Provider store={store}>
 						<Router history={browserHistory}>

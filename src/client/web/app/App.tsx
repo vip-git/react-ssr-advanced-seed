@@ -29,38 +29,40 @@ export interface PropsT {
 
 class App extends React.PureComponent<any, any> {
 	componentDidMount() {
-		const idTokenObj = queryString.parse(
-			this.props.location.search
-		);
-		if (typeof window !== 'undefined' && idTokenObj && idTokenObj.idToken) {
-			const { dispatchSetToken } = this.props;
-			window.sessionStorage.setItem('token', JSON.stringify(idTokenObj));
-			// HttpService.setCookie('accessToken', idTokenObj.accessToken, {
-			// 	// 'Secure': true,
-			// 	// 'HttpOnly': true,
-			// 	'max-age': 3600
-			// });
-			dispatchSetToken(idTokenObj.idToken);
-			window.location.search = '';
-		}
- 		else {
-			try {
+		if (this.props && this.props.location) {
+			const idTokenObj = queryString.parse(
+				this.props.location.search
+			);
+			if (typeof window !== 'undefined' && idTokenObj && idTokenObj.idToken) {
 				const { dispatchSetToken } = this.props;
-				const idTokenStorage =
-					window.sessionStorage.getItem('token') &&
-					JSON.parse(window.sessionStorage.getItem('token'));
-					if (idTokenStorage && idTokenStorage.idToken) {
-						dispatchSetToken(idTokenStorage.idToken);
-					}
+				window.sessionStorage.setItem('token', JSON.stringify(idTokenObj));
+				// HttpService.setCookie('accessToken', idTokenObj.accessToken, {
+				// 	// 'Secure': true,
+				// 	// 'HttpOnly': true,
+				// 	'max-age': 3600
+				// });
+				dispatchSetToken(idTokenObj.idToken);
+				window.location.search = '';
 			}
- 			catch(error) {
-				console.log('error', error)
+			else {
+				try {
+					const { dispatchSetToken } = this.props;
+					const idTokenStorage =
+						window.sessionStorage.getItem('token') &&
+						JSON.parse(window.sessionStorage.getItem('token'));
+						if (idTokenStorage && idTokenStorage.idToken) {
+							dispatchSetToken(idTokenStorage.idToken);
+						}
+				}
+				catch(error) {
+					console.log('error', error)
+				}
 			}
-		}
 
-		/* Only register a service worker if it's supported */
-		if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
-			navigator.serviceWorker.register('/service-worker.js');
+			/* Only register a service worker if it's supported */
+			if (typeof navigator !== 'undefined' && 'serviceWorker' in navigator) {
+				navigator.serviceWorker.register('/service-worker.js');
+			}
 		}
 	}
 

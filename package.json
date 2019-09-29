@@ -154,6 +154,7 @@
 		"lerna": "3.16.4",
 		"lint-staged": "7.3.0",
 		"mini-css-extract-plugin": "0.7.0",
+		"mock-apollo-client": "0.2.0",
 		"node-fetch": "2.6.0",
 		"nodemon": "1.19.1",
 		"plop": "2.4.0",
