@@ -10,6 +10,7 @@
 		"install:mobile": "cd src/client/mobile && npm install",
 		"precommit": "lint-staged",
 		"build": "npm run build:backend && npm run build:frontend && npm run docker-compose",
+		"e2e": "npm run build && npm run test:e2e",
 		"deploy:frontend": "npm run build:frontend && npx release-it -n --no-npm.publish && npm run docker:frontend:prod:publish",
 		"deploy": "npm run build:frontend && npm run build:backend && npx release-it -n --no-npm.publish && npm run docker:frontend:prod:publish",
 		"build:frontend": "cross-env NODE_ENV=production WS_PROTOCOL=ws:// WS_URL=localhost:8090 API_PROTOCOL=http:// node scripts/build.js",
