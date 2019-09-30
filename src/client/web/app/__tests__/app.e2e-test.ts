@@ -2,13 +2,18 @@
 /* ignore coverage */
 const puppeteer = require('puppeteer');
 
+import { config } from '../../../../../e2e.config';
+
+// Default variables
+let browser;
+let page;
+
 /* ignore coverage */
-describe('H2 Text', () => {
-	test('h2 loads correctly', async () => {
-		const browser = await puppeteer.launch({
-			headless: false
-		});
-		const page = await browser.newPage();
+describe('Test app works', () => {
+	beforeAll(async () => {
+		browser = await puppeteer.launch(config.PUPETEER_CONIFG);
+
+		page = await browser.newPage();
 
 		page.emulate({
 			viewport: {
@@ -18,12 +23,16 @@ describe('H2 Text', () => {
 			userAgent: ''
 		});
 
-		await page.goto('http://localhost:8500/');
-		await page.waitForSelector('h2');
+		await page.goto(config.SITE_URL);
+		await page.waitForSelector('h6');
+	});
 
-		const html = await page.$eval('h2', e => e.innerText);
-		expect(html).toBe('Admin Chat Interface');
-
-		browser.close();
+	test('h6 loads correctly', async () => {
+		const html = await page.$eval('h6', e => e.innerText);
+		expect(html).toBe('Welcome to React-SSR-Advanced Seed Demo');
 	}, 16000);
+
+	afterAll(() => {
+		browser.close();
+	});
 });

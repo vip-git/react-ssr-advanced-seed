@@ -28,7 +28,7 @@
 		"docker:frontend:prod:publish": "node scripts/docker-build.js frontend --publish",
 		"test": "npm run test:frontend:web && npm run test:frontend:mobile && npm run test:backend",
 		"test:backend": "cross-env CI=true API_DB_USERNAME=postgres API_DB_PASSWORD=password API_DB_NAME=postgres node scripts/test.js --env=jsdom --config=jest.backend.config.js",
-		"test:e2e": "node scripts/test.js --env=jsdom --config=jest.e2e.config.js",
+		"test:e2e": "node scripts/test.js --env=jsdom --config=jest.e2e.config.js --runInBand --coverage",
 		"test:watch": "cross-env API_DB_USERNAME=postgres API_DB_PASSWORD=password API_DB_NAME=postgres node scripts/test.js --env=jsdom --config=jest.backend.config.js",
 		"test:frontend:web": "cross-env CI=true node scripts/test.js --env=jsdom --config=jest.frontend.config.js",
 		"test:frontend:mobile": "cd src/client/mobile && npm test",
