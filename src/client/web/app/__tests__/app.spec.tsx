@@ -9,14 +9,14 @@ import { ConnectedRouter as Router } from 'connected-react-router';
 import { mount } from 'enzyme';
 
 // Theme
+import ChatContainer from '@omega-web-containers/chat';
 import theme from '../common/styles';
 
 // Internal
-import ChatContainer from '@omega-web-containers/chat';
 import App from '../App';
 
 const browserHistory =
-	((window as any) && (window as any).browserHistory) || createHistory();
+	(typeof window !== 'undefined' && window.browserHistory) || createHistory();
 
 interface IState {
 	app: {
