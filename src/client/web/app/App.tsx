@@ -117,8 +117,7 @@ class App extends React.PureComponent<any, any> {
 						marginTop: 15
 					}}
 				>
-					Version - 
-					{' '}
+					Version -
 					{process.env.APP_VERSION || '0.0.1'}
 				</div>
 			</div>
@@ -139,8 +138,7 @@ class App extends React.PureComponent<any, any> {
 	};
 
 	render() {
-		const { t, tReady, app } = this.props;
-		const { idToken } = app;
+		const { tReady } = this.props;
 		return tReady ? this.renderAppScreen() : [];
 	}
 }
