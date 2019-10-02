@@ -15,8 +15,7 @@ import theme from '../common/styles';
 // Internal
 import App from '../App';
 
-const browserHistory =
-	(typeof window !== 'undefined' && window.browserHistory) || createHistory();
+const browserHistory = createHistory();
 
 interface IState {
 	app: {
