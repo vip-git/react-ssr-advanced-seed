@@ -13,7 +13,6 @@ import App from './App';
 const routes = (
 	<Switch>
 		<Route exact path="/" component={App} />
-		{/* <Route component={App} /> */}
 		{/* <Route
         exact
         path={'/docs'}
