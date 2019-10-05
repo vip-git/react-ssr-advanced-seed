@@ -1,0 +1,14 @@
+{
+    "name": "@omega-web-containers/chat",
+    "description": "Material ui implementation of chat container using React, Redux and GrapqQL",
+    "scaffold": {
+        "main": "src/web/app/containers/chat",
+        "common": {
+            "@omega-web-components/chat-box": "src/client/web/app/common/components/chat-box"
+        },
+        "shared": {
+            "@omega-state-machines/chat": "src/client/shared/state/containers/chat",
+            "@omega-shared-components/content": "src/client/shared/components/content"
+        }
+    }
+}

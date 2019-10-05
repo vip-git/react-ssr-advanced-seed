@@ -1,0 +1,15 @@
+{
+	"name": "@omega-web-components/chat-box",
+	"description": "Material ui implementation of chat component using React",
+	"scaffold": {
+		"main": "src/client/web/app/common/components/chat-box",
+		"common": {
+			"@omega-web-components/wrapper": "src/client/web/app/common/components/wrapper",
+			"@omega-web-components/options-bar": "src/client/web/app/common/components/options-bar",
+			"@omega-web-components/modal-form": "src/client/web/app/common/components/modal-form",
+			"@omega-web-components/tabs": "src/client/web/app/common/components/tabs",
+			"@omega-web-components/create-group": "src/client/web/app/common/components/create-group",
+			"@omega-web-components/settings": "src/client/web/app/common/components/settings"
+		}
+	}
+}
