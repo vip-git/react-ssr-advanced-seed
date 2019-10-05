@@ -9,13 +9,13 @@
             "style": "./src/client/mobile/app/common/styles"
         }
     },
+    "routes": {
+        "chat": "chat"
+    },
     "containers": {
         "chat": {
-            "web": "./src/client/web/app/containers/chat/chat.web-container.json",
-            "mobile": "./src/client/mobile/app/containers/chat/chat.mobile-container.json"
+            "web": "@omega-web-containers/chat",
+            "mobile": "@omega-mobile-containers/chat"
         }
-    },
-    "components": {
-
     }
 }

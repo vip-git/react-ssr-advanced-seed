@@ -31,7 +31,7 @@ class App extends React.PureComponent<any, any> {
 	componentDidMount() {
 		const { location } = this.props;
 		if (location) {
-			const idTokenObj = queryString.parse(this.props.location.search);
+			const idTokenObj = queryString.parse(location.search);
 			if (typeof window !== 'undefined' && idTokenObj && idTokenObj.idToken) {
 				const { dispatchSetToken } = this.props;
 				window.sessionStorage.setItem('token', JSON.stringify(idTokenObj));
@@ -43,7 +43,7 @@ class App extends React.PureComponent<any, any> {
 				dispatchSetToken(idTokenObj.idToken);
 				window.location.search = '';
 			}
- else {
+ 			else {
 				try {
 					const { dispatchSetToken } = this.props;
 					const idTokenStorage =
@@ -53,7 +53,7 @@ class App extends React.PureComponent<any, any> {
 						dispatchSetToken(idTokenStorage.idToken);
 					}
 				}
- catch (error) {
+ 				catch (error) {
 					console.log('error', error);
 				}
 			}
