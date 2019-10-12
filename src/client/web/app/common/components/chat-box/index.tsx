@@ -42,7 +42,6 @@ const {
 	i18next,
 	SplitPane,
 	withTranslation,
-	reject,
 	find
 } = ChatBoxModel.libraries;
 const { Wrapper, Tabs } = ChatBoxModel.components;
