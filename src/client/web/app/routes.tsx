@@ -6,7 +6,7 @@ import { Route, Switch } from 'react-router';
 // Containers
 import App from './App';
 
-// Doc Generator
+// Docs Generator
 // import DocGen from './common/components/doc-gen';
 // import { DocGenEngine } from '../../shared/common/utils/doc-gen.engine';
 /* ignore coverage */
