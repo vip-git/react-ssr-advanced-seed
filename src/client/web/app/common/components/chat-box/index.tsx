@@ -1,9 +1,3 @@
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-undef */
-/* eslint-disable max-len */
-/* eslint-disable react/no-access-state-in-setstate */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable react/state-in-constructor */
 // Model
 import { ChatBoxModel } from './chat-box.model';
 
