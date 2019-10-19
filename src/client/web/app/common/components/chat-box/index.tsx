@@ -1,3 +1,4 @@
+/* eslint-env browser */
 // Model
 import { ChatBoxModel } from './chat-box.model';
 
@@ -44,15 +45,18 @@ const { ChatStyles } = ChatBoxModel.styles;
 type iModalForm = 'createGroupForm' | 'settingsForm';
 
 class Chat extends Component<IChatProps, IChatState> {
-	state = {
-		opened: false,
-		currentChat: '',
-		createGroupForm: false,
-		settingsForm: false
-	};
+	constructor(props) {
+		super(props);
+		this.state = {
+			opened: false,
+			currentChat: '',
+			createGroupForm: false,
+			settingsForm: false
+		};
+	}
 
 	componentDidMount() {
-		const { i18nKeys } = ChatBoxModel;
+		const { readUsersAndChat  } = this.props;
 		i18next.addResourceBundle(
 			'en-US',
 			'translation',
@@ -68,11 +72,12 @@ class Chat extends Component<IChatProps, IChatState> {
 			'translation',
 			ChatBoxModel.i18nKeys['fr-FR']
 		);
-		this.props.readUsersAndChat();
+		readUsersAndChat();
 	}
 
 	handleDrawerToggle = () => {
-		this.setState({ opened: !this.state.opened });
+		const { opened } = this.state; 
+		this.setState({ opened: !opened });
 	};
 
 	scrollToBottomChat = () => {
@@ -92,17 +97,23 @@ class Chat extends Component<IChatProps, IChatState> {
 	modalHandleClose = (modalForm: iModalForm) =>
 		this.setState({ [modalForm]: false });
 
-	sendChat = () =>
-		this.state.currentChat !== '' &&
-		this.props.submitChat({
-			variables: {
-				ownerId: this.props.githubUserData.id,
-				groupId: this.props.groupId,
-				message: this.state.currentChat,
-				date: new Date().toISOString()
-			},
-			callBack: () => this.setState({ currentChat: '' })
-		});
+	sendChat = () => {
+		const { currentChat } = this.state;
+		const { submitChat, githubUserData, groupId } = this.props;
+		return (
+			currentChat !== '' &&
+			submitChat({
+				variables: {
+					ownerId: githubUserData.id,
+					groupId,
+					message: currentChat,
+					date: new Date().toISOString()
+				},
+				callBack: () => this.setState({ currentChat: '' })
+			})
+		);
+		
+	}
 
 	handleKeyDown = e => {
 		if (e.key === 'Enter') {
@@ -116,6 +127,7 @@ class Chat extends Component<IChatProps, IChatState> {
 			chatData: { groupMembers, member, groupType },
 			githubUserData
 		} = this.props;
+		const { currentChat } = this.state;
 		let groupMemberData = false;
 		if (groupType === 'group'){
 			groupMemberData = find(groupMembers, [
@@ -133,7 +145,7 @@ class Chat extends Component<IChatProps, IChatState> {
 						label='Write a message'
 						type='text'
 						margin='normal'
-						value={this.state.currentChat}
+						value={currentChat}
 						onChange={(e: any) =>
 							this.setState({ currentChat: e.target.value })}
 						onKeyDown={this.handleKeyDown}
@@ -141,7 +153,7 @@ class Chat extends Component<IChatProps, IChatState> {
 					/>
 					<Button
 						onClick={() => this.sendChat()}
-						disabled={this.state.currentChat.length === 0}
+						disabled={currentChat.length === 0}
 						variant='contained'
 						color='primary'
 						aria-label='send'
@@ -272,11 +284,12 @@ class Chat extends Component<IChatProps, IChatState> {
 			submitCreateGroup,
 			userData,
 			SharedComponent,
+			width,
 			t,
 			githubUserData,
 			title
 		} = this.props;
-		const { opened } = this.state;
+		const { opened, createGroupForm, settingsForm } = this.state;
 		const currentUsername =
 			githubUserData.name && githubUserData.name.indexOf(' ') === -1
 				? githubUserData.name
@@ -318,8 +331,8 @@ class Chat extends Component<IChatProps, IChatState> {
 									oppositeAvatarUrl={oppositeAvatarUrl}
 									oppositeDescription={oppositeDescription}
 									oppositeUserName={oppositeUserName}
-									createGroupForm={this.state.createGroupForm}
-									settingsForm={this.state.settingsForm}
+									createGroupForm={createGroupForm}
+									settingsForm={settingsForm}
 									modalHandleClose={this.modalHandleClose}
 									handleDrawerToggle={this.handleDrawerToggle}
 									groupMembers={createGroupMembers}
@@ -328,14 +341,14 @@ class Chat extends Component<IChatProps, IChatState> {
 								<div className={classes.wrapper}>
 									<SplitPane
 										split='vertical'
-										defaultSize={isWidthUp('md', this.props.width) ? '27%' : 0}
-										minSize={isWidthUp('md', this.props.width) ? 300 : 0}
+										defaultSize={isWidthUp('md', width) ? '27%' : 0}
+										minSize={isWidthUp('md', width) ? 300 : 0}
 										maxSize={
-											isWidthUp('md', this.props.width)
+											isWidthUp('md', width)
 												? window.innerWidth / 4
 												: 0
 										}
-										allowResize={isWidthUp('md', this.props.width)}
+										allowResize={isWidthUp('md', width)}
 									>
 										<ChatSideBarComponent
 											classes={classes}
