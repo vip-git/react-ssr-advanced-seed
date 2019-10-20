@@ -57,12 +57,23 @@ export default function LangButtons(props: langProps) {
 				keepMounted
 				open={Boolean(anchorEl)}
 				onClose={handleClose}
-				style={{
-					width: 130
+				anchorOrigin={{
+					vertical: 'bottom',
+					horizontal: 'center'
+				}}
+				transformOrigin={{
+					vertical: 'top',
+					horizontal: 'center'
 				}}
 			>
 				{languages.map((val: { name: string; value: string }) => (
-					<MenuItem onClick={() => onSetLang(val.value, handleClose)}>
+					<MenuItem
+						style={{
+							paddingLeft: 30,
+							paddingRight: 30
+						}}
+						onClick={() => onSetLang(val.value, handleClose)}
+					>
 						{val.name}
 					</MenuItem>
 				))}
