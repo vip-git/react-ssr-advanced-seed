@@ -1,12 +1,14 @@
 {
     "config": {
         "web": {
-            "app": "./src/client/web/app/common/config",
-            "style": "./src/client/web/app/common/styles"
+            "app": "@omega-web-common/config",
+            "model": "@omega-web-common/model",
+            "style": "@omega-web-common/styles"
         },
         "mobile": {
-            "app": "./src/client/mobile/app/common/config",
-            "style": "./src/client/mobile/app/common/styles"
+            "app": "@omega-mobile-common/config",
+            "model": "@omega-mobile-common/model",
+            "style": "@omega-mobile-common/styles"
         }
     },
     "routes": {

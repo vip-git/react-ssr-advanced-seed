@@ -1,0 +1,13 @@
+{
+	"name": "@omega-web-common/model",
+	"version": "0.4.21",
+	"main": "./index.ts",
+	"scripts": {
+		"deploy": "npm version patch && npm publish --access public"
+	},
+	"author": "",
+	"license": "ISC",
+	"description": "",
+	"gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
+	"dependencies": {}
+}
