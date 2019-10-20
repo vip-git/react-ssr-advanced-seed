@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/login",
-  "version": "0.4.22",
+  "version": "0.4.23",
   "main": "./index.tsx",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"

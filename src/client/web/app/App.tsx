@@ -9,7 +9,7 @@ import queryString from 'query-string';
 
 // Containers & component
 import Chat from '@omega-web-containers/chat';
-import LangButtons from '@omega-web-components/lang-menu';
+import LangButtons from '@omega-web-components/lang-buttons';
 import LoginDialog from '@omega-web-components/login';
 
 // Redux

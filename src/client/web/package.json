@@ -12,7 +12,7 @@
         "@omega-web-containers/chat": "^0.4.0",
         "@omega-core/utils": "^0.4.0",
         "@omega-web-components/login": "^0.4.0",
-        "@omega-web-components/lang-menu": "^0.4.0",
+        "@omega-web-components/lang-buttons": "^0.4.0",
         "@omega-core/config": "^0.4.0",
         "@omega-core/i18n": "^0.4.0",
         "date-fns": "1.30.1",
