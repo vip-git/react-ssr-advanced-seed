@@ -1,6 +1,6 @@
 {
 	"name": "@omega-core/services",
-	"version": "0.4.20",
+	"version": "0.4.21",
 	"main": "./index.tsx",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
