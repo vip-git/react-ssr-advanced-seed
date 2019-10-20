@@ -1,6 +1,6 @@
 {
 	"name": "@omega-web-components/lang-buttons",
-	"version": "0.4.21",
+	"version": "0.4.22",
 	"main": "./index.tsx",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
