@@ -117,8 +117,7 @@ class App extends React.PureComponent<any, any> {
 						marginTop: 15
 					}}
 				>
-					Version -
-					{process.env.APP_VERSION || '0.0.1'}
+					{`Version - ${process.env.APP_VERSION || '0.0.1'}`}
 				</div>
 			</div>
 		);
