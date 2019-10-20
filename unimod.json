@@ -9,15 +9,49 @@
             "app": "@omega-mobile-common/config",
             "model": "@omega-mobile-common/model",
             "style": "@omega-mobile-common/styles"
+        },
+        "shared": {
+
         }
     },
     "routes": {
         "chat": "chat"
     },
+    "components": {
+        "web": {
+
+        },
+        "mobile": {
+
+        },
+        "shared": {
+
+        }
+    },
     "containers": {
         "chat": {
             "web": "@omega-web-containers/chat",
             "mobile": "@omega-mobile-containers/chat"
+        }
+    },
+    "shared": {
+        "assets": {
+
+        },
+        "i18n": {
+
+        },
+        "rules": {
+
+        },
+        "services": {
+
+        },
+        "state": {
+
+        },
+        "utils": {
+            
         }
     }
 }
