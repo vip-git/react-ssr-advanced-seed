@@ -1,3 +1,6 @@
+// Library
+const shell = require('shelljs');
+const baseUnimodJson = require('../../unimod.json');
 /***************************************************************************
  * ----------------------------------------------------------------------***
  *  version 0.1                                                        *****
@@ -30,3 +33,4 @@
  *      - Mobile   (This will be then follow up to scaffold to more info)***
  ***************************************************************************/
 
+console.log('unimod json is', baseUnimodJson);
