@@ -1,7 +1,7 @@
 {
 	"translation": {
 		"features": "Caractéristiques",
-		"i18n-example": "Interface de discussion administrative",
+		"i18n-example": "Réagissez SSR Advanced Seed (application Chat)",
 		"i18n-support": "Prise en charge d'i18n (via React i18Next)"
 	}
 }

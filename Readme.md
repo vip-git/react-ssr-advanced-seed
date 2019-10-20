@@ -1,6 +1,11 @@
-## React (SSR) Advanced Seed
+# React (SSR) Advanced Seed
 
-## (NestJS + React (SSR) + React Native + Nginx + Docker)
+- NestJS + React (SSR) + React Native + REST / GraphQL
+- Service workers Integration (Offline First - Push Notifications - PWA)
+- NGINX - Reverse proxy integration to route to multiple api's via same origin (Docker links)  
+- Dockerized Containers for frontend and backend using docker compose
+- Babel 7, Webpack 4, Eslint 5, Typescript, Prettier, Jest 24 integration with HMR for both web and mobile (React Native - metro)
+- Fastlane integration for mobile (React Native) to deploy to Testflight / Appstore (iOS) and PlayStore / Internal test track (Android) using Continous Integration (Eg: Azure, Jenkins, Bitrise, etc).
 
 ## (Work In Progress)
 

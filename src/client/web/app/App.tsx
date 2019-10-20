@@ -1,3 +1,4 @@
+/* eslint-env browser */
 // Library
 import React from 'react';
 import FadeIn from 'react-fade-in';
@@ -8,6 +9,7 @@ import queryString from 'query-string';
 
 // Containers & component
 import Chat from '@omega-web-containers/chat';
+import LangButtons from '@omega-web-Components/lang-menu';
 import LoginDialog from '@omega-web-Components/login';
 
 // Redux
@@ -27,6 +29,8 @@ export interface PropsT {
 	t: (string) => string;
 }
 
+type  supportedLangs = 'fr-FR' | 'de-DE' | 'en-US';
+
 class App extends React.PureComponent<any, any> {
 	componentDidMount() {
 		const { location } = this.props;
@@ -43,7 +47,7 @@ class App extends React.PureComponent<any, any> {
 				dispatchSetToken(idTokenObj.idToken);
 				window.location.search = '';
 			}
- 			else {
+ else {
 				try {
 					const { dispatchSetToken } = this.props;
 					const idTokenStorage =
@@ -53,7 +57,7 @@ class App extends React.PureComponent<any, any> {
 						dispatchSetToken(idTokenStorage.idToken);
 					}
 				}
- 				catch (error) {
+ catch (error) {
 					console.log('error', error);
 				}
 			}
@@ -65,9 +69,9 @@ class App extends React.PureComponent<any, any> {
 		}
 	}
 
-	setLanguage = (e: any) => {
+	setLanguage = (langName: supportedLangs) => {
 		const { dispatchSetLocale } = this.props;
-		dispatchSetLocale(e.target.value);
+		dispatchSetLocale(langName);
 	};
 
 	handleLoginClick = () => {
@@ -78,7 +82,7 @@ class App extends React.PureComponent<any, any> {
 
 	renderChat = () => {
 		const { t, app } = this.props;
-		const { idToken } = app;
+		const { idToken, locale } = app;
 		return idToken === '' ? (
 			<LoginDialog
 				show={idToken === ''}
@@ -98,15 +102,24 @@ class App extends React.PureComponent<any, any> {
 						top: 26
 					}}
 				>
-					<button value='fr-FR' onClick={this.setLanguage}>
-						French
-					</button>
-					<button value='de-DE' onClick={this.setLanguage}>
-						Deutsch
-					</button>
-					<button value='en-US' onClick={this.setLanguage}>
-						English
-					</button>
+					<LangButtons
+						languages={[
+							{
+								name: 'French',
+								value: 'fr-FR'
+							},
+							{
+								name: 'Deutsch',
+								value: 'de-DE'
+							},
+							{
+								name: 'English',
+								value: 'en-US'
+							}
+						]}
+						defaultLanguage={locale}
+						onSetLang={(langName: supportedLangs) => this.setLanguage(langName)}
+					/>
 				</div>
 				<Chat title={t('i18n-example')} idToken={idToken} />
 				<div
@@ -121,15 +134,16 @@ class App extends React.PureComponent<any, any> {
 				</div>
 			</div>
 		);
-	}
+	};
 
 	renderAppScreen = () => {
+		const { t } = this.props;
 		const TypedHelmet: any = Helmet;
 		return (
 			<FadeIn>
 				<TypedHelmet
-					defaultTitle='React Redux SSR Advanced Seed'
-					titleTemplate='%s – React Redux SSR Advanced Seed'
+					defaultTitle={t('i18n-example')}
+					titleTemplate={`%s – ${t('i18n-example')}`}
 				/>
 				{this.renderChat()}
 			</FadeIn>
