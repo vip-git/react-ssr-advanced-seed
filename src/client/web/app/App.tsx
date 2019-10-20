@@ -69,9 +69,12 @@ class App extends React.PureComponent<any, any> {
 		}
 	}
 
-	setLanguage = (langName: supportedLangs) => {
+	setLanguage = (langName: supportedLangs, callback: () => void) => {
 		const { dispatchSetLocale } = this.props;
 		dispatchSetLocale(langName);
+		if (callback && typeof callback === 'function') {
+			callback();
+		}
 	};
 
 	handleLoginClick = () => {
@@ -83,6 +86,7 @@ class App extends React.PureComponent<any, any> {
 	renderChat = () => {
 		const { t, app } = this.props;
 		const { idToken, locale } = app;
+		const { languages } = config;
 		return idToken === '' ? (
 			<LoginDialog
 				show={idToken === ''}
@@ -99,26 +103,14 @@ class App extends React.PureComponent<any, any> {
 						position: 'absolute',
 						zIndex: 1,
 						right: '14%',
-						top: 26
+						top: 13
 					}}
 				>
 					<LangButtons
-						languages={[
-							{
-								name: 'French',
-								value: 'fr-FR'
-							},
-							{
-								name: 'Deutsch',
-								value: 'de-DE'
-							},
-							{
-								name: 'English',
-								value: 'en-US'
-							}
-						]}
+						languages={languages}
 						defaultLanguage={locale}
-						onSetLang={(langName: supportedLangs) => this.setLanguage(langName)}
+						onSetLang={(langName: supportedLangs, callback: () => void) =>
+							this.setLanguage(langName, callback)}
 					/>
 				</div>
 				<Chat title={t('i18n-example')} idToken={idToken} />

@@ -39,6 +39,10 @@ export default class HTML extends React.Component<PropsT> {
 						<link key={href} rel='stylesheet' href={href} />
 					))}
 					<link rel='manifest' href='/manifest.json' />
+					<link
+						rel='stylesheet'
+						href='https://fonts.googleapis.com/icon?family=Material+Icons'
+					/>
 					<script
 						dangerouslySetInnerHTML={{
 							__html: `window.__PRELOADED_STATE__ = ${JSON.parse(

@@ -1,6 +1,7 @@
 /* eslint-env browser */
 // Library
 import React from 'react';
+import { find } from 'lodash';
 
 // Material UI
 import Button from '@material-ui/core/Button';
@@ -10,14 +11,14 @@ import Icon from '@material-ui/core/Icon';
 
 interface langProps { 
     languages: any; 
-    onSetLang: (langName: string) => void;
+    onSetLang: (langName: string, callback: () => void) => void;
     defaultLanguage: string;
 }
 
 export default function LangButtons(props: langProps) {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     const { languages, onSetLang, defaultLanguage } = props;
-    const selectedLanguage = languages[defaultLanguage];
+    const selectedLanguage = find(languages, ['value', defaultLanguage]);
 	const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
 		setAnchorEl(event.currentTarget);
 	};
@@ -29,11 +30,25 @@ export default function LangButtons(props: langProps) {
 	return (
 		<div>
 			<Button
+				variant={'outlined'}
 				aria-controls='simple-menu'
 				aria-haspopup='true'
 				onClick={handleClick}
+				style={{
+					color: 'white',
+					borderColor: '#f5f5f5a6'
+				}}
 			>
-				<Icon color='primary'>translate</Icon>
+				<Icon
+					color='primary'
+					style={{
+						color: 'white',
+						fontSize: '1.2em',
+						marginRight: 10
+					}}
+				>
+					translate
+				</Icon>
 				{selectedLanguage && selectedLanguage.name}
 			</Button>
 			<Menu
@@ -42,9 +57,14 @@ export default function LangButtons(props: langProps) {
 				keepMounted
 				open={Boolean(anchorEl)}
 				onClose={handleClose}
+				style={{
+					width: 130
+				}}
 			>
 				{languages.map((val: { name: string; value: string }) => (
-					<MenuItem onClick={() => onSetLang(val.value)}> val.name </MenuItem>
+					<MenuItem onClick={() => onSetLang(val.value, handleClose)}>
+						{val.name}
+					</MenuItem>
 				))}
 			</Menu>
 		</div>

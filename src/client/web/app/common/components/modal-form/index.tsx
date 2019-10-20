@@ -2,6 +2,7 @@
 import React from 'react';
 
 // Material UI
+import Divider from '@material-ui/core/Divider';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -25,15 +26,15 @@ export default function FormDialog(props) {
 				aria-labelledby='form-dialog-title'
 			>
 				<DialogTitle id='form-dialog-title'>{modalTitle}</DialogTitle>
+				<Divider />
 				<DialogContent>
-					<DialogContentText style={{ marginBottom: 0 }}> 
-						{ modalDescription } 
+					<DialogContentText style={{ marginBottom: 0 }}>
+						{modalDescription}
 					</DialogContentText>
-					{ modalContent() }
+					{modalContent()}
 				</DialogContent>
-				<DialogActions>
-					{ modalActions() }
-				</DialogActions>
+				<Divider />
+				<DialogActions>{modalActions()}</DialogActions>
 			</Dialog>
 		</div>
 	);
