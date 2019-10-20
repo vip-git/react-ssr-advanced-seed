@@ -9,8 +9,8 @@ import queryString from 'query-string';
 
 // Containers & component
 import Chat from '@omega-web-containers/chat';
-import LangButtons from '@omega-web-Components/lang-menu';
-import LoginDialog from '@omega-web-Components/login';
+import LangButtons from '@omega-web-components/lang-menu';
+import LoginDialog from '@omega-web-components/login';
 
 // Redux
 import { config } from '@omega-core/config';
