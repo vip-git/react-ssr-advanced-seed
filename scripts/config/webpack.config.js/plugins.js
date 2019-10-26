@@ -57,6 +57,18 @@ const client = [
 			)
 		}
 	]),
+	new CopyWebpackPlugin([
+		{
+			from: path.resolve(
+				__dirname,
+				'../../../src/client/shared/assets/offline.html'
+			),
+			to: path.resolve(
+				__dirname,
+				'../../../docker/frontend/prod/build/client/offline.html'
+			)
+		}
+	]),
 	new MiniCssExtractPlugin({
 		filename:
 			process.env.NODE_ENV === 'development'
