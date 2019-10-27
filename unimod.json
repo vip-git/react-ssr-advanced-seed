@@ -35,23 +35,17 @@
         }
     },
     "shared": {
-        "assets": {
-
+        "assets": "@omega-core/assets",
+        "i18n": "@omega-core/i18n",
+        "rules": "@omega-core/rules",
+        "services": "@omega-core/services",
+        "state": { 
+            // Todo add remaining state files as base package
+            "containers": {
+                "app": "@omega-state-machines/app",
+                "chat": "@omega-state-machines/chat"
+            }
         },
-        "i18n": {
-
-        },
-        "rules": {
-
-        },
-        "services": {
-
-        },
-        "state": {
-
-        },
-        "utils": {
-            
-        }
+        "utils": "@omega-core/utils"
     }
 }

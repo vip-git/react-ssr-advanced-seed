@@ -47,7 +47,7 @@ class App extends React.PureComponent<any, any> {
 				dispatchSetToken(idTokenObj.idToken);
 				window.location.search = '';
 			}
- else {
+			else {
 				try {
 					const { dispatchSetToken } = this.props;
 					const idTokenStorage =
@@ -57,7 +57,7 @@ class App extends React.PureComponent<any, any> {
 						dispatchSetToken(idTokenStorage.idToken);
 					}
 				}
- catch (error) {
+ 				catch (error) {
 					console.log('error', error);
 				}
 			}
