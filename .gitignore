@@ -10,7 +10,7 @@ node_modules
 npm-debug.log
 
 # package-lock
-package-lock.json
+# package-lock.json
 
 # example
 /quick-start
