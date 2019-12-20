@@ -16,7 +16,7 @@ self.addEventListener('activate', event => {
 });
 
 self.addEventListener('fetch', function(event) {
-	// console.log('👷', 'fetch', event);
+	  console.log('👷', 'fetch', event);
 	  const { request } = event;
 		// Always bypass for range requests, due to browser bugs
 		if (request.headers.has('range')) return;

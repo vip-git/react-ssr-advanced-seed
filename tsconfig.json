@@ -44,6 +44,11 @@
     "outDir": "docker/backend/prod/dist"
   },
   "include": [
+    "src/client/**/*",
+    "src/client/**/**/*",
+    "src/client/**/**/**/*",
+    "src/client/**/**/**/**/*",
+    "src/client/**/**/**/**/**/*",
     "src/server/**/*",
     "src/server/**/**/*",
     "src/server/**/**/**/*",
