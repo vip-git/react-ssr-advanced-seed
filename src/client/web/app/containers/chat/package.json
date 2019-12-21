@@ -1,21 +1,21 @@
 {
-    "name": "@omega-web-containers/chat",
-    "version": "0.3.9",
-    "main": "./index.tsx",
-    "scripts": {
-        "deploy": "npm version patch && npm publish --access public"
-    },
-    "dependencies": {
-        "reselect": "4.0.0",
-        "@omega-state-machines/chat": "0.3.10",
-        "@omega-web-components/chat-box": "0.3.10",
-        "@omega-web-components/dialog": "0.3.6",
-        "@omega-shared-components/content": "0.3.19"
-    },
-    "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
-    "devDependencies": {
-        "@material-ui/core": "4.6.0",
-        "@material-ui/styles": "4.6.0",
-        "@material-ui/icons": "4.5.1"
-    }
+  "name": "@omega-web-containers/chat",
+  "version": "0.3.9",
+  "main": "./index.tsx",
+  "scripts": {
+    "deploy": "npm version patch && npm publish --access public"
+  },
+  "dependencies": {
+    "reselect": "4.0.0",
+    "@omega-state-machines/chat": "0.3.10",
+    "@omega-web-components/chat-box": "0.3.10",
+    "@omega-web-components/dialog": "0.3.6",
+    "@omega-shared-components/content": "0.3.19"
+  },
+  "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
+  "devDependencies": {
+    "@material-ui/core": "4.6.0",
+    "@material-ui/styles": "4.6.0",
+    "@material-ui/icons": "4.5.1"
+  }
 }
