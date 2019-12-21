@@ -9,23 +9,26 @@ import { RulesEngine } from '@omega-core/rules.engine-hooks';
 // Context
 import { } from './profile.model';
 
+interface ProfileActions {
+    getProfileData: (props: any) => void;
+};
+
 const useProfilePage = () => {
     const [profileContext] = useContext(ProfilePageContext);
     const { actions, rules } = initialProfileModel;
-    const pageActions = Object.assign({}. actions);
+    const profileActions: ProfileActions = Object.assign({}. actions);
 
     const [profilePage, getProfileData] = RulesEngine.applyRule({
         rules: [],
         successCallback: () => of(initialPayload).pipe(
-            startWith(),
+            startWith((
+                <div> {'Loading...'} </div>
+            )),
             map(() => {
                 return (
                     <div> {'Success Result'} </div>
                 );
             }),
-            startWith((
-                <div> {'Loading...'} </div>
-            ))
         ),
         failureCallback: (failure) => of(
             <div> {'Some failure info'} </div>
@@ -35,10 +38,10 @@ const useProfilePage = () => {
         ),
     })
 
-    pageActions.getProfileData = getProfileData;
+    profileActions.getProfileData = getProfileData;
 
     return {
-        pageActions,
+        profileActions,
         profilePage
     };
 }
