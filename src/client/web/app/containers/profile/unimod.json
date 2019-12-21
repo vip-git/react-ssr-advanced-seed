@@ -1,0 +1,14 @@
+{
+	"name": "@omega-web-containers/profile",
+	"description": "Material ui implementation of profile container using React, Observables and GrapqQL",
+	"scaffold": {
+		"main": "src/web/app/containers/profile",
+		"common": {
+			"@omega-web-components/profile": "src/client/web/app/common/components/profile"
+		},
+		"shared": {
+			"@omega-state-machines/profile": "src/client/shared/state/containers/chat",
+			"@omega-shared-components/content": "src/client/shared/components/content"
+		}
+	}
+}
