@@ -1,0 +1,12 @@
+{
+    "name": "@omega-state-machines/profile",
+    "description": "Material ui implementation of profile container using React, Hooks and GrapqQL",
+    "scaffold": {
+        "main": "src/client/shared/state/containers/profile",
+        "shared": {
+            "@omega-core/services": "src/client/shared/services",
+            "@omega-core/utils": "src/client/shared/utils",
+            "@omega-core/rules": "src/client/shared/rules"
+        }
+    }
+}

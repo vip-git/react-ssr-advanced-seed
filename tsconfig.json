@@ -14,7 +14,7 @@
       "@containers/*": ["src/client/web/app/containers/*"],
       "@styles/*": ["src/client/web/app/common/styles/*"]
     },
-    "declaration": false,
+    "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
     "noLib": false,

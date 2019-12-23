@@ -1,0 +1,11 @@
+{
+  "name": "@omega-web-containers/profile",
+  "version": "0.4.25",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

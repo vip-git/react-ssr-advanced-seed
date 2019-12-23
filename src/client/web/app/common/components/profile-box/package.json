@@ -1,6 +1,6 @@
 {
     "name": "@omega-web-components/profile-box",
-    "version": "0.4.24",
+    "version": "0.4.25",
     "main": "./index.tsx",
     "scripts": {
         "deploy": "npm version patch && npm publish --access public"
@@ -11,7 +11,7 @@
     "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
     "dependencies": {
         "@material-ui/core": "4.8.0",
-        "@material-ui/styles": "4.8.0",
-        "@material-ui/icons": "4.5.1",
+        "@material-ui/styles": "4.7.1",
+        "@material-ui/icons": "4.5.1"
     }
 }

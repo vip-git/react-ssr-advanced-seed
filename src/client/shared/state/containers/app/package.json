@@ -1,6 +1,6 @@
 {
 	"name": "@omega-state-machines/app",
-	"version": "0.4.24",
+	"version": "0.4.25",
 	"gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
 	"scripts": {
 		"deploy": "npm version patch && npm publish --access public"
