@@ -49,6 +49,7 @@
 		"generate:server:modelHelpers": "npx plop serverModelHelpers",
 		"generate:graphqltypes": "cd src/server/app && npx ts-node generate-typings.ts",
 		"generate:docs": "npx typedoc --out docs/ src/ --mode file --module commonjs --target es6",
+		"generate:types": "tsc index.tsx --declaration --emitDeclarationOnly --jsx react --lib es2015 --esModuleInterop",
 		"generate:defintions": "npx dts-generator --name node-advanced-api --project ./ --out node-advanced-api.d.ts",
 		"generate-all": "npm run generate:defintions && npm run generate:docs",
 		"webpack": "webpack --env.NODE_ENV=development --env.watchFiles=true --config scripts/api-webpack.config.js",
