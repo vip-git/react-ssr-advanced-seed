@@ -159,7 +159,7 @@
 		"typedoc-ssr": "0.14.4",
 		"typescript": "3.5.3",
 		"url-loader": "2.1.0",
-		"webpack": "4.35.3",
+		"webpack": "4.43.0",
 		"webpack-bundle-analyzer": "3.3.2",
 		"webpack-cli": "3.3.3",
 		"webpack-dev-server": "3.7.2",
