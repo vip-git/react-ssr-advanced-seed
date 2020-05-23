@@ -3,16 +3,16 @@
   "version": "0.3.6",
   "main": "./index.tsx",
   "scripts": {
-		"deploy": "npm version patch && npm publish --access public"
-	},
+    "deploy": "npm version patch && npm publish --access public"
+  },
   "author": "",
   "license": "ISC",
   "description": "",
   "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
   "dependencies": {
-    "@material-ui/core": "4.2.0",
-    "@material-ui/styles": "4.2.0",
-    "@material-ui/icons": "4.2.1",
+    "@material-ui/core": "4.6.0",
+    "@material-ui/styles": "4.6.0",
+    "@material-ui/icons": "4.5.1",
     "react": "^16.8.6"
   }
 }
