@@ -13,7 +13,7 @@
     "@nestjs/testing": "6.5.3",
     "@nestjs/typeorm": "6.3.4",
     "@nestjs/websockets": "6.5.3",
-    "apollo-server-express": "2.13.1",
+    "apollo-server-express": "2.14.2",
     "class-transformer": "0.2.3",
     "class-validator": "0.9.1",
     "classnames": "2.2.6",
