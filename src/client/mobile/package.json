@@ -1,39 +1,39 @@
 {
-	"name": "reactMobile",
-	"version": "0.0.1",
-	"private": true,
-	"scripts": {
-		"start": "react-native start",
-		"test": "jest --env=jsdom --config=jest.config.js --coverage",
-		"lint": "eslint ."
-	},
-	"dependencies": {
-		"@omega-shared-components/content": "0.3.19",
-		"react": "16.8.6",
-		"react-native": "0.60.3",
-		"react-native-paper": "2.16.0"
-	},
-	"devDependencies": {
-		"@babel/core": "7.5.5",
-		"@babel/runtime": "7.5.5",
-		"@babel/plugin-proposal-class-properties": "7.5.5",
-		"@babel/plugin-proposal-object-rest-spread": "7.5.5",
-		"@babel/plugin-proposal-optional-chaining": "7.2.0",
-		"@babel/plugin-syntax-dynamic-import": "7.2.0",
-		"@babel/plugin-transform-modules-commonjs": "7.5.0",
-		"@react-native-community/eslint-config": "0.0.5",
-		"babel-jest": "24.8.0",
-		"babel-plugin-inline-import": "3.0.0",
-		"babel-plugin-module-resolver": "3.2.0",
-		"enzyme-adapter-react-16": "1.14.0",
-		"eslint": "6.8.0",
-		"jest": "24.8.0",
-		"jest-environment-enzyme": "7.0.2",
-		"jest-enzyme": "7.0.2",
-		"metro-react-native-babel-preset": "0.55.0",
-		"react-native-dotenv": "0.2.0",
-		"react-test-renderer": "16.8.6",
-		"ts-jest": "24.0.2",
-		"typescript": "3.5.3"
-	}
+  "name": "reactMobile",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "react-native start",
+    "test": "jest --env=jsdom --config=jest.config.js --coverage",
+    "lint": "eslint ."
+  },
+  "dependencies": {
+    "@omega-shared-components/content": "0.3.19",
+    "react": "16.8.6",
+    "react-native": "0.60.3",
+    "react-native-paper": "2.16.0"
+  },
+  "devDependencies": {
+    "@babel/core": "7.5.5",
+    "@babel/runtime": "7.5.5",
+    "@babel/plugin-proposal-class-properties": "7.5.5",
+    "@babel/plugin-proposal-object-rest-spread": "7.5.5",
+    "@babel/plugin-proposal-optional-chaining": "7.2.0",
+    "@babel/plugin-syntax-dynamic-import": "7.2.0",
+    "@babel/plugin-transform-modules-commonjs": "7.5.0",
+    "@react-native-community/eslint-config": "0.0.5",
+    "babel-jest": "24.8.0",
+    "babel-plugin-inline-import": "3.0.0",
+    "babel-plugin-module-resolver": "3.2.0",
+    "enzyme-adapter-react-16": "1.14.0",
+    "eslint": "6.8.0",
+    "jest": "24.8.0",
+    "jest-environment-enzyme": "7.0.2",
+    "jest-enzyme": "7.0.2",
+    "metro-react-native-babel-preset": "0.55.0",
+    "react-native-dotenv": "0.2.0",
+    "react-test-renderer": "16.8.6",
+    "ts-jest": "24.0.2",
+    "typescript": "3.5.3"
+  }
 }
