@@ -29,7 +29,7 @@ function TabPanel(props: TabPanelProps) {
 
   return (
 		<Typography
-			component='div'
+			component={() => <div />}
 			role='tabpanel'
 			hidden={value !== index}
 			id={`scrollable-force-tabpanel-${index}`}
