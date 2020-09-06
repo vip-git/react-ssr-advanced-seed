@@ -16,7 +16,7 @@ ENV API_DB_PORT 5433
 ENV API_DB_USERNAME postgres
 ENV API_DB_PASSWORD postgres
 ENV API_DB_NAME postgres
-ENV FRONT_END_HOST http://localhost:8080
+ENV FRONT_END_HOST https://confident-mestorf-ab8ce9.netlify.app
 
 WORKDIR /opt/react-ssr-api
 COPY dist/ /opt/react-ssr-api/
