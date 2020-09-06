@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 // Libraries
 import React, { useContext } from 'react';
 import { of } from 'rxjs';
@@ -11,13 +12,13 @@ interface ProfileActions {
 };
 
 const useProfilePage = (initialProfileModel: any, profilePageContext: any) => {
-    const [profileContext] = useContext(profilePageContext);
+    // const [profileContext] = useContext(profilePageContext);
     const { actions, rules } = initialProfileModel;
-    const profileActions: ProfileActions = Object.assign({}. actions);
+    const profileActions: ProfileActions = { ...actions};
 
     const [profilePage, getProfileData] = RulesEngine.applyRule({
         rules: [],
-        successCallback: () => of(initialPayload).pipe(
+        successCallback: (initialPayload) => of(initialPayload).pipe(
             startWith((
                 <div> 
                     {'Loading...'}
