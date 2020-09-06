@@ -61,7 +61,7 @@ const client = [
 	new CopyWebpackPlugin([
 		{
 			from: path.resolve(__dirname, '../../../_redirects'),
-			to: path.resolve(__dirname, '../../../docker/frontend/prod/build/client/_redirects')
+			to: path.resolve(__dirname, '../../../docker/frontend/prod/build/client')
 		}
 	]),
 	new CopyWebpackPlugin([
