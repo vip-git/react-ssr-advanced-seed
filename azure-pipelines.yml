@@ -37,6 +37,7 @@ steps:
 - script: |
     sudo snap install --classic heroku
     heroku login
+    heroku stack:set heroku-18
     cd docker/backend/prod
     heroku container:login
     heroku container:push web --app=react-ssr-nest-api
