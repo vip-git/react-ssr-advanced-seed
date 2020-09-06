@@ -27,7 +27,7 @@
 		"graphql-subscriptions": "1.1.0",
 		"graphql-tools": "4.0.5",
 		"jsonwebtoken": "8.5.1",
-		"lodash": "4.17.15",
+		"lodash": "4.17.19",
 		"node-fetch": "2.6.0",
 		"passport": "0.4.0",
 		"passport-github": "1.1.0",
