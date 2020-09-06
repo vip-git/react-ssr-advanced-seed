@@ -1,6 +1,6 @@
 {
     "name": "@omega-state-machines/profile",
-    "version": "0.4.25",
+    "version": "0.4.26",
     "main": "./profile-model.hooks.ts",
     "gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b",
     "scripts": {

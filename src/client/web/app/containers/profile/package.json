@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-containers/profile",
-  "version": "0.4.25",
+  "version": "0.4.26",
   "description": "",
   "main": "index.tsx",
   "scripts": {

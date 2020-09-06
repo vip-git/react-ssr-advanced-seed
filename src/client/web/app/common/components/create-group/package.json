@@ -1,6 +1,6 @@
 {
   "name": "@omega-web-components/create-group",
-  "version": "0.4.25",
+  "version": "0.4.26",
   "main": "./index.tsx",
   "scripts": {
     "deploy": "npm version patch && npm publish --access public"
