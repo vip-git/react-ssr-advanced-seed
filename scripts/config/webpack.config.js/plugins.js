@@ -15,6 +15,7 @@ const client = [
 		__SERVER__: 'false',
 		__CLIENT__: 'true'
 	}),
+	
 	new CopyWebpackPlugin([
 		{
 			from: path.resolve(
@@ -55,6 +56,12 @@ const client = [
 				__dirname,
 				'../../../docker/frontend/prod/build/client/service-worker.js'
 			)
+		}
+	]),
+	new CopyWebpackPlugin([
+		{
+			from: path.resolve(__dirname, '../../../_redirects'),
+			to: path.resolve(__dirname, '../../../docker/frontend/prod/build/client')
 		}
 	]),
 	new CopyWebpackPlugin([
