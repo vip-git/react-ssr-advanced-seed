@@ -16,8 +16,8 @@ const client = [
 		__CLIENT__: 'true'
 	}),
 	
-	new CopyWebpackPlugin([
-		{
+	new CopyWebpackPlugin({
+		patterns: [{
 			from: path.resolve(
 				__dirname,
 				'../../../src/client/shared/assets/redux-templates'
@@ -26,28 +26,28 @@ const client = [
 				__dirname,
 				'../../../docker/frontend/prod/build/client/static/assets/redux-templates'
 			)
-		}
-	]),
-	new CopyWebpackPlugin([
-		{
+		}]
+	}),
+	new CopyWebpackPlugin({
+		patterns: [{
 			from: path.resolve(
 				__dirname,
 				'../../../src/client/shared/assets/images/icons'
 			),
 			to: path.resolve(__dirname, '../../../docker/frontend/prod/build/client')
-		}
-	]),
-	new CopyWebpackPlugin([
-		{
+		}]
+	}),
+	new CopyWebpackPlugin({
+		patterns: [{
 			from: path.resolve(__dirname, '../../../manifest.json'),
 			to: path.resolve(
 				__dirname,
 				'../../../docker/frontend/prod/build/client/manifest.json'
 			)
-		}
-	]),
-	new CopyWebpackPlugin([
-		{
+		}]
+	}),
+	new CopyWebpackPlugin({
+		patterns: [{
 			from: path.resolve(
 				__dirname,
 				'../../../src/client/shared/assets/service-worker.js'
@@ -56,16 +56,16 @@ const client = [
 				__dirname,
 				'../../../docker/frontend/prod/build/client/service-worker.js'
 			)
-		}
-	]),
-	new CopyWebpackPlugin([
-		{
+		}]
+	}),
+	new CopyWebpackPlugin({
+		patterns: [{
 			from: path.resolve(__dirname, '../../../_redirects'),
 			to: path.resolve(__dirname, '../../../docker/frontend/prod/build/client')
-		}
-	]),
-	new CopyWebpackPlugin([
-		{
+		}]
+	}),
+	new CopyWebpackPlugin({
+		patterns: [{
 			from: path.resolve(
 				__dirname,
 				'../../../src/client/shared/assets/offline.html'
@@ -74,8 +74,8 @@ const client = [
 				__dirname,
 				'../../../docker/frontend/prod/build/client/offline.html'
 			)
-		}
-	]),
+		}]
+	}),
 	new MiniCssExtractPlugin({
 		filename:
 			process.env.NODE_ENV === 'development'

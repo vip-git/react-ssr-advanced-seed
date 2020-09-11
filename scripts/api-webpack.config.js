@@ -39,25 +39,27 @@ module.exports = env => {
 		},
 		plugins: [
 			new webpack.HotModuleReplacementPlugin(),
-			new CopyWebpackPlugin([
-				{
-					from: path.resolve(__dirname, '../src/server/package.json'),
-					to: path.resolve(
-						__dirname,
-						'../docker/backend/prod/dist/package.json'
-					)
-				}
-			]),
-			new CopyWebpackPlugin([
-				{
+			new CopyWebpackPlugin({
+				patterns: [
+					{
+						from: path.resolve(__dirname, '../src/server/package.json'),
+						to: path.resolve(
+							__dirname,
+							'../docker/backend/prod/dist/package.json'
+						)
+					}
+				]
+			}),
+			new CopyWebpackPlugin({
+				patterns: [{
 					from: path.resolve(
 						__dirname,
 						'../src/server/app/modules/**/*.graphql'
 					),
 					to: path.resolve(__dirname, '../docker/backend/prod/dist/graphql/'),
 					flatten: true
-				}
-			])
+				}]
+			})
 		],
 		output: {
 			path: path.join(__dirname, '../docker/backend/prod/dist'),
