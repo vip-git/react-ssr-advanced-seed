@@ -1,3 +1,4 @@
+// Library
 import React, { useEffect } from 'react';
 import { initialProfileModel, ProfileContext } from './profile.model';
 import useProfilePage from '../../../../shared/state/containers/profile/profile-model.hooks';

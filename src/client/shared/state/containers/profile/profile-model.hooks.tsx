@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 // Libraries
-import React, { useContext } from 'react';
+import React from 'react';
 import { of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 

@@ -1,6 +1,5 @@
 // Library
 import React, { useState } from 'react';
-import { ProfileComponentsEngine } from './profile.components';
 
 const ProfileContext = React.createContext([{}, () => { }]);
 const initialProfileModel = {
@@ -10,9 +9,6 @@ const initialProfileModel = {
     i18nKeys: {},
     libraries: {
         React,
-    },
-    components: {
-        ...ProfileComponentsEngine
     },
     actions: {
     },
