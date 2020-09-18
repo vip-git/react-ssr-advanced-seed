@@ -54,6 +54,7 @@
     "src/client/**/**/**/*",
     "src/client/**/**/**/**/*",
     "src/client/**/**/**/**/**/*",
+    "src/client/shared/state/containers/profile/**/*",
     "src/server/**/*",
     "src/server/**/**/*",
     "src/server/**/**/**/*",

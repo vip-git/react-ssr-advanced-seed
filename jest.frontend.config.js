@@ -1,4 +1,3 @@
-/* eslint-disable eol-last */
 const paths = require('./scripts/config/paths');
 
 module.exports = {
@@ -16,6 +15,8 @@ module.exports = {
 	],
 	coverageDirectory: '<rootDir>/frontend-coverage',
 	coveragePathIgnorePatterns: [
+		// All type definitions to be excluded
+		'!*.d.ts',
 		// All Ignore files should be covered by E2E Tests to get maximum coverage.
 		'<rootDir>/node_modules',
 		'<rootDir>/src/client/mobile/metro.config.js',
@@ -23,7 +24,7 @@ module.exports = {
 		'<rootDir>/src/client/mobile/__tests__',
 		'<rootDir>/src/client/web/ssr',
 		'<rootDir>/src/client/web/server.ts',
-		'<rootDir>/src/client/web/app/App.e2e-test.ts',
+		'<rootDir>/src/client/web/app/__tests__/app.e2e-test.ts',
 		'<rootDir>/src/client/web/app/common/components/doc-gen',
 		'<rootDir>/src/client/shared/utils/doc-gen.engine.ts',
 		// Root State
