@@ -207,7 +207,7 @@ class Chat extends Component<IChatProps, IChatState> {
 													ownerId: githubUserData.id,
 													memberId: contact.githubUid,
 													groupName: `${githubUserData.name ||
-														githubUserData.login} (${
+														 githubUserData?.login} (${
 														githubUserData.realId
 													}) - ${contact.name || contact.githubId} (${
 														contact.id
@@ -294,7 +294,7 @@ class Chat extends Component<IChatProps, IChatState> {
 			githubUserData.name && githubUserData.name.indexOf(' ') === -1
 				? githubUserData.name
 				: (githubUserData.name && githubUserData.name.split(' ')[0]) ||
-				  githubUserData.login;
+				   githubUserData?.login;
 		const oppositeAvatarUrl = groupType === 'personal'
 			? member.avatarUrl
 			: groupImage;

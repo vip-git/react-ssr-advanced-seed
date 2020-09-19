@@ -8,6 +8,7 @@ import theme from '../../../styles';
 
 // Web
 import OptionsBarComponent from '../index';
+import { act } from '@testing-library/react-hooks';
 
 describe('OptionsBarComponent <OptionsBar />', () => {
 	it('OptionsBar Component renders correctly', () => {
@@ -45,6 +46,11 @@ describe('OptionsBarComponent <OptionsBar />', () => {
 				/>
 			</ThemeProvider>
 		);
+
+		act(() => {
+			(optionsBarComponent.find('WithStyles(ForwardRef(Menu))').props() as any).onClose(() => {});
+			(optionsBarComponent.find('WithStyles(ForwardRef(MenuItem))').first().props() as any).onClick(() => {});
+		})
 
 		expect(optionsBarComponent.length).toBeTruthy();
 	});

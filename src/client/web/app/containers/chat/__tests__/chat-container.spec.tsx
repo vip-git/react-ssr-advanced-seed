@@ -1,3 +1,4 @@
+// Library
 import React from 'react';
 import { ApolloProvider } from 'react-apollo';
 import { createMockClient } from 'mock-apollo-client';
@@ -14,6 +15,7 @@ import ChatContainer from '@omega-web-containers/chat';
 // Redux Model
 import { ChatReduxModel } from '@omega-state-machines/chat/chat.redux-model';
 import theme from '../../../common/styles';
+import { act } from '@testing-library/react-hooks';
 
 interface IState {
 	chats: {
@@ -97,6 +99,15 @@ describe('container <ChatContainer />', () => {
 			'userData',
 			'groupData'
 		];
+
+		act(() => {
+			component.props().onSelectGroup();
+			component.props().onSelectContact();
+			component.props().submitCreateGroup();
+			component.props().readUsersAndChat();
+			component.props().SharedComponent();
+			component.props().submitChat();
+		});
 
 		expect(Object.keys(component.props())).toEqual(
 			expect.arrayContaining(expectedPropKeys)

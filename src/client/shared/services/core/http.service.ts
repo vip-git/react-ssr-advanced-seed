@@ -101,7 +101,7 @@ export class HttpService {
 			if (!lastAccessToken) {
 				return 'Refresh API call failed';
 			}
-			const URL = returnValidURL('api', '/auth/refresh?lastToken=' + lastAccessToken + '&githubId=' + githubUserData.login);
+			const URL = returnValidURL('api', '/auth/refresh?lastToken=' + lastAccessToken + '&githubId=' +  githubUserData?.login);
 			const options: any = {
 				method: 'GET',
 			};

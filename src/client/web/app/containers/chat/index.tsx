@@ -42,10 +42,10 @@ class ChatContainer extends Component<any, any> {
 							submitChat={(payload: ICreateChatPayload) =>
 								dispatchCreateChat({
 									apolloClient,
-									data: payload.variables,
+									data: payload?.variables,
 									callBack: () => payload.callBack()
 								})}
-							onSelectContact={(groupId: Number) =>
+							onSelectContact={(groupId: number) =>
 								dispatchReadAllUsersAndChats({
 									apolloClient,
 									data: {
@@ -68,14 +68,14 @@ class ChatContainer extends Component<any, any> {
 										profilePayload: {
 											filters: {
 												not: {
-													githubId: githubUserData.login
+													githubId: githubUserData?.login
 												}
 											}
 										}
 									},
 									idToken
 								})}
-							onSelectGroup={(groupId: Number) =>
+							onSelectGroup={(groupId: number) =>
 								dispatchReadAllUsersAndChats({
 									apolloClient,
 									data: {
@@ -98,7 +98,7 @@ class ChatContainer extends Component<any, any> {
 										profilePayload: {
 											filters: {
 												not: {
-													githubId: githubUserData.login
+													githubId:  githubUserData?.login
 												}
 											}
 										}
@@ -128,7 +128,7 @@ class ChatContainer extends Component<any, any> {
 										profilePayload: {
 											filters: {
 												not: {
-													githubId: githubUserData.login
+													githubId: githubUserData?.login
 												}
 											}
 										}
@@ -138,7 +138,7 @@ class ChatContainer extends Component<any, any> {
 							submitCreateGroup={(payload: ICreateGroupPayload) =>
 								dispatchCreateGroup({
 									apolloClient,
-									data: payload.variables,
+									data: payload?.variables,
 									callBack: id => payload.callBack(id)
 								})}
 							githubUserData={githubUserData}
