@@ -6,8 +6,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import distanceInWordsToNow from 'date-fns/distance_in_words_to_now';
 import JWTDecode from 'jwt-decode';
-import i18next from 'i18next';
-import { withTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 
 // Material UI
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth';
@@ -44,9 +43,9 @@ import ModalForm from '@omega-web-components/modal-form';
 import Tabs from '@omega-web-components/tabs'; 
 import SettingsForm from '@omega-web-components/settings';
 import CreateGroupForm from '@omega-web-components/create-group';
-import ChatStyles from './styles';
+import useChatStyles from './styles';
 
-export const ChatBoxModel = {
+export const ChatBoxModel: any = {
   libraries: {
     React,
     Component,
@@ -54,9 +53,8 @@ export const ChatBoxModel = {
     classNames,
     distanceInWordsToNow,
     JWTDecode,
-    i18next,
     SplitPane,
-    withTranslation,
+    useTranslation,
     reject,
     find
   },
@@ -118,6 +116,6 @@ export const ChatBoxModel = {
     GroupWorkIcon,
   },
   styles: {
-    ChatStyles,
+    useChatStyles,
   },
 };

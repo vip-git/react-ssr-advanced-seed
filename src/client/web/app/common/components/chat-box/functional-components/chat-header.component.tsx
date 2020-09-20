@@ -95,7 +95,7 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 								<ListItem>
 									<Avatar
 										alt=''
-										src={githubUserData.avatar_url}
+										src={githubUserData?.avatar_url}
 										className={classes.avatar}
 									/>
 									<ListItemText primary={currentUsername} secondary='Online' />
@@ -125,7 +125,7 @@ export const ChatHeaderComponent: React.FunctionComponent<ChatHeaderProps> = ({
 								modalContent={() => (
 									<CreateGroupForm
 										groupMembers={groupMembers}
-										ownerId={githubUserData.id}
+										ownerId={githubUserData?.id}
 										ownerRealId={ownerRealId}
 										onSubmit={handleCreateGroup}
 										closeForm={() => modalHandleClose('createGroupForm')}

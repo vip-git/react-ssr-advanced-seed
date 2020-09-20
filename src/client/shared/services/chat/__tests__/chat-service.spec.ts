@@ -7,6 +7,14 @@ import { ChatServiceEngine } from '..';
 const apolloClientMock = createMockClient();
 
 describe('Chat Service', () => {
+	it('can get chats', () => {
+		const allChats = ChatServiceEngine.requestChats({
+			apolloClientMock,
+			data: {}
+		});
+		expect(allChats).toStrictEqual({});
+	});
+
 	it('can get all chats', () => {
 		const allChats = ChatServiceEngine.requestAllChats({
 			apolloClientMock,

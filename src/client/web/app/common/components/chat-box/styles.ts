@@ -1,13 +1,8 @@
-import { Theme } from '@material-ui/core/styles';
-// Library - todo do this when moving to functional components aka react-hooks
-// import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-/** *
- * makeStyles((theme: Theme) => createStyles({ *** }));
- */
+import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
 const drawerWidth = 300;
 
-const ChatStyles = (theme: Theme) => ({
+const useChatStyles = makeStyles((theme: Theme) => createStyles({
 	root: {
 		zIndex: 1,
 		overflow: 'hidden',
@@ -47,7 +42,7 @@ const ChatStyles = (theme: Theme) => ({
 		[theme.breakpoints.up('sm')]: {
 			top: '64px'
 		},
-		zIndex: '1000'
+		zIndex: 1000,
 	},
 	backdrop: {
 		[theme.breakpoints.down('sm')]: {
@@ -161,7 +156,7 @@ const ChatStyles = (theme: Theme) => ({
 		fontSize: '11px',
 		paddingTop: '2px',
 		fontStyle: 'italic',
-		fontWeight: '600',
+		fontWeight: 600,
 		color: theme.palette.primary.contrastText
 	},
 	dateSent: {
@@ -182,6 +177,6 @@ const ChatStyles = (theme: Theme) => ({
 		display: 'flex',
 		flexWrap: 'wrap'
 	}
-});
+}));
 
-export default ChatStyles;
+export default useChatStyles;

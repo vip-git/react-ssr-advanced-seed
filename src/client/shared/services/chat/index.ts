@@ -80,6 +80,7 @@ class ChatService {
 
 export const ChatServiceEngine = {
 	requestAllChats: action => ChatService.getAllChats(action),
+	requestChats: action => ChatService.getChats(action),
 	requestAllChatsRest: action => ChatService.getChatsRest(action),
 	requestCreateChat: (payload: any) => ChatService.createChat(payload),
 	requestRemoveChat: (chatId: any) => ChatService.removeChat(chatId),

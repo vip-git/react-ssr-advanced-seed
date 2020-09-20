@@ -36,7 +36,7 @@ export const ChatMainComponent: React.FunctionComponent<
 											key={`ChatItem-${chat.id}`}
 											className={classNames(
 												classes.conversation,
-												chat.ownerId === githubUserData.id
+												chat.ownerId === githubUserData?.id
 													? classes.conversationSent
 													: classes.conversationReceived
 											)}
@@ -47,7 +47,7 @@ export const ChatMainComponent: React.FunctionComponent<
 												style={{
 													marginRight: 10,
 													display:
-														chat.ownerId === githubUserData.id
+														chat.ownerId === githubUserData?.id
 															? 'none'
 															: 'block'
 												}}
@@ -55,7 +55,7 @@ export const ChatMainComponent: React.FunctionComponent<
 											<div
 												className={classNames(
 													classes.body,
-													chat.ownerId === githubUserData.id
+													chat.ownerId === githubUserData?.id
 														? classes.bodySent
 														: classes.bodyReceived
 												)}
@@ -65,7 +65,7 @@ export const ChatMainComponent: React.FunctionComponent<
 													variant='caption'
 													className={classNames(
 														classes.date,
-														chat.ownerId === githubUserData.id
+														chat.ownerId === githubUserData?.id
 															? classes.dateSent
 															: classes.dateReceived
 													)}
@@ -76,14 +76,14 @@ export const ChatMainComponent: React.FunctionComponent<
 											</div>
 											<Avatar
 												alt=''
-												src={githubUserData.avatar_url}
+												src={githubUserData?.avatar_url}
 												style={{
 													float: 'right',
 													order: 2,
 													marginLeft: 10,
 													top: 25,
 													display:
-														chat.ownerId === githubUserData.id
+														chat.ownerId === githubUserData?.id
 															? 'block'
 															: 'none'
 												}}

@@ -28,7 +28,7 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 					groupId={1}
 					title={'title'}
 					chatData={{}}
-					userData={{}}
+					userData={[]}
 					groupData={{}}
 				/>
 			</ThemeProvider>
@@ -36,7 +36,7 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 
 		// Interaction demo
 		expect(chatBoxComponent.text()).toEqual(
-			'<WithWidth(WithStyles(withI18nextTranslation(Chat))) />'
+			'<Chat />'
 		);
 
 		// Snapshot demo
@@ -57,7 +57,7 @@ describe('ChatBoxComponent <ChatBoxComponent />', () => {
 					groupId={1}
 					title={'title'}
 					chatData={{}}
-					userData={{}}
+					userData={[]}
 					groupData={{}}
 				/>
 			</ThemeProvider>
