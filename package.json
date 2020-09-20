@@ -162,7 +162,7 @@
 		"mini-css-extract-plugin": "0.7.0",
 		"mock-apollo-client": "0.2.0",
 		"node-fetch": "2.6.1",
-		"nodemon": "^2.0.4",
+		"nodemon": "2.0.4",
 		"plop": "2.4.0",
 		"pm2": "4.4.1",
 		"postcss-assets": "5.0.0",
