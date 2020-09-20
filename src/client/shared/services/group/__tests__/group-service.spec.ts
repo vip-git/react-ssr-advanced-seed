@@ -7,6 +7,14 @@ import { GroupServiceEngine } from '..';
 const apolloClientMock = createMockClient();
 
 describe('Group Service', () => {
+    it('can get all groups (rest)', async () => {
+        const allGroups = await GroupServiceEngine.requestAllGroupsRest({
+            apolloClientMock,
+            data: {}
+        });
+        expect((allGroups.subscribe() as any).data).toStrictEqual(undefined);
+    });
+
     it('can get all groups', () => {
         const allGroups = GroupServiceEngine.requestAllGroups({
             apolloClientMock,

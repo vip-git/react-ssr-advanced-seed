@@ -70,6 +70,7 @@ class GroupService {
 }
 
 export const GroupServiceEngine = {
+    requestAllGroupsRest: action => GroupService.getGroupsRest(action),
     requestAllGroups: action => GroupService.getAllGroups(action),
     createGroup: action => GroupService.createGroup(action),
     updateGroup: action => GroupService.updateGroup(action),
