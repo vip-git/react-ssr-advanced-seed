@@ -8,7 +8,7 @@ module.exports = {
 		'<rootDir>/scripts/config/polyfills.js'
 	],
 	snapshotSerializers: ['enzyme-to-json/serializer'],
-	setupTestFrameworkScriptFile: '<rootDir>/scripts/config/jest/setup.js',
+	setupFilesAfterEnv: ['<rootDir>/scripts/config/jest/setup.js'],
 	testMatch: [
 		'<rootDir>/src/client/web/**/?(*.)(spec|test).{js,jsx,ts,tsx,mjs}',
 		'<rootDir>/src/client/shared/**/?(*.)(spec|test).{js,jsx,ts,tsx,mjs}'
@@ -50,7 +50,7 @@ module.exports = {
 	testURL: 'http://localhost',
 	transform: {
 		'^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
-		'\\.(ts|tsx)$': '<rootDir>/node_modules/ts-jest/preprocessor.js',
+		'\\.(ts|tsx)$': 'ts-jest',
 		'^.+\\.css$': '<rootDir>/scripts/config/jest/cssTransform.js',
 		'^(?!.*\\.(js|jsx|mjs|css|json)$)':
 			'<rootDir>/scripts/config/jest/fileTransform.js'

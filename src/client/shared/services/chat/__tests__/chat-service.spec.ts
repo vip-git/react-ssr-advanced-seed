@@ -38,4 +38,12 @@ describe('Chat Service', () => {
 		});
 		expect(requestRemoveChat).toBeDefined();
 	});
+
+	it('can request All chats', () => {
+		const requestRemoveChat = ChatServiceEngine.requestAllChatsRest({
+			apolloClientMock,
+			data: {}
+		});
+		expect(requestRemoveChat).toBeDefined();
+	});
 });

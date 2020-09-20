@@ -8,7 +8,7 @@ module.exports = {
 		'<rootDir>/node_modules/regenerator-runtime/runtime',
 		'<rootDir>/scripts/config/polyfills.js'
 	],
-	setupTestFrameworkScriptFile: '<rootDir>/scripts/config/jest/setup.js',
+	setupFilesAfterEnv: ['<rootDir>/scripts/config/jest/setup.js'],
 	testMatch: [
 		'<rootDir>/src/server/app/modules/**/*.spec.{ts,tsx,mjs}',
 		'<rootDir>/src/server/app/common/interceptors/**/*.spec.{ts,tsx,mjs}',
@@ -27,7 +27,7 @@ module.exports = {
 	testEnvironment: 'node',
 	testURL: 'http://localhost',
 	transform: {
-		'^.+\\.tsx?$': '<rootDir>/node_modules/ts-jest/preprocessor.js',
+		'^.+\\.tsx?$': 'ts-jest',
 		'^.+\\.css$': '<rootDir>/scripts/config/jest/cssTransform.js',
 		'^(?!.*\\.(js|jsx|mjs|css|json)$)':
 			'<rootDir>/scripts/config/jest/fileTransform.js'

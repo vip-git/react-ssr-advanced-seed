@@ -8,7 +8,7 @@ module.exports = {
 	],
 	transform: {
 		'^.+\\.(js|jsx|mjs)$': '<rootDir>/node_modules/babel-jest',
-		'^.+\\.(ts|tsx|mjs)$': '<rootDir>/node_modules/ts-jest',
+		'^.+\\.(ts|tsx|mjs)$': 'ts-jest',
 		'^.+\\.css$': '<rootDir>/scripts/config/jest/cssTransform.js',
 		'^(?!.*\\.(js|jsx|mjs|css|json)$)':
 			'<rootDir>/scripts/config/jest/fileTransform.js'

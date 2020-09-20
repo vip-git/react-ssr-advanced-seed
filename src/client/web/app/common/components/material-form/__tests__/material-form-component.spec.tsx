@@ -1,5 +1,6 @@
 // Library
 import React from 'react';
+import { act } from '@testing-library/react-hooks';
 import { ThemeProvider } from '@material-ui/styles';
 import { shallow, mount } from 'enzyme';
 
@@ -9,7 +10,7 @@ import theme from '../../../styles';
 // Web
 import MaterialFormComponent from '../index';
 
-    const schema = {
+const schema = {
     title: '',
     type: 'object',
     properties: {
@@ -80,7 +81,13 @@ describe('MaterialFormComponent <MaterialForm />', () => {
 				</ThemeProvider>
 			);
 
-			// Interaction demo
+            act(() => {
+                (materialFormComponent.find('WithStyles(Form)').props() as any).onChange({});
+                (materialFormComponent.find('WithStyles(Form)').props() as any).onCancel({});
+                (materialFormComponent.find('WithStyles(Form)').props() as any).onUpload({});
+            });
+
+            // Interaction demo
 			expect(materialFormComponent.length).toBeTruthy();
 		});
 });

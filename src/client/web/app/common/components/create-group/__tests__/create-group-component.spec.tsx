@@ -1,6 +1,7 @@
 // Library
 import * as React from 'react';
 import { ThemeProvider } from '@material-ui/styles';
+import { act } from '@testing-library/react-hooks';
 import { shallow, mount } from 'enzyme';
 
 // Theme
@@ -26,9 +27,19 @@ describe('CreateGroupComponent <CreateGroup />', () => {
 	it('CreateGroup Component mount correctly', () => {
 		const createGroupComponent = mount(
 			<ThemeProvider theme={theme}>
-				<CreateGroupComponent />
+				<CreateGroupComponent 
+					onSubmit={jest.fn}
+				/>
 			</ThemeProvider>
 		);
+
+		act(() => { 
+			(createGroupComponent.find('MaterialForm').first().props() as any).onSubmit({
+				formData: {
+					groupMembers: '[]'
+				}
+			});
+		});
 
 		// Interaction demo
 		expect(createGroupComponent.length).toBeTruthy();
