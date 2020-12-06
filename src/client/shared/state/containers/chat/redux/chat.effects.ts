@@ -10,7 +10,7 @@ import { RulesEngine } from '@omega-core/utils/rules.engine';
 import { ChatReduxModel } from '../chat.redux-model'; // Todo: This would change based on web and mobile
 
 // Interfaces
-export interface IChat {
+export interface Chat {
 	id: number;
 	groupId?: number;
 	ownerId: number;
@@ -18,19 +18,19 @@ export interface IChat {
 	date: Date | number;
 }
 
-interface IAction {
+interface Action {
 	type: string;
 	payload: any;
 }
 
-interface IGraphqlDataResponse {
+interface GraphqlDataResponse {
 	error?: boolean;
 	message?: string;
 	data: any;
 }
 
 // persisted vars
-const initialAction: IAction = {
+const initialAction: Action = {
 	type: 'NO_ACTION',
 	payload: {}
 };
@@ -45,12 +45,12 @@ class ChatEffect {
 		RulesEngine.applyRule(
 			action$,
 			ChatReduxModel.actionTypes.READ_ALL_CHATS,
-			(action: IAction) => [
+			(action: Action) => [
 				ChatReduxModel.rules.validateChat(action),
 				ChatReduxModel.rules.validateChatAgain(action)
 			],
 			() => [
-				flatMap((action: IAction) => {
+				flatMap((action: Action) => {
 					const { apolloClient, data } = action.payload.payload;
 					const { chatPayload } = data;
 					const graphqlPayload = {
@@ -60,7 +60,7 @@ class ChatEffect {
 					return ChatReduxModel.services.requestAllChats(graphqlPayload);
 				}),
 				map(data => ChatReduxModel.rules.isValidChatResponse(data)),
-				map((chatResponse: IGraphqlDataResponse) => {
+				map((chatResponse: GraphqlDataResponse) => {
 					if (chatResponse && chatResponse.error) {
 						return ChatReduxModel.actions.reducer.processErrorChatResponse({
 							...chatResponse
@@ -72,7 +72,7 @@ class ChatEffect {
 					const { id, chats, groupMembers, groupName, groupDescription, groupImage, groupType,
 						accessType, member } = getGroup[0];
 					const finalData = Array.isArray(chats)
-						? chats.map((val: IChat) => {
+						? chats.map((val: Chat) => {
 								// eslint-disable-next-line no-param-reassign
 								val.date = new Date(val.date).getTime();
 								return val;
@@ -101,7 +101,7 @@ class ChatEffect {
 	static readAllUsers = (action$: any) =>
 		action$.pipe(
 			ofType(ChatReduxModel.actionTypes.READ_ALL_USERS),
-			flatMap((action: IAction) => {
+			flatMap((action: Action) => {
 				const { apolloClient, data } = action.payload.payload;
 				const { profilePayload } = data;
 				const graphqlPayload = {
@@ -110,7 +110,7 @@ class ChatEffect {
 				};
 				return ChatReduxModel.services.requestAllUsers(graphqlPayload);
 			}),
-			map((userResponse: IGraphqlDataResponse) => {
+			map((userResponse: GraphqlDataResponse) => {
 				const {
 					data: { getProfile }
 				} = userResponse;
@@ -129,7 +129,7 @@ class ChatEffect {
 	static readAllGroups = (action$: any) =>
 		action$.pipe(
 			ofType(ChatReduxModel.actionTypes.READ_ALL_GROUPS),
-			flatMap((action: IAction) => {
+			flatMap((action: Action) => {
 				const { apolloClient, data } = action.payload.payload;
 				const { groupPayload } = data;
 				const graphqlPayload = {
@@ -138,7 +138,7 @@ class ChatEffect {
 				};
 				return ChatReduxModel.services.requestAllGroups(graphqlPayload);
 			}),
-			map((userResponse: IGraphqlDataResponse) => {
+			map((userResponse: GraphqlDataResponse) => {
 				const {
 					data: { getGroup }
 				} = userResponse;
@@ -157,7 +157,7 @@ class ChatEffect {
 	static readAllUsersAndChats = (action$: any) =>
 		action$.pipe(
 			ofType(ChatReduxModel.actionTypes.READ_ALL_USERS_AND_CHATS),
-			mergeMap((action: IAction) =>
+			mergeMap((action: Action) =>
 				concat(
 					of(ChatReduxModel.actions.effects.readAllUsers(action)),
 					of(ChatReduxModel.actions.effects.readAllGroups(action)),
@@ -175,7 +175,7 @@ class ChatEffect {
 		let componentCallBack = () => {};
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.CREATE_CHAT),
-			flatMap((action: IAction) => {
+			flatMap((action: Action) => {
 				const {
 					payload: { apolloClient, data, callBack }
 				} = action;
@@ -208,7 +208,7 @@ class ChatEffect {
 		let chatSn = '';
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.DELETE_CHAT),
-			switchMap((action: IAction) => {
+			switchMap((action: Action) => {
 				getPayload.chatId = action.payload.chatId;
 				getPayload.token = action.payload.token;
 				chatSn = action.payload.chatSn;
@@ -235,7 +235,7 @@ class ChatEffect {
 		};
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.UPDATE_CHAT),
-			switchMap((action: IAction) => {
+			switchMap((action: Action) => {
 				getPayload.chatId = action.payload.chatId;
 				getPayload.token = action.payload.token;
 				return ChatReduxModel.services.requestEditChat(action.payload);
@@ -258,7 +258,7 @@ class ChatEffect {
 		let componentCallBack: any = () => { };
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.CREATE_GROUP),
-			flatMap((action: IAction) => {
+			flatMap((action: Action) => {
 				const {
 					payload: { apolloClient, data, callBack }
 				} = action;
@@ -292,7 +292,7 @@ class ChatEffect {
 		let chatSn = '';
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.DELETE_GROUP),
-			switchMap((action: IAction) => {
+			switchMap((action: Action) => {
 				getPayload.groupId = action.payload.groupId;
 				getPayload.token = action.payload.token;
 				chatSn = action.payload.chatSn;
@@ -319,7 +319,7 @@ class ChatEffect {
 		};
 		return action$.pipe(
 			ofType(ChatReduxModel.actionTypes.UPDATE_GROUP),
-			switchMap((action: IAction) => {
+			switchMap((action: Action) => {
 				getPayload.groupId = action.payload.groupId;
 				getPayload.token = action.payload.token;
 				return ChatReduxModel.services.updateGroup(action.payload);
