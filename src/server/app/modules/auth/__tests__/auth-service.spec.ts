@@ -1,3 +1,7 @@
+/**
+* @jest-environment node
+*/
+
 // Scalar
 import { AuthService } from '../auth.service';
 
