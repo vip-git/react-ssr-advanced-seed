@@ -44,6 +44,11 @@ jobs:
 
     steps:
     - script: |
+        npm install
+        npm run build:frontend
+        npm run build:backend:ci
+      displayName: 'npm build'
+    - script: |
         sudo snap install --classic heroku
         heroku login
         heroku stack:set heroku-18
