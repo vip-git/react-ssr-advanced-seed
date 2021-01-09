@@ -44,7 +44,7 @@ jobs:
 
     steps:
     - script: |
-        npm install
+        npm run clean:install
         npm run build:frontend
         npm run build:backend:ci
       displayName: 'npm build'
