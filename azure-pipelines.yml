@@ -7,7 +7,7 @@ trigger:
 - master
 
 jobs:
-  - job: Test Coverage (Web and Mobile)
+  - job: Test_Coverage_Web_and_Mobile
     pool:
       vmImage: 'ubuntu-16.04'
 
@@ -37,7 +37,7 @@ jobs:
         npx codecov
       displayName: 'npm test'
       
-  - job: Build and Deploy (Web)
+  - job: Build_and_Deploy_Web
     pool:
       vmImage: 'ubuntu-16.04'
       container: 
