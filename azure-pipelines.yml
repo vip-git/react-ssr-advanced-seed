@@ -7,7 +7,7 @@ trigger:
 - master
 
 jobs:
-  - job: TestAndCoverage
+  - job: Test_Coverage
     pool:
       vmImage: 'macOS-latest'
 
@@ -21,7 +21,7 @@ jobs:
         npx codecov
       displayName: 'npm install and build'
       
-  - job: CircleCI
+  - job: Build_and_Deploy
     pool:
       container: 
         image: circleci/node:14.15.4
