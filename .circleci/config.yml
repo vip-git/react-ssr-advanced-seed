@@ -7,7 +7,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/node:12.19.0
+      - image: circleci/node:12.20.1
         environment:
           PORT: 3000
       # CircleCI PostgreSQL images available at: https://hub.docker.com/r/circleci/postgres/
