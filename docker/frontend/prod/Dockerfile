@@ -10,7 +10,7 @@ FROM nginx:1.17-alpine
 
 ENV NODE_VERSION 8.11.1
 ENV API_URL https://react-ssr-nest-api.herokuapp.com
-
+ENV CHOKIDAR_USEPOLLING 1
 # And we end our Dockerfile with nginx Dockerfile last instructions
 # COPY Production build
 RUN rm -rf /usr/share/nginx/html/*
