@@ -17,7 +17,7 @@ jobs:
         npm install
         npm test
         npx codecov
-      displayName: 'npm install and build'
+      displayName: 'npm test'
       
   - job: Build_and_Deploy
     pool:
