@@ -16,8 +16,6 @@ jobs:
         npm install codecov
         npm install
         npm test
-        npm run build:frontend
-        npm run build:backend:ci
         npx codecov
       displayName: 'npm install and build'
       
