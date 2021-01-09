@@ -1,25 +1,25 @@
 // Library
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
-import { JwtAuthGuard } from '../../auth/auth.guard';
 import {
-	ApiUseTags,
+	ApiTags,
 	ApiBearerAuth,
 	ApiResponse,
 	ApiOperation
 } from '@nestjs/swagger';
+import { JwtAuthGuard } from '../../auth/auth.guard';
 
 // Internal
 import { ChatModel, ChatService } from '../index';
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
-@ApiUseTags('chats')
+@ApiTags('chats')
 @Controller('chats')
 export class ChatsController {
 	constructor(private readonly chatService: ChatService) {}
 
 	@Post()
-	@ApiOperation({ title: 'Create chat' })
+	@ApiOperation({ summary: 'Create chat' })
 	@ApiResponse({
 		status: 201,
 		description: 'The record has been successfully created.'

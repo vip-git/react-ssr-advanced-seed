@@ -4,7 +4,7 @@ import { Controller, Get, Req, Res } from '@nestjs/common';
 
 // Models
 import { IProfile } from '../profile/shared/profile.model';
-import { IGroupMember } from '../group-member/shared/group-member.model';
+import { GroupMember } from '../group-member/shared/group-member.model';
 
 // Services
 import { AuthService } from './auth.service';
@@ -42,7 +42,7 @@ export class AuthController {
 		};
 		const userProfile = await this.profileService.create(createUserPayload);
 		await this.groupService.createFirstGroup();
-		const groupMemberPayload: IGroupMember = {
+		const groupMemberPayload: GroupMember = {
 			memberId: userProfile.id,
 			groupId: 1,
 			date: new Date(),

@@ -1,7 +1,7 @@
 // Library
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany, JoinColumn } from 'typeorm';
 import { IsString, IsInt } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 // Model
 import { ChatModel } from '../../chat/shared/chat.model';
@@ -25,12 +25,12 @@ export interface IProfile {
 @Entity('profile')
 export class ProfileModel implements IProfile {
 	@PrimaryGeneratedColumn()
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsInt()
 	id: number;
 
 	@Column('int', { unique: true })
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsInt()
 	githubUid: number;
 
@@ -41,52 +41,52 @@ export class ProfileModel implements IProfile {
 	chats: ChatModel[];
 
 	@Column('text', { unique: true })
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	githubId: string;
 
 	@Column('text', { unique: true })
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	lastTokenWeb: string;
 
 	@Column('text', { unique: true })
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	lastTokenMobile: string;
 
 	@Column('text')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	name: string;
 
 	@Column('text')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	email: string;
 
 	@Column('text')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	avatarUrl: string;
 
 	@Column('text')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	bio: string;
 
 	@Column('text')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	location: string;
 
 	@Column('text')
-	@ApiModelProperty({ type: Date })
+	@ApiProperty({ type: Date })
 	@IsString()
 	createdAt: Date;
 
 	@Column('text')
-	@ApiModelProperty({ type: Date })
+	@ApiProperty({ type: Date })
 	@IsString()
 	updatedAt: Date;
 }

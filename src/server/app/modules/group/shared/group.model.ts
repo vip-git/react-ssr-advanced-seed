@@ -6,7 +6,7 @@ import {
 	OneToMany, ManyToOne, JoinColumn
 } from 'typeorm';
 import { IsString, IsInt, IsEnum } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 // Model
 import { GroupMemberModel } from '../../group-member/shared/group-member.model';
@@ -23,7 +23,7 @@ enum AccessType {
 	Public = 'public',
 	Private = 'private'
 }
-export interface IGroup {
+export interface Group {
 	id: number;
 	ownerId: number;
 	memberId?: number;
@@ -39,21 +39,21 @@ export interface IGroup {
 }
 
 @Entity('group')
-export class GroupModel implements IGroup {
+export class GroupModel implements Group {
 	@PrimaryGeneratedColumn()
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsInt()
 	id: number;
 
 	@Column('int')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsInt()
 	ownerId: number;
 
 	@Column('int', {
 		default: 0
 	})
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsInt()
 	memberId: number;
 
@@ -65,7 +65,7 @@ export class GroupModel implements IGroup {
 	member: ProfileModel;
 
 	@Column({ length: 500 })
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	groupName: string;
 
@@ -82,33 +82,33 @@ export class GroupModel implements IGroup {
 	groupMembers: GroupMemberModel[];
 
 	@Column('text')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	groupDescription: string;
 
 	@Column({
-		type: "enum",
+		type: 'enum',
 		enum: GroupType,
 		default: GroupType.Group,
 	})
-	@ApiModelProperty()
+	@ApiProperty()
 	groupType: GroupType;
 
 	@Column({
-		type: "enum",
+		type: 'enum',
 		enum: AccessType,
 		default: AccessType.Public,
 	})
-	@ApiModelProperty()
+	@ApiProperty()
 	accessType: AccessType;
 
 	@Column('text')
-	@ApiModelProperty()
+	@ApiProperty()
 	@IsString()
 	groupImage: string;
 
 	@Column('text')
-	@ApiModelProperty({ type: Date })
+	@ApiProperty({ type: Date })
 	@IsString()
 	date: Date;
 }

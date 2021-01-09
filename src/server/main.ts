@@ -19,7 +19,10 @@ async function bootstrap() {
 		.setDescription('Chat API description')
 		.setVersion('1.0')
 		.addTag('chat')
-		.addBearerAuth('Authorization', 'header')
+		.addBearerAuth(
+			{ type: 'http', scheme: 'bearer', bearerFormat: 'JWT' },
+			'access-token',
+		)
 		.build();
 
 	const document = SwaggerModule.createDocument(app, options);

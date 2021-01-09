@@ -2,7 +2,7 @@
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/auth.guard';
 import {
-	ApiUseTags,
+	ApiTags,
 	ApiBearerAuth,
 	ApiResponse,
 	ApiOperation
@@ -13,13 +13,13 @@ import { GroupMemberModel, GroupMemberService } from '../index';
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
-@ApiUseTags('group-member')
+@ApiTags('group-member')
 @Controller('group-member')
 export class GroupMemberController {
 	constructor(private readonly GroupMemberService: GroupMemberService) {}
 
 	@Post()
-	@ApiOperation({ title: 'Create GroupMember' })
+	@ApiOperation({ summary: 'Create GroupMember' })
 	@ApiResponse({
 		status: 201,
 		description: 'The record has been successfully created.'

@@ -2,7 +2,7 @@
 import { Controller, Get, Post, Body, Param, UseGuards, UseInterceptors } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/auth.guard';
 import {
-	ApiUseTags,
+	ApiTags,
 	ApiBearerAuth,
 	ApiResponse,
 	ApiOperation
@@ -17,13 +17,13 @@ import { GroupModel, GroupService } from '../index';
 @UseGuards(JwtAuthGuard)
 @UseInterceptors(RulesInterceptor)
 @ApiBearerAuth()
-@ApiUseTags('group')
+@ApiTags('group')
 @Controller('group')
 export class GroupController {
 	constructor(private readonly GroupService: GroupService) {}
 
 	@Post()
-	@ApiOperation({ title: 'Create Group' })
+	@ApiOperation({ summary: 'Create Group' })
 	@ApiResponse({
 		status: 201,
 		description: 'The record has been successfully created.'

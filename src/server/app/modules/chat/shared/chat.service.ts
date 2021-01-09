@@ -37,7 +37,8 @@ export class ChatService {
 		chat.date = chatPayload.date;
 		chat.ownerId = chatPayload.ownerId;
 
-		return await this.chatRepository.save(chat);
+		const returnValue = await this.chatRepository.save(chat);
+		return returnValue;
 	}
 
 	async findAll(filters: any): Promise<ChatModel[]> {
@@ -53,25 +54,25 @@ export class ChatService {
 
 		if (filters.not) {
 			_.map(filters.not, (val, key) => {
-				params['where'][key] = Not(val)
+				params.where[key] = Not(val)
 			})
 		}
 
 		if (filters.like) {
 			_.map(filters.like, (val, key) => {
-				params['where'][key] = Like(val)
+				params.where[key] = Like(val)
 			})
 		}
 
 		if (filters.in) {
 			_.map(filters.in, (val, key) => {
-				params['where'][key] = In(val)
+				params.where[key] = In(val)
 			})
 		}
 
 		if (filters.any) {
 			_.map(filters.any, (val, key) => {
-				params['where'][key] = Any(val)
+				params.where[key] = Any(val)
 			})
 		}
 
@@ -86,16 +87,19 @@ export class ChatService {
 		if (filters.take) {
 			params.take = filters.take;
 		}
-		return await this.chatRepository.find(params);
+		const returnValue = await this.chatRepository.find(params);
+		return returnValue;
 	}
 
 	async findOneById(id: number): Promise<ChatModel> {
-		return await this.chatRepository.findOne(id, { cache: true });
+		const returnValue = await this.chatRepository.findOne(id, { cache: true });
+		return returnValue;
 	}
 
 	async update(paramId: any, entity: IChat): Promise<ChatModel> {
 		await this.chatRepository.update(paramId, entity);
-		return await this.findOneById(paramId);
+		const returnValue = await this.findOneById(paramId);
+		return returnValue;
 	}
 
 	async delete(paramId: any): Promise<void> {
@@ -103,7 +107,8 @@ export class ChatService {
 
 		try {
 			await this.chatRepository.delete(id);
-		} catch (err) {
+		}
+ catch (err) {
 			throw new NotFoundException();
 		}
 	}

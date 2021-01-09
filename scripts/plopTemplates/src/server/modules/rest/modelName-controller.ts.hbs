@@ -2,7 +2,7 @@
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/auth.guard';
 import {
-	ApiUseTags,
+	ApiTags,
 	ApiBearerAuth,
 	ApiResponse,
 	ApiOperation
@@ -13,13 +13,13 @@ import { {{pascalCase moduleName}}Model, {{pascalCase moduleName}}Service } from
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
-@ApiUseTags('{{moduleName}}')
+@ApiTags('{{moduleName}}')
 @Controller('{{moduleName}}')
 export class {{pascalCase moduleName}}Controller {
 	constructor(private readonly {{pascalCase moduleName}}Service: {{pascalCase moduleName}}Service) {}
 
 	@Post()
-	@ApiOperation({ title: 'Create {{pascalCase moduleName}}' })
+	@ApiOperation({ summary: 'Create {{pascalCase moduleName}}' })
 	@ApiResponse({
 		status: 201,
 		description: 'The record has been successfully created.'

@@ -1,7 +1,7 @@
 // Library
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 import { IsInt } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
 
 export interface I{{pascalCase moduleName}} {
     id: number;
@@ -12,7 +12,7 @@ export interface I{{pascalCase moduleName}} {
 export class {{pascalCase moduleName}}Model implements I{{pascalCase moduleName}} {
     
     @PrimaryGeneratedColumn()
-    @ApiModelProperty()
+    @ApiProperty()
     @IsInt()
     id: number;
 

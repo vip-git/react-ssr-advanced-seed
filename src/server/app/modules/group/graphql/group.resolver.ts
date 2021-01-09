@@ -7,7 +7,7 @@ import { PubSub } from 'graphql-subscriptions';
 import { RulesInterceptor } from '../../../common/interceptors/rules.interceptor';
 
 // Internal
-import { IGroup } from '../shared/group.model';
+import { Group } from '../shared/group.model';
 import { GroupService } from '../shared/group.service';
 import { GroupGuard } from './group.guard';
 
@@ -26,13 +26,13 @@ export class GroupResolver {
 	}
 
 	@Query('group')
-	async findOneById(obj, args, context, info): Promise<IGroup> {
+	async findOneById(obj, args, context, info): Promise<Group> {
 		const { id } = args;
 		return await this.groupService.findOneById(+id);
 	}
 
 	@Mutation('createGroup')
-	async create(obj, args: IGroup, context, info): Promise<IGroup> {
+	async create(obj, args: Group, context, info): Promise<Group> {
 		const createdGroup = await this.groupService.create(args);
 		if (args.groupType === 'group') {
 			pubSub.publish('groupRecieved', { groupRecieved: createdGroup });
@@ -41,7 +41,7 @@ export class GroupResolver {
 	}
 
 	@Mutation('updateGroup')
-	async update(obj, args: IGroup, context, info): Promise<IGroup> {
+	async update(obj, args: Group, context, info): Promise<Group> {
 		const { id } = args;
 		const updatedGroup = await this.groupService.update(id, args);
 		pubSub.publish('groupRecieved', { groupRecieved: updatedGroup });

@@ -9,8 +9,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Not, Like, In, Any } from 'typeorm';
 
 // Internal
-import { GroupModel, IGroup } from './group.model'; 
-import { GroupMemberModel, IGroupMember } from '../../group-member/shared/group-member.model';
+import { GroupModel, Group } from './group.model'; 
+import { GroupMemberModel, GroupMember } from '../../group-member/shared/group-member.model';
 
 // Service
 import { ProfileService } from '../../profile/shared/profile.service';
@@ -38,7 +38,7 @@ export class GroupService {
 		return id;
 	}
 
-	async create(groupPayload: IGroup): Promise<GroupModel> {
+	async create(groupPayload: Group): Promise<GroupModel> {
 		let existingGroup: any = false;
 		let groupObj: any = false;
 		if (groupPayload.groupType === 'personal') {
@@ -134,7 +134,7 @@ export class GroupService {
 		return await this.groupRepository.findOne(id, { cache: true });
 	}
 
-	async update(paramId: any, entity: IGroup): Promise<GroupModel> {
+	async update(paramId: any, entity: Group): Promise<GroupModel> {
 		await this.groupRepository.update(paramId, entity);
 		return await this.findOneById(paramId);
 	}

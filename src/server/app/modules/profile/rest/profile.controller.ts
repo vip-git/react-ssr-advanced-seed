@@ -2,7 +2,7 @@
 import { Controller, Get, Post, Body, Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../../auth/auth.guard';
 import {
-	ApiUseTags,
+	ApiTags,
 	ApiBearerAuth,
 	ApiResponse,
 	ApiOperation
@@ -13,13 +13,13 @@ import { ProfileModel, ProfileService } from '../index';
 
 @UseGuards(JwtAuthGuard)
 @ApiBearerAuth()
-@ApiUseTags('profile')
+@ApiTags('profile')
 @Controller('profile')
 export class ProfileController {
 	constructor(private readonly ProfileService: ProfileService) {}
 
 	@Post()
-	@ApiOperation({ title: 'Create Profile' })
+	@ApiOperation({ summary: 'Create Profile' })
 	@ApiResponse({
 		status: 201,
 		description: 'The record has been successfully created.'
