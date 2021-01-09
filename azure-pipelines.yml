@@ -10,6 +10,7 @@ pool:
   container: 
     image: circleci/node:14.15.4
     name: react-ssr-advanced
+  vmImage: 'macOS-latest'
 
 ## Multi-container support here
 services:
