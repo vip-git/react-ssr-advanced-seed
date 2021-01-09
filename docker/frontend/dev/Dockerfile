@@ -18,6 +18,7 @@ ENV API_DB_NAME "skmsmrzz"
 ENV GIT_PROVIDER github.com
 ENV GIT_BRANCH master
 ENV GIT_REPO git@github.com:vip-git/react-ssr-advanced-seed.git
+ENV CHOKIDAR_USEPOLLING 1
 
 RUN addgroup -g 1000 node \
     && adduser -u 1000 -G node -s /bin/sh -D node \
