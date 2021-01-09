@@ -12,6 +12,10 @@ jobs:
       vmImage: 'macOS-latest'
 
     steps:
+    - task: NodeTool@0
+      inputs:
+        versionSpec: '14.15.4'
+        checkLatest: true
     - script: |
         npm install codecov
         npm install
