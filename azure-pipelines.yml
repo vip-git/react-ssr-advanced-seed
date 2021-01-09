@@ -47,7 +47,7 @@ jobs:
     steps:
     - script: |
         npm install lerna cross-env
-        rm -rf node_modules && npx lerna clean && npm install
+        rm -rf node_modules && npx lerna clean --yes && npm install
         npm run build:frontend
         npm run build:backend:ci
       displayName: 'npm build'
