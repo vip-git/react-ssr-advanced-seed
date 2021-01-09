@@ -6,41 +6,48 @@
 trigger:
 - master
 
-pool:
-  vmImage: 'macOS-latest'
-  container: 
-    image: circleci/node:14.15.4
-    name: react-ssr-advanced
+jobs:
+  - job: TestAndCoverage
+    pool:
+      vmImage: 'macOS-latest'
 
-## Multi-container support here
-services:
-  postgres:
-    image: circleci/postgres:9.6.16-alpine
-    ports:
-      - "5432:5432"
-    volumes:
-    - db-data:/var/lib/postgresql/data
-    env:
-      POSTGRES_USER: postgres
-      POSTGRES_DB: postgres
-      POSTGRES_PASSWORD: password
-## End multi-container
+    steps:
+    - script: |
+        npm install codecov
+        npm install
+        npm test
+        npm run build:frontend
+        npm run build:backend:ci
+        npx codecov
+      displayName: 'npm install and build'
+      
+  - job: CircleCI
+    pool:
+      container: 
+        image: circleci/node:14.15.4
+        name: react-ssr-advanced
 
-steps:
-- script: |
-    npm install codecov
-    npm install
-    npm test
-    npm run build:frontend
-    npm run build:backend:ci
-    npx codecov
-  displayName: 'npm install and build'
-- script: |
-    sudo snap install --classic heroku
-    heroku login
-    heroku stack:set heroku-18
-    cd docker/backend/prod
-    heroku container:login
-    heroku container:push web --app=react-ssr-nest-api
-    heroku container:release web --app=react-ssr-nest-api
-  displayName: 'Deploy Backend Build'
+    ## Multi-container support here
+    services:
+      postgres:
+        image: circleci/postgres:9.6.16-alpine
+        ports:
+          - "5432:5432"
+        volumes:
+        - db-data:/var/lib/postgresql/data
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: password
+    ## End multi-container
+
+    steps:
+    - script: |
+        sudo snap install --classic heroku
+        heroku login
+        heroku stack:set heroku-18
+        cd docker/backend/prod
+        heroku container:login
+        heroku container:push web --app=react-ssr-nest-api
+        heroku container:release web --app=react-ssr-nest-api
+      displayName: 'Deploy Backend Build'
