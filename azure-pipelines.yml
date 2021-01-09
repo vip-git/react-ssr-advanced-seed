@@ -46,6 +46,7 @@ jobs:
 
     steps:
     - script: |
+        export CHOKIDAR_USEPOLLING=1
         npm install lerna cross-env
         rm -rf node_modules && npx lerna clean --yes && npm install
         npm run build:frontend
