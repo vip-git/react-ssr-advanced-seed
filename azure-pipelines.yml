@@ -23,6 +23,7 @@ jobs:
       
   - job: Build_and_Deploy
     pool:
+      vmImage: 'ubuntu-16.04'
       container: 
         image: circleci/node:14.15.4
         name: react-ssr-advanced
