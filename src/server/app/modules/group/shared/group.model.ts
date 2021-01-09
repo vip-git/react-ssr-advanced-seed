@@ -14,17 +14,17 @@ import { ChatModel } from '../../chat/shared/chat.model';
 import { ProfileModel } from '../../profile/shared/profile.model';
 
 
-enum GroupType {
+export enum GroupType {
 	Personal = 'personal',
 	Group = 'group'
 }
 
-enum AccessType {
+export enum AccessType {
 	Public = 'public',
 	Private = 'private'
 }
 export interface Group {
-	id: number;
+	id?: number;
 	ownerId: number;
 	memberId?: number;
 	member?: ProfileModel;

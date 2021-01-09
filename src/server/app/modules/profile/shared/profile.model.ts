@@ -7,7 +7,7 @@ import { ApiProperty } from '@nestjs/swagger';
 import { ChatModel } from '../../chat/shared/chat.model';
 
 export interface IProfile {
-	id: number;
+	id?: number;
 	githubUid: number;
 	chats?: ChatModel[];
 	githubId: string;

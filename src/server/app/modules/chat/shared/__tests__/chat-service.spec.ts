@@ -22,7 +22,16 @@ describe('ChatsService', () => {
 
 	describe('findAll', () => {
 		it('should return an array of chats', async () => {
-			const findAllChats = await chatService.findAll({});
+			const findAllChats = await chatService.findAll({
+				where: { 'message': '' },
+				not: {'message': ''},
+				like: {'message': ''},
+				in: {'message': []},
+				any: {'message': []},
+				order: {},
+				skip: 1,
+				take: 1,
+			});
 			expect(findAllChats).toBeDefined();
 			expect(findAllChats).toEqual([]);
 		});
