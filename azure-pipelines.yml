@@ -8,7 +8,7 @@ trigger:
 
 pool:
   container: 
-    image: circleci/node:15.5.1
+    image: circleci/node:14.15.4
     name: react-ssr-advanced
 
 ## Multi-container support here
