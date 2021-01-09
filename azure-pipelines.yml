@@ -9,8 +9,22 @@ trigger:
 jobs:
   - job: Test_Coverage
     pool:
-      vmImage: 'macOS-latest'
+      vmImage: 'ubuntu-16.04'
 
+    ## Multi-container support here
+    services:
+      postgres:
+        image: postgres:12-alpine
+        ports:
+          - "5432:5432"
+        volumes:
+        - db-data:/var/lib/postgresql/data
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+          POSTGRES_PASSWORD: password
+    ## End multi-container
+    
     steps:
     - task: NodeTool@0
       inputs:
@@ -29,20 +43,6 @@ jobs:
       container: 
         image: circleci/node:14.15.4
         name: react-ssr-advanced
-
-    ## Multi-container support here
-    services:
-      postgres:
-        image: circleci/postgres:9.6.16-alpine
-        ports:
-          - "5432:5432"
-        volumes:
-        - db-data:/var/lib/postgresql/data
-        env:
-          POSTGRES_USER: postgres
-          POSTGRES_DB: postgres
-          POSTGRES_PASSWORD: password
-    ## End multi-container
 
     steps:
     - script: |
