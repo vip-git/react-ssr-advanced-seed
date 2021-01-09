@@ -11,7 +11,8 @@ describe('ChatsGuard', () => {
 			getArgByIndex: jest.fn(),
 			switchToRpc: jest.fn(),
 			switchToHttp: jest.fn(),
-			switchToWs: jest.fn()
+			switchToWs: jest.fn(),
+			getType: jest.fn(),
 		};
 		const canActivate = new ChatsGuard().canActivate(mockExecutionContext);
 		expect(canActivate).toBeDefined();
