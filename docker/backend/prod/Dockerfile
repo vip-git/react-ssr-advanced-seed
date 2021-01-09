@@ -1,5 +1,5 @@
 # Use an official node image
-FROM node:10.17.0-alpine
+FROM node:lts-alpine
 
 RUN set -xe \
     && apk add --no-cache bash git openssh \
