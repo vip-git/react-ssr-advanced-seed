@@ -21,7 +21,7 @@
         "lodash": "4.17.13",
         "mini-css-extract-plugin": "0.7.0",
         "prop-types": "15.7.2",
-        "react-dev-utils": "5.0.3",
+        "react-dev-utils": "11.0.4",
         "react-dom": "16.8.6",
         "react-fade-in": "0.1.6",
         "react-helmet": "5.2.1",
