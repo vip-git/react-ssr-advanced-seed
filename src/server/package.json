@@ -39,7 +39,7 @@
 		"rxjs": "6.5.2",
 		"subscriptions-transport-ws": "0.9.16",
 		"supertest": "4.0.2",
-		"typeorm": "0.2.18",
+		"typeorm": "0.2.25",
 		"typescript": "3.5.3",
 		"ws": "7.1.1"
 	},
