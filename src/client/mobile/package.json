@@ -27,7 +27,7 @@
 		"babel-plugin-module-resolver": "3.2.0",
 		"enzyme-adapter-react-16": "1.14.0",
 		"eslint": "6.2.2",
-		"jest": "24.8.0",
+		"jest": "26.0.0",
 		"jest-environment-enzyme": "7.0.2",
 		"jest-enzyme": "7.0.2",
 		"metro-react-native-babel-preset": "0.55.0",
