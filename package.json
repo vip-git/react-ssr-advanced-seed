@@ -157,7 +157,7 @@
 		"jest-transform-stub": "2.0.0",
 		"jsdom": "15.1.1",
 		"jsdom-global": "3.0.2",
-		"lerna": "3.18.4",
+		"lerna": "6.4.1",
 		"lint-staged": "7.3.0",
 		"mini-css-extract-plugin": "0.7.0",
 		"mock-apollo-client": "0.2.0",
