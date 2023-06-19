@@ -155,7 +155,7 @@
 		"jest": "26.4.2",
 		"jest-puppeteer": "4.4.0",
 		"jest-transform-stub": "2.0.0",
-		"jsdom": "15.1.1",
+		"jsdom": "16.5.0",
 		"jsdom-global": "3.0.2",
 		"lerna": "3.18.4",
 		"lint-staged": "7.3.0",
