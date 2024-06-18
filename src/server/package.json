@@ -41,7 +41,7 @@
 		"supertest": "4.0.2",
 		"typeorm": "0.2.25",
 		"typescript": "3.5.3",
-		"ws": "7.4.6"
+		"ws": "7.5.10"
 	},
 	"gitHead": "f427f35e8053f50b3dbfebf486a0528220c3888b"
 }
