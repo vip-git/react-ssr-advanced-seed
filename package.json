@@ -84,7 +84,7 @@
 		"connected-react-router": "6.3.0",
 		"express-manifest-helpers-audit-fix": "0.6.3",
 		"graphql": "14.4.2",
-		"history": "4.9.0",
+		"history": "4.10.1",
 		"puppeteer-core": "1.18.1",
 		"react": "16.9.0",
 		"react-apollo": "2.5.8",
