@@ -7,7 +7,7 @@
     "deploy": "npm version patch && npm publish --access public"
   },
   "dependencies": {
-    "gojs": "2.0.12"
+    "gojs": "2.1.0"
   },
   "author": "",
   "license": "ISC",
